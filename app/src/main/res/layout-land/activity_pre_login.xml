@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+
+    android:paddingLeft="30dp"
+    android:paddingTop="20dp"
+    android:paddingRight="30dp"
+    tools:context=".Login.PreLoginActivity">
+
+
+    <LinearLayout
+        android:id="@+id/layo_ini"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#10000000"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingTop="29dp"
+        android:paddingRight="30dp">
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/color"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:id="@+id/layout_media"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="7dp"
+                        android:layout_marginBottom="4dp"
+                        android:orientation="horizontal">
+
+
+                        <LinearLayout
+                            android:id="@+id/llDistance"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+
+                            <ImageView
+                                android:id="@+id/facebook"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:elevation="2dp"
+                                android:padding="15dp"
+                                android:src="@drawable/logof" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llCall"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/compartir"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:elevation="2dp"
+                                android:padding="15dp"
+                                android:src="@drawable/gorjeo" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/llreview"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:id="@+id/mapa"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:elevation="2dp"
+                                android:padding="15dp"
+                                android:src="@drawable/google" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/centurygothic"
+                        android:gravity="center"
+                        android:text="Login"
+                        android:textColor="@color/colortextoblanco"
+                        android:textSize="20dp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btn_loginestu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_weight="1.0"
+                    android:background="@drawable/oval"
+                    android:fontFamily="@font/centurygothic"
+                    android:text="@string/estudiante"
+                    android:textAllCaps="false"
+                    android:textColor="@color/color"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btn_loginestu3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:background="@drawable/oval"
+                    android:fontFamily="@font/centurygothic"
+                    android:text="@string/tutor"
+                    android:textColor="@color/color"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/text_registro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginBottom="20dp"
+                    android:fontFamily="@font/centurygothic"
+                    android:gravity="center"
+                    android:text="@string/registro"
+                    android:textColor="@color/color"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_loginestu2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/ovalorange"
+                        android:fontFamily="@font/centurygothic"
+                        android:text="@string/iniciar"
+                        android:textColor="@color/colortextoblanco"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/footer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center|bottom"
+
+                    android:orientation="vertical"
+                    android:src="@drawable/livetech">
+
+                </ImageView>
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

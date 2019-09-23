@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_perfil"
+            android:icon="@drawable/ic_user"
+            android:title="Mi Perfil" />
+        <item
+            android:id="@+id/nav_cursos"
+            android:title="Cursos Disponibles" />
+        <item
+            android:id="@+id/nav_mis_cursos"
+            android:icon="@drawable/ic_curso"
+            android:title="Mis Cursos" />
+        <item
+            android:id="@+id/nav_slideshow"
+            android:icon="@drawable/calificaciones"
+            android:title="Mis Calificaciones" />
+        <item
+            android:id="@+id/nav_manage"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Mis Certificados" />
+    </group>
+
+
+
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Mis Exámenes" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Mi Correo" />
+
+
+</menu>

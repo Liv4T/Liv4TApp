@@ -1,0 +1,883 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:id="@+id/layo_ini"
+            android:background="#10000000">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mis Cursos"
+                android:fontFamily="@font/centurygothic"
+                android:textColor="@color/color"
+                android:paddingBottom="20dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="MIS CURSOS"
+                android:fontFamily="@font/centurygothic"
+                android:background="@drawable/redondo"
+                android:textStyle="bold"
+
+                android:textColor="@color/colortextoblanco"
+                android:textAlignment="center" />
+
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="20dp">
+
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/progressstatus"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Química"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+                                android:paddingLeft="2dp"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Cadenas de carbono"
+                                android:textColor="#000"
+                                android:paddingLeft="2dp"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Química Orgánica II"
+                                android:textColor="@color/color"
+                                android:textSize="15sp"
+                                android:paddingLeft="2dp"
+                                />
+
+                            <Button
+                                android:id="@+id/btn_loginestu2"
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Diseño Gráfico"
+                                    android:textColor="#000"
+                                    android:paddingLeft="2dp"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:paddingLeft="2dp"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Introducción a Adobe Illustrator"
+                                android:paddingLeft="2dp"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Diseño digital"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:paddingLeft="2dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Diseño Gráfico"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Gradientes, texturas y otros efectos"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Diseño digital"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Química"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Cadenas de carbono"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Química Orgánica II"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Química"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Cadenas de carbono"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Química Orgánica II"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Química"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Cadenas de carbono"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Química Orgánica II"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Química"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Cadenas de carbono"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Química Orgánica II"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Química"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Cadenas de carbono"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Química Orgánica II"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        app:cardCornerRadius="8dp">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:paddingBottom="5dp">
+
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Química"
+                                    android:textColor="#000"
+                                    android:textSize="20sp"
+                                    android:textStyle="bold" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="x Borrar"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Tema"
+                                android:textColor="@color/color"
+
+                                android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Cadenas de carbono"
+                                android:textColor="#000"
+                                android:textSize="15sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Química Orgánica II"
+                                android:textColor="@color/color"
+                                android:textSize="15sp" />
+
+                            <Button
+
+                                android:layout_width="100dp"
+                                android:layout_height="30dp"
+                                android:layout_gravity="center"
+                                android:background="@drawable/ovalorange"
+                                android:fontFamily="@font/centurygothic"
+                                android:gravity="center"
+                                android:minHeight="0dp"
+                                android:text="@string/ingresar"
+                                android:textColor="@color/colortextoblanco"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+
+            </ScrollView>
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+</RelativeLayout>

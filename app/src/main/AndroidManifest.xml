@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dybcatering.live4teach">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
+        android:supportsRtl="true"
+        android:theme="@style/AppThemeRegist">
+        <activity android:name=".CursosDisponibles.CompraActivity"></activity>
+        <activity
+            android:name=".CursosDisponibles.CuartoCurso"
+            android:parentActivityName=".PrincipalActivity"></activity>
+        <activity
+            android:name=".CursosDisponibles.TercerCurso"
+            android:parentActivityName=".PrincipalActivity" />
+        <activity
+            android:name=".CursosDisponibles.SegundoCurso"
+            android:parentActivityName=".PrincipalActivity" />
+        <activity
+            android:name=".CursosDisponibles.PrimerCurso"
+            android:parentActivityName=".PrincipalActivity" />
+        <activity
+            android:name=".Login.PreLoginActivity"
+            android:theme="@style/AppThemeRegist.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login.HomeActivity" />
+        <activity
+            android:name=".Login.RegisterActivity"
+            android:theme="@style/AppThemeRegist" />
+        <activity
+            android:name=".Login.LoginActivity"
+            android:theme="@style/AppThemeLogin" />
+        <activity
+            android:name=".PrincipalActivity"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/AppThemeRegist.NoActionBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"/>
+        <activity android:name=".SubPrimerActivity" />
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>
