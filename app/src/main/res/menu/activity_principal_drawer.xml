@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_perfil"
-            android:icon="@drawable/ic_user"
+            android:icon="@drawable/ic_icono_perfil"
             android:title="Mi Perfil" />
         <item
             android:id="@+id/nav_cursos"
@@ -17,7 +17,7 @@
             android:title="Mis Cursos" />
         <item
             android:id="@+id/nav_slideshow"
-            android:icon="@drawable/calificaciones"
+            android:icon="@drawable/ic_icono_calificaciones1"
             android:title="Mis Calificaciones" />
         <item
             android:id="@+id/nav_manage"
@@ -29,7 +29,7 @@
 
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/ic_icono_doc"
                 android:title="Mis Exámenes" />
             <item
                 android:id="@+id/nav_send"

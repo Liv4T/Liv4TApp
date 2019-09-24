@@ -2,7 +2,10 @@ package com.dybcatering.live4teach.CursosDisponibles;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,10 +14,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dybcatering.live4teach.CursosDisponibles.Adapter.ExpandableListAdapter;
 import com.dybcatering.live4teach.R;
+
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,6 +33,7 @@ public class PrimerCurso extends AppCompatActivity {
     private List<String> listDataHeader;
     private HashMap<String, List<String >> listHashMap;
     public ImageView image;
+    public TextView textView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,8 +83,16 @@ public class PrimerCurso extends AppCompatActivity {
 
         if (id == R.id.mybutton) {
             // do something here
-            Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
-            startActivity(intent);
+          //  Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
+          //  startActivity(intent);
+                textView= findViewById(R.id.textView2);
+          /*  SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putString("string_id", (String) textView.getText()); //InputString: from the EditText
+            editor.commit();*/
+
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -148,7 +162,9 @@ public class PrimerCurso extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
-                                        snack();
+                                          Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
+                                          startActivity(intent);
+                                        //snack();
                                     }
                                 });
                         alertDialog.show();

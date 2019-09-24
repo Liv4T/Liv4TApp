@@ -1,6 +1,7 @@
 package com.dybcatering.live4teach;
 
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.dybcatering.live4teach.CursosDisponibles.Cursos;
+import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.MisCursos.MisCursos;
 import com.dybcatering.live4teach.Perfil.Perfil;
@@ -39,7 +41,10 @@ public class PrincipalActivity extends AppCompatActivity
         setContentView(R.layout.activity_principal);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        toolbar.setTitle("Live 4 Teach");
+        toolbar.setTitle(R.string.app_name);
+
+        new CheckInternetConnection(this).checkConnection();
+
         inicio();
 
 
@@ -132,6 +137,9 @@ public class PrincipalActivity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new Perfil())
                     .commit();
+            //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
+            // startActivity(intent);
+
 
         } else if (id == R.id.nav_cursos) {
             fragmentManager.beginTransaction()
@@ -156,13 +164,21 @@ public class PrincipalActivity extends AppCompatActivity
         }
 
 
-
-
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
 
+    @Override
+    protected void onResume() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onResume();
+    }
 
+
+    @Override
+    protected void onRestart() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onRestart();
+    }
 }

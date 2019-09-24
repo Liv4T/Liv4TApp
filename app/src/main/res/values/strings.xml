@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Live4Teach</string>
-    <string name="title_activity_principal">Live 4 Teach</string>
+    <string name="title_activity_principal">Live4Teach</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">USUARIO APELLIDO</string>
@@ -15,6 +15,7 @@
     <string name="estudiante">ESTUDIANTE</string>
     <string name="ingresar">INGRESAR</string>
     <string name="seleccionar">Seleccionar...</string>
+    <string name="noconnection">Conéctese a una red WIFI o active los datos móviles</string>
     <string-array name="spinner">
 
         <item>Seleccionar...</item>
