@@ -58,7 +58,7 @@
             android:textColor="@color/color"
             android:textAllCaps="false"
             android:background="@drawable/oval"
-/>
+            />
 
         <Button
             android:id="@+id/btn_loginestu3"
@@ -106,6 +106,7 @@
 
 
     </LinearLayout>
+
     <!--LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -132,7 +133,7 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
-        android:layout_below="@+id/layo_ini"
+
         android:src="@drawable/livetech">
 
     </ImageView>

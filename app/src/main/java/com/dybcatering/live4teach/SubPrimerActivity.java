@@ -58,7 +58,7 @@ public class SubPrimerActivity extends AppCompatActivity {
         tvemail=findViewById(R.id.emailview);
         tvphone=findViewById(R.id.mobileview);
         namebutton=findViewById(R.id.name_button);
-        updateDetails=findViewById(R.id.updatedetails);
+       // updateDetails=findViewById(R.id.updatedetails);
 
 
         /*   updateDetails.setOnClickListener(new View.OnClickListener() {

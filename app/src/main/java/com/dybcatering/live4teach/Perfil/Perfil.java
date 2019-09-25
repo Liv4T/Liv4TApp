@@ -1,6 +1,7 @@
 package com.dybcatering.live4teach.Perfil;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,11 +28,10 @@ public class Perfil extends Fragment implements NavigationView.OnNavigationItemS
     View myView;
     private TextView tvemail,tvphone;
 
-    private TextView namebutton;
+    private Button namebutton;
     private CircleImageView primage;
-    private TextView updateDetails;
+    private Button updateDetails;
     private LinearLayout addressview;
-
 
     //to get user session data
     // private UserSession session;
@@ -50,7 +50,13 @@ public class Perfil extends Fragment implements NavigationView.OnNavigationItemS
         initialize();
 
         inflateImageSlider();
-
+        namebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Actualizar.class);
+                startActivity(intent);
+            }
+        });
 
         return myView;
     }
@@ -61,18 +67,13 @@ public class Perfil extends Fragment implements NavigationView.OnNavigationItemS
         primage=myView.findViewById(R.id.profilepic);
         tvemail=myView.findViewById(R.id.emailview);
         tvphone=myView.findViewById(R.id.mobileview);
-        namebutton=myView.findViewById(R.id.name_button);
-        updateDetails=myView.findViewById(R.id.updatedetails);
+        namebutton=myView.findViewById(R.id.btn_actualizar);
+     //   updateDetails=myView.findViewById(R.id.updatedetails);
 
 
-        /*   updateDetails.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Profile.this,UpdateData.class));
-                finish();
-            }
-        });
 
+
+/*
         addressview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -88,9 +89,9 @@ public class Perfil extends Fragment implements NavigationView.OnNavigationItemS
 
         //populating Image slider
         ArrayList<String> sliderImages= new ArrayList<>();
-        sliderImages.add("https://st2.depositphotos.com/1184927/6310/i/950/depositphotos_63105155-stock-photo-purple-starry-background-for-facebook.jpg");
-        sliderImages.add("https://st2.depositphotos.com/1184927/6310/i/950/depositphotos_63105155-stock-photo-purple-starry-background-for-facebook.jpg");
-        sliderImages.add("https://st2.depositphotos.com/1184927/6310/i/950/depositphotos_63105155-stock-photo-purple-starry-background-for-facebook.jpg");
+        sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
+        sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
+        sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
 
         for (String s:sliderImages){
             DefaultSliderView sliderView=new DefaultSliderView(getActivity());

@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.dybcatering.live4teach.CursosDisponibles.Adapter.ExpandableListAdapter;
+import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 
 import java.util.ArrayList;
@@ -144,5 +145,14 @@ public class CuartoCurso extends AppCompatActivity {
             }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onResume() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onResume();
+    }
+
+
+
 
 }

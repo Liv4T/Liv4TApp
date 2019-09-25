@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MisCursos.MisCursosDetalle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.youtube.player.YouTubePlayerView
+             android:id="@+id/youTube"
+            android:layout_width="match_parent"
+            android:layout_height="150dp" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/buttoniniciar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/youTube"
+            app:lottie_loop="true"
+            app:lottie_autoPlay="true"
+            app:lottie_fileName="animated.json" />
+
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/youTube"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_toRightOf="@id/buttoniniciar"
+            android:fontFamily="@font/centurygothic"
+            android:gravity="center"
+            android:text="HTML PARA PRINCIPIANTES"
+            android:textColor="@color/color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+
+            android:layout_below="@id/buttoniniciar"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/centurygothic"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_below="@id/textView4"
+            android:text="INTRODUCCIÓN" />
+
+        <ExpandableListView
+        android:groupIndicator="@null"
+        android:id="@+id/expandible_listview"
+        android:layout_width="match_parent"
+        android:layout_below="@id/textView3"
+        android:layout_marginBottom="60dp"
+        android:layout_height="match_parent">
+
+    </ExpandableListView>
+        <ImageView
+            android:id="@+id/footer"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center|bottom"
+            android:src="@drawable/livetech">
+
+        </ImageView>
+
+
+    </RelativeLayout>
+</android.support.constraint.ConstraintLayout>

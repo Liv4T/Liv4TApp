@@ -20,7 +20,9 @@ import android.widget.TextView;
 import com.dybcatering.live4teach.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
+import com.dybcatering.live4teach.MisActividades.MisActividades;
 import com.dybcatering.live4teach.MisCursos.MisCursos;
+import com.dybcatering.live4teach.MisCursos.MisCursosDetalle;
 import com.dybcatering.live4teach.Perfil.Perfil;
 import com.nex3z.notificationbadge.NotificationBadge;
 
@@ -56,7 +58,7 @@ public class PrincipalActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
+        navigationView.getMenu().getItem(1).setChecked(true);
         View header = navigationView.getHeaderView(0);
         version =  header.findViewById(R.id.txtVersion);
 
@@ -159,7 +161,11 @@ public class PrincipalActivity extends AppCompatActivity
 
         } else if (id == R.id.nav_share) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_slideshow){
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new MisActividades())
+                    .commit();
 
         }
 
@@ -175,10 +181,4 @@ public class PrincipalActivity extends AppCompatActivity
         super.onResume();
     }
 
-
-    @Override
-    protected void onRestart() {
-        new CheckInternetConnection(this).checkConnection();
-        super.onRestart();
-    }
 }

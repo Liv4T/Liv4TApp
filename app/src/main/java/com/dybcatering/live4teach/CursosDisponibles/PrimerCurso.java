@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dybcatering.live4teach.CursosDisponibles.Adapter.ExpandableListAdapter;
+import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 
 import com.squareup.picasso.Picasso;
@@ -39,7 +40,7 @@ public class PrimerCurso extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primer_curso);
 
-
+        new CheckInternetConnection(this).checkConnection();
             image = findViewById(R.id.imDesc);
 
 
@@ -171,4 +172,14 @@ public class PrimerCurso extends AppCompatActivity {
                     }
                 }).show();
     }
+
+
+    @Override
+    protected void onResume() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onResume();
+    }
+
+
+
 }

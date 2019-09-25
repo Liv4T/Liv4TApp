@@ -23,4 +23,6 @@
         <item>Estudiante</item>
 
     </string-array>
+
+    <string name="update_details"> Actualizar datos</string>
 </resources>

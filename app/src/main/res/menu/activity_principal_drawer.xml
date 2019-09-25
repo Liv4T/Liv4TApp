@@ -18,11 +18,11 @@
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_icono_calificaciones1"
-            android:title="Mis Calificaciones" />
+            android:title="Mis Actividades" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
-            android:title="Mis Certificados" />
+            android:title="Mis Calificaciones" />
     </group>
 
 
@@ -30,11 +30,8 @@
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_icono_doc"
-                android:title="Mis Exámenes" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Mi Correo" />
+                android:title="Mis Certificados" />
+
 
 
 </menu>
