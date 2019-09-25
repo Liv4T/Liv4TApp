@@ -88,9 +88,9 @@ public class Perfil extends Fragment implements NavigationView.OnNavigationItemS
 
         //populating Image slider
         ArrayList<String> sliderImages= new ArrayList<>();
-        sliderImages.add("https://st2.depositphotos.com/1184927/6310/i/950/depositphotos_63105155-stock-photo-purple-starry-background-for-facebook.jpg");
-        sliderImages.add("https://st2.depositphotos.com/1184927/6310/i/950/depositphotos_63105155-stock-photo-purple-starry-background-for-facebook.jpg");
-        sliderImages.add("https://st2.depositphotos.com/1184927/6310/i/950/depositphotos_63105155-stock-photo-purple-starry-background-for-facebook.jpg");
+        sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
+        sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
+        sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
 
         for (String s:sliderImages){
             DefaultSliderView sliderView=new DefaultSliderView(getActivity());

@@ -21,6 +21,7 @@ import com.dybcatering.live4teach.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.MisCursos.MisCursos;
+import com.dybcatering.live4teach.MisCursos.MisCursosDetalle;
 import com.dybcatering.live4teach.Perfil.Perfil;
 import com.nex3z.notificationbadge.NotificationBadge;
 

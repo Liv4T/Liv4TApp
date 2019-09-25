@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +27,7 @@ public class Cursos extends Fragment implements NavigationView.OnNavigationItemS
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.primer_fragment, container, false);
-
+        new CheckInternetConnection(getActivity()).checkConnection();
         imagen = myView.findViewById(R.id.imagen_primera);
         primer_card = myView.findViewById(R.id.primer_card);
         segundo_card = myView.findViewById(R.id.card_two);

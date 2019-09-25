@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 
 public class CompraActivity extends AppCompatActivity {
@@ -18,6 +19,8 @@ public class CompraActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_compra);
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
+        new CheckInternetConnection(this).checkConnection();
+
         String data = prefs.getString("string_id", "no data"); //no id: default value
         if (data.equals("no data")){
             AlertDialog alertDialog = new AlertDialog.Builder(CompraActivity.this, R.style.Botones).create();
@@ -39,4 +42,19 @@ public class CompraActivity extends AppCompatActivity {
             Toast.makeText(this, "el valor nuevo es "+data, Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    @Override
+    protected void onResume() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onRestart() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onRestart();
+    }
+
 }

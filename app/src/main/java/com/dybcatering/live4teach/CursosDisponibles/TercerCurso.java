@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ExpandableListView;
 
 import com.dybcatering.live4teach.CursosDisponibles.Adapter.ExpandableListAdapter;
+import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class TercerCurso extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tercer_curso);
+        new CheckInternetConnection(this).checkConnection();
         listView = findViewById(R.id.expand_third);
         snack();
         initData();
@@ -141,6 +143,19 @@ public class TercerCurso extends AppCompatActivity {
             startActivity(intent);
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onResume() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onResume();
+    }
+
+
+    @Override
+    protected void onRestart() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onRestart();
     }
 
 
