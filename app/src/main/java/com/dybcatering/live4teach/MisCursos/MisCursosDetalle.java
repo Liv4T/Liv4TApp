@@ -28,11 +28,12 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
 
     private static final String TAG = "MisCursosDetalle";
     String[] parent = new String[]{"Primera unidad", "Segunda Unidad", "Tercera Unidad", "Cuarta Unidad"};
-    String[] q1 = new String[]{"Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};
+    String[] q1 = new String[]{"Requisitos para realizar el curso","Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};
     String[] q2 = new String[]{"Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};
     String[] q3 = new String[]{"Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};
     String[] q4 = new String[]{"Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};
-    String[] des1 = new String[]{"A layout that organizes its children into a single horizontal or vertical row. It creates a scrollbar if the length of the window exceeds the length of the screen."};
+    String[] des0 = new String[]{""};
+    String[] des1 = new String[]{"A la yout that organizes its children into a single horizontal or vertical row. It creates a scrollbar if the length of the window exceeds the length of the screen."};
     String[] des2 = new String[]{"Enables you to specify the location of child objects relative to each other (child A to the left of child B) or to the parent (aligned to the top of the parent)."};
     String[] des3 = new String[]{"This list contains linear layout information"};
     String[] des4 = new String[]{"This list contains relative layout information,Displays a scrolling grid of columns and rows"};
@@ -50,6 +51,11 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
     /**
      * Inner level data
      */
+
+    List<String> vacio = new ArrayList<>();
+
+
+
     List<LinkedHashMap<String, String[]>> data = new ArrayList<>();
 
 
@@ -67,8 +73,6 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
             public void onInitializationSuccess(YouTubePlayer.Provider provider, YouTubePlayer youTubePlayer, boolean b) {
-                //List<String> videolist = new ArrayList<>();
-                //videolist.add("YQRHrco73g4");
                 Log.d(TAG, "Iniciando video");
                 youTubePlayer.loadVideo("YQRHrco73g4");
             }
@@ -94,10 +98,12 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
         secondLevel.add(q2);
         secondLevel.add(q3);
         secondLevel.add(q4);
-        thirdLevelq1.put(q1[0], des1);
-        thirdLevelq1.put(q1[1], des2);
-        thirdLevelq1.put(q1[2], des3);
-        thirdLevelq1.put(q1[3], des4);
+        //thirdLevelq1.put(String.valueOf(vacio.get(0)), des0);
+        thirdLevelq1.put(q1[0], des0);
+        thirdLevelq1.put(q1[1], des1);
+        thirdLevelq1.put(q1[2], des2);
+        thirdLevelq1.put(q1[3], des3);
+        thirdLevelq1.put(q1[4], des4);
         thirdLevelq2.put(q2[0], des3);
         thirdLevelq2.put(q2[1], des4);
         thirdLevelq2.put(q2[2], des5);

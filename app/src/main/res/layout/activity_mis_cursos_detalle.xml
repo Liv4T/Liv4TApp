@@ -11,6 +11,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+
         <com.google.android.youtube.player.YouTubePlayerView
              android:id="@+id/youTube"
             android:layout_width="match_parent"
@@ -31,14 +33,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/youTube"
-            android:layout_marginStart="5dp"
-            android:layout_marginLeft="3dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginBottom="5dp"
+
             android:layout_toRightOf="@id/buttoniniciar"
             android:fontFamily="@font/centurygothic"
+            android:layout_marginTop="30dp"
             android:gravity="center"
             android:text="HTML PARA PRINCIPIANTES"
             android:textColor="@color/color"
@@ -49,21 +47,30 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-
+            android:textSize="15sp"
+            android:textStyle="bold"
             android:layout_below="@id/buttoniniciar"
-            android:text="TextView" />
+            android:text="Descripción del curso:" />
+        <TextView
+            android:id="@+id/textViewdesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:textSize="12sp"
+
+            android:layout_below="@id/textView4"
+            android:text="Internet ha revolucionado en los últimos años la forma en que nos comunicamos y accedemos a la información. HTML ha contribuido enormemente a esta expansión debido a su sencillez, facilidad de proceso y capacidades de presentación." />
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:layout_marginBottom="20dp"
             android:fontFamily="@font/centurygothic"
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@android:color/black"
-            android:layout_below="@id/textView4"
+            android:layout_below="@id/textViewdesc"
             android:text="INTRODUCCIÓN" />
 
         <ExpandableListView

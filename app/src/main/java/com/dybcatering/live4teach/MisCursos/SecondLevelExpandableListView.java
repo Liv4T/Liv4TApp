@@ -31,4 +31,5 @@ public class SecondLevelExpandableListView extends ExpandableListView {
         heightMeasureSpec = MeasureSpec.makeMeasureSpec(999999, MeasureSpec.AT_MOST);
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
+
 }

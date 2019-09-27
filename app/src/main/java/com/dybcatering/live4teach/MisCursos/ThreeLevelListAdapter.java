@@ -115,7 +115,7 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
 
         final SecondLevelExpandableListView secondLevelELV = new SecondLevelExpandableListView(context);
 
-        String[] headers = secondLevel.get(groupPosition);
+        final String[] headers = secondLevel.get(groupPosition);
 
 
         List<String[]> childData = new ArrayList<>();
@@ -143,8 +143,13 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
                     secondLevelELV.collapseGroup(previousGroup);
 
                 previousGroup = groupPosition;
+
+
             }
+
+
         });
+
 
 
         return secondLevelELV;
@@ -154,4 +159,5 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
 }

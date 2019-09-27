@@ -20,7 +20,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.R;
 
@@ -89,18 +91,29 @@ public class SecondLevelAdapter extends BaseExpandableListAdapter {
     }
 
     @Override
-    public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
+    public View getChildView(final int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = inflater.inflate(R.layout.row_third, null);
-
-        TextView textView = (TextView) convertView.findViewById(R.id.rowThirdText);
-
         String[] childArray = data.get(groupPosition);
+        final String text = childArray[childPosition];
 
-        String text = childArray[childPosition];
 
-        textView.setText(text);
+
+            convertView = inflater.inflate(R.layout.row_third, null);
+
+            TextView textView = (TextView) convertView.findViewById(R.id.rowThirdText);
+
+            LinearLayout vermas = convertView.findViewById(R.id.linearthree);
+
+
+            vermas.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            textView.setText(text);
 
         return convertView;
     }
@@ -122,4 +135,6 @@ public class SecondLevelAdapter extends BaseExpandableListAdapter {
     public boolean isChildSelectable(int groupPosition, int childPosition) {
         return true;
     }
+
+
 }
