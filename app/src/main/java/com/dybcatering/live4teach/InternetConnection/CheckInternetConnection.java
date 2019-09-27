@@ -43,7 +43,7 @@ public class CheckInternetConnection {
 
                                 }else {
 
-                                    Intent dialogIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
+                                    Intent dialogIntent = new Intent(android.provider.Settings.ACTION_WIFI_SETTINGS);
                                     dialogIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     ctx.startActivity(dialogIntent);
                                 }
