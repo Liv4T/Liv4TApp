@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+
+    android:layout_height="wrap_content">
+    <FrameLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:id="@+id/layo_ini"
+            android:background="#10000000">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Calificaciones"
+                android:fontFamily="@font/centurygothic"
+                android:layout_gravity="center"
+                android:textColor="@color/color"
+                android:padding="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CALIFICACION"
+                android:fontFamily="@font/centurygothic"
+                android:background="@drawable/redondo"
+                android:textStyle="bold"
+
+                android:textColor="@color/colortextoblanco"
+                android:textAlignment="center" />
+
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="20dp">
+
+
+               <Button
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/asd">
+
+
+
+               </Button>
+
+
+
+            </ScrollView>
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+</RelativeLayout>

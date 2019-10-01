@@ -11,8 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Perfil.Actualizar"></activity>
-        <activity android:name=".MisCursos.MisCursosDetalle"></activity>
+        <activity android:name=".MisCalificaciones.MisCalificacionesDetalle"></activity>
+        <activity android:name=".MisActividades.MisActividadesDetalle" />
+        <activity android:name=".Perfil.Actualizar" />
+        <activity android:name=".MisCursos.MisCursosDetalle" />
         <activity android:name=".CursosDisponibles.CompraActivity" />
         <activity
             android:name=".CursosDisponibles.CuartoCurso"

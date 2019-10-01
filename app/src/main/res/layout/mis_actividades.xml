@@ -24,8 +24,9 @@
                 android:layout_height="wrap_content"
                 android:text="Actividades"
                 android:fontFamily="@font/centurygothic"
+                android:layout_gravity="center"
                 android:textColor="@color/color"
-                android:paddingBottom="20dp"/>
+                android:padding="10dp"/>
 
             <TextView
                 android:layout_width="match_parent"
@@ -59,6 +60,7 @@
                         android:background="#10000000"
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
+                        android:id="@+id/misactividadesCardprimero"
                         app:cardCornerRadius="8dp">
 
                         <LinearLayout

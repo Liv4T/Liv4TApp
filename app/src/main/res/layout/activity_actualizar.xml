@@ -154,23 +154,22 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <ImageView
+                android:id="@+id/footer"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:orientation="vertical"
+
+                android:src="@drawable/livetech"
+                tools:ignore="MissingConstraints">
+
+            </ImageView>
+
         </LinearLayout>
 
     </ScrollView>
 
 
-    <ImageView
-        android:id="@+id/footer"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="center|bottom"
-        android:orientation="vertical"
-
-        android:src="@drawable/livetech"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="553dp">
-
-    </ImageView>
 </android.support.constraint.ConstraintLayout>

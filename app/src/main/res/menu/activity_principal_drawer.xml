@@ -20,7 +20,7 @@
             android:icon="@drawable/ic_icono_calificaciones1"
             android:title="Mis Actividades" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/nav_calificaciones"
             android:icon="@drawable/ic_menu_manage"
             android:title="Mis Calificaciones" />
     </group>

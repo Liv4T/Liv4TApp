@@ -16,6 +16,8 @@
     <string name="ingresar">INGRESAR</string>
     <string name="seleccionar">Seleccionar...</string>
     <string name="noconnection">Conéctese a una red WIFI o active los datos móviles</string>
+    <string name="update_details"> Actualizar datos</string>
+
     <string-array name="spinner">
 
         <item>Seleccionar...</item>
@@ -23,6 +25,4 @@
         <item>Estudiante</item>
 
     </string-array>
-
-    <string name="update_details"> Actualizar datos</string>
 </resources>

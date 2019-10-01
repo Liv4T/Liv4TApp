@@ -21,6 +21,7 @@ import com.dybcatering.live4teach.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.MisActividades.MisActividades;
+import com.dybcatering.live4teach.MisCalificaciones.MisCalificaciones;
 import com.dybcatering.live4teach.MisCursos.MisCursos;
 import com.dybcatering.live4teach.MisCursos.MisCursosDetalle;
 import com.dybcatering.live4teach.Perfil.Perfil;
@@ -157,8 +158,15 @@ public class PrincipalActivity extends AppCompatActivity
                             , new MisCursos())
                     .commit();
 
-        } else if (id == R.id.nav_manage) {
+        } else if (id == R.id.nav_calificaciones) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new MisCalificaciones())
+                    .commit();
 
+
+            //  Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
+           //  startActivity(intent);
         } else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_slideshow){
@@ -166,7 +174,6 @@ public class PrincipalActivity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new MisActividades())
                     .commit();
-
         }
 
 

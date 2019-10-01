@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.MisActividades;
+package com.dybcatering.live4teach.MisCalificaciones;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -12,28 +12,30 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
-import com.dybcatering.live4teach.MisCursos.MisCursosDetalle;
+import com.dybcatering.live4teach.MisActividades.MisActividadesDetalle;
 import com.dybcatering.live4teach.R;
 
-public class MisActividades extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
+public class MisCalificaciones extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     View myView;
-    CardView cardView;
+    private Button button;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.mis_actividades, container, false);
+        myView = inflater.inflate(R.layout.mis_calificaciones, container, false);
 
-        cardView = myView.findViewById(R.id.misactividadesCardprimero);
+       button = myView.findViewById(R.id.asd);
+       
+       button.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
 
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent iniciar = new Intent(getActivity(), MisActividadesDetalle.class);
-                startActivity(iniciar);
-            }
-        });
+              Intent nuevo = new Intent(getActivity(),MisCalificacionesDetalle.class);
+              startActivity(nuevo);
+           }
+       });
 
 
 
