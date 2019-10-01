@@ -15,6 +15,8 @@
 package com.dybcatering.live4teach.MisCursos;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -109,7 +111,16 @@ public class SecondLevelAdapter extends BaseExpandableListAdapter {
             vermas.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
                     Toast.makeText(context, text, Toast.LENGTH_SHORT).show();
+ //                   Intent intent = new Intent(Intent.ACTION_VIEW,
+   //                 Uri.parse("http://www.youtube.com/watch?v=YQRHrco73g4"));
+     //               intent.putExtra("force_fullscreen",true);
+
+                    Intent i = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=E3x_dLVTEuA"));//,SearchActivity.class);
+                    i.putExtra("force_fullscreen", true);
+                    context.startActivity(i);
+
                 }
             });
 

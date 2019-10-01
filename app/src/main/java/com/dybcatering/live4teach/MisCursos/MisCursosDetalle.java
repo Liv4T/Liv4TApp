@@ -1,11 +1,15 @@
 package com.dybcatering.live4teach.MisCursos;
 
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
@@ -21,10 +25,12 @@ import java.util.List;
 
 public class MisCursosDetalle extends YouTubeBaseActivity {
     private ExpandableListView expandableListView;
-
+    private int progressStatus = 0;
     YouTubePlayerView youTubePlayerView;
     LottieAnimationView button ;
+    ProgressBar progressBar;
     YouTubePlayer.OnInitializedListener onInitializedListener;
+    private Handler handler = new Handler();
 
     private static final String TAG = "MisCursosDetalle";
     String[] parent = new String[]{"Primera unidad", "Segunda Unidad", "Tercera Unidad", "Cuarta Unidad"};
@@ -68,7 +74,7 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
         youTubePlayerView = findViewById(R.id.youTube);
         button = findViewById(R.id.buttoniniciar);
 
-
+        progressBar = findViewById(R.id.progressBar_horizontal);
 
         onInitializedListener = new YouTubePlayer.OnInitializedListener() {
             @Override
@@ -88,7 +94,40 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
             public void onClick(View v) {
                 Log.d(TAG,"se realizo click");
                 youTubePlayerView.initialize(YouTubeConfig.getApiKey(), onInitializedListener);
+
+
                 Log.d(TAG, "exito");
+
+                if (progressStatus == 100) {
+                    progressStatus = 0;
+                }
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (progressStatus < 100) {
+                            // Update the progress status
+                            progressStatus += 1;
+
+                            // Try to sleep the thread for 20 milliseconds
+                            try {
+                                Thread.sleep(80);  //3 seconds
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            // Update the progress bar
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    progressBar.setProgress(progressStatus);
+                                    // Show the progress on TextView
+                                    //tv.setText(progressStatus + "/100");
+                                }
+                            });
+                        }
+                    }
+                }).start();
             }
         });
     }
