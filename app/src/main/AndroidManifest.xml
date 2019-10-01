@@ -11,9 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MisCalificaciones.MisCalificacionesDetalle"></activity>
+        <activity android:name=".MisCalificaciones.MisCalificacionesDetalle" />
         <activity android:name=".MisActividades.MisActividadesDetalle" />
         <activity android:name=".Perfil.Actualizar" />
+        <activity android:name=".MisCertificados.MisCertificadosDetalle" />
         <activity android:name=".MisCursos.MisCursosDetalle" />
         <activity android:name=".CursosDisponibles.CompraActivity" />
         <activity
@@ -51,8 +52,8 @@
             android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity android:name=".SubPrimerActivity" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

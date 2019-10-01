@@ -22,6 +22,7 @@ import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.MisActividades.MisActividades;
 import com.dybcatering.live4teach.MisCalificaciones.MisCalificaciones;
+import com.dybcatering.live4teach.MisCertificados.MisCertificados;
 import com.dybcatering.live4teach.MisCursos.MisCursos;
 import com.dybcatering.live4teach.MisCursos.MisCursosDetalle;
 import com.dybcatering.live4teach.Perfil.Perfil;
@@ -167,7 +168,11 @@ public class PrincipalActivity extends AppCompatActivity
 
             //  Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
            //  startActivity(intent);
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_certificados) {
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame
+                            , new MisCertificados())
+                    .commit();
 
         } else if (id == R.id.nav_slideshow){
             fragmentManager.beginTransaction()
