@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 
+import com.dybcatering.live4teach.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.CursosDisponibles.Adapter.ExpandableListAdapter;
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
@@ -140,8 +141,8 @@ public class CuartoCurso extends AppCompatActivity {
 
             if (id == R.id.mybutton) {
                 // do something here
-                Intent intent = new Intent(CuartoCurso.this, CompraActivity.class);
-                startActivity(intent);
+             //   Intent intent = new Intent(CuartoCurso.this, CarritoActivity.class);
+              //  startActivity(intent);
             }
         return super.onOptionsItemSelected(item);
     }

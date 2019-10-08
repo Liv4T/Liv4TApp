@@ -11,12 +11,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Carrito.CarritoActivity"/>
+        <activity android:name=".MisCursos.MisCursosDetalleVerMas" />
         <activity android:name=".MisCalificaciones.MisCalificacionesDetalle" />
         <activity android:name=".MisActividades.MisActividadesDetalle" />
         <activity android:name=".Perfil.Actualizar" />
         <activity android:name=".MisCertificados.MisCertificadosDetalle" />
         <activity android:name=".MisCursos.MisCursosDetalle" />
-        <activity android:name=".CursosDisponibles.CompraActivity" />
         <activity
             android:name=".CursosDisponibles.CuartoCurso"
             android:parentActivityName=".PrincipalActivity" />

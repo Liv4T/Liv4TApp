@@ -3,6 +3,7 @@ package com.dybcatering.live4teach.CursosDisponibles;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.LocalBroadcastManager;
@@ -17,10 +18,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dybcatering.live4teach.Carrito.CarritoActivity;
+
+import com.dybcatering.live4teach.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.CursosDisponibles.Adapter.ExpandableListAdapter;
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
-
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -34,7 +38,8 @@ public class PrimerCurso extends AppCompatActivity {
     private List<String> listDataHeader;
     private HashMap<String, List<String >> listHashMap;
     public ImageView image;
-    public TextView textView;
+    private DatabaseHandler databaseHandler;
+    public TextView texto_nombre, texto_descripcion, texto_monto;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,6 +74,7 @@ public class PrimerCurso extends AppCompatActivity {
                 previousGroup = groupPosition;
             }
         });
+        databaseHandler = new DatabaseHandler(this);
     }
 
     @Override
@@ -86,7 +92,7 @@ public class PrimerCurso extends AppCompatActivity {
             // do something here
           //  Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
           //  startActivity(intent);
-                textView= findViewById(R.id.textView2);
+            saveGroceryToDB();
           /*  SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putString("string_id", (String) textView.getText()); //InputString: from the EditText
@@ -154,7 +160,7 @@ public class PrimerCurso extends AppCompatActivity {
 
                     //.setAction("", new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(final View view) {
                         AlertDialog alertDialog = new AlertDialog.Builder(PrimerCurso.this, R.style.Botones).create();
                         alertDialog.setTitle("Curso en promoción");
                         alertDialog.setMessage("Hola tenemos un curso en promoción");
@@ -163,8 +169,10 @@ public class PrimerCurso extends AppCompatActivity {
                                 new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int which) {
                                         dialog.dismiss();
-                                          Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
-                                          startActivity(intent);
+
+                                      //  guardarBaseDatos();
+                                          //Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
+                                         // startActivity(intent);
                                         //snack();
                                     }
                                 });
@@ -180,6 +188,35 @@ public class PrimerCurso extends AppCompatActivity {
         super.onResume();
     }
 
+    public void saveGroceryToDB() {
+
+        Grocery grocery = new Grocery();
+        texto_nombre= findViewById(R.id.txtNombreCurso);
+        String newGrocery = texto_nombre.getText().toString();
+        String newGroceryQuantity = texto_nombre.getText().toString();
+        String newGroceryImage = texto_nombre.getText().toString();
+
+        grocery.setName(newGrocery);
+        grocery.setQuantity(newGroceryQuantity);
+        grocery.setImagen(newGroceryImage);
+
+        //Save to DB
+        databaseHandler.addGrocery(grocery);
+        Toast.makeText(this, "se guardo en la base de datos", Toast.LENGTH_SHORT).show();
+
+        // Log.d("Item Added ID:", String.valueOf(db.getGroceriesCount()));
+      /*  new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+                //start a new activity
+                startActivity(new Intent(CarritoActivity.this, CarritoActivity.class));
+                finish();
+            }
+        }, 1200); //  1 second.*/
+
+
+    }
 
 
 }

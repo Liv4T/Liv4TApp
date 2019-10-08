@@ -11,7 +11,9 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
@@ -23,6 +25,7 @@ public class Cursos extends Fragment implements NavigationView.OnNavigationItemS
     public ImageView imagen, imagen_quinta, imagen_novena;
     public CardView primer_card,segundo_card, tercer_card, cuarto_card, quinto_card, sexto_card, septimo_card, octavo_card, noveno_card, decimo_card, onceavo_card, doceavo_card ;
 
+    private Button btn;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +36,14 @@ public class Cursos extends Fragment implements NavigationView.OnNavigationItemS
         segundo_card = myView.findViewById(R.id.card_two);
         tercer_card = myView.findViewById(R.id.card_third);
         cuarto_card = myView.findViewById(R.id.card_fourth);
+       // btn = myView.findViewById(R.id.btnAgregarCurso);
+
+      /*  btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "has hecho click", Toast.LENGTH_SHORT).show();
+            }
+        });*/
         Picasso.with(getActivity()).load("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg")
 
                 .fit().

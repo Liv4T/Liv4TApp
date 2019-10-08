@@ -21,7 +21,7 @@ tools:context=".CursosDisponibles.PrimerCurso">
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/txtNombreCurso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/imDesc"
@@ -42,7 +42,7 @@ tools:context=".CursosDisponibles.PrimerCurso">
         android:textStyle="bold"
         android:textSize="20sp"
         android:textColor="@android:color/black"
-        android:layout_below="@id/textView2"
+        android:layout_below="@id/txtNombreCurso"
         android:text="INTRODUCCIÓN" />
     <ExpandableListView
 

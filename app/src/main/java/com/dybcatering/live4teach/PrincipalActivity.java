@@ -2,6 +2,9 @@ package com.dybcatering.live4teach;
 
 import android.app.FragmentManager;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.DatabaseUtils;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -16,7 +19,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.dybcatering.live4teach.Carrito.CarritoActivity;
+import com.dybcatering.live4teach.Carrito.Util.Constants;
 import com.dybcatering.live4teach.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
@@ -25,8 +31,11 @@ import com.dybcatering.live4teach.MisCalificaciones.MisCalificaciones;
 import com.dybcatering.live4teach.MisCertificados.MisCertificados;
 import com.dybcatering.live4teach.MisCursos.MisCursos;
 import com.dybcatering.live4teach.MisCursos.MisCursosDetalle;
+import com.dybcatering.live4teach.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Perfil.Perfil;
 import com.nex3z.notificationbadge.NotificationBadge;
+
+import static com.dybcatering.live4teach.Carrito.Util.Constants.TABLE_NAME;
 
 public class PrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -50,7 +59,6 @@ public class PrincipalActivity extends AppCompatActivity
         new CheckInternetConnection(this).checkConnection();
 
         inicio();
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,17 +106,20 @@ public class PrincipalActivity extends AppCompatActivity
 
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = (TextView) actionView.findViewById(R.id.cart_badge);
-
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onOptionsItemSelected(menuItem);
-                String str = String.valueOf(count++);
-                textCartItemCount.setText(str);
+                Intent intent = new Intent(PrincipalActivity.this, CarritoActivity.class);
+                startActivity(intent);
+               // onOptionsItemSelected(menuItem);
+               // String str = String.valueOf(count++);
+
+            //    textCartItemCount.setText(str);
                 //setupBadge();
 
             }
         });
+
         return true;
     }
 
