@@ -12,16 +12,17 @@
 
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginBottom="60dp"
         android:id="@+id/layout_reg">
 
         <ScrollView
-            android:layout_width="match_parent"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="#10000000"
                 android:orientation="vertical"
@@ -31,19 +32,24 @@
                 android:paddingBottom="30dp">
 
 
+                <Spinner
+                    android:id="@+id/spinnerregistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:entries="@array/spinner"/>
+
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
 
                     android:textColorHint="@color/colortexto">
 
-                    <EditText
-                        android:id="@+id/nombre"
+                    <android.support.v7.widget.AppCompatEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nombre"
-                        android:inputType="textPersonName"
-                        android:textColor="@color/colortexto" />
+                        android:id="@+id/txtNombre"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -52,7 +58,7 @@
                     android:textColorHint="@color/colortexto">
 
                     <EditText
-                        android:id="@+id/apellido"
+                        android:id="@+id/txtApellido"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Apellido"
@@ -66,7 +72,7 @@
                     android:textColorHint="@color/colortexto">
 
                     <EditText
-                        android:id="@+id/mail"
+                        android:id="@+id/txtMail"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Correo Electrónico"
@@ -80,7 +86,7 @@
                     android:textColorHint="@color/colortexto">
 
                     <EditText
-                        android:id="@+id/user"
+                        android:id="@+id/txtUsuario"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nombre de Usuario"
@@ -98,7 +104,7 @@
                     <EditText
 
 
-                        android:id="@+id/password"
+                        android:id="@+id/txtPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:autofillHints=""
@@ -109,20 +115,47 @@
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
+                    android:id="@+id/layoutpasswordconfir"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colortexto"
+                    app:passwordToggleEnabled="true">
+
+                    <EditText
+
+
+                        android:id="@+id/txtPasswordConfirm"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:autofillHints=""
+                        android:gravity="center_vertical"
+                        android:hint="@string/passwordconfirm"
+                        android:inputType="textPassword"
+                        android:textColor="@color/colortexto" />
+                </android.support.design.widget.TextInputLayout>
+
+                <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColorHint="@color/colortexto">
 
                     <EditText
-                        android:id="@+id/telefoono"
+                        android:id="@+id/txtTelefono"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Telefono"
+                        android:hint="Teléfono"
                         android:inputType="number"
                         android:textColor="@color/colortexto" />
                 </android.support.design.widget.TextInputLayout>
 
 
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ovalorange"
+                    android:text="Registrarme"
+                    android:id="@+id/btn_registrarse"
+                    android:textColor="@color/white"/>
             </LinearLayout>
         </ScrollView>
 
@@ -136,7 +169,7 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
-        android:layout_below="@+id/layout_reg"
+
         android:src="@drawable/livetech">
 
     </ImageView>

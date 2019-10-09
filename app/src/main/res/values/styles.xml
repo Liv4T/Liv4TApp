@@ -20,6 +20,9 @@
         <item name="colorPrimary">@color/colorPrimary2</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark2</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark2</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark2</item>
+        <item name="colorControlHighlight">@color/colorPrimaryDark2</item>
     </style>
 
 
@@ -59,4 +62,14 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="TextLabel" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@color/colorPrimaryDark2</item>
+        <item name="android:textSize">20sp</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/colorPrimaryDark2</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark2</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark2</item>
+    </style>
 </resources>
