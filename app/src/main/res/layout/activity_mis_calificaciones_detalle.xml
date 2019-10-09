@@ -4,6 +4,61 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MisCalificaciones.MisCalificacionesDetalle">
+    tools:context=".MisActividades.MisActividadesDetalle">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:id="@id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mis Calificaciones"
+            android:fontFamily="@font/centurygothic"
+            android:gravity="center"
+            android:textColor="@color/color"
+            android:padding="10dp"/>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="match_parent"
+            android:layout_below="@id/textView2"
+            android:layout_height="wrap_content"
+            android:text="Fecha Máxima de Calificacion:"
+            android:fontFamily="@font/centurygothic"
+            android:gravity="center"
+            android:textColor="@color/color"
+            android:padding="10dp"/>
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="match_parent"
+            android:layout_below="@id/textView5"
+            android:layout_height="wrap_content"
+            android:text="05/10/2019"
+            android:fontFamily="@font/centurygothic"
+            android:gravity="center"
+            android:textColor="@color/colorbonton"
+            android:padding="10dp"/>
+
+        <ExpandableListView
+            android:id="@+id/expandmiscalificaciones"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/textView6"
+            android:layout_marginBottom="70dp"
+            android:fontFamily="@font/centurygothic"
+            android:paddingLeft="@dimen/activity_horizontal_margin_left"
+            android:paddingRight="@dimen/activity_horizontal_margin_right"
+            tools:ignore="MissingConstraints">
+
+
+        </ExpandableListView>
+
+
+    </RelativeLayout>
 
 </android.support.constraint.ConstraintLayout>

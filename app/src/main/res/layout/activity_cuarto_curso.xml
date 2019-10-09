@@ -21,7 +21,7 @@
             tools:ignore="MissingConstraints" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/txtNombreCursoCuarto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/imDesc"
@@ -33,7 +33,7 @@
             android:text="Química Orgánica" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -42,7 +42,7 @@
             android:textStyle="bold"
             android:textSize="20sp"
             android:textColor="@android:color/black"
-            android:layout_below="@id/textView2"
+            android:layout_below="@id/txtNombreCursoCuarto"
             android:text="INTRODUCCIÓN" />
         <ExpandableListView
 
@@ -52,7 +52,7 @@
             android:layout_marginBottom="60dp"
             android:paddingLeft="@dimen/activity_horizontal_margin_left"
             android:paddingRight="@dimen/activity_horizontal_margin_right"
-            android:layout_below="@id/textView3"
+            android:layout_below="@id/textv"
 
             tools:ignore="MissingConstraints">
 

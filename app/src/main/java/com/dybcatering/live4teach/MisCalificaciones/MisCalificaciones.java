@@ -19,16 +19,16 @@ import com.dybcatering.live4teach.R;
 
 public class MisCalificaciones extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     View myView;
-    private Button button;
+    private CardView cardview;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.mis_calificaciones, container, false);
 
-       button = myView.findViewById(R.id.asd);
-       
-       button.setOnClickListener(new View.OnClickListener() {
+        cardview = myView.findViewById(R.id.micalificacionCardprimero);
+
+       cardview.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
 

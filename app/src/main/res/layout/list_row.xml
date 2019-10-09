@@ -61,12 +61,12 @@
                 android:layout_marginTop="15dp"
                 android:orientation="horizontal">
 
-                <Button
+                <!--Button
                     android:id="@+id/editButton"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_marginEnd="16dp"
-                    android:background="@drawable/icon_edit" />
+                    android:background="@drawable/icon_edit" /-->
 
                 <Button
                     android:id="@+id/deleteButton"

@@ -49,6 +49,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.groceryItemName.setText(grocery.getName());
         holder.quantity.setText(grocery.getQuantity());
         holder.dateAdded.setText(grocery.getDateItemAdded());
+        holder.image.setText(grocery.getImagen());
 
     }
 
@@ -77,10 +78,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             dateAdded = (TextView) view.findViewById(R.id.dateAdded);
             image = view.findViewById(R.id.imagenpop);
 
-            editButton = (Button) view.findViewById(R.id.editButton);
+            //editButton = (Button) view.findViewById(R.id.editButton);
             deleteButton = (Button) view.findViewById(R.id.deleteButton);
 
-            editButton.setOnClickListener(this);
+           // editButton.setOnClickListener(this);
             deleteButton.setOnClickListener(this);
 
 //////////////////start details activity with content/////////////
@@ -108,15 +109,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.editButton:
+                /*case R.id.editButton:
                     int position = getAdapterPosition();
                     Grocery grocery = groceryItems.get(position);
 
 
                     editItem(grocery);
 
-                    break;
+                    break;*/
                 case R.id.deleteButton:
+                    int position = getAdapterPosition();
+                    Grocery grocery = groceryItems.get(position);
                     position = getAdapterPosition();
                     grocery = groceryItems.get(position);
                     deleteItem(grocery.getId());

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static com.dybcatering.live4teach.Carrito.Util.Constants.KEY_GROCERY_ITEM;
 import static com.dybcatering.live4teach.Carrito.Util.Constants.TABLE_NAME;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
@@ -31,7 +32,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String CREATE_GROCERY_TABLE = "CREATE TABLE " + Constants.TABLE_NAME + "("
-                + Constants.KEY_ID + " INTEGER PRIMARY KEY," + Constants.KEY_GROCERY_ITEM + " TEXT,"
+                + Constants.KEY_ID + " INTEGER PRIMARY KEY," + KEY_GROCERY_ITEM + " TEXT,"
                 + Constants.KEY_QTY_NUMBER + " TEXT,"
                 + Constants.KEY_IMAGEN+ " TEXT,"
                 + Constants.KEY_DATE_NAME + " LONG);";
@@ -59,7 +60,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(Constants.KEY_GROCERY_ITEM, grocery.getName());
+        values.put(KEY_GROCERY_ITEM, grocery.getName());
         values.put(Constants.KEY_QTY_NUMBER, grocery.getQuantity());
         values.put(Constants.KEY_IMAGEN, grocery.getQuantity());
         values.put(Constants.KEY_DATE_NAME, java.lang.System.currentTimeMillis());
@@ -77,7 +78,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         Cursor cursor = db.query(Constants.TABLE_NAME, new String[]{Constants.KEY_ID,
-                        Constants.KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER, Constants.KEY_IMAGEN, Constants.KEY_DATE_NAME},
+                        KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER, Constants.KEY_IMAGEN, Constants.KEY_DATE_NAME},
                 Constants.KEY_ID + "=?",
                 new String[]{String.valueOf(id)}, null, null, null, null);
 
@@ -87,7 +88,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Grocery grocery = new Grocery();
         grocery.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID))));
-        grocery.setName(cursor.getString(cursor.getColumnIndex(Constants.KEY_GROCERY_ITEM)));
+        grocery.setName(cursor.getString(cursor.getColumnIndex(KEY_GROCERY_ITEM)));
         grocery.setQuantity(cursor.getString(cursor.getColumnIndex(Constants.KEY_QTY_NUMBER)));
         grocery.setQuantity(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGEN)));
 
@@ -110,7 +111,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         List<Grocery> groceryList = new ArrayList<>();
 
         Cursor cursor = db.query(Constants.TABLE_NAME, new String[]{
-                Constants.KEY_ID, Constants.KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER,
+                Constants.KEY_ID, KEY_GROCERY_ITEM, Constants.KEY_QTY_NUMBER,
                 Constants.KEY_IMAGEN,
                 Constants.KEY_DATE_NAME}, null, null, null, null, Constants.KEY_DATE_NAME + " DESC");
 
@@ -118,7 +119,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             do {
                 Grocery grocery = new Grocery();
                 grocery.setId(Integer.parseInt(cursor.getString(cursor.getColumnIndex(Constants.KEY_ID))));
-                grocery.setName(cursor.getString(cursor.getColumnIndex(Constants.KEY_GROCERY_ITEM)));
+                grocery.setName(cursor.getString(cursor.getColumnIndex(KEY_GROCERY_ITEM)));
                 grocery.setQuantity(cursor.getString(cursor.getColumnIndex(Constants.KEY_QTY_NUMBER)));
                 grocery.setImagen(cursor.getString(cursor.getColumnIndex(Constants.KEY_IMAGEN)));
 
@@ -144,7 +145,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(Constants.KEY_GROCERY_ITEM, grocery.getName());
+        values.put(KEY_GROCERY_ITEM, grocery.getName());
         values.put(Constants.KEY_QTY_NUMBER, grocery.getQuantity());
         values.put(Constants.KEY_IMAGEN, grocery.getImagen());
         values.put(Constants.KEY_DATE_NAME, java.lang.System.currentTimeMillis());//get system time
@@ -173,7 +174,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         Cursor cursor = db.rawQuery(countQuery, null);
 
-        Toast.makeText(ctx, (CharSequence) cursor, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(ctx, (CharSequence) cursor, Toast.LENGTH_SHORT).show();
         return cursor.getCount();
     }
 
@@ -185,4 +186,35 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return count;
     }
+
+    public int contar(String valor){
+        int total = 0;
+        String sql = " SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE "+ KEY_GROCERY_ITEM + " =" + "'"+valor+"'" ;
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            total = cursor.getInt(0);
+        }
+
+
+        return total;
+    }
+
+    public int contartotal(){
+        int total = 0;
+        String sql = " SELECT COUNT(*) FROM " + TABLE_NAME ;
+
+        Cursor cursor = getReadableDatabase().rawQuery(sql, null);
+
+        if (cursor.getCount() > 0){
+            cursor.moveToFirst();
+            total = cursor.getInt(0);
+        }
+
+
+        return total;
+    }
+
 }

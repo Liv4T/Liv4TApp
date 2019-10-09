@@ -42,6 +42,7 @@ public class PrincipalActivity extends AppCompatActivity
     TextView textCartItemCount, version;
     SessionManager sessionManager;
     NotificationBadge mBadge;
+    public DatabaseHandler db;
     private int count =1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +74,8 @@ public class PrincipalActivity extends AppCompatActivity
         version =  header.findViewById(R.id.txtVersion);
 
         version.setText("Versión: "+ BuildConfig.VERSION_NAME);
+        db = new DatabaseHandler(this);
+
     }
 
 
@@ -106,6 +109,9 @@ public class PrincipalActivity extends AppCompatActivity
 
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = (TextView) actionView.findViewById(R.id.cart_badge);
+        String total = Integer.toString(db.contartotal());
+
+        textCartItemCount.setText(total);
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -132,7 +138,9 @@ public class PrincipalActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_cart) {
-          //  mBadge.setNumber(++count);
+
+
+            //mBadge.setNumber(++count);
             //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
             return true;
         }
@@ -203,5 +211,4 @@ public class PrincipalActivity extends AppCompatActivity
         new CheckInternetConnection(this).checkConnection();
         super.onResume();
     }
-
 }

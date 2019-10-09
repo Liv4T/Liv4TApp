@@ -11,7 +11,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Carrito.CarritoActivity"/>
+        <activity android:name=".Carrito.CarritoActivity"
+            android:parentActivityName=".PrincipalActivity" />
         <activity android:name=".MisCursos.MisCursosDetalleVerMas" />
         <activity android:name=".MisCalificaciones.MisCalificacionesDetalle" />
         <activity android:name=".MisActividades.MisActividadesDetalle" />

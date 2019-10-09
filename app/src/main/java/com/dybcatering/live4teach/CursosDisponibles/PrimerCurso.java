@@ -201,8 +201,14 @@ public class PrimerCurso extends AppCompatActivity {
         grocery.setImagen(newGroceryImage);
 
         //Save to DB
-        databaseHandler.addGrocery(grocery);
-        Toast.makeText(this, "se guardo en la base de datos", Toast.LENGTH_SHORT).show();
+        int cuenta = databaseHandler.contar(newGrocery);
+        if (cuenta>0){
+            Toast.makeText(this, "Este curso ya fue agregado al carrito", Toast.LENGTH_SHORT).show();
+        }else{
+
+            databaseHandler.addGrocery(grocery);
+            Toast.makeText(this, "Curso agregado al carrito de compras", Toast.LENGTH_SHORT).show();
+        }
 
         // Log.d("Item Added ID:", String.valueOf(db.getGroceriesCount()));
       /*  new Handler().postDelayed(new Runnable() {

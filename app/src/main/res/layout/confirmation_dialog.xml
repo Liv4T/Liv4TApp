@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/textAlert"
                 android:layout_marginTop="19dp"
-                android:background="@color/colorAccent"
+                android:background="@color/colorbonton"
                 android:text="@string/no"
                 android:textColor="@android:color/white" />
 
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignBottom="@id/noButton"
                 android:layout_alignParentEnd="true"
-                android:background="@color/colorAccent"
+                android:background="@color/colorbonton"
                 android:text="@string/yes"
                 android:textColor="@android:color/white" />
 

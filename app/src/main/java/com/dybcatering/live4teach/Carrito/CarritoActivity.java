@@ -13,6 +13,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Carrito.Model.Grocery;
@@ -42,8 +43,8 @@ public class CarritoActivity extends AppCompatActivity {
         setContentView(R.layout.activity_carrito); Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+      //  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+       /* fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 //                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
@@ -54,8 +55,10 @@ public class CarritoActivity extends AppCompatActivity {
 
             }
         });
-
+*/
         db = new DatabaseHandler(this);
+
+       // Toast.makeText(this, db.getGroceriesCount(), Toast.LENGTH_SHORT).show();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewID);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -69,10 +72,10 @@ public class CarritoActivity extends AppCompatActivity {
         for (Grocery c : groceryList) {
             Grocery grocery = new Grocery();
             grocery.setName(c.getName());
-            grocery.setQuantity("Cantidad: " + c.getQuantity());
+            grocery.setQuantity("Curso: " + c.getQuantity());
             grocery.setId(c.getId());
             grocery.setDateItemAdded("Agregado en: " + c.getDateItemAdded());
-            grocery.setImagen("la imagen es"+ c.getImagen());
+            grocery.setImagen(""+ c.getImagen());
 
 
             listItems.add(grocery);
@@ -138,5 +141,6 @@ public class CarritoActivity extends AppCompatActivity {
 
 
     }
+
 
 }

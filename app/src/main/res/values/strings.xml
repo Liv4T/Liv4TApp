@@ -26,9 +26,9 @@
     <string name="quantity_hint">Quantity</string>
     <string name="save_title">Save</string>
     <string name="title_activity_list">Grocery List</string>
-    <string name="sure_text">Are You Sure?</string>
+    <string name="sure_text">¿Estás seguro que deseas eliminar el curso del carrito de compras?</string>
     <string name="no">No</string>
-    <string name="yes">Yes</string>
+    <string name="yes">Si</string>
     <string name="details_activity">Grocery Details</string>
     <string name="date">Date :</string>
     <string name="quantity">Qty :</string>

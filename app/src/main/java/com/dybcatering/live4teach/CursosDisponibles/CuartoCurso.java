@@ -10,8 +10,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.Carrito.CarritoActivity;
+import com.dybcatering.live4teach.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.CursosDisponibles.Adapter.ExpandableListAdapter;
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
@@ -24,7 +28,9 @@ public class CuartoCurso extends AppCompatActivity {
     private ExpandableListView listView;
     private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
+    private DatabaseHandler databaseHandler;
     private HashMap<String, List<String >> listHashMap;
+    public TextView texto_nombre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,7 +52,7 @@ public class CuartoCurso extends AppCompatActivity {
             }
         });
 
-
+        databaseHandler = new DatabaseHandler(this);
 
     }
 
@@ -143,6 +149,7 @@ public class CuartoCurso extends AppCompatActivity {
                 // do something here
              //   Intent intent = new Intent(CuartoCurso.this, CarritoActivity.class);
               //  startActivity(intent);
+                guardar();
             }
         return super.onOptionsItemSelected(item);
     }
@@ -153,6 +160,44 @@ public class CuartoCurso extends AppCompatActivity {
         super.onResume();
     }
 
+    public void guardar() {
+
+        Grocery grocery = new Grocery();
+        texto_nombre= findViewById(R.id.txtNombreCursoCuarto);
+
+        //se deben agregar los demas items de la pantalla
+
+        String newGrocery = texto_nombre.getText().toString();
+        String newGroceryQuantity = texto_nombre.getText().toString();
+        String newGroceryImage = texto_nombre.getText().toString();
+
+        grocery.setName(newGrocery);
+        grocery.setQuantity(newGroceryQuantity);
+        grocery.setImagen(newGroceryImage);
+
+        //Save to DB
+        int cuenta = databaseHandler.contar(newGrocery);
+        if (cuenta>0){
+            Toast.makeText(this, "Este curso ya fue agregado al carrito", Toast.LENGTH_SHORT).show();
+        }else{
+
+            databaseHandler.addGrocery(grocery);
+            Toast.makeText(this, "Curso agregado al carrito de compras", Toast.LENGTH_SHORT).show();
+        }
+
+        // Log.d("Item Added ID:", String.valueOf(db.getGroceriesCount()));
+      /*  new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+                //start a new activity
+                startActivity(new Intent(CarritoActivity.this, CarritoActivity.class));
+                finish();
+            }
+        }, 1200); //  1 second.*/
+
+
+    }
 
 
 
