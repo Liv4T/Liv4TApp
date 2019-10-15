@@ -161,7 +161,7 @@ public class SegundoCurso extends AppCompatActivity {
     public void guardar() {
 
         Grocery grocery = new Grocery();
-        texto_nombre= findViewById(R.id.txtNombreCursoSegundo);
+        texto_nombre = findViewById(R.id.txtNombreCursoSegundo);
 
         //se agregan los demas items de la pantalla
 
@@ -175,15 +175,53 @@ public class SegundoCurso extends AppCompatActivity {
 
         //Save to DB
         int cuenta = databaseHandler.contar(newGrocery);
-        if (cuenta>0){
-            Toast.makeText(this, "Este curso ya fue agregado al carrito", Toast.LENGTH_SHORT).show();
-        }else{
+        if (cuenta > 0) {
+            new AlertDialog.Builder(SegundoCurso.this, R.style.Botones)
+                    .setTitle("Este curso ya fue agregado al carrito de compras")
+                    .setMessage("¿Desea ir al carrito de compras?")
+                    .setIcon(R.drawable.carrito)
+                    .setPositiveButton("Si",
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent intent = new Intent(SegundoCurso.this, CarritoActivity.class);
+                                    startActivity(intent);
+
+                                    dialog.cancel();
+                                }
+                            })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            ;
+                            dialog.cancel();
+                        }
+                    }).show();
+
+
+        } else {
 
             databaseHandler.addGrocery(grocery);
-            Toast.makeText(this, "Curso agregado al carrito de compras", Toast.LENGTH_SHORT).show();
-        }
+            new AlertDialog.Builder(SegundoCurso.this, R.style.Botones)
+                    .setTitle("Curso Agregado al carrito")
+                    .setMessage("¿Ir al carrito de compras?")
+                    .setIcon(R.drawable.carrito)
+                    .setPositiveButton("Si",
+                            new DialogInterface.OnClickListener() {
 
-        // Log.d("Item Added ID:", String.valueOf(db.getGroceriesCount()));
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent intent = new Intent(SegundoCurso.this, CarritoActivity.class);
+                                    startActivity(intent);
+                                    dialog.cancel();
+                                }
+                            })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            ;
+                            dialog.cancel();
+                        }
+                    }).show();
+
+            // Log.d("Item Added ID:", String.valueOf(db.getGroceriesCount()));
       /*  new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -195,7 +233,8 @@ public class SegundoCurso extends AppCompatActivity {
         }, 1200); //  1 second.*/
 
 
-    }
+        }
 
+    }
 
 }

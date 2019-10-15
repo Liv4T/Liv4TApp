@@ -1,29 +1,40 @@
 package com.dybcatering.live4teach.Login;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.PrincipalActivity;
 import com.dybcatering.live4teach.R;
 
-public class PreLoginActivity extends AppCompatActivity {
+public class PreLoginActivity extends AppCompatActivity  {
 
-    TextView textView;
+    TextView txtRegistrarse;
 
-    Button button;
+    public Button btnLogin;
+    boolean separateOnClickActive;
+    public Button btnTutor, btnEstudiante;
+
+    public String a;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_login);
-       // new CheckInternetConnection(this).checkConnection();
-            textView = findViewById(R.id.text_registro);
-            button = findViewById(R.id.btn_loginestu2);
-            textView.setOnClickListener(new View.OnClickListener() {
+            new CheckInternetConnection(this).checkConnection();
+            txtRegistrarse = findViewById(R.id.text_registro);
+            btnLogin = findViewById(R.id.btn_loginestu2);
+            btnTutor = findViewById(R.id.btn_logintutor);
+            btnEstudiante = findViewById(R.id.btn_loginestu);
+
+            txtRegistrarse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PreLoginActivity.this, RegisterActivity.class);
@@ -31,13 +42,35 @@ public class PreLoginActivity extends AppCompatActivity {
                 }
             });
 
-            button.setOnClickListener(new View.OnClickListener() {
+            btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(PreLoginActivity.this, PrincipalActivity.class);
                     startActivity(intent);
+
                 }
             });
+
+
+
+    }
+
+
+
+    private Boolean validarBoton(){
+
+        return true;
+    }
+
+
+    @Override
+    protected void onResume() {
+        new CheckInternetConnection(this).checkConnection();
+        super.onResume();
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
 
     }
 }

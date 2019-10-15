@@ -2,6 +2,7 @@ package com.dybcatering.live4teach.CursosDisponibles;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -128,7 +129,8 @@ public class CuartoCurso extends AppCompatActivity {
                                 });
                         alertDialog.show();
                     }
-                }).show();
+                    }).setActionTextColor(Color.parseColor("#FF378F44")).show();
+
     }
 
 
@@ -163,7 +165,7 @@ public class CuartoCurso extends AppCompatActivity {
     public void guardar() {
 
         Grocery grocery = new Grocery();
-        texto_nombre= findViewById(R.id.txtNombreCursoCuarto);
+        texto_nombre = findViewById(R.id.txtNombreCursoCuarto);
 
         //se deben agregar los demas items de la pantalla
 
@@ -177,28 +179,52 @@ public class CuartoCurso extends AppCompatActivity {
 
         //Save to DB
         int cuenta = databaseHandler.contar(newGrocery);
-        if (cuenta>0){
-            Toast.makeText(this, "Este curso ya fue agregado al carrito", Toast.LENGTH_SHORT).show();
-        }else{
+        if (cuenta > 0) {
+            new AlertDialog.Builder(CuartoCurso.this, R.style.Botones)
+                    .setTitle("Este curso ya fue agregado al carrito de compras")
+                    .setMessage("¿Desea ir al carrito de compras?")
+                    .setIcon(R.drawable.carrito)
+                    .setPositiveButton("Si",
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent intent = new Intent(CuartoCurso.this, CarritoActivity.class);
+                                    startActivity(intent);
+
+                                    dialog.cancel();
+                                }
+                            })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            ;
+                            dialog.cancel();
+                        }
+                    }).show();
+
+
+        } else {
 
             databaseHandler.addGrocery(grocery);
-            Toast.makeText(this, "Curso agregado al carrito de compras", Toast.LENGTH_SHORT).show();
+            new AlertDialog.Builder(CuartoCurso.this, R.style.Botones)
+                    .setTitle("Curso Agregado al carrito")
+                    .setMessage("¿Ir al carrito de compras?")
+                    .setIcon(R.drawable.carrito)
+                    .setPositiveButton("Si",
+                            new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent intent = new Intent(CuartoCurso.this, CarritoActivity.class);
+                                    startActivity(intent);
+                                    dialog.cancel();
+                                }
+                            })
+                    .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    }).show();
         }
 
-        // Log.d("Item Added ID:", String.valueOf(db.getGroceriesCount()));
-      /*  new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dialog.dismiss();
-                //start a new activity
-                startActivity(new Intent(CarritoActivity.this, CarritoActivity.class));
-                finish();
-            }
-        }, 1200); //  1 second.*/
-
-
     }
-
-
 
 }

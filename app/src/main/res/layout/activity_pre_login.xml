@@ -60,8 +60,19 @@
             android:background="@drawable/oval"
             />
 
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <RadioButton
+                android:id="@+id/radioButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="RadioButton" />
+        </RadioGroup>
+
         <Button
-            android:id="@+id/btn_loginestu3"
+            android:id="@+id/btn_logintutor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/oval"

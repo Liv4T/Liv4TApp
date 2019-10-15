@@ -90,9 +90,9 @@ public class Perfil extends Fragment implements NavigationView.OnNavigationItemS
         //populating Image slider
         ArrayList<String> sliderImages= new ArrayList<>();
         //sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
-        sliderImages.add("http://192.168.1.102/imagenes/cover1.png");
-        sliderImages.add("http://192.168.1.102/imagenes/cover2.png");
-        sliderImages.add("http://192.168.1.102/imagenes/cover3.png");
+        sliderImages.add("http://192.168.1.101/imagenes/cover1.png");
+        sliderImages.add("http://192.168.1.101/imagenes/cover2.png");
+        sliderImages.add("http://192.168.1.101/imagenes/cover3.png");
         //sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
 
         for (String s:sliderImages){

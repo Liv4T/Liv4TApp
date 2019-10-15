@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dybcatering.live4teach">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -11,12 +15,22 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Carrito.CarritoActivity"
+        <activity android:name=".Splash.SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Carrito.CarritoActivity"
             android:parentActivityName=".PrincipalActivity" />
         <activity android:name=".MisCursos.MisCursosDetalleVerMas" />
         <activity android:name=".MisCalificaciones.MisCalificacionesDetalle" />
         <activity android:name=".MisActividades.MisActividadesDetalle" />
-        <activity android:name=".Perfil.Actualizar" />
+        <activity
+            android:name=".Perfil.Actualizar"
+            android:parentActivityName=".PrincipalActivity" />
         <activity android:name=".MisCertificados.MisCertificadosDetalle" />
         <activity android:name=".MisCursos.MisCursosDetalle" />
         <activity
@@ -34,11 +48,7 @@
         <activity
             android:name=".Login.PreLoginActivity"
             android:theme="@style/AppThemeRegist.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Login.HomeActivity" />
         <activity
@@ -54,8 +64,5 @@
             android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity android:name=".SubPrimerActivity" />
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

@@ -44,7 +44,7 @@ public class Cursos extends Fragment implements NavigationView.OnNavigationItemS
                 Toast.makeText(getActivity(), "has hecho click", Toast.LENGTH_SHORT).show();
             }
         });*/
-        Picasso.with(getActivity()).load("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg")
+        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
 
                 .fit().
                 //      resize(400,400).
@@ -85,7 +85,7 @@ public class Cursos extends Fragment implements NavigationView.OnNavigationItemS
         });
 
         imagen_quinta = myView.findViewById(R.id.imagen_quinta);
-        Picasso.with(getActivity()).load("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg")
+        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
 
                 .fit().
                 //      resize(400,400).
@@ -96,7 +96,7 @@ public class Cursos extends Fragment implements NavigationView.OnNavigationItemS
 
 
         imagen_novena= myView.findViewById(R.id.imagen_novena);
-        Picasso.with(getActivity()).load("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg")
+        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
 
                 .fit().
                 //      resize(400,400).
