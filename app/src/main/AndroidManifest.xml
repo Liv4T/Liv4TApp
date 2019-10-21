@@ -2,7 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dybcatering.live4teach">
+    <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -11,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Estudiante.Include.ActivityVerMas"></activity>
+        <activity android:name=".Estudiante.Include.ActivityVerMas" />
         <activity
             android:name=".Estudiante.Carrito.CarritoDetalleActivity"
             android:parentActivityName=".Estudiante.Carrito.CarritoActivity" />
@@ -32,8 +34,9 @@
             android:name=".Estudiante.Perfil.ActualizarDatos"
             android:parentActivityName=".Estudiante.PrincipalActivity" />
         <activity android:name=".Estudiante.MisCertificados.MisCertificadosDetalle" />
-        <activity android:name=".Estudiante.MisCursos.MisCursosDetalle"
-            android:parentActivityName=".Estudiante.PrincipalActivity"/>
+        <activity
+            android:name=".Estudiante.MisCursos.MisCursosDetalle"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
         <activity
             android:name=".Estudiante.CursosDisponibles.CuartoCurso"
             android:parentActivityName=".Estudiante.PrincipalActivity" />
@@ -61,10 +64,13 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppThemeRegist.NoActionBar" />
+
+        <activity android:name=".Tutor.TutorPrincipalActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:label="@string/title_activity_principal"
+            android:theme="@style/AppThemeRegist.NoActionBar"/>
         <activity android:name=".Estudiante.SubPrimerActivity" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

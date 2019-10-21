@@ -26,7 +26,7 @@
         android:id="@+id/profile_image"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/livetech"
         app:civ_border_width="2dp"
         app:civ_border_color="@color/colortextoblanco"/>
 
@@ -46,12 +46,12 @@
         android:layout_marginBottom="4dp"
         android:textColor="#FFF"
         android:textAlignment="center"
-        android:text="@string/nav_header_subtitle" />
+        android:text="@string/nav_header_tutor_subtitle" />
 
     <TextView
         android:id="@+id/txtVersion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="" />
+        android:text="TextView" />
 
 </LinearLayout>

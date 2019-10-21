@@ -31,6 +31,10 @@
                 android:id="@+id/nav_certificados"
                 android:icon="@drawable/ic_icono_doc"
                 android:title="Mis Certificados" />
+            <item
+                android:id="@+id/nav_cerrar_sesion"
+                android:icon="@drawable/ic_close_black_24dp"
+                android:title="Cerrar Sesión " />
 
 
 

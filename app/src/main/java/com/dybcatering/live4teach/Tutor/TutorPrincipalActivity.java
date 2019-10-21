@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante;
+package com.dybcatering.live4teach.Tutor;
 
 
 import android.app.FragmentManager;
@@ -15,21 +15,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
+import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones;
 import com.dybcatering.live4teach.Estudiante.MisCertificados.MisCertificados;
-import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursos;
-import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Tutor.MisCursos.MisCursos;
 import com.dybcatering.live4teach.Estudiante.Perfil.Perfil;
 import com.dybcatering.live4teach.R;
 import com.nex3z.notificationbadge.NotificationBadge;
 
-public class PrincipalActivity extends AppCompatActivity
+public class TutorPrincipalActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView textCartItemCount, version;
     SessionManager sessionManager;
@@ -44,8 +45,8 @@ public class PrincipalActivity extends AppCompatActivity
         //sessionManager.checkLogin();
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_principal);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setContentView(R.layout.activity_tutor_principal);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar_tutor);
         setSupportActionBar(toolbar);
         toolbar.setTitle(R.string.app_name);
 
@@ -53,13 +54,13 @@ public class PrincipalActivity extends AppCompatActivity
 
         inicio();
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_tutor);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view_tutor);
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(1).setChecked(true);
         View header = navigationView.getHeaderView(0);
@@ -74,10 +75,9 @@ public class PrincipalActivity extends AppCompatActivity
 
     public void inicio(){
         FragmentManager fragmentManager = getFragmentManager();
-
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame
-                        , new Cursos())
+                        , new MisCursos())
                 .commit();
 
     }
@@ -85,7 +85,7 @@ public class PrincipalActivity extends AppCompatActivity
     @Override
     public void onBackPressed() {
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_tutor);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -96,12 +96,12 @@ public class PrincipalActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.principal, menu);
-        final MenuItem menuItem = menu.findItem(R.id.action_cart);
+        getMenuInflater().inflate(R.menu.tutor, menu);
+        final MenuItem menuItem = menu.findItem(R.id.tutor_action_cart);
 
 
         View actionView = MenuItemCompat.getActionView(menuItem);
-        textCartItemCount = (TextView) actionView.findViewById(R.id.cart_badge);
+        textCartItemCount = (TextView) actionView.findViewById(R.id.tutor_cart_badge);
         final String total = Integer.toString(db.contartotal());
 
 
@@ -109,8 +109,10 @@ public class PrincipalActivity extends AppCompatActivity
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(PrincipalActivity.this, CarritoActivity.class);
-                startActivity(intent);
+                Toast.makeText(TutorPrincipalActivity.this, "mis ingresos", Toast.LENGTH_SHORT).show();
+
+                //   Intent intent = new Intent(TutorPrincipalActivity.this, CarritoActivity.class);
+               // startActivity(intent);
                  /*if (total.equals("0")){
                     AlertDialog alertDialog = new AlertDialog.Builder(PrincipalActivity.this, R.style.Botones).create();
                     alertDialog.setTitle("Carrito de compras Vacío");
@@ -147,7 +149,7 @@ public class PrincipalActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_cart) {
+        if (id == R.id.tutor_action_cart) {
 
 
             //mBadge.setNumber(++count);
@@ -168,7 +170,7 @@ public class PrincipalActivity extends AppCompatActivity
         if (id == R.id.nav_perfil) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Perfil())
+                            , new MisCursos())
                     .commit();
             //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
             // startActivity(intent);
@@ -177,7 +179,7 @@ public class PrincipalActivity extends AppCompatActivity
         } else if (id == R.id.nav_cursos) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new Cursos())
+                            , new MisCursos())
                     .commit();
 
 
@@ -192,31 +194,30 @@ public class PrincipalActivity extends AppCompatActivity
            else if (id == R.id.nav_calificaciones) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCalificaciones())
+                            , new MisCursos())
                     .commit();
-
 
             //  Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
            //  startActivity(intent);
         } else if (id == R.id.nav_certificados) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCertificados())
+                            , new MisCursos())
                     .commit();
 
         } else if (id == R.id.nav_slideshow){
-           fragmentManager.beginTransaction()
+            fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new MisCursos())
                     .commit();
            //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
            //startActivity(intent);
-        } else if (id == R.id.nav_cerrar_sesion){
-             this.finish();
-        }
+        } else if (id == R.id.nav_cerrar){
+        this.finish();
+    }
 
 
-        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout_tutor);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
