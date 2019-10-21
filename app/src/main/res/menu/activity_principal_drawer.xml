@@ -11,14 +11,14 @@
         <item
             android:id="@+id/nav_cursos"
             android:title="Cursos Disponibles" />
-        <item
+        <!--item
             android:id="@+id/nav_mis_cursos"
             android:icon="@drawable/ic_curso"
-            android:title="Mis Cursos" />
+            android:title="Mis Cursos" /-->
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_icono_calificaciones1"
-            android:title="Mis Actividades" />
+            android:title="Mis Cursos" />
         <item
             android:id="@+id/nav_calificaciones"
             android:icon="@drawable/ic_menu_manage"

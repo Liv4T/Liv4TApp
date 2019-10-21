@@ -82,17 +82,46 @@
 
 
                 <TextView
+                    android:id="@+id/nameview"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="30dp"
+                    style="@style/fonts"
+                    android:text="@string/nombre"
+                    android:textColor="#424242"/>
+
+            </LinearLayout>
+            <View android:layout_width="match_parent"
+                android:layout_height="@dimen/view_width_small"
+                android:background="@color/grey_light"
+                android:layout_marginTop="2dp"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp">
+
+
+
+                <TextView
                     android:id="@+id/emailview"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center_vertical"
                     android:paddingLeft="30dp"
                     style="@style/fonts"
-                    android:text="@string/correo"
+                    android:text="Correo"
                     android:textColor="#424242"/>
 
-            </LinearLayout>
 
+
+
+            </LinearLayout>
             <View android:layout_width="match_parent"
                 android:layout_height="@dimen/view_width_small"
                 android:background="@color/grey_light"

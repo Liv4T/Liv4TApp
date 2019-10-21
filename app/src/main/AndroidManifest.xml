@@ -3,10 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dybcatering.live4teach">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -15,7 +11,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Splash.SplashActivity">
+        <activity android:name=".Estudiante.Include.ActivityVerMas"></activity>
+        <activity
+            android:name=".Estudiante.Carrito.CarritoDetalleActivity"
+            android:parentActivityName=".Estudiante.Carrito.CarritoActivity" />
+        <activity android:name=".Estudiante.Splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,46 +23,48 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Carrito.CarritoActivity"
-            android:parentActivityName=".PrincipalActivity" />
-        <activity android:name=".MisCursos.MisCursosDetalleVerMas" />
-        <activity android:name=".MisCalificaciones.MisCalificacionesDetalle" />
-        <activity android:name=".MisActividades.MisActividadesDetalle" />
+            android:name=".Estudiante.Carrito.CarritoActivity"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
+        <activity android:name=".Estudiante.MisCursos.MisCursosDetalleVerMas" />
+        <activity android:name=".Estudiante.MisCalificaciones.MisCalificacionesDetalle" />
+        <activity android:name=".Estudiante.MisActividades.MisActividadesDetalle" />
         <activity
-            android:name=".Perfil.Actualizar"
-            android:parentActivityName=".PrincipalActivity" />
-        <activity android:name=".MisCertificados.MisCertificadosDetalle" />
-        <activity android:name=".MisCursos.MisCursosDetalle" />
+            android:name=".Estudiante.Perfil.ActualizarDatos"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
+        <activity android:name=".Estudiante.MisCertificados.MisCertificadosDetalle" />
+        <activity android:name=".Estudiante.MisCursos.MisCursosDetalle"
+            android:parentActivityName=".Estudiante.PrincipalActivity"/>
         <activity
-            android:name=".CursosDisponibles.CuartoCurso"
-            android:parentActivityName=".PrincipalActivity" />
+            android:name=".Estudiante.CursosDisponibles.CuartoCurso"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
         <activity
-            android:name=".CursosDisponibles.TercerCurso"
-            android:parentActivityName=".PrincipalActivity" />
+            android:name=".Estudiante.CursosDisponibles.TercerCurso"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
         <activity
-            android:name=".CursosDisponibles.SegundoCurso"
-            android:parentActivityName=".PrincipalActivity" />
+            android:name=".Estudiante.CursosDisponibles.SegundoCurso"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
         <activity
-            android:name=".CursosDisponibles.PrimerCurso"
-            android:parentActivityName=".PrincipalActivity" />
+            android:name=".Estudiante.CursosDisponibles.PrimerCurso"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
         <activity
-            android:name=".Login.PreLoginActivity"
-            android:theme="@style/AppThemeRegist.NoActionBar">
-
-        </activity>
-        <activity android:name=".Login.HomeActivity" />
+            android:name=".Estudiante.Login.PreLoginActivity"
+            android:theme="@style/AppThemeRegist.NoActionBar" />
+        <activity android:name=".Estudiante.Login.HomeActivity" />
         <activity
-            android:name=".Login.RegisterActivity"
+            android:name=".Estudiante.Login.RegisterActivity"
             android:theme="@style/AppThemeRegist" />
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".Estudiante.Login.LoginActivity"
             android:theme="@style/AppThemeLogin" />
         <activity
-            android:name=".PrincipalActivity"
+            android:name=".Estudiante.PrincipalActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppThemeRegist.NoActionBar" />
-        <activity android:name=".SubPrimerActivity" />
+        <activity android:name=".Estudiante.SubPrimerActivity" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
