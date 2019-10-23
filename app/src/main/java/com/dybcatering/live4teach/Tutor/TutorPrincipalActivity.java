@@ -20,14 +20,15 @@ import android.widget.Toast;
 import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Cursos;
+//import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
-import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones;
-import com.dybcatering.live4teach.Estudiante.MisCertificados.MisCertificados;
+//import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones;
+//import com.dybcatering.live4teach.Estudiante.MisCertificados.MisCertificados;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursos;
-import com.dybcatering.live4teach.Estudiante.Perfil.Perfil;
+//import com.dybcatering.live4teach.Estudiante.Perfil.Perfil;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Perfil.PerfilTutor;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 public class TutorPrincipalActivity extends AppCompatActivity
@@ -102,10 +103,10 @@ public class TutorPrincipalActivity extends AppCompatActivity
 
         View actionView = MenuItemCompat.getActionView(menuItem);
         textCartItemCount = (TextView) actionView.findViewById(R.id.tutor_cart_badge);
-        final String total = Integer.toString(db.contartotal());
+       // final String total = Integer.toString(db.contartotal());
+//db.contartotal retorna la cantidad de registros en la base de datos
 
-
-        textCartItemCount.setText(total);
+     //   textCartItemCount.setText(total);
         actionView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -167,30 +168,30 @@ public class TutorPrincipalActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         FragmentManager fragmentManager = getFragmentManager();
-        if (id == R.id.nav_perfil) {
+        if (id == R.id.nav_perfil_tutor) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new PerfilTutor())
                     .commit();
             //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
             // startActivity(intent);
 
 
-        } else if (id == R.id.nav_cursos) {
+        } else if (id == R.id.nav_mis_cursos_tutor) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new MisCursos())
                     .commit();
 
 
-        } /*else if (id == R.id.nav_mis_cursos) {
+        } else if (id == R.id.nav_mis_activi) {
 
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new MisCursos())
                     .commit();
 
-        }*/
+        }
            else if (id == R.id.nav_calificaciones) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame

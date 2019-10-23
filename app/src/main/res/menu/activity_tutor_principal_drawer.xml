@@ -5,38 +5,35 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_home"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="@string/menu_home" />
+            android:id="@+id/nav_perfil_tutor"
+            android:icon="@drawable/ic_icono_perfil"
+            android:title="@string/perfil" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/nav_mis_cursos_tutor"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/menu_gallery" />
+            android:title="@string/miscursos" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_mis_activi"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="@string/menu_slideshow" />
+            android:title="@string/misactividades" />
         <item
             android:id="@+id/nav_tools"
             android:icon="@drawable/ic_menu_manage"
-            android:title="@string/menu_tools" />
+            android:title="@string/misevaluaciones" />
+
+        <item
+            android:id="@+id/nav_send"
+            android:icon="@drawable/ic_menu_send"
+            android:title="@string/consultas" />
     </group>
 
-    <item android:title="Communicate">
+    <item android:title="">
         <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="@string/menu_share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="@string/menu_send" />
 
             <item
                 android:id="@+id/nav_cerrar"
                 android:icon="@drawable/ic_close_black_24dp"
-                android:title="Cerrar Sesión " />
+                android:title="@string/cerrarsesion" />
         </menu>
     </item>
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".Estudiante.CursosDisponibles.PrimerCurso">
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Estudiante.CursosDisponibles.PrimerCurso">
 
 <RelativeLayout
     android:layout_width="match_parent"
@@ -13,18 +13,21 @@ tools:context=".Estudiante.CursosDisponibles.PrimerCurso">
 
 
 
-    <ImageView
-        android:id="@+id/imDesc"
+        <com.daimajia.slider.library.SliderLayout
+        android:id="@+id/slider_primer_curso"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_margin="20dp"
-        tools:ignore="MissingConstraints" />
+        app:auto_cycle="true"
+        android:background="#424242"
+        app:pager_animation="Accordion"
+        app:pager_animation_span="1100" />
 
     <TextView
         android:id="@+id/txtNombreCurso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/imDesc"
+        android:layout_below="@id/slider_primer_curso"
         android:fontFamily="@font/centurygothic"
         android:layout_margin="5dp"
         android:textColor="@color/color"

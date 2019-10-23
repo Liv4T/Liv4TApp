@@ -60,4 +60,14 @@ Android gives you a world-class platform for creating apps and games for Android
 
     </string-array>
 
+    <string name="perfil">Mi perfil</string>
+    <string name="cursosdisp">Cursos Disponibles</string>
+    <string name="miscursos">Mis Cursos</string>
+    <string name="misactividades">Mis Actividades</string>
+    <string name="miscalificaciones">Mis Calificaciones</string>
+    <string name="miscertificados">Mis Certificados</string>
+    <string name="misevaluaciones">Mis Evaluaciones</string>
+    <string name="consultas">Consultas</string>
+    <string name="cerrarsesion">Cerrar Sesión</string>
+
 </resources>

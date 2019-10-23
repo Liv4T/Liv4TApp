@@ -14,6 +14,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.daimajia.slider.library.SliderLayout;
+import com.daimajia.slider.library.SliderTypes.BaseSliderView;
+import com.daimajia.slider.library.SliderTypes.DefaultSliderView;
+import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
@@ -36,16 +40,18 @@ public class PrimerCurso extends AppCompatActivity {
     public ImageView image;
     private DatabaseHandler databaseHandler;
     public TextView texto_nombre, texto_descripcion, texto_monto;
+
+    private SliderLayout sliderShow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_primer_curso);
 
             new CheckInternetConnection(this).checkConnection();
-            image = findViewById(R.id.imDesc);
+            inflateImageSlider();
 
-
-            Picasso.with(PrimerCurso.this).load("http://192.168.1.101/imagenes/primer_curso.jpg").fit().into(image);
+            //image = findViewById(R.id.imDesc);
+            //Picasso.with(PrimerCurso.this).load("http://192.168.1.101/imagenes/primer_curso.jpg").fit().into(image);
             snack();
 
             listView = (ExpandableListView)findViewById(R.id.expand);
@@ -71,7 +77,7 @@ public class PrimerCurso extends AppCompatActivity {
             }
         });
         databaseHandler = new DatabaseHandler(this);
-    }
+        }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -246,6 +252,54 @@ public class PrimerCurso extends AppCompatActivity {
 
         }
 
+    }
+
+
+
+    private void inflateImageSlider() {
+
+        // Using Image Slider -----------------------------------------------------------------------
+        sliderShow = findViewById(R.id.slider_primer_curso);
+
+        //populating Image slider
+        //ArrayList<String> sliderImages= new ArrayList<>();
+        //sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
+        //sliderImages.add("http://192.168.1.101/imagenes/cover2.png");
+        //sliderImages.add("http://digitalandroidservices.com/personal/cover1.jpg");
+        //sliderImages.add("http://192.168.1.101/imagenes/cover3.png");
+        //sliderImages.add("https://dev-res.thumbr.io/libraries/27/08/11/lib/1469777955350_1.jpg?size=854x493s&ext=jpg");
+
+        HashMap<String,String> url_maps = new HashMap<String, String>();
+        url_maps.put("Descripción 1", "http://digitalandroidservices.com/personal/cover1.jpg");
+        url_maps.put("Descripción 2", "http://digitalandroidservices.com/personal/cover2.png");
+        url_maps.put("Descripción 3", "http://digitalandroidservices.com/personal/cover3.png");
+
+        HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("Descripción 2",R.drawable.cover1);
+        file_maps.put("Descripción 1",R.drawable.cover2);
+        file_maps.put("Descripción 3",R.drawable.cover3);
+
+        for (String s:url_maps.keySet()){
+          //  DefaultSliderView sliderView=new DefaultSliderView(PrimerCurso.this);
+           // sliderView.image(s);
+           // sliderShow.addSlider(sliderView);
+            TextSliderView textSliderView = new TextSliderView(this);
+            // initialize a SliderLayout
+            textSliderView
+                    .description(s)
+                    .image(file_maps.get(s))
+                    .setScaleType(BaseSliderView.ScaleType.Fit);
+
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle()
+                    .putString("extra",s);
+
+            sliderShow.addSlider(textSliderView);
+
+        }
+
+        sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
     }
 
 

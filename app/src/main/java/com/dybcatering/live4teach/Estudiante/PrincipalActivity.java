@@ -74,7 +74,9 @@ public class PrincipalActivity extends AppCompatActivity
 
     public void inicio(){
         FragmentManager fragmentManager = getFragmentManager();
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Cursos Disponibles");
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame
                         , new Cursos())
@@ -170,6 +172,15 @@ public class PrincipalActivity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new Perfil())
                     .commit();
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            toolbar.setTitle("Mi perfil");
+
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
             //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
             // startActivity(intent);
 
@@ -180,6 +191,15 @@ public class PrincipalActivity extends AppCompatActivity
                             , new Cursos())
                     .commit();
 
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            toolbar.setTitle("Cursos Disponibles");
+
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
         } /*else if (id == R.id.nav_mis_cursos) {
 
@@ -194,7 +214,15 @@ public class PrincipalActivity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new MisCalificaciones())
                     .commit();
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            toolbar.setTitle("Mis Calificaciones");
 
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
             //  Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
            //  startActivity(intent);
@@ -203,12 +231,30 @@ public class PrincipalActivity extends AppCompatActivity
                     .replace(R.id.content_frame
                             , new MisCertificados())
                     .commit();
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            toolbar.setTitle("Mis certificados");
+
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
 
         } else if (id == R.id.nav_slideshow){
            fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
                             , new MisCursos())
                     .commit();
+            Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+            toolbar.setTitle("Mis cursos");
+
+            DrawerLayout drawer = findViewById(R.id.drawer_layout);
+            ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                    this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+            drawer.addDrawerListener(toggle);
+            toggle.syncState();
            //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
            //startActivity(intent);
         } else if (id == R.id.nav_cerrar_sesion){
