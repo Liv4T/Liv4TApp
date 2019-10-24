@@ -33,7 +33,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="150dp" />
 
-                <android.support.v4.widget.NestedScrollView
+                <ScrollView
                     android:id="@+id/scrolldebajo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -48,7 +48,6 @@
                             android:id="@+id/buttoniniciar"
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-
                             app:lottie_loop="true"
                             app:lottie_autoPlay="true"
                             app:lottie_fileName="animated.json" />
@@ -92,20 +91,19 @@
 
                         <TextView
 
-                            android:id="@+id/expandible_listview"
+                            android:id="@+id/objetivos"
                             android:layout_width="match_parent"
                             android:layout_below="@id/textView4"
-                            android:text="Tema"
+                            android:text="Objetivos del curso"
                             android:textSize="25sp"
                             android:layout_height="wrap_content">
 
                         </TextView>
 
 
-
                         <RelativeLayout
-                            android:id="@+id/vermas"
-                            android:layout_below="@+id/expandible_listview"
+                            android:id="@+id/relativevermas"
+                            android:layout_below="@+id/objetivos"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:padding="20dp">
@@ -148,23 +146,60 @@
                                 android:visibility="invisible" />
 
                             <TextView
-                                android:id="@+id/textViewdesc"
+                                android:id="@+id/txtTemario"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
-                                android:textSize="12sp"
-
+                                android:textSize="25sp"
                                 android:layout_below="@id/hide"
-                                android:text="Internet ha revolucionado en los últimos años la forma en que nos comunicamos y accedemos a la información. HTML ha contribuido enormemente a esta expansión debido a su sencillez, facilidad de proceso y capacidades de presentación." />
+                                android:text="Temario" />
+
+
+                            <TextView
+                                android:id="@+id/segunda_descripcion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="5"
+                                android:layout_below="@+id/txtTemario"
+                                android:background="#BEBEBEBE"
+                                android:elevation="5dp"
+                                android:text="@string/desc_content" />
+
+                            <ImageButton
+                                android:id="@+id/vermassegundo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_below="@+id/segunda_descripcion"
+                                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                android:clickable="true" />
+
+                            <View
+                                android:id="@+id/view2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/segunda_descripcion"
+                                android:layout_marginTop="5dp"
+                                android:layout_toLeftOf="@+id/show"
+                                android:background="#000" />
+
+                            <ImageButton
+                                android:id="@+id/hide2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_below="@+id/segunda_descripcion"
+                                android:clickable="true"
+                                android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                                android:visibility="invisible" />
+
+
+
 
                         </RelativeLayout>
 
 
-                        <!--include layout="@layout/activity_ver_mas"
-                            android:layout_below="@id/textViewdesc"
-                            android:layout_width="wrap_content"
-                            android:layout_height="100dp"
-                            android:id="@+id/inclue"/-->
+
 
                         <!--TextView
                             android:id="@+id/textView3"
@@ -187,7 +222,7 @@
 
 
 
-                </android.support.v4.widget.NestedScrollView>
+                </ScrollView>
 
 
 

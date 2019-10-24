@@ -170,6 +170,7 @@ public class PrincipalActivity extends AppCompatActivity
         if (id == R.id.nav_perfil) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
+                            //, new Perfil())
                             , new Perfil())
                     .commit();
             Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);

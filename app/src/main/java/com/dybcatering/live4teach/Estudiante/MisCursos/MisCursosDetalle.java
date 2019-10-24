@@ -8,8 +8,11 @@ import android.widget.ExpandableListView;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Adapter.ExpandableListAdapter;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
 import com.dybcatering.live4teach.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -17,6 +20,7 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayerView;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -61,13 +65,23 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
 
     List<LinkedHashMap<String, String[]>> data = new ArrayList<>();
 
-    TextView descText;
-    ImageButton show, hide;
+    TextView descText, segunda_desc;
+    ImageButton show, hide, show2, hide2;
+
+
+    private ExpandableListView listView;
+    private ExpandableListAdapter listAdapter;
+    private List<String> listDataHeader;
+    private HashMap<String, List<String >> listHashMap;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_cursos_detalle);
-        //setUpAdapter();
+   //     setUpAdapter();
         Log.d(TAG,"Iniciando recursos");
         youTubePlayerView = findViewById(R.id.youTube);
         button = findViewById(R.id.buttoniniciar);
@@ -95,6 +109,26 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
                 show.setVisibility(View.VISIBLE);
                 descText.setMaxLines(5);
 
+            }
+        });
+
+        segunda_desc = findViewById(R.id.segunda_descripcion);
+        show2 = findViewById(R.id.vermassegundo);
+        show2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hide2.setVisibility(View.INVISIBLE);
+                show2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(Integer.MAX_VALUE);
+            }
+        });
+        hide2 = findViewById(R.id.hide2);
+        hide2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hide2.setVisibility(View.INVISIBLE);
+                show2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(5);
             }
         });
 
@@ -152,10 +186,59 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
                 }).start();
             }
         });
+
+
     }
 
 
-  /*  private void setUpAdapter() {
+    private void initData() {
+        listDataHeader = new ArrayList<>();
+        listHashMap = new HashMap<>();
+
+        listDataHeader.add("¿Qué tipo de contenidos crear para atraer tráfico?");
+        listDataHeader.add("¿Qué canales usar según tu tipo de negocio?");
+        listDataHeader.add("¿Cómo segmentar tu público según tu negocio?");
+        listDataHeader.add("¿Qué es un crecimiento orgánico y uno pago?");
+        listDataHeader.add("¿Cómo medir mi presupuesto publicitario?");
+
+        List<String> edmt = new ArrayList<>();
+        edmt.add("Lista Expandible");
+
+        List<String> androidstudio = new ArrayList<>();
+        androidstudio.add("Expandcible lista");
+        androidstudio.add("Google");
+        androidstudio.add("Hola");
+        androidstudio.add("Chat App Firebase");
+
+
+
+        List<String> xamarin= new ArrayList<>();
+        xamarin.add("Segunda Expandcible lista");
+        xamarin.add("Segunda Google");
+        xamarin.add("Segunda Hola");
+        xamarin.add("Segunda Chat App Firebase");
+
+
+        List<String> uwp= new ArrayList<>();
+        uwp.add("UWP Expandcible lista");
+        uwp.add("UWP Google");
+        uwp.add("UWP Hola");
+        uwp.add("UWP Chat App Firebase");
+
+        List<String> a = new ArrayList<>();
+
+//        a.add("");
+        listHashMap.put(listDataHeader.get(0), edmt);
+        listHashMap.put(listDataHeader.get(1), androidstudio);
+        listHashMap.put(listDataHeader.get(2), xamarin);
+        listHashMap.put(listDataHeader.get(3), uwp);
+        listHashMap.put(listDataHeader.get(4), a);
+
+
+
+    }
+
+   /* private void setUpAdapter() {
         secondLevel.add(q1);
         secondLevel.add(q2);
         secondLevel.add(q3);

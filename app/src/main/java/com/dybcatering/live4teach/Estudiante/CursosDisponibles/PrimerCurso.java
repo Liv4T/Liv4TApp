@@ -40,7 +40,6 @@ public class PrimerCurso extends AppCompatActivity {
     public ImageView image;
     private DatabaseHandler databaseHandler;
     public TextView texto_nombre, texto_descripcion, texto_monto;
-
     private SliderLayout sliderShow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

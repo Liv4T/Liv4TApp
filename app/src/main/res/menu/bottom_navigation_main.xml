@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <item
+        android:id="@+id/nav_cursos_disponibles"
+        android:enabled="true"
+        android:icon="@drawable/ic_home"
+        android:title="Cursos Disponibles"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/nav_mis_cursos"
+        android:enabled="true"
+        android:icon="@drawable/ic_icono_doc"
+        android:title="Mis Cursos"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/nav_mis_calificaciones"
+        android:enabled="true"
+        android:icon="@drawable/ic_icono_calificaciones1"
+        android:title="Mis Calificaciones"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/nav_perfil"
+        android:enabled="true"
+        android:icon="@drawable/ic_action_name"
+        android:title="Mi Perfil"
+        app:showAsAction="ifRoom"/>
+
+</menu>

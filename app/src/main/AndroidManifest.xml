@@ -2,10 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dybcatering.live4teach">
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
@@ -14,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Estudiante.Inicio.InicioActivity"></activity>
         <activity android:name=".Estudiante.Include.ActivityVerMas" />
         <activity
             android:name=".Estudiante.Carrito.CarritoDetalleActivity"
@@ -68,13 +66,17 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_principal"
             android:theme="@style/AppThemeRegist.NoActionBar" />
-
-        <activity android:name=".Tutor.TutorPrincipalActivity"
+        <activity
+            android:name=".Tutor.TutorPrincipalActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/title_activity_principal"
-            android:theme="@style/AppThemeRegist.NoActionBar"/>
+            android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity android:name=".Estudiante.SubPrimerActivity" />
     </application>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

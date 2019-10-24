@@ -17,8 +17,8 @@ public class ActivityVerMas extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_mas);
 
-        descText = (TextView) findViewById(R.id.description_text);
-        show = (ImageButton) findViewById(R.id.show);
+        descText = (TextView) findViewById(R.id.description_text1);
+        show = (ImageButton) findViewById(R.id.show1);
         show.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -30,7 +30,7 @@ public class ActivityVerMas extends AppCompatActivity {
 
             }
         });
-        hide = (ImageButton) findViewById(R.id.hide);
+        hide = (ImageButton) findViewById(R.id.hide1);
         hide.setOnClickListener(new View.OnClickListener() {
 
             @Override
