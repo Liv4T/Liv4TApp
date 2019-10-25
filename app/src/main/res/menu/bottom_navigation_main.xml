@@ -7,7 +7,8 @@
         android:id="@+id/nav_cursos_disponibles"
         android:enabled="true"
         android:icon="@drawable/ic_home"
-        android:title="Cursos Disponibles"
+        android:title="Cursos"
+
         app:showAsAction="ifRoom"/>
 
     <item

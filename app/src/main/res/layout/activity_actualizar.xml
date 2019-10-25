@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -14,7 +14,8 @@
         android:scrollbars="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        android:layout_marginBottom="100dp">
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -153,23 +154,38 @@
 
                 </LinearLayout>
             </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
             <ImageView
                 android:id="@+id/footer"
                 android:layout_width="wrap_content"
                 android:layout_height="60dp"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="bottom"
                 android:orientation="vertical"
-
-                android:src="@drawable/livetech"
-                tools:ignore="MissingConstraints">
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center|bottom"
+                android:layout_marginBottom="50dp"
+                android:src="@drawable/livetech">
 
             </ImageView>
 
-        </LinearLayout>
+            <android.support.design.widget.BottomNavigationView
+                android:id="@+id/bottom_navigation_actualizar"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="center|bottom"
+                android:scrollbarSize="2dp"
+                app:itemBackground="@color/colorPrimary2"
 
-    </ScrollView>
+                app:itemIconSize="20dp"
+                app:itemIconTint="@drawable/nav_item_color_state"
+                app:itemTextColor="@drawable/nav_item_color_state"
+                app:labelVisibilityMode="labeled"
+                app:menu="@menu/bottom_navigation_main"
+                tools:ignore="MissingConstraints" />
 
 
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>
