@@ -49,13 +49,13 @@ public class PreLoginActivity extends AppCompatActivity  {
                 }
             });
 
-            btnTutor.setOnClickListener(new View.OnClickListener() {
+           /* btnTutor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                         Intent intent = new Intent(PreLoginActivity.this, TutorPrincipalActivity.class);
                         startActivity(intent);
                 }
-            });
+            });*/
 
 
 

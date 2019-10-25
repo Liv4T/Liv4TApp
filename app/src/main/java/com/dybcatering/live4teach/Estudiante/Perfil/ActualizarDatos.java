@@ -67,7 +67,8 @@ public class ActualizarDatos extends AppCompatActivity {
 
                             break;
                         case R.id.nav_perfil:
-                            startActivity(intent);
+
+
 
                       //      selectedFragment = new PerfilFragment();
                             break;

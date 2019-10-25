@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
+
     xmlns:fancy="http://schemas.android.com/apk/res-auto"
     tools:context=".Estudiante.Perfil.ActualizarDatos">
 
@@ -59,7 +59,7 @@
                 android:paddingRight="20dp"
                 android:paddingTop="10dp"
                 android:background="@color/colorbonton"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/white"
                 android:elevation="10dp"
                 android:textSize="20dp"
                 android:text="Subir foto" />
@@ -177,7 +177,7 @@
                 android:layout_alignParentBottom="true"
                 android:layout_gravity="center|bottom"
                 android:scrollbarSize="2dp"
-                app:itemBackground="@color/colorPrimary2"
+                app:itemBackground="@color/colorPrimaryDark"
 
                 app:itemIconSize="20dp"
                 app:itemIconTint="@drawable/nav_item_color_state"

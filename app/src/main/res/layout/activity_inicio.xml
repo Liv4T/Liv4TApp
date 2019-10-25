@@ -33,7 +33,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
         android:scrollbarSize="2dp"
-        app:itemBackground="@color/colorPrimary2"
+        app:itemBackground="@color/colorPrimaryDark"
 
         app:itemIconSize="20dp"
         app:itemIconTint="@drawable/nav_item_color_state"

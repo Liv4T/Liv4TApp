@@ -25,7 +25,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PerfilFragment extends Fragment {
     View myView;
-    private TextView tvname, tvemail,tvphone, tvidenti;
+    private TextView tvname, tvemail,tvphone, tvidenti, txtVersion;
 
     private Button namebutton;
     private CircleImageView primage;
@@ -51,7 +51,8 @@ public class PerfilFragment extends Fragment {
         tvphone=myView.findViewById(R.id.mobileview);
         tvidenti= myView.findViewById(R.id.cedula);
         namebutton=myView.findViewById(R.id.btn_actualizar_perfil);
-
+        txtVersion = myView.findViewById(R.id.txtPerfilVersion);
+        txtVersion.setText("Versión: "+ BuildConfig.VERSION_NAME);
         final String nombre = tvname.getText().toString();
         final String correo = tvemail.getText().toString();
         final String telefono = tvphone.getText().toString();
