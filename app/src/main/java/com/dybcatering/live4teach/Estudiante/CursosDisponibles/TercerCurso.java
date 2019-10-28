@@ -2,6 +2,7 @@ package com.dybcatering.live4teach.Estudiante.CursosDisponibles;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +19,7 @@ import com.dybcatering.live4teach.Estudiante.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Adapter.ExpandableListAdapter;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
+import com.pd.chocobar.ChocoBar;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -36,7 +38,8 @@ public class TercerCurso extends AppCompatActivity {
         setContentView(R.layout.activity_tercer_curso);
         new CheckInternetConnection(this).checkConnection();
         listView = findViewById(R.id.expand_third);
-        snack();
+       // snack();
+        mostrar();
         initData();
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listHashMap);
         listView.setAdapter(listAdapter);
@@ -225,5 +228,45 @@ public class TercerCurso extends AppCompatActivity {
 
 
     }
+
+    public void mostrar(){
+        ChocoBar.builder().setBackgroundColor(Color.parseColor("#007883"))
+                .setTextSize(18)
+                .setTextColor(Color.parseColor("#FFFFFF"))
+                .setActionClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        AlertDialog alertDialog = new AlertDialog.Builder(TercerCurso.this, R.style.Botones).create();
+                        alertDialog.setTitle("Curso en promoción");
+                        alertDialog.setMessage("Hola tenemos un curso en promoción");
+                        alertDialog.setCancelable(false);
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+
+                                        //  guardarBaseDatos();
+                                        //Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
+                                        // startActivity(intent);
+                                        mostrar();
+                                    }
+                                });
+                        alertDialog.show();
+                    }
+                })
+                //.setText("This is a custom Chocobar")
+                .setMaxLines(4)
+                .centerText()
+                .setActionText("OBTÉN UN DESCUENTO DEL 50% EN CURSOS PREMIUM")
+                .setActionTextColor(Color.parseColor("#FFFFFF"))
+                .setActionTextSize(20)
+                .setActivity(TercerCurso.this)
+                .setDuration(ChocoBar.LENGTH_INDEFINITE)
+                .build()
+                .show();
+    }
+
 
 }
