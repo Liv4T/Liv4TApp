@@ -117,8 +117,8 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
         show2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                hide2.setVisibility(View.INVISIBLE);
-                show2.setVisibility(View.VISIBLE);
+                show2.setVisibility(View.INVISIBLE);
+                hide2.setVisibility(View.VISIBLE);
                 segunda_desc.setMaxLines(Integer.MAX_VALUE);
             }
         });

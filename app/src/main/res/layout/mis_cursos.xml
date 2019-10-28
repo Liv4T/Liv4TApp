@@ -17,25 +17,6 @@
             android:id="@+id/layo_ini"
             android:background="#10000000">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Mis Cursos"
-                android:fontFamily="@font/centurygothic"
-                android:textColor="@color/color"
-                android:paddingBottom="20dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="MIS CURSOS"
-                android:fontFamily="@font/centurygothic"
-                android:background="@drawable/redondo"
-                android:textStyle="bold"
-
-                android:textColor="@color/colortextoblanco"
-                android:textAlignment="center" />
-
 
             <ScrollView
                 android:id="@+id/scrollView"

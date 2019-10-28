@@ -17,27 +17,6 @@
             android:id="@+id/layo_ini"
             android:background="#10000000">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Calificaciones"
-                android:fontFamily="@font/centurygothic"
-                android:layout_gravity="center"
-                android:textColor="@color/color"
-                android:padding="10dp"/>
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="CALIFICACION"
-                android:fontFamily="@font/centurygothic"
-                android:background="@drawable/redondo"
-                android:textStyle="bold"
-
-                android:textColor="@color/colortextoblanco"
-                android:textAlignment="center" />
-
-
             <ScrollView
                 android:id="@+id/scrollView"
                 android:layout_width="match_parent"

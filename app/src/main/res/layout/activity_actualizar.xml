@@ -149,7 +149,7 @@
                         android:id="@+id/update"
                         android:text="@string/update_details"
                         android:background="@drawable/ovalorange"
-                        android:textColor="@color/colorAccent"
+                        android:textColor="@color/white"
                         android:textSize="15sp" />
 
                 </LinearLayout>

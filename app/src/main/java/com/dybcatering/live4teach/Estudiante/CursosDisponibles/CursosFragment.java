@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 public class CursosFragment extends Fragment {
@@ -39,14 +40,23 @@ public class CursosFragment extends Fragment {
                 Toast.makeText(getActivity(), "has hecho click", Toast.LENGTH_SHORT).show();
             }
         });*/
-        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
+//        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
+    /**    Picasso.with(getActivity()).load("http://digitalandroidservices.com/personal/cover1.jpg")
+**
+  **              .fit().
+    **            //      resize(400,400).
+      **          // resize(100,100).
+        **                centerInside().
+**
+*                   into(imagen);
+*
+  */
 
-                .fit().
-                //      resize(400,400).
-                // resize(100,100).
-                        centerInside().
-
-                into(imagen);
+        Picasso.with(getActivity()).load("https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg")
+                .placeholder(R.drawable.internetconnection).fit().into(imagen, new Callback() {
+            @Override public    void onSuccess() {}
+            @Override public void onError() {}
+        });
 
         primer_card.setOnClickListener(new View.OnClickListener() {
             @Override
