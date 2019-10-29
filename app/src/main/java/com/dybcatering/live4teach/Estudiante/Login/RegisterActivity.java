@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Estudiante.Login;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -12,7 +13,9 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
 import com.dybcatering.live4teach.R;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -125,18 +128,40 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         String text =  parent.getItemAtPosition(position).toString();
        if (text.equals("Tutor")){
 
-           String url = "http://www.dybcatering.com";
-           Intent i = new Intent(Intent.ACTION_VIEW);
-           i.setData(Uri.parse(url));
-           startActivity(i);
-           nombre.setEnabled(false);
-           apellido.setEnabled(false);
-           email.setEnabled(false);
-           usuario.setEnabled(false);
-           password.setEnabled(false);
-           c_password.setEnabled(false);
-           telefono.setEnabled(false);
-           btn_regist.setEnabled(false);
+           final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                   .setBackgroundColor(R.color.white)
+                   //.setimageResource(R.drawable.internetconnection)
+                   .setTextTitle("Alerta")
+                   .setTextSubTitle("No es posible registrarse como tutor, por favor registrese desde la web")
+                   //.setBody("Iniciar Sesión ")
+                   .setPositiveButtonText("Aceptar")
+                   .setPositiveColor(R.color.colorbonton)
+                   .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                       @Override
+                       public void OnClick(View view, Dialog dialog) {
+                           String url = "http://www.dybcatering.com";
+                           Intent i = new Intent(Intent.ACTION_VIEW);
+                           i.setData(Uri.parse(url));
+                           startActivity(i);
+                           nombre.setEnabled(false);
+                           apellido.setEnabled(false);
+                           email.setEnabled(false);
+                           usuario.setEnabled(false);
+                           password.setEnabled(false);
+                           c_password.setEnabled(false);
+                           telefono.setEnabled(false);
+                           btn_regist.setEnabled(false);
+                           finish();
+                       }
+                   })
+                   .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                   .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                   .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                   .setCancelable(false)
+                   .build();
+           alert.show();
+
+
 
         } else if (text.equals("Estudiante")) {
            nombre.setEnabled(true);

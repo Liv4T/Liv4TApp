@@ -88,6 +88,7 @@ public class InicioActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(InicioActivity.this, CarritoActivity.class);
                 startActivity(intent);
+
                  /*if (total.equals("0")){
                     AlertDialog alertDialog = new AlertDialog.Builder(PrincipalActivity.this, R.style.Botones).create();
                     alertDialog.setTitle("Carrito de compras Vacío");

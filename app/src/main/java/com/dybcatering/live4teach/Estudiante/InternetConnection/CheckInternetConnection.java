@@ -26,7 +26,7 @@ public class CheckInternetConnection {
         if(!isInternetConnected()) {
 
                 final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(ctx)
-                        .setBackgroundColor(R.color.colorAccent)
+                        .setBackgroundColor(R.color.white)
                         //.setimageResource(R.drawable.internetconnection)
                         .setTextTitle("No hay conexión a internet")
                         .setTextSubTitle("No es posible conectarse al servidor")

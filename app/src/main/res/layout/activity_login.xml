@@ -18,7 +18,7 @@
         android:paddingLeft="30dp"
         android:paddingRight="30dp"
         android:paddingTop="50dp"
-    android:id="@+id/layout_reg">
+        android:id="@+id/layout_reg">
 
 
     <LinearLayout
@@ -191,26 +191,25 @@
 </LinearLayout>
 
     <TextView
-        android:layout_marginBottom="20dp"
-        android:gravity="center"
-        android:textColor="@color/colorText"
-
-        android:layout_alignParentBottom="true"
-        android:layout_width="match_parent"
+        android:layout_width="359dp"
         android:layout_height="wrap_content"
-        android:text="@string/registro" />
-
-
-    <RelativeLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="60dp"
         android:gravity="center"
-        android:background="@drawable/livetech"
-        android:layout_gravity="center">
+        android:text="@string/registro"
+        android:textColor="@color/colorPrimaryDark" />
 
-    </RelativeLayout>
 
+    <ImageView
+        android:id="@+id/footer"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center|bottom"
+        android:layout_below="@+id/layo_ini"
+        android:src="@drawable/livetech">
+
+    </ImageView>
 
 </RelativeLayout>

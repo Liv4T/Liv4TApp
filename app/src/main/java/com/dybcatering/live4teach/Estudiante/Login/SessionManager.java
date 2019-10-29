@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 
 import java.util.HashMap;
@@ -46,7 +47,7 @@ public class SessionManager {
         if (!this.isLoggin()){
             Intent i = new Intent(context, PreLoginActivity.class);
             context.startActivity(i);
-            ((PrincipalActivity) context).finish();
+            ((InicioActivity) context).finish();
         }
     }
 
@@ -66,7 +67,7 @@ public class SessionManager {
         editor.commit();
         Intent i = new Intent(context, PreLoginActivity.class);
         context.startActivity(i);
-        ((PrincipalActivity) context).finish();
+        ((InicioActivity) context).finish();
 
     }
 
