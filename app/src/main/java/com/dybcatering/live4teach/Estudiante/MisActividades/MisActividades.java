@@ -2,6 +2,7 @@ package com.dybcatering.live4teach.Estudiante.MisActividades;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -25,18 +26,18 @@ public class MisActividades extends Fragment implements NavigationView.OnNavigat
         myView = inflater.inflate(R.layout.mis_actividades, container, false);
 
         cardView = myView.findViewById(R.id.misactividadesCardprimero);
-        final FragmentManager fragmentManager = getFragmentManager();
+       // final FragmentManager fragmentManager = getFragmentManager();
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                fragmentManager.beginTransaction()
-                        .replace(R.id.content_frame
-                                , new MisCursos())
-                        .commit();
+               // fragmentManager.beginTransaction()
+                 //       .replace(R.id.content_frame
+                   //             , new MisCursos())
+                     //   .commit();
 
-                //Intent iniciar = new Intent(getActivity(), MisActividadesDetalle.class);
+                Intent iniciar = new Intent(getActivity(), MisActividadesDetalle.class);
 
-                //startActivity(iniciar);
+                startActivity(iniciar);
             }
         });
 

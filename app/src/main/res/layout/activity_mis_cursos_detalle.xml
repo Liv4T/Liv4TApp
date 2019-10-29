@@ -52,6 +52,14 @@
                             app:lottie_autoPlay="true"
                             app:lottie_fileName="animated.json" />
 
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            android:layout_toRightOf="@id/buttoniniciar"
+                            style="@style/CustomRatingBar"
+                            android:scaleX="0.5"
+                            android:scaleY="0.5"/>
+
+
 
                         <TextView
                             android:id="@+id/textView2"
@@ -61,7 +69,7 @@
 
                             android:layout_toRightOf="@id/buttoniniciar"
                             android:fontFamily="@font/centurygothic"
-                            android:layout_marginTop="30dp"
+                            android:layout_marginTop="40dp"
                             android:gravity="center"
                             android:text="HTML PARA PRINCIPIANTES"
                             android:textColor="@color/color"
@@ -90,7 +98,7 @@
                             android:text="Descripción del curso:" />
 
                         <TextView
-
+                            android:gravity="center_horizontal"
                             android:id="@+id/objetivos"
                             android:layout_width="match_parent"
                             android:layout_below="@id/textView4"
@@ -150,6 +158,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="5dp"
+                                android:gravity="center_horizontal"
                                 android:textSize="25sp"
                                 android:layout_below="@id/hide"
                                 android:text="Temario" />
@@ -194,7 +203,64 @@
                                 android:visibility="invisible" />
 
 
+                            <TextView
+                                android:id="@+id/txtRequisitos"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@id/hide2"
+                                android:layout_marginTop="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:text="Requisitos"
+                                android:gravity="center_horizontal"
+                                android:textSize="25sp" />
 
+                            <TextView
+                                android:id="@+id/tercera_descripcion"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:maxLines="5"
+                                android:layout_below="@+id/txtRequisitos"
+                                android:background="#BEBEBEBE"
+                                android:elevation="5dp"
+                                android:text="@string/desc_content" />
+
+                            <ImageButton
+                                android:id="@+id/vermastercero"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_below="@+id/tercera_descripcion"
+                                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                                android:clickable="true" />
+
+                            <View
+                                android:id="@+id/view3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="2dp"
+                                android:layout_below="@+id/tercera_descripcion"
+                                android:layout_marginTop="5dp"
+                                android:layout_toLeftOf="@+id/show"
+                                android:background="#000" />
+
+                            <ImageButton
+                                android:id="@+id/hide3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_below="@+id/tercera_descripcion"
+                                android:clickable="true"
+                                android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                                android:visibility="invisible" />
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_below="@+id/hide3">
+
+
+
+                            </RelativeLayout>
 
                         </RelativeLayout>
 

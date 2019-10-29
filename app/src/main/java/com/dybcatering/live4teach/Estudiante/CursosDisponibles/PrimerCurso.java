@@ -157,7 +157,10 @@ public class PrimerCurso extends AppCompatActivity {
     }
 
 
-/*    public void snack(){
+/**
+ * Se comenta metodo que generaba un snack simple, se cambio por chocobar debido al diseño mas avanzado
+ *
+ * public void snack(){
         View parentLayout = findViewById(android.R.id.content);
         Snackbar.make(parentLayout, "", Snackbar.LENGTH_INDEFINITE)
                 //  Snackbar.make(parentLayout, "OBTÉN UN DESCUENTO DEL 50% EN CURSOS PREMIUM", Snackbar.LENGTH_INDEFINITE)

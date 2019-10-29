@@ -65,8 +65,8 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
 
     List<LinkedHashMap<String, String[]>> data = new ArrayList<>();
 
-    TextView descText, segunda_desc;
-    ImageButton show, hide, show2, hide2;
+    TextView descText, segunda_desc, tercera_desc;
+    ImageButton show, hide, show2, hide2, show3, hide3;
 
 
     private ExpandableListView listView;
@@ -97,6 +97,14 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
                 show.setVisibility(View.INVISIBLE);
                 hide.setVisibility(View.VISIBLE);
                 descText.setMaxLines(Integer.MAX_VALUE);
+               //ocultar los otros, se debe implementar en los demas
+
+                hide2.setVisibility(View.INVISIBLE);
+                show2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(5);
+                hide3.setVisibility(View.INVISIBLE);
+                show3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(5);
 
             }
         });
@@ -120,15 +128,53 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
                 show2.setVisibility(View.INVISIBLE);
                 hide2.setVisibility(View.VISIBLE);
                 segunda_desc.setMaxLines(Integer.MAX_VALUE);
+
+                hide.setVisibility(View.INVISIBLE);
+                show.setVisibility(View.VISIBLE);
+                descText.setMaxLines(5);
+                hide3.setVisibility(View.INVISIBLE);
+                show3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(5);
+
             }
         });
         hide2 = findViewById(R.id.hide2);
         hide2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 hide2.setVisibility(View.INVISIBLE);
                 show2.setVisibility(View.VISIBLE);
                 segunda_desc.setMaxLines(5);
+            }
+        });
+
+        tercera_desc = findViewById(R.id.tercera_descripcion);
+        show3= findViewById(R.id.vermastercero);
+        show3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show3.setVisibility(View.INVISIBLE);
+                hide3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(Integer.MAX_VALUE);
+
+                hide.setVisibility(View.INVISIBLE);
+                show.setVisibility(View.VISIBLE);
+                descText.setMaxLines(5);
+                hide2.setVisibility(View.INVISIBLE);
+                show2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(5);
+
+
+            }
+        });
+        hide3 = findViewById(R.id.hide3);
+        hide3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hide3.setVisibility(View.INVISIBLE);
+                show3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(5);
             }
         });
 

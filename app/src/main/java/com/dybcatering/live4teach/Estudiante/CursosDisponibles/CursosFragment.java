@@ -41,15 +41,16 @@ public class CursosFragment extends Fragment {
             }
         });*/
 //        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
-    /**    Picasso.with(getActivity()).load("http://digitalandroidservices.com/personal/cover1.jpg")
+        /*****************
+         Picasso.with(getActivity()).load("http://digitalandroidservices.com/personal/cover1.jpg")
 **
   **              .fit().
     **            //      resize(400,400).
       **          // resize(100,100).
         **                centerInside().
 **
-*                   into(imagen);
-*
+**                   into(imagen);
+**
   */
 
         Picasso.with(getActivity()).load("https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg")
@@ -90,24 +91,19 @@ public class CursosFragment extends Fragment {
         });
 
         imagen_quinta = myView.findViewById(R.id.imagen_quinta);
-        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
-
-                .fit().
-                //      resize(400,400).
-                // resize(100,100).
-                        centerInside().
-                into(imagen_quinta);
+        Picasso.with(getActivity()).load("https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg")
+                .placeholder(R.drawable.internetconnection).fit().into(imagen_quinta, new Callback() {
+            @Override public    void onSuccess() {}
+            @Override public void onError() {}
+        });
 
 
         imagen_novena= myView.findViewById(R.id.imagen_novena);
-        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
-
-                .fit().
-                //      resize(400,400).
-                // resize(100,100).
-                        centerInside().
-
-                into(imagen_novena);
+        Picasso.with(getActivity()).load("https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg")
+                .placeholder(R.drawable.internetconnection).fit().into(imagen_novena, new Callback() {
+            @Override public    void onSuccess() {}
+            @Override public void onError() {}
+        });
 
 
         return myView;
