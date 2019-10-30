@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Estudiante.CursosDisponibles;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,7 +19,10 @@ import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Adapter.ExpandableListAdapter;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
+import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.pd.chocobar.ChocoBar;
 
 import java.util.ArrayList;
@@ -32,6 +36,7 @@ public class CuartoCurso extends AppCompatActivity {
     private DatabaseHandler databaseHandler;
     private HashMap<String, List<String >> listHashMap;
     public TextView texto_nombre;
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -150,9 +155,12 @@ public class CuartoCurso extends AppCompatActivity {
 
             if (id == R.id.mybutton) {
                 // do something here
-             //   Intent intent = new Intent(CuartoCurso.this, CarritoActivity.class);
-              //  startActivity(intent);
-                guardar();
+                sessionManager = new SessionManager(this);
+                if (sessionManager.isLoggin()){
+                    guardar();
+                }else{
+                    alert();
+                }
             }
         return super.onOptionsItemSelected(item);
     }
@@ -267,5 +275,29 @@ public class CuartoCurso extends AppCompatActivity {
                 .build()
                 .show();
     }
+    private void alert() {
+        final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                .setBackgroundColor(R.color.white)
+                //.setimageResource(R.drawable.internetconnection)
+                .setTextTitle("Alerta")
+                .setTextSubTitle("Para continuar es necesario iniciar sesión")
+                //.setBody("Iniciar Sesión ")
+                .setPositiveButtonText("Aceptar")
+                .setPositiveColor(R.color.colorbonton)
+                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
 
+                        Intent intent = new Intent(CuartoCurso.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
+                .build();
+        alert.show();
+    }
 }

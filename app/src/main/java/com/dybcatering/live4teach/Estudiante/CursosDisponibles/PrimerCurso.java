@@ -104,34 +104,36 @@ public class PrimerCurso extends AppCompatActivity {
             if (sessionManager.isLoggin()){
                 saveGroceryToDB();
             }else{
-                final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
-                        .setBackgroundColor(R.color.white)
-                        //.setimageResource(R.drawable.internetconnection)
-                        .setTextTitle("Alerta")
-                        .setTextSubTitle("Para continuar es necesario iniciar sesión")
-                        //.setBody("Iniciar Sesión ")
-                        .setPositiveButtonText("Aceptar")
-                        .setPositiveColor(R.color.colorbonton)
-                        .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
-                            @Override
-                            public void OnClick(View view, Dialog dialog) {
-
-                                Intent intent = new Intent(PrimerCurso.this, LoginActivity.class);
-                                startActivity(intent);
-                                finish();
-                            }
-                        })
-                        .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
-                        .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
-                        .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
-                        .setCancelable(false)
-                        .build();
-                alert.show();
-
-
+                alert();
             }
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void alert() {
+        final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                .setBackgroundColor(R.color.white)
+                //.setimageResource(R.drawable.internetconnection)
+                .setTextTitle("Alerta")
+                .setTextSubTitle("Para continuar es necesario iniciar sesión")
+                //.setBody("Iniciar Sesión ")
+                .setPositiveButtonText("Aceptar")
+                .setPositiveColor(R.color.colorbonton)
+                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
+
+                        Intent intent = new Intent(PrimerCurso.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
+                .build();
+        alert.show();
     }
 
     private void initData() {
@@ -181,39 +183,6 @@ public class PrimerCurso extends AppCompatActivity {
 
     }
 
-
-/**
- * Se comenta metodo que generaba un snack simple, se cambio por chocobar debido al diseño mas avanzado
- *
- * public void snack(){
-        View parentLayout = findViewById(android.R.id.content);
-        Snackbar.make(parentLayout, "", Snackbar.LENGTH_INDEFINITE)
-                //  Snackbar.make(parentLayout, "OBTÉN UN DESCUENTO DEL 50% EN CURSOS PREMIUM", Snackbar.LENGTH_INDEFINITE)
-                .setAction("OBTÉN UN DESCUENTO DEL 50% EN CURSOS PREMIUM", new View.OnClickListener() {
-
-                    //.setAction("", new View.OnClickListener() {
-                    @Override
-                    public void onClick(final View view) {
-                        AlertDialog alertDialog = new AlertDialog.Builder(PrimerCurso.this, R.style.Botones).create();
-                        alertDialog.setTitle("Curso en promoción");
-                        alertDialog.setMessage("Hola tenemos un curso en promoción");
-                        alertDialog.setCancelable(false);
-                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        dialog.dismiss();
-
-                                      //  guardarBaseDatos();
-                                          //Intent intent = new Intent(PrimerCurso.this, CompraActivity.class);
-                                         // startActivity(intent);
-                                        snack();
-                                    }
-                                });
-                        alertDialog.show();
-                    }
-                }).setActionTextColor(Color.parseColor("#FFFFFF"))
-                .show();
-    }*/
 
     public void mostrar(){
         ChocoBar.builder().setBackgroundColor(Color.parseColor("#007883"))
