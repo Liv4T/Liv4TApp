@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:ignore="MissingConstraints"
-        android:layout_marginBottom="100dp">
+        android:layout_marginBottom="110dp">
 
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -36,7 +36,7 @@
                     android:layout_height="150dp"
                     app:civ_border_color="@color/colorPrimaryDark"
                     app:civ_border_width="1dp"
-                    android:src="@drawable/logo"/>
+                    android:src="@drawable/imagenperfil"/>
 
 
                 <ImageView

@@ -1,8 +1,13 @@
 package com.dybcatering.live4teach.Estudiante.MisCursos;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
@@ -12,7 +17,12 @@ import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Adapter.ExpandableListAdapter;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesFragment;
+import com.dybcatering.live4teach.Estudiante.Perfil.ActualizarDatos;
+import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
@@ -82,7 +92,11 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_cursos_detalle);
    //     setUpAdapter();
-        Log.d(TAG,"Iniciando recursos");
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_detalle);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+
+        // Log.d(TAG,"Iniciando recursos");
         youTubePlayerView = findViewById(R.id.youTube);
         button = findViewById(R.id.buttoniniciar);
 
@@ -330,5 +344,33 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
 
 
     }*/
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    Intent intent = new Intent(MisCursosDetalle.this, InicioActivity.class);
+
+                    switch (item.getItemId()) {
+                        case R.id.nav_cursos_disponibles:
+                            startActivity(intent);
+                            break;
+                        case R.id.nav_mis_cursos:
+                            startActivity(intent);
+                            break;
+                        case R.id.nav_mis_calificaciones:
+                            startActivity(intent);
+                            break;
+                        case R.id.nav_perfil:
+                            startActivity(intent);
+                            break;
+                    }
+
+
+                    return true;
+                }
+            };
+
+
 
 }

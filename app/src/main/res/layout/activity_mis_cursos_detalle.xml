@@ -16,7 +16,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="60dp"
+        android:paddingBottom="120dp"
         android:id="@+id/layout_reg">
 
 
@@ -252,15 +252,7 @@
                                 android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
                                 android:visibility="invisible" />
 
-                            <RelativeLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
 
-                                android:layout_below="@+id/hide3">
-
-
-
-                            </RelativeLayout>
 
                         </RelativeLayout>
 
@@ -306,10 +298,26 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
-
+        android:layout_marginBottom="50dp"
         android:src="@drawable/livetech">
 
     </ImageView>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_navigation_detalle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center|bottom"
+        android:scrollbarSize="2dp"
+        app:itemBackground="@color/colorPrimaryDark"
+
+        app:itemIconSize="20dp"
+        app:itemIconTint="@drawable/nav_item_color_state"
+        app:itemTextColor="@drawable/nav_item_color_state"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_navigation_main"
+        tools:ignore="MissingConstraints" />
 
 
 </RelativeLayout>

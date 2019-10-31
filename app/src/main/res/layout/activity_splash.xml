@@ -23,7 +23,7 @@
             android:src="@drawable/livetech" />
 
 
-        <com.airbnb.lottie.LottieAnimationView
+        <!--com.airbnb.lottie.LottieAnimationView
             android:id="@+id/animation_view"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -33,7 +33,16 @@
             android:layout_marginBottom="20dp"
             app:lottie_autoPlay="true"
             app:lottie_fileName="loading.json"
-            app:lottie_loop="true" />
+            app:lottie_loop="true" /-->
+
+        <pl.droidsonroids.gif.GifImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
+            android:src="@drawable/inicio"/>
 
     </RelativeLayout>
 </android.support.constraint.ConstraintLayout>

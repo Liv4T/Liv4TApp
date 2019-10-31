@@ -7,7 +7,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 1
-        versionName "1.9.6-alpha"
+        versionName "1.9.7-alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -51,4 +51,6 @@ dependencies {
     implementation 'com.jakewharton.picasso:picasso2-okhttp3-downloader:1.1.0'
 
     implementation 'com.github.Pradyuman7:ChocoBar:V1.0'
+
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.1.17'
 }
