@@ -21,7 +21,7 @@ public class MisCursosFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.mis_cursos, container, false);
+        myView = inflater.inflate(R.layout.fragment_mis_cursos, container, false);
 
         button = myView.findViewById(R.id.btnQuimica);
 
@@ -29,16 +29,26 @@ public class MisCursosFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               //Intent intent = new Intent(getActivity(), MisCursosDetalle.class);
-               // startActivity(intent);
-                MisCursosDetalleFragment fragment = new MisCursosDetalleFragment();
-                FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.layo_ini_mis_cursos, fragment);
-                fragmentTransaction.commit();
+         //      Intent intent = new Intent(getActivity(), MisCursosDetalle.class);
+           //     startActivity(intent);
+               // MisCursosDetalleFragment fragment = new MisCursosDetalleFragment();
+               // FragmentManager fragmentManager = getFragmentManager();
+               // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+               // fragmentTransaction.replace(R.id.layo_ini_mis_cursos, fragment);
+             //   fragmentTransaction.commit();
+            swapFragment();
             }
         });
 
         return myView;
+    }
+
+
+    private void swapFragment(){
+        MisCursosDetalleFragment misCursosDetalleFragment= new MisCursosDetalleFragment();
+        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.layo_ini, misCursosDetalleFragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 }

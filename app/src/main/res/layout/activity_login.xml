@@ -178,26 +178,26 @@
 
         <Button
             android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:backgroundTint="@color/colorbonton"
-            android:gravity="center_horizontal"
+            android:background="@drawable/ovalorange"
             android:text="@string/iniciar"
+            android:textStyle="bold"
+            android:fontFamily="@font/centurygothic"
             android:textColor="@color/colortextoblanco" />
 
     </LinearLayout>
 
 </LinearLayout>
 
-    <TextView
+    <!--TextView
         android:layout_width="359dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="60dp"
         android:gravity="center"
         android:text="@string/registro"
-        android:textColor="@color/colorPrimaryDark" />
+        android:textColor="@color/colorPrimaryDark" /-->
 
 
     <ImageView
@@ -207,7 +207,7 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
-        android:layout_below="@+id/layo_ini"
+        android:layout_marginBottom="40dp"
         android:src="@drawable/livetech">
 
     </ImageView>
