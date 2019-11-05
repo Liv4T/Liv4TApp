@@ -21,6 +21,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dybcatering.live4teach.BuildConfig;
+import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetalleFragment;
 import com.dybcatering.live4teach.R;
 import com.nex3z.notificationbadge.NotificationBadge;
 
@@ -69,32 +70,18 @@ public class PerfilFragment extends Fragment {
         namebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ActualizarDatos.class);
-                intent.putExtra("nombre", nombre);
-                intent.putExtra("correo", correo);
-                intent.putExtra("telefono", telefono);
-                intent.putExtra("identificacion", identificacion);
-                startActivity(intent);
+
+                swapFragment();
+               // Intent intent = new Intent(getActivity(), ActualizarDatos.class);
+               // intent.putExtra("nombre", nombre);
+               // intent.putExtra("correo", correo);
+               // intent.putExtra("telefono", telefono);
+               // intent.putExtra("identificacion", identificacion);
+               // startActivity(intent);
             }
         });
 
-        namebutton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-               // getFragmentManager().beginTransaction().remove(R.id.fragment_container).commit();
-
-                myView.getParent();
-
-                FragmentTransaction fr= getFragmentManager().beginTransaction();
-
-                fr.replace(R.id.fragment_container_perfil, new ActualizarDatosFragment());
-                fr.commit();
-
-
-               // getActivity().finish();
-            }
-        });
         return myView;
     }
 
@@ -136,5 +123,14 @@ public class PerfilFragment extends Fragment {
         }
 
         sliderShow.setPresetIndicator(SliderLayout.PresetIndicators.Right_Bottom);
+    }
+
+
+    private void swapFragment(){
+        Fragment someFragment = new ActualizarDatosFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 }
