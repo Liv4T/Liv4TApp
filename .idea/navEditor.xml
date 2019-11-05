@@ -85,6 +85,11 @@
             </LayoutPositions>
           </value>
         </entry>
+        <entry key="navigation.xml">
+          <value>
+            <LayoutPositions />
+          </value>
+        </entry>
       </map>
     </option>
   </component>

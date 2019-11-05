@@ -14,7 +14,7 @@ import com.dybcatering.live4teach.R;
 public class SplashActivity extends AppCompatActivity {
 
 
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 3500;
 //    SessionManager sessionManager;
 
 
@@ -25,9 +25,9 @@ public class SplashActivity extends AppCompatActivity {
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
 
-        YoYo.with(Techniques.FadeInLeft)
-                .duration(7000)
-                .playOn(findViewById(R.id.bienvenido));
+       // YoYo.with(Techniques.FadeInLeft)
+         //       .duration(7000)
+           //     .playOn(findViewById(R.id.bienvenido));
         new Handler().postDelayed(new Runnable() {
 
             /*

@@ -12,6 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
+
 import com.dybcatering.live4teach.R;
 
 public class MisCursosFragment extends Fragment {
@@ -29,14 +32,7 @@ public class MisCursosFragment extends Fragment {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-         //      Intent intent = new Intent(getActivity(), MisCursosDetalle.class);
-           //     startActivity(intent);
-               // MisCursosDetalleFragment fragment = new MisCursosDetalleFragment();
-               // FragmentManager fragmentManager = getFragmentManager();
-               // FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-               // fragmentTransaction.replace(R.id.layo_ini_mis_cursos, fragment);
-             //   fragmentTransaction.commit();
-            swapFragment();
+             swapFragment();
             }
         });
 
@@ -45,10 +41,10 @@ public class MisCursosFragment extends Fragment {
 
 
     private void swapFragment(){
-        MisCursosDetalleFragment misCursosDetalleFragment= new MisCursosDetalleFragment();
-        FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.layo_ini, misCursosDetalleFragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        Fragment someFragment = new MisCursosDetalleFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 }
