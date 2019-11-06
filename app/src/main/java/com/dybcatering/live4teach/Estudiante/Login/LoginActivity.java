@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.R;
 
@@ -54,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
                     email.setError("Please insert email");
                     password.setError("Please insert password");
                 }*/
-                Intent intent = new Intent(LoginActivity.this, PrincipalActivity.class);
+                Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
                 startActivity(intent);
             }
         });

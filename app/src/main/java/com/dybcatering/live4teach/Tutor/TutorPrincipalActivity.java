@@ -2,7 +2,6 @@ package com.dybcatering.live4teach.Tutor;
 
 
 import android.app.FragmentManager;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,17 +17,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dybcatering.live4teach.BuildConfig;
-import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 //import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 //import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones;
 //import com.dybcatering.live4teach.Estudiante.MisCertificados.MisCertificados;
+import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursos;
 //import com.dybcatering.live4teach.Estudiante.Perfil.Perfil;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Perfil.PerfilTutor;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 public class TutorPrincipalActivity extends AppCompatActivity
@@ -171,7 +169,7 @@ public class TutorPrincipalActivity extends AppCompatActivity
         if (id == R.id.nav_perfil_tutor) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new PerfilTutor())
+                            , new MisCursos())
                     .commit();
             //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
             // startActivity(intent);

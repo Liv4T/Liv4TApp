@@ -37,13 +37,11 @@
         <activity
             android:name=".Estudiante.Perfil.ActualizarDatos"
             android:parentActivityName=".Estudiante.PrincipalActivity" />
-        <activity
-            android:name=".Tutor.Perfil.ActualizarDatosTutor"
-            android:parentActivityName=".Tutor.TutorPrincipalActivity" />
+
         <activity android:name=".Estudiante.MisCertificados.MisCertificadosDetalle" />
         <activity
-            android:name=".Estudiante.MisCursos.MisCursosDetalle"
-            android:parentActivityName=".Estudiante.PrincipalActivity" />
+            android:name=".Estudiante.MisCursos.MisCursosDetalle" />
+        <!--    android:parentActivityName=".Estudiante.PrincipalActivity" /-->
         <activity
             android:name=".Estudiante.CursosDisponibles.CuartoCurso"
             android:parentActivityName=".Estudiante.PrincipalActivity" />

@@ -64,7 +64,7 @@ public class CursosFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), PrimerCurso.class);
                 startActivity(intent);
-                getActivity().finish();
+               // getActivity().finish();
             }
         });
 
@@ -74,7 +74,7 @@ public class CursosFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), SegundoCurso.class);
                 startActivity(intent);
-                getActivity().finish();
+               // getActivity().finish();
             }
         });
         tercer_card.setOnClickListener(new View.OnClickListener() {
@@ -82,7 +82,7 @@ public class CursosFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), TercerCurso.class);
                 startActivity(intent);
-                getActivity().finish();
+          //      getActivity().finish();
             }
         });
         cuarto_card.setOnClickListener(new View.OnClickListener() {
@@ -90,7 +90,7 @@ public class CursosFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), CuartoCurso.class);
                 startActivity(intent);
-                getActivity().finish();
+            //    getActivity().finish();
             }
         });
 

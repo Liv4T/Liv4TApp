@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Estudiante.Inicio;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -16,16 +17,22 @@ import android.widget.TextView;
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
+import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
+import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
 import com.dybcatering.live4teach.Estudiante.Perfil.Perfil;
 import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.R;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 public class InicioActivity extends AppCompatActivity {
     public DatabaseHandler db;
     TextView textCartItemCount, version;
+
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +47,8 @@ public class InicioActivity extends AppCompatActivity {
                     new CursosFragment()).commit();
         }
         db = new DatabaseHandler(this);
+        sessionManager = new SessionManager(this);
+
     }
 
 
@@ -51,16 +60,35 @@ public class InicioActivity extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.nav_cursos_disponibles:
+
                             selectedFragment = new CursosFragment();
                             break;
                         case R.id.nav_mis_cursos:
-                            selectedFragment = new MisCursosFragment();
+                            if (sessionManager.isLoggin()){
+                                selectedFragment = new MisCursosFragment();
+                            }else{
+                                mostraralerta();
+                                selectedFragment = new CursosFragment();
+                            }
                             break;
                         case R.id.nav_mis_calificaciones:
-                            selectedFragment = new MisCalificacionesFragment();
+                            if (sessionManager.isLoggin()){
+
+                                selectedFragment = new MisCalificacionesFragment();
+                            }else{
+
+                                mostraralerta();
+                                selectedFragment = new CursosFragment();
+                            }
                             break;
                         case R.id.nav_perfil:
-                            selectedFragment = new PerfilFragment();
+                            if (sessionManager.isLoggin()){
+
+                                selectedFragment = new PerfilFragment();
+                            }else {
+                                mostraralerta();
+                                selectedFragment = new CursosFragment();
+                            }
                             break;
                     }
 
@@ -70,6 +98,33 @@ public class InicioActivity extends AppCompatActivity {
                     return true;
                 }
             };
+
+    private void mostraralerta() {
+      FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                .setBackgroundColor(R.color.white)
+                //.setimageResource(R.drawable.internetconnection)
+                .setTextTitle("Alerta")
+                .setTextSubTitle("Para continuar es necesario iniciar sesión")
+                //.setBody("Iniciar Sesión ")
+                .setPositiveButtonText("Aceptar")
+                .setPositiveColor(R.color.colorbonton)
+                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
+
+                        Intent intent = new Intent(InicioActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                })
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
+                .build();
+        alert.show();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
