@@ -28,9 +28,9 @@ public class PreLoginActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_pre_login);
             new CheckInternetConnection(this).checkConnection();
             txtRegistrarse = findViewById(R.id.text_registro);
-            btnLogin = findViewById(R.id.btn_loginestu2);
             btnTutor = findViewById(R.id.btn_logintutor);
             btnEstudiante = findViewById(R.id.btn_loginestu);
+            btnLogin = findViewById(R.id.btn_loginestu2);
 
             txtRegistrarse.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -56,16 +56,6 @@ public class PreLoginActivity extends AppCompatActivity  {
                         startActivity(intent);
                 }
             });*/
-
-
-
-    }
-
-
-
-    private Boolean validarBoton(){
-
-        return true;
     }
 
 
