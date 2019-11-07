@@ -3,6 +3,7 @@ package com.dybcatering.live4teach.Estudiante.Login;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -38,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login = findViewById(R.id.btn_login);
       //  spinner = findViewById(R.id.spinner);
 
-        // link_regist = findViewById(R.id.link_regist);
+         link_regist = findViewById(R.id.text_registro);
 
 
 
@@ -60,13 +61,13 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //link_regist.setOnClickListener(new View.OnClickListener() {
-        //  @Override
-
-        //public void onClick(View v) {
-        //      startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-        // }
-        //});
+        link_regist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
     }
 

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
@@ -15,7 +16,7 @@ import com.dybcatering.live4teach.Tutor.TutorPrincipalActivity;
 
 public class PreLoginActivity extends AppCompatActivity  {
 
-    TextView txtRegistrarse;
+    TextView txtRegistrarse, txtversion;
 
     public Button btnLogin;
     boolean separateOnClickActive;
@@ -31,7 +32,8 @@ public class PreLoginActivity extends AppCompatActivity  {
             btnTutor = findViewById(R.id.btn_logintutor);
             btnEstudiante = findViewById(R.id.btn_loginestu);
             btnLogin = findViewById(R.id.btn_loginestu2);
-
+            txtversion = findViewById(R.id.version);
+            txtversion.setText("Versión: "+ BuildConfig.VERSION_NAME);
             txtRegistrarse.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -49,7 +51,7 @@ public class PreLoginActivity extends AppCompatActivity  {
                 }
             });
 
-           /* btnTutor.setOnClickListener(new View.OnClickListener() {
+           /*** btnTutor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                         Intent intent = new Intent(PreLoginActivity.this, TutorPrincipalActivity.class);

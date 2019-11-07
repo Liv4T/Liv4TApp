@@ -59,6 +59,7 @@
         <activity android:name=".Estudiante.Login.HomeActivity" />
         <activity
             android:name=".Estudiante.Login.RegisterActivity"
+            android:parentActivityName=".Estudiante.Login.PreLoginActivity"
             android:theme="@style/AppThemeRegist" />
         <activity
             android:name=".Estudiante.Login.LoginActivity"

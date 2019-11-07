@@ -170,7 +170,19 @@
             android:autofillHints="" />
     </android.support.design.widget.TextInputLayout>
 
-       
+
+    <TextView
+        android:id="@+id/text_registro"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:textColor="@color/color"
+        android:fontFamily="@font/centurygothic"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/registro"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -188,7 +200,10 @@
             android:fontFamily="@font/centurygothic"
             android:textColor="@color/colortextoblanco" />
 
+
     </LinearLayout>
+
+
 
 </LinearLayout>
 

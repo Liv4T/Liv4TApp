@@ -128,6 +128,14 @@
         </ImageView>
     </LinearLayout-->
 
+
+
+    <TextView
+        android:id="@+id/version"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="48dp"
+        android:layout_above="@+id/footer"/>
     <ImageView
         android:id="@+id/footer"
         android:layout_width="wrap_content"
@@ -135,9 +143,8 @@
         android:orientation="vertical"
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="48dp"
         android:src="@drawable/livetech">
 
     </ImageView>
-
 </RelativeLayout>
