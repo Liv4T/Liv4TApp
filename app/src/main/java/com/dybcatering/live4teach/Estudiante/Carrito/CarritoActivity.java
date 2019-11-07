@@ -1,19 +1,25 @@
 package com.dybcatering.live4teach.Estudiante.Carrito;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.Estudiante.Carrito.UI.RecyclerViewAdapter;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
 import com.dybcatering.live4teach.R;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,18 +71,8 @@ public class CarritoActivity extends AppCompatActivity {
         groceryList = db.getAllGroceries();
 
         if (groceryList.isEmpty()){
-            AlertDialog alertDialog = new AlertDialog.Builder(CarritoActivity.this, R.style.Botones).create();
-            alertDialog.setTitle("Carrito de compras Vacío");
-            alertDialog.setMessage("Parece que aún no has agregado nada al carrito, revisa nuestros cursos disponibles");
-            alertDialog.setCancelable(false);
-            alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            dialog.dismiss();
-                            finish();
-                        }
-                    });
-            alertDialog.show();
+
+            mostraralerta();
         }else{
             for (Grocery c : groceryList) {
                 Grocery grocery = new Grocery();
@@ -98,60 +94,32 @@ public class CarritoActivity extends AppCompatActivity {
         recyclerViewAdapter.notifyDataSetChanged();
     }
 
-    /*private void createPopDialog() {
-
-        dialogBuilder = new AlertDialog.Builder(this);
-        View view = getLayoutInflater().inflate(R.layout.popup, null);
-        groceryItem = (EditText) view.findViewById(R.id.groceryItem);
-        imagegro = view.findViewById(R.id.groceryImage);
-        quantity = (EditText) view.findViewById(R.id.groceryQty);
-        saveButton = (Button) view.findViewById(R.id.saveButton);
 
 
-        dialogBuilder.setView(view);
-        dialog = dialogBuilder.create();
-        dialog.show();
+    private void mostraralerta() {
+        FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                .setBackgroundColor(R.color.white)
+                //.setimageResource(R.drawable.internetconnection)
+                .setTextTitle("Carrito de compras Vacío")
+                .setTextSubTitle("Parece que aún no has agregado nada al carrito, revisa nuestros cursos disponibles")
+                .setCancelable(false)
+                //.setBody("Iniciar Sesión ")
+                .setPositiveButtonText("Aceptar")
+                .setPositiveColor(R.color.colorbonton)
+                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                saveGroceryToDB();
-            }
-        });
-
-
+                        finish();
+                    }
+                })
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
+                .build();
+        alert.show();
     }
-
-    private void saveGroceryToDB() {
-
-        Grocery grocery = new Grocery();
-
-        String newGrocery = groceryItem.getText().toString();
-        String newGroceryQuantity = quantity.getText().toString();
-        String newGroceryImage = imagegro.getText().toString();
-
-        grocery.setName(newGrocery);
-        grocery.setQuantity(newGroceryQuantity);
-        grocery.setImagen(newGroceryImage);
-
-        //Save to DB
-        db.addGrocery(grocery);
-
-        //Snackbar.make(v, "Item Saved!", Snackbar.LENGTH_LONG).show();
-
-        // Log.d("Item Added ID:", String.valueOf(db.getGroceriesCount()));
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                dialog.dismiss();
-                //start a new activity
-                startActivity(new Intent(CarritoActivity.this, CarritoActivity.class));
-                finish();
-            }
-        }, 1200); //  1 second.
-
-
-    }*/
 
 
 }
