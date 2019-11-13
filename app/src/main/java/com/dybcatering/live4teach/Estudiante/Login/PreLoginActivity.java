@@ -12,6 +12,7 @@ import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.InicioTutor.InicioActivityTutor;
 import com.dybcatering.live4teach.Tutor.TutorPrincipalActivity;
 
 public class PreLoginActivity extends AppCompatActivity  {
@@ -51,13 +52,13 @@ public class PreLoginActivity extends AppCompatActivity  {
                 }
             });
 
-           /*** btnTutor.setOnClickListener(new View.OnClickListener() {
+            btnTutor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                        Intent intent = new Intent(PreLoginActivity.this, TutorPrincipalActivity.class);
+                        Intent intent = new Intent(PreLoginActivity.this, InicioActivityTutor.class);
                         startActivity(intent);
                 }
-            });*/
+            });
     }
 
 
