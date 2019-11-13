@@ -27,7 +27,7 @@ import java.util.List;
 public class MisCursosDetalleFragment extends Fragment {
 
 	YouTubePlayer youTubePlayer;
-	LottieAnimationView scrolldebajo;
+	LottieAnimationView botoniniciar;
 	View view;
 	TextView descText, segunda_desc, tercera_desc;
 	ProgressBar progressBar;
@@ -36,36 +36,22 @@ public class MisCursosDetalleFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		View view = inflater.inflate (R.layout.fragment_mis_cursos_detalle, container, false);
+		final View view = inflater.inflate (R.layout.fragment_mis_cursos_detalle, container, false);
 
-		scrolldebajo = view.findViewById(R.id.buttoniniciar);
+		botoniniciar = view.findViewById(R.id.buttoniniciar);
 
-		scrolldebajo.setOnClickListener(new View.OnClickListener() {
+		botoniniciar.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Toast.makeText(getActivity(), "hola", Toast.LENGTH_SHORT).show();
+				Toast.makeText(getActivity(), "Iniciando vídeo", Toast.LENGTH_SHORT).show();
 
-
+				inicioyoutube(view);
 
 			}
 		});
 
 
-	YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_player_view);
 
-		youTubePlayerView.initialize(new YouTubePlayerInitListener() {
-			@Override
-			public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
-				initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
-					@Override
-					public void onReady() {
-						initializedYouTubePlayer.loadVideo("v9oyNBBXDi8", 0);
-					}
-
-				});
-
-			}
-		}, true);
 
 
 		progressBar = view.findViewById(R.id.progressBar_horizontal);
@@ -216,10 +202,25 @@ public class MisCursosDetalleFragment extends Fragment {
 		});
 **/
 
-
-
-
 		return view;
+	}
+
+	public void inicioyoutube(View view) {
+		YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_player_view);
+		youTubePlayerView.initialize(new YouTubePlayerInitListener() {
+			@Override
+			public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
+				initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
+					@Override
+					public void onReady() {
+						initializedYouTubePlayer.loadVideo("v9oyNBBXDi8", 0);
+
+					}
+
+				});
+
+			}
+		}, true);
 	}
 
 }
