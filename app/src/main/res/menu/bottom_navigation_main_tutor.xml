@@ -4,39 +4,39 @@
 
 
     <item
-        android:id="@+id/nav_cursos_disponibles"
+        android:id="@+id/nav_perfil_tutor"
         android:enabled="true"
-        android:icon="@drawable/ic_home"
+        android:icon="@drawable/ic_action_name"
         android:title="Mi Perfil"
 
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/nav_mis_cursos"
+        android:id="@+id/nav_mis_cursos_tutor"
         android:enabled="true"
         android:icon="@drawable/ic_icono_doc"
         android:title="Mis Cursos"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/nav_mis_calificaciones"
+        android:id="@+id/nav_consultas_tutor"
         android:enabled="true"
-        android:icon="@drawable/ic_icono_calificaciones1"
+        android:icon="@drawable/ic_consulta"
         android:title="Consultas"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/nav_perfil"
+        android:id="@+id/nav_calificaciones_tutor"
         android:enabled="true"
 
-        android:icon="@drawable/ic_action_name"
+        android:icon="@drawable/ic_icono_calificaciones1"
         android:title="Calificaciones"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/actividades"
+        android:id="@+id/nav_actividades_tutor"
         android:enabled="true"
-        android:icon="@drawable/ic_action_name"
+        android:icon="@drawable/ic_icono_actividades"
         android:title="Actividades"
         app:showAsAction="ifRoom"/>
 

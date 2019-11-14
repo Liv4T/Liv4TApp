@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
@@ -24,14 +25,17 @@ public class PreLoginActivity extends AppCompatActivity  {
     public Button btnTutor, btnEstudiante;
 
     public String a;
+
+
+    private boolean clicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pre_login);
             new CheckInternetConnection(this).checkConnection();
             txtRegistrarse = findViewById(R.id.text_registro);
-            btnTutor = findViewById(R.id.btn_logintutor);
             btnEstudiante = findViewById(R.id.btn_loginestu);
+            btnTutor = findViewById(R.id.btn_logintutor);
             btnLogin = findViewById(R.id.btn_loginestu2);
             txtversion = findViewById(R.id.version);
             txtversion.setText("Versión: "+ BuildConfig.VERSION_NAME);
@@ -46,6 +50,10 @@ public class PreLoginActivity extends AppCompatActivity  {
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    if (clicked = true){
+                        Toast.makeText(PreLoginActivity.this, "hola", Toast.LENGTH_SHORT).show();
+                    }
                     Intent intent = new Intent(PreLoginActivity.this, InicioActivity.class);
                     startActivity(intent);
 
@@ -55,8 +63,15 @@ public class PreLoginActivity extends AppCompatActivity  {
             btnTutor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                  // / if (clicked){
+                      //  Toast.makeText(PreLoginActivity.this, "Presionó click la primera ves", Toast.LENGTH_SHORT).show();
+
+                    //}else{
                         Intent intent = new Intent(PreLoginActivity.this, InicioActivityTutor.class);
                         startActivity(intent);
+                    //}
+
+                      //  clicked = true;
                 }
             });
     }

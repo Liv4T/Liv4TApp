@@ -35,7 +35,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_account_circle_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/hardware/ic_keyboard_arrow_right_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -57,7 +57,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="imageAsset" value="C:\Users\programadorjr\Downloads\dolar.png" />
+                                      <entry key="assetType" value="IMAGE" />
+                                      <entry key="imageAsset" value="C:\Users\programadorjr\Downloads\bloquear.svg" />
+                                      <entry key="outputName" value="ic_cambiar_password" />
                                       <entry key="themeColor" value="960084" />
                                     </map>
                                   </option>
@@ -167,8 +169,9 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_close_black_24dp" />
-                            <entry key="sourceFile" value="C:\Users\programadorjr\Downloads\fwdiconosmenylogopngl4t\ICONO VIDEO.svg" />
+                            <entry key="assetSourceType" value="FILE" />
+                            <entry key="outputName" value="ic_icono_actividades" />
+                            <entry key="sourceFile" value="C:\Users\programadorjr\Downloads\fwdiconosmenylogopngl4t\ICONO ACTIVIDADES.svg" />
                           </map>
                         </option>
                       </PersistentState>

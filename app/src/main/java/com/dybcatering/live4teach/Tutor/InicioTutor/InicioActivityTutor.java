@@ -22,11 +22,12 @@ import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
 import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 public class InicioActivityTutor extends AppCompatActivity {
     public DatabaseHandler db;
-    TextView textCartItemCount, version;
+    TextView textCartItemCount;
 
     SessionManager sessionManager;
     @Override
@@ -40,7 +41,7 @@ public class InicioActivityTutor extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new CursosFragment()).commit();
+                    new PerfilFragmentTutor()).commit();
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
@@ -55,38 +56,40 @@ public class InicioActivityTutor extends AppCompatActivity {
                     Fragment selectedFragment = null;
 
                     switch (item.getItemId()) {
-                        case R.id.nav_cursos_disponibles:
-
-                            selectedFragment = new CursosFragment();
-                            break;
-                        case R.id.nav_mis_cursos:
-                         //   if (sessionManager.isLoggin()){
-                                selectedFragment = new MisCursosFragment();
-                           // }else{
-                            //    mostraralerta();
-                              //  selectedFragment = new CursosFragment();
-                          //  }
-                            break;
-                        case R.id.nav_mis_calificaciones:
+                        case R.id.nav_perfil_tutor:
                             if (sessionManager.isLoggin()){
 
-                                selectedFragment = new MisCalificacionesFragment();
+                              selectedFragment = new PerfilFragmentTutor();
+                            }else {
+                              mostraralerta();
+                            selectedFragment = new PerfilFragmentTutor();
+                            }
+                            break;
+                        case R.id.nav_mis_cursos_tutor:
+                               if (sessionManager.isLoggin()){
+                            selectedFragment = new MisCursosFragment();
+                             }else{
+                                mostraralerta();
+                              selectedFragment = new CursosFragment();
+                              }
+                            break;
+                        case R.id.nav_consultas_tutor:
+
+                            selectedFragment = new PerfilFragment();
+                            break;
+                        case R.id.nav_calificaciones_tutor:
+                             if (sessionManager.isLoggin()){
+
+                            selectedFragment = new MisCalificacionesFragment();
                             }else{
 
-                                mostraralerta();
-                                selectedFragment = new CursosFragment();
+                             mostraralerta();
+                            selectedFragment = new CursosFragment();
                             }
                             break;
-                        case R.id.nav_perfil:
-                            if (sessionManager.isLoggin()){
 
-                                selectedFragment = new PerfilFragment();
-                            }else {
-                                mostraralerta();
-                                selectedFragment = new CursosFragment();
-                            }
-                            break;
-                        case R.id.actividades:
+
+                        case R.id.nav_actividades_tutor:
                             selectedFragment = new CursosFragment();
                             break;
 
