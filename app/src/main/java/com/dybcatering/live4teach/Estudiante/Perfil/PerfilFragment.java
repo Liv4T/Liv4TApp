@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
@@ -80,7 +81,7 @@ public class PerfilFragment extends Fragment {
                // startActivity(intent);
             }
         });
-
+        Toast.makeText(getActivity(), "incio de perfil", Toast.LENGTH_SHORT).show();
 
         return myView;
     }

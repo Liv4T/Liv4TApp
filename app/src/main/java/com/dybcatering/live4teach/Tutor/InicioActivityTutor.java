@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.InicioTutor;
+package com.dybcatering.live4teach.Tutor;
 
 import android.app.Dialog;
 import android.content.Intent;

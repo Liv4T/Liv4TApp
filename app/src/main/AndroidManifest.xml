@@ -76,7 +76,7 @@
             android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity android:name=".Estudiante.SubPrimerActivity" />
 
-        <activity android:name=".Tutor.InicioTutor.InicioActivityTutor" />
+        <activity android:name=".Tutor.InicioActivityTutor" />
     </application>
 
 

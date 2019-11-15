@@ -126,23 +126,24 @@ public class PerfilFragmentTutor extends Fragment {
 
 
     private void swapFragment(){
-        Fragment someFragment = new ActualizarDatosFragmentTutor();
+        Fragment actualizarDatosFragment = new ActualizarDatosFragmentTutor();
 
         Bundle bundle = new Bundle();
         String nombre = tvname.getText().toString();
         bundle.putString("nombre", nombre);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+        transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
+		actualizarDatosFragment.setArguments(bundle);
+		transaction.commit();
 
     }
 
     private void cambiarContrasena(){
-        Fragment someFragment = new CambiarContrasenaFragmentTutor();
+        Fragment actualizarDatosFragment = new CambiarContrasenaFragmentTutor();
 
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+        transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }

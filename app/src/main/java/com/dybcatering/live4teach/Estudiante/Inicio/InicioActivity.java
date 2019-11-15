@@ -82,13 +82,13 @@ public class InicioActivity extends AppCompatActivity {
                             }
                             break;
                         case R.id.nav_perfil:
-                            if (sessionManager.isLoggin()){
+                            //if (sessionManager.isLoggin()){
 
                                 selectedFragment = new PerfilFragment();
-                            }else {
-                                mostraralerta();
-                                selectedFragment = new CursosFragment();
-                            }
+                            //}else {
+                              //  mostraralerta();
+                                //selectedFragment = new CursosFragment();
+                            //}
                             break;
                     }
 

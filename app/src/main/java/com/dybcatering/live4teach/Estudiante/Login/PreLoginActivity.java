@@ -11,10 +11,8 @@ import android.widget.Toast;
 import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
-import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.InicioTutor.InicioActivityTutor;
-import com.dybcatering.live4teach.Tutor.TutorPrincipalActivity;
+import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
 
 public class PreLoginActivity extends AppCompatActivity  {
 
