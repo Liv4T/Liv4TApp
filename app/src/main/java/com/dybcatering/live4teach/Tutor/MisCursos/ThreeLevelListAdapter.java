@@ -113,7 +113,7 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
 
-        final SecondLevelExpandableListView secondLevelELV = new SecondLevelExpandableListView(context);
+        final SecondLevelExpandableListViewTutor secondLevelELV = new SecondLevelExpandableListViewTutor(context);
 
         final String[] headers = secondLevel.get(groupPosition);
 
@@ -129,7 +129,7 @@ public class ThreeLevelListAdapter extends BaseExpandableListAdapter {
         }
 
 
-        secondLevelELV.setAdapter(new SecondLevelAdapter(context, headers, childData));
+        secondLevelELV.setAdapter(new SecondLevelAdapterTutor(context, headers, childData));
 
         secondLevelELV.setGroupIndicator(null);
 

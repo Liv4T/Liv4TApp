@@ -129,6 +129,7 @@ public class PerfilFragmentTutor extends Fragment {
         Fragment actualizarDatosFragment = new ActualizarDatosFragmentTutor();
 
         Bundle bundle = new Bundle();
+        tvname.setText("Daniel");
         String nombre = tvname.getText().toString();
         bundle.putString("nombre", nombre);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

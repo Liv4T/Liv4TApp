@@ -23,8 +23,7 @@ import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetCon
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 //import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones;
 //import com.dybcatering.live4teach.Estudiante.MisCertificados.MisCertificados;
-import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
-import com.dybcatering.live4teach.Tutor.MisCursos.MisCursos;
+import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutor;
 //import com.dybcatering.live4teach.Estudiante.Perfil.Perfil;
 import com.dybcatering.live4teach.R;
 import com.nex3z.notificationbadge.NotificationBadge;
@@ -76,7 +75,7 @@ public class TutorPrincipalActivity extends AppCompatActivity
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame
-                        , new MisCursos())
+                        , new MisCursosTutor())
                 .commit();
 
     }
@@ -169,7 +168,7 @@ public class TutorPrincipalActivity extends AppCompatActivity
         if (id == R.id.nav_perfil_tutor) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new MisCursosTutor())
                     .commit();
             //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
             // startActivity(intent);
@@ -178,7 +177,7 @@ public class TutorPrincipalActivity extends AppCompatActivity
         } else if (id == R.id.nav_mis_cursos_tutor) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new MisCursosTutor())
                     .commit();
 
 
@@ -186,14 +185,14 @@ public class TutorPrincipalActivity extends AppCompatActivity
 
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new MisCursosTutor())
                     .commit();
 
         }
            else if (id == R.id.nav_calificaciones) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new MisCursosTutor())
                     .commit();
 
             //  Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
@@ -201,13 +200,13 @@ public class TutorPrincipalActivity extends AppCompatActivity
         } else if (id == R.id.nav_certificados) {
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new MisCursosTutor())
                     .commit();
 
         } else if (id == R.id.nav_slideshow){
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new MisCursosTutor())
                     .commit();
            //Intent intent = new Intent(PrincipalActivity.this, SubPrimerActivity.class);
            //startActivity(intent);

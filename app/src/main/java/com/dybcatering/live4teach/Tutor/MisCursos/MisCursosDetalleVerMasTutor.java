@@ -5,7 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.dybcatering.live4teach.R;
 
-public class MisCursosDetalleVerMas extends AppCompatActivity {
+public class MisCursosDetalleVerMasTutor extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

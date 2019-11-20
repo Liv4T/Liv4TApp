@@ -32,7 +32,7 @@ public class MisActividades extends Fragment implements NavigationView.OnNavigat
             public void onClick(View v) {
                // fragmentManager.beginTransaction()
                  //       .replace(R.id.content_frame
-                   //             , new MisCursos())
+                   //             , new MisCursosTutor())
                      //   .commit();
 
                 Intent iniciar = new Intent(getActivity(), MisActividadesDetalle.class);

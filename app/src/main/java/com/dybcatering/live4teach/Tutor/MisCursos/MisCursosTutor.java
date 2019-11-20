@@ -14,7 +14,7 @@ import android.widget.Button;
 
 import com.dybcatering.live4teach.R;
 
-public class MisCursos extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
+public class MisCursosTutor extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     View myView;
     Button button;
 
@@ -29,7 +29,7 @@ public class MisCursos extends Fragment implements NavigationView.OnNavigationIt
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MisCursosDetalle.class);
+                Intent intent = new Intent(getActivity(), MisCursosDetalleTutor.class);
                 startActivity(intent);
 
             }

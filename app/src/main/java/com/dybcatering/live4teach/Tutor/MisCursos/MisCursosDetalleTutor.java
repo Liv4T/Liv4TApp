@@ -20,7 +20,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
-public class MisCursosDetalle extends YouTubeBaseActivity {
+public class MisCursosDetalleTutor extends YouTubeBaseActivity {
     private ExpandableListView expandableListView;
     private int progressStatus = 0;
     YouTubePlayerView youTubePlayerView;
@@ -29,7 +29,7 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
     YouTubePlayer.OnInitializedListener onInitializedListener;
     private Handler handler = new Handler();
 
-    private static final String TAG = "MisCursosDetalle";
+    private static final String TAG = "MisCursosDetalleTutor";
     String[] parent = new String[]{"Primera unidad", "Segunda Unidad", "Tercera Unidad", "Cuarta Unidad"};
     String[] q1 = new String[]{"Requisitos para realizar el curso","Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};
     String[] q2 = new String[]{"Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};

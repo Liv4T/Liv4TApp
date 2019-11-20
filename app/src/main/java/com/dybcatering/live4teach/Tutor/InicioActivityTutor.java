@@ -57,35 +57,35 @@ public class InicioActivityTutor extends AppCompatActivity {
 
                     switch (item.getItemId()) {
                         case R.id.nav_perfil_tutor:
-                            if (sessionManager.isLoggin()){
+                      //     if (sessionManager.isLoggin()){
 
                               selectedFragment = new PerfilFragmentTutor();
-                            }else {
-                              mostraralerta();
-                            selectedFragment = new PerfilFragmentTutor();
-                            }
+                        //    }else {
+                          //    mostraralerta();
+                           // selectedFragment = new PerfilFragmentTutor();
+                            //}
                             break;
                         case R.id.nav_mis_cursos_tutor:
-                               if (sessionManager.isLoggin()){
+                          //     if (sessionManager.isLoggin()){
                             selectedFragment = new MisCursosFragment();
-                             }else{
-                                mostraralerta();
-                              selectedFragment = new CursosFragment();
-                              }
+                           //  }else{
+                            //    mostraralerta();
+                             // selectedFragment = new CursosFragment();
+                             // }
                             break;
                         case R.id.nav_consultas_tutor:
 
                             selectedFragment = new PerfilFragment();
                             break;
                         case R.id.nav_calificaciones_tutor:
-                             if (sessionManager.isLoggin()){
+                             //if (sessionManager.isLoggin()){
 
                             selectedFragment = new MisCalificacionesFragment();
-                            }else{
+                            //}else{
 
-                             mostraralerta();
-                            selectedFragment = new CursosFragment();
-                            }
+                            // mostraralerta();
+                            //selectedFragment = new CursosFragment();
+                            //}
                             break;
 
 

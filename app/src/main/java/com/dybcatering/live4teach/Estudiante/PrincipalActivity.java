@@ -206,7 +206,7 @@ public class PrincipalActivity extends AppCompatActivity
 
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame
-                            , new MisCursos())
+                            , new MisCursosTutor())
                     .commit();
 
         }*/

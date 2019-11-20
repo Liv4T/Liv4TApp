@@ -43,7 +43,7 @@ public class MisCursosDetalle extends YouTubeBaseActivity {
     YouTubePlayer.OnInitializedListener onInitializedListener;
     private Handler handler = new Handler();
 
-    private static final String TAG = "MisCursosDetalle";
+    private static final String TAG = "MisCursosDetalleTutor";
     String[] parent = new String[]{"Primera unidad", "Segunda Unidad", "Tercera Unidad", "Cuarta Unidad"};
     String[] q1 = new String[]{"Requisitos para realizar el curso","Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};
     String[] q2 = new String[]{"Primer Tema", "Segundo Tema", "Tercer Tema", "Cuarto Tema"};

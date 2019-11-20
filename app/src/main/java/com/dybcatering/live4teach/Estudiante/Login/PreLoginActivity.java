@@ -54,6 +54,7 @@ public class PreLoginActivity extends AppCompatActivity  {
                     }
                     Intent intent = new Intent(PreLoginActivity.this, InicioActivity.class);
                     startActivity(intent);
+                    finish();
 
                 }
             });
@@ -67,6 +68,7 @@ public class PreLoginActivity extends AppCompatActivity  {
                     //}else{
                         Intent intent = new Intent(PreLoginActivity.this, InicioActivityTutor.class);
                         startActivity(intent);
+                        finish();
                     //}
 
                       //  clicked = true;

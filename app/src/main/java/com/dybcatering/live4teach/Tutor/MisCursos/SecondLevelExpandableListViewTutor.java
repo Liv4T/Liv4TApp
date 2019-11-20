@@ -21,9 +21,9 @@ import android.widget.ExpandableListView;
  * Created by serajam on 10/22/2017.
  */
 
-public class SecondLevelExpandableListView extends ExpandableListView {
+public class SecondLevelExpandableListViewTutor extends ExpandableListView {
 
-    public SecondLevelExpandableListView(Context context) {
+    public SecondLevelExpandableListViewTutor(Context context) {
         super(context);
     }
 
