@@ -48,10 +48,6 @@ public class PreLoginActivity extends AppCompatActivity  {
             btnLogin.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    if (clicked = true){
-                        Toast.makeText(PreLoginActivity.this, "hola", Toast.LENGTH_SHORT).show();
-                    }
                     Intent intent = new Intent(PreLoginActivity.this, InicioActivity.class);
                     startActivity(intent);
                     finish();

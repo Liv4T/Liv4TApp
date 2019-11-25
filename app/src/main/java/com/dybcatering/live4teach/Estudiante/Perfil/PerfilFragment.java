@@ -81,8 +81,6 @@ public class PerfilFragment extends Fragment {
                // startActivity(intent);
             }
         });
-        Toast.makeText(getActivity(), "incio de perfil", Toast.LENGTH_SHORT).show();
-
         return myView;
     }
 

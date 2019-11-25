@@ -20,6 +20,7 @@ import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
+import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutor;
 import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.R;
@@ -92,7 +93,7 @@ public class InicioActivityTutor extends AppCompatActivity {
 
 
                         case R.id.nav_actividades_tutor:
-                            selectedFragment = new CursosFragment();
+                            selectedFragment = new MisActividadesTutorFragment();
                             break;
 
                     }
