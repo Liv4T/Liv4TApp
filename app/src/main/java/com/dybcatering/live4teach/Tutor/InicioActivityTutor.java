@@ -20,8 +20,10 @@ import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
+import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutor;
 import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Calificaciones.CalificacionesTutorFragment;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
@@ -67,7 +69,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                             break;
                         case R.id.nav_mis_cursos_tutor:
                           //     if (sessionManager.isLoggin()){
-                            selectedFragment = new MisCursosFragment();
+                            selectedFragment = new MisCursosTutor();
                            //  }else{
                             //    mostraralerta();
                              // selectedFragment = new CursosFragment();
@@ -80,7 +82,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                         case R.id.nav_calificaciones_tutor:
                              //if (sessionManager.isLoggin()){
 
-                            selectedFragment = new MisCalificacionesFragment();
+                            selectedFragment = new CalificacionesTutorFragment();
                             //}else{
 
                             // mostraralerta();

@@ -14,7 +14,7 @@
             android:orientation="vertical"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:id="@+id/layo_ini_mis_cursos"
+            android:id="@+id/layo_ini"
             android:background="#10000000">
 
 
@@ -27,9 +27,9 @@
 
 
                 <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
 
                     <android.support.v7.widget.CardView
                         android:layout_width="match_parent"
@@ -80,7 +80,35 @@
                                     android:textSize="10sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/estado_cursoquim"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Estado curso"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="Inactivo"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -90,7 +118,7 @@
                                 android:paddingLeft="2dp"
                                 android:textSize="15sp" />
 
-                            <!--TextView
+                            <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/centurygothic"
@@ -98,38 +126,7 @@
                                 android:textColor="#000"
                                 android:paddingLeft="2dp"
                                 android:textSize="15sp"
-                                android:textStyle="bold" /-->
-
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:gravity="center_vertical"
-                                android:orientation="horizontal">
-
-                                <TextView
-                                    android:id="@+id/estado_curso"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:fontFamily="@font/centurygothic"
-                                    android:gravity="center_vertical|left"
-                                    android:text="Estado curso"
-                                    android:paddingLeft="2dp"
-                                    android:textColor="#000"
-                                    android:textSize="20sp"
-                                    android:textStyle="bold" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_weight="1"
-                                    android:fontFamily="@font/centurygothic"
-                                    android:gravity="center_vertical|right"
-                                    android:text="Subido"
-                                    android:textColor="@color/rosa"
-                                    android:textSize="10sp"
-                                    android:textStyle="bold" />
-                            </LinearLayout>
+                                android:textStyle="bold" />
 
                             <TextView
                                 android:layout_width="match_parent"
@@ -140,6 +137,8 @@
                                 android:textSize="15sp"
                                 android:paddingLeft="2dp"
                                 />
+
+
 
                             <Button
                                 android:id="@+id/btnQuimica"
@@ -205,7 +204,35 @@
                                     android:textSize="10sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/estado_cursoqu"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Estado curso"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="Publicado"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -232,6 +259,15 @@
                                 android:text="Diseño digital"
                                 android:textColor="@color/color"
                                 android:textSize="15sp" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Total Participantes: "
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
 
                             <Button
                                 android:layout_width="100dp"
@@ -294,7 +330,35 @@
                                     android:textSize="10sp"
                                     android:textStyle="bold" />
                             </LinearLayout>
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+                                <TextView
+                                    android:id="@+id/estado_curoquim"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|left"
+                                    android:text="Estado curso"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
 
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:gravity="center_vertical|right"
+                                    android:text="Subido"
+                                    android:textColor="@color/rosa"
+                                    android:textSize="10sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -682,7 +746,14 @@
                                 android:text="Química Orgánica II"
                                 android:textColor="@color/color"
                                 android:textSize="15sp" />
-
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Total Participantes: "
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
                             <Button
 
                                 android:layout_width="100dp"
@@ -734,6 +805,36 @@
                                     android:textColor="#000"
                                     android:textSize="20sp"
                                     android:textStyle="bold" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+                                    <TextView
+                                        android:id="@+id/estado_cursoqu"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/centurygothic"
+                                        android:gravity="center_vertical|left"
+                                        android:text="Estado curso"
+                                        android:paddingLeft="2dp"
+                                        android:textColor="#000"
+                                        android:textSize="15sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="match_parent"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/centurygothic"
+                                        android:gravity="center_vertical|right"
+                                        android:text="Publicado"
+                                        android:textColor="@color/rosa"
+                                        android:textSize="10sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -881,7 +982,7 @@
 
                     </android.support.v7.widget.CardView>
 
-                    </LinearLayout>
+                </LinearLayout>
 
 
             </ScrollView>

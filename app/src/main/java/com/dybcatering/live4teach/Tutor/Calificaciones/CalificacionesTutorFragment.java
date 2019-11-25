@@ -1,27 +1,28 @@
-package com.dybcatering.live4teach.Tutor.MisCursos;
+package com.dybcatering.live4teach.Tutor.Calificaciones;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.dybcatering.live4teach.R;
 
-public class MisCursosTutor extends Fragment {
 
-	View view;
+public class CalificacionesTutorFragment extends Fragment {
+	View myView;
 
+	Button button;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
-
-		view = inflater.inflate(R.layout.fragment_mis_cursos_tutor, container, false);
 		// Inflate the layout for this fragment
-		return  view;//inflater.inflate(R.layout.fragment_mis_cursos_tutor, container, false);
-	}
+		myView = inflater.inflate(R.layout.fragment_calificaciones_tutor, container, false);
 
+
+
+		return myView;
+	}
 
 }

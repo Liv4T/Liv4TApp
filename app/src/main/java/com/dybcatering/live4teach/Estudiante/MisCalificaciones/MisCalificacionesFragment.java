@@ -5,11 +5,13 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetalleFragment;
 import com.dybcatering.live4teach.R;
 
 
@@ -30,11 +32,18 @@ public class MisCalificacionesFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                Intent nuevo = new Intent(getActivity(),MisCalificacionesDetalle.class);
-                startActivity(nuevo);
+                iniciartransicion();
             }
         });
         return myView;
+    }
+
+    private void iniciartransicion(){
+        Fragment someFragment = new MisCalificacionesDetalleFragment();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 
 }

@@ -13,21 +13,46 @@
 
 
 
-        <com.daimajia.slider.library.SliderLayout
-        android:id="@+id/slider_primer_curso"
+    <RelativeLayout
+        android:id="@+id/layout_slider_primer_curso"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:layout_margin="20dp"
-        app:auto_cycle="true"
-        android:background="#424242"
-        app:pager_animation="Accordion"
-        app:pager_animation_span="1100" />
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <com.daimajia.slider.library.SliderLayout
+            android:id="@+id/slider_primer_curso"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_margin="20dp"
+            app:auto_cycle="true"
+            android:background="#424242"
+            app:pager_animation="Accordion"
+            app:pager_animation_span="1100" />
+
+
+        <TextView
+            android:id="@+id/tab_counter_text"
+            android:text="Precio: $80.000"
+            android:layout_alignRight="@id/slider_primer_curso"
+            android:layout_alignBottom="@id/slider_primer_curso"
+            android:layout_width="80dp"
+            android:layout_margin="20dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/color"
+            android:fontFamily="@font/centurygothic"
+            android:textSize="15sp" />
+
+    </RelativeLayout>
+
+
 
     <TextView
         android:id="@+id/txtNombreCurso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/slider_primer_curso"
+        android:layout_below="@id/layout_slider_primer_curso"
         android:fontFamily="@font/centurygothic"
         android:layout_margin="5dp"
         android:textColor="@color/color"
@@ -41,10 +66,10 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:layout_marginBottom="20dp"
+        android:textColor="@android:color/black"
         android:fontFamily="@font/centurygothic"
         android:textStyle="bold"
         android:textSize="20sp"
-        android:textColor="@android:color/black"
         android:layout_below="@id/txtNombreCurso"
         android:text="INTRODUCCIÓN" />
     <ExpandableListView

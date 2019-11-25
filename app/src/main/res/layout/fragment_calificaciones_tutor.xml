@@ -1,0 +1,569 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Tutor.Calificaciones.CalificacionesTutorFragment">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:id="@+id/layo_ini"
+            android:background="#10000000">
+
+            <ScrollView
+                android:id="@+id/scrollView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:paddingTop="20dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:id="@+id/micalificacionCardprimero"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:background="#10000000">
+
+
+                            <ImageView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@drawable/ic_icono_video" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:layout_gravity="left"
+                                    android:text="Química"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="18sp" />
+
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Categoria: Química Orgánica II"
+                                android:textColor="@color/colortexto"
+                                android:paddingLeft="2dp"
+                                android:textSize="12sp" />
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Fecha de Calificacion: 30 de Septiembre"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Estado: Pendiente de calificacion"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:id="@+id/micalificacionCardsegundo"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:background="#10000000">
+
+
+                            <ImageView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@drawable/ic_icono_video" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:layout_gravity="left"
+                                    android:text="Diseño Grafico"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="18sp" />
+
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Categoria: Marketing Digital"
+                                android:textColor="@color/colortexto"
+                                android:paddingLeft="2dp"
+                                android:textSize="12sp" />
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Fecha de Calificacion: 30 de Septiembre"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Estado: Pendiente de calificacion"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:id="@+id/micalificacionCardtercero"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:background="#10000000">
+
+
+                            <ImageView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@drawable/ic_icono_video" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:layout_gravity="left"
+                                    android:text="Diseño Industrial"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="18sp" />
+
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Categoria: Historia del Diseño Industrial"
+                                android:textColor="@color/colortexto"
+                                android:paddingLeft="2dp"
+                                android:textSize="12sp" />
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Fecha de Calificacion: 30 de Septiembre"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Estado: Pendiente de calificacion"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:id="@+id/micalificacionCardcuarto"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:background="#10000000">
+
+
+                            <ImageView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@drawable/ic_icono_video" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:layout_gravity="left"
+                                    android:text="Química"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="18sp" />
+
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Categoria: Química Orgánica II"
+                                android:textColor="@color/colortexto"
+                                android:paddingLeft="2dp"
+                                android:textSize="12sp" />
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Fecha de Calificacion: 30 de Septiembre"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Estado: Pendiente de calificacion"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:id="@+id/micalificacionCardquinto"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:background="#10000000">
+
+
+                            <ImageView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@drawable/ic_icono_video" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:layout_gravity="left"
+                                    android:text="Química"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="18sp" />
+
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Categoria: Química Orgánica II"
+                                android:textColor="@color/colortexto"
+                                android:paddingLeft="2dp"
+                                android:textSize="12sp" />
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Fecha de Calificacion: 30 de Septiembre"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Estado: Pendiente de calificacion"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="8dp"
+                        android:background="#10000000"
+                        android:paddingTop="20dp"
+                        android:paddingBottom="20dp"
+                        android:id="@+id/micalificacionCardsexto"
+                        app:cardCornerRadius="8dp">
+
+                        <LinearLayout
+                            android:layout_width="20dp"
+                            android:layout_height="match_parent"
+                            android:background="#10000000">
+
+
+                            <ImageView
+                                android:layout_marginTop="8dp"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:background="@drawable/ic_icono_video" />
+                        </LinearLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="#10000000"
+                            android:orientation="vertical"
+                            android:layout_marginLeft="20dp"
+                            android:paddingBottom="5dp">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:fontFamily="@font/centurygothic"
+                                    android:layout_gravity="left"
+                                    android:text="Química"
+                                    android:paddingLeft="2dp"
+                                    android:textColor="#000"
+                                    android:textSize="18sp" />
+
+
+
+
+                            </LinearLayout>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Categoria: Química Orgánica II"
+                                android:textColor="@color/colortexto"
+                                android:paddingLeft="2dp"
+                                android:textSize="12sp" />
+
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Fecha de Calificacion: 30 de Septiembre"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp"/>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="Estado: Pendiente de calificacion"
+                                android:textColor="@color/colortexto"
+                                android:textSize="12sp"
+                                android:paddingLeft="2dp" />
+
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+
+                </LinearLayout>
+
+
+
+
+            </ScrollView>
+
+        </LinearLayout>
+
+
+
+
+    </FrameLayout>
+
+</FrameLayout>

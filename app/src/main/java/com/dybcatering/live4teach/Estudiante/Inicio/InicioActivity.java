@@ -72,14 +72,14 @@ public class InicioActivity extends AppCompatActivity {
                           //  }
                             break;
                         case R.id.nav_mis_calificaciones:
-                            if (sessionManager.isLoggin()){
+                            //if (sessionManager.isLoggin()){
 
                                 selectedFragment = new MisCalificacionesFragment();
-                            }else{
+                            //}else{
 
-                                mostraralerta();
-                                selectedFragment = new CursosFragment();
-                            }
+                              //  mostraralerta();
+                               // selectedFragment = new CursosFragment();
+                           // }
                             break;
                         case R.id.nav_perfil:
                             //if (sessionManager.isLoggin()){
