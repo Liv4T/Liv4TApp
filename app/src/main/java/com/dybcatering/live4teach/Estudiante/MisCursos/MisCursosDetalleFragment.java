@@ -48,9 +48,9 @@ public class MisCursosDetalleFragment extends Fragment {
 
 		final View view = inflater.inflate (R.layout.fragment_mis_cursos_detalle, container, false);
 
-		//botoniniciar = view.findViewById(R.id.buttoniniciar);
+		botoniniciar = view.findViewById(R.id.buttoniniciar);
 
-/*		botoniniciar.setOnClickListener(new View.OnClickListener() {
+		botoniniciar.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Toast.makeText(getActivity(), "Iniciando vídeo", Toast.LENGTH_SHORT).show();
@@ -61,12 +61,11 @@ public class MisCursosDetalleFragment extends Fragment {
 	});
 
 
-		sectionsPageAdapter = new SectionsPageAdapter(getFragmentManager());
-		setupViewPager(mViewPager);
+		//sectionsPageAdapter = new SectionsPageAdapter(getFragmentManager());
+		//setupViewPager(mViewPager);
 
-		TabLayout tabLayout = view.findViewById(R.id.tabs);
-		tabLayout.setupWithViewPager(mViewPager);
-*/
+//		TabLayout tabLayout = view.findViewById(R.id.tabs);
+	//	tabLayout.setupWithViewPager(mViewPager);
 		return view;
 	}
 
@@ -89,12 +88,12 @@ public class MisCursosDetalleFragment extends Fragment {
 	}
 
 
-	private void setupViewPager (ViewPager viewPager){
+	/*private void setupViewPager (ViewPager viewPager){
 		SectionsPageAdapter adapter = new SectionsPageAdapter(getFragmentManager());
 		adapter.addFragment(new Tab1Fragment(), "TAB1");
 		//adapter.addFragment(new Tab2Fragment(), "TAB2");
 	//	adapter.addFragment(new Tab3Fragment(), "TAB3");
 		viewPager.setAdapter(adapter);
-	}
+	}*/
 
 }

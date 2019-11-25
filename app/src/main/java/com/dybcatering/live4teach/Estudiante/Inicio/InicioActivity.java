@@ -90,6 +90,9 @@ public class InicioActivity extends AppCompatActivity {
                                 //selectedFragment = new CursosFragment();
                             //}
                             break;
+                        default:
+                            selectedFragment = new MisCursosFragment();
+                            break;
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
