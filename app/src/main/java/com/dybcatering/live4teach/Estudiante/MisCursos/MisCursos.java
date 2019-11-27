@@ -29,8 +29,8 @@ public class MisCursos extends Fragment implements NavigationView.OnNavigationIt
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), MisCursosDetalle.class);
-                startActivity(intent);
+               // Intent intent = new Intent(getActivity(), MisCursosDetalle.class);
+               // startActivity(intent);
 
             }
         });

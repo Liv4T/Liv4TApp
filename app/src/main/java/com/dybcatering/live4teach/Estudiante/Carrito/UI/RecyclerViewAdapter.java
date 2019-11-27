@@ -79,6 +79,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             dateAdded = (TextView) view.findViewById(R.id.dateAdded);
             image = view.findViewById(R.id.imagenpop);
 
+
+            groceryItemName.setMaxLines(5);
             //editButton = (Button) view.findViewById(R.id.editButton);
             deleteButton = (Button) view.findViewById(R.id.deleteButton);
 

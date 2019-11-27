@@ -61,11 +61,12 @@ public class MisCursosDetalleFragment extends Fragment {
 	});
 
 
-		//sectionsPageAdapter = new SectionsPageAdapter(getFragmentManager());
-		//setupViewPager(mViewPager);
+		sectionsPageAdapter = new SectionsPageAdapter(getFragmentManager());
+		setupViewPager(mViewPager);
 
-//		TabLayout tabLayout = view.findViewById(R.id.tabs);
-	//	tabLayout.setupWithViewPager(mViewPager);
+		TabLayout tabLayout = view.findViewById(R.id.tabs);
+		tabLayout.setupWithViewPager(mViewPager);
+*/
 		return view;
 	}
 
@@ -88,12 +89,12 @@ public class MisCursosDetalleFragment extends Fragment {
 	}
 
 
-	/*private void setupViewPager (ViewPager viewPager){
+	private void setupViewPager (ViewPager viewPager){
 		SectionsPageAdapter adapter = new SectionsPageAdapter(getFragmentManager());
 		adapter.addFragment(new Tab1Fragment(), "TAB1");
 		//adapter.addFragment(new Tab2Fragment(), "TAB2");
 	//	adapter.addFragment(new Tab3Fragment(), "TAB3");
 		viewPager.setAdapter(adapter);
-	}*/
+	}
 
 }

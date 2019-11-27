@@ -100,12 +100,12 @@ public class PrimerCurso extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.mybutton) {
-            sessionManager = new SessionManager(this);
-            if (sessionManager.isLoggin()){
+          //  sessionManager = new SessionManager(this);
+           // if (sessionManager.isLoggin()){
                 saveGroceryToDB();
-            }else{
-                alert();
-            }
+           // }else{
+             //   alert();
+           // }
         }
         return super.onOptionsItemSelected(item);
     }
