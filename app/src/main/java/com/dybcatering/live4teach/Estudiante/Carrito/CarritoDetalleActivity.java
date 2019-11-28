@@ -5,20 +5,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.dybcatering.live4teach.R;
+import com.squareup.picasso.Callback;
+import com.squareup.picasso.Picasso;
 
 public class CarritoDetalleActivity extends AppCompatActivity {
-    private TextView itemName;
-    private TextView quantity;
-    private TextView dateAdded;
-    private TextView imageName;
-    private TextView tachado;
+    private TextView itemName, quantity, dateAdded, imageName, tachado;
     private int groceryId;
     private Button btnComprar;
 
+    private ImageView imgcarritodetalle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +28,7 @@ public class CarritoDetalleActivity extends AppCompatActivity {
         dateAdded = (TextView) findViewById(R.id.dateAddedDet);
         imageName = findViewById(R.id.quantityImage);
         tachado = findViewById(R.id.tachado);
+        imgcarritodetalle = findViewById(R.id.imgcarritodetalle);
      //   btnComprar = findViewById(R.id.comprarButton);
 
 		tachado.setPaintFlags(tachado.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
@@ -38,7 +39,13 @@ public class CarritoDetalleActivity extends AppCompatActivity {
         if (bundle != null) {
       //      itemName.setText(bundle.getString("name"));
         //    quantity.setText(bundle.getString("quantity"));
-          //  imageName.setText(bundle.getString("imagen"));
+            Picasso.with(this).load(bundle.getString("imagen"))
+                    .placeholder(R.drawable.internetconnection).fit().into(imgcarritodetalle, new Callback() {
+                @Override public    void onSuccess() {}
+                @Override public void onError() {}
+            });
+
+           // imageName.setText(bundle.getString("imagen"));
             dateAdded.setText(bundle.getString("date"));
             groceryId = bundle.getInt("id");
         }

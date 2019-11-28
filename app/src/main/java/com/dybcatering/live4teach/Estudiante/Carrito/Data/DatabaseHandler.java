@@ -61,7 +61,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(KEY_GROCERY_ITEM, grocery.getName());
         values.put(Constants.KEY_QTY_NUMBER, grocery.getQuantity());
-        values.put(Constants.KEY_IMAGEN, grocery.getQuantity());
+        values.put(Constants.KEY_IMAGEN, grocery.getImagen());
         values.put(Constants.KEY_DATE_NAME, java.lang.System.currentTimeMillis());
 
         //Insert the row

@@ -14,12 +14,21 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:padding="5dp">
-            <ImageView
-                android:id="@+id/imgcarritodetalle"
+            <TextView
+                android:id="@+id/dateAddedDet"
                 android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_margin="10dp"
-                android:layout_height="130dp"
-                android:background="@drawable/marketing"/>
+                android:text="Date:"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+            <ImageView
+                android:layout_below="@+id/dateAddedDet"
+                android:id="@+id/imgcarritodetalle"
+                android:layout_width="match_parent"
+                android:layout_margin="10dp"
+                android:layout_height="150dp" />
             <TextView
                 android:layout_margin="10dp"
                 android:layout_below="@+id/imgcarritodetalle"
@@ -34,8 +43,8 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="5dp"
-                android:layout_marginRight="3dp"
-                android:layout_marginLeft="3dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"
                 android:background="@android:color/darker_gray"
                 android:layout_below="@id/itemNameDet"
                 />
@@ -69,6 +78,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:layout_margin="10dp"
                 android:layout_below="@+id/MyRating">
 
                 <TextView
@@ -77,6 +87,7 @@
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="$189.000 /"
+                    android:layout_margin="10dp"
                     android:textStyle="bold"
                     android:fontFamily="@font/centurygothic"
                     android:textSize="30sp"
@@ -86,13 +97,13 @@
                 <TextView
                     android:id="@+id/tachado"
                     android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="$ 250.0000"
                     android:layout_gravity="right"
-                    android:textStyle="bold"
+                    android:layout_weight="1"
                     android:fontFamily="@font/centurygothic"
-                    />
+                    android:text="$ 250.0000"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
 
@@ -110,104 +121,8 @@
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/ovalyellow"/>
 
-
-            <TextView
-                android:id="@+id/dateAddedDet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/comprar"
-                android:text="Date:"
-                android:textSize="14sp"
-                android:textStyle="italic" />
-
-
-
         </RelativeLayout>
 
     </ScrollView>
-
-
-
-    <!--android.support.v7.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        tools:ignore="MissingConstraints">
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:padding="5dp">
-            <ImageView
-                android:id="@+id/imgcarritodetalle"
-                android:layout_width="match_parent"
-                android:layout_height="30dp" />
-            <TextView
-                android:layout_below="@+id/imgcarritodetalle"
-                android:id="@+id/itemNameDet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Textview"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/quantityDet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/itemNameDet"
-                android:text="Qty:"
-                android:textSize="14sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/quantityImage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/quantityDet"
-                android:text="Imagen"
-                android:textSize="14sp"
-                android:textStyle="italic" />
-
-            <TextView
-                android:id="@+id/dateAddedDet"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/quantityImage"
-                android:text="Date:"
-                android:textSize="14sp"
-                android:textStyle="italic" />
-
-
-            <TableRow
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@id/dateAddedDet"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="15dp"
-                android:orientation="horizontal">
-
-
-
-                <Button
-                    android:id="@+id/comprarButton"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_margin="10dp"
-                    android:background="@drawable/ic_comprar"/>
-
-
-            </TableRow>
-
-        </RelativeLayout>
-
-
-    </android.support.v7.widget.CardView-->
-
 
 </android.support.constraint.ConstraintLayout>
