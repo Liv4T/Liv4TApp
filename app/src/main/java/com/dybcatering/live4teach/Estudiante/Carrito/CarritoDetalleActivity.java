@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Estudiante.Carrito;
 
+import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,7 @@ public class CarritoDetalleActivity extends AppCompatActivity {
     private TextView quantity;
     private TextView dateAdded;
     private TextView imageName;
+    private TextView tachado;
     private int groceryId;
     private Button btnComprar;
 
@@ -25,23 +27,27 @@ public class CarritoDetalleActivity extends AppCompatActivity {
         quantity = (TextView) findViewById(R.id.quantityDet);
         dateAdded = (TextView) findViewById(R.id.dateAddedDet);
         imageName = findViewById(R.id.quantityImage);
-        btnComprar = findViewById(R.id.comprarButton);
+        tachado = findViewById(R.id.tachado);
+     //   btnComprar = findViewById(R.id.comprarButton);
+
+		tachado.setPaintFlags(tachado.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+
 
         Bundle bundle = getIntent().getExtras();
 
         if (bundle != null) {
-            itemName.setText(bundle.getString("name"));
-            quantity.setText(bundle.getString("quantity"));
-            imageName.setText(bundle.getString("imagen"));
+      //      itemName.setText(bundle.getString("name"));
+        //    quantity.setText(bundle.getString("quantity"));
+          //  imageName.setText(bundle.getString("imagen"));
             dateAdded.setText(bundle.getString("date"));
             groceryId = bundle.getInt("id");
         }
 
-        btnComprar.setOnClickListener(new View.OnClickListener() {
+       /* btnComprar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(CarritoDetalleActivity.this, "prueba toast ", Toast.LENGTH_SHORT).show();
             }
-        });
+        });*/
     }
 }
