@@ -21,6 +21,7 @@ import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
+import com.dybcatering.live4teach.Tutor.Calificaciones.CalificacionesTutorFragment;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
@@ -80,7 +81,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                         case R.id.nav_calificaciones_tutor:
                              //if (sessionManager.isLoggin()){
 
-                            selectedFragment = new MisCalificacionesFragment();
+                            selectedFragment = new CalificacionesTutorFragment();
                             //}else{
 
                             // mostraralerta();
