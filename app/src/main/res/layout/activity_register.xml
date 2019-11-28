@@ -50,7 +50,9 @@
                         android:layout_height="wrap_content"
                         android:hint="Nombre"
                         android:inputType="textPersonName"
-                        android:textColor="@color/colortexto" />
+                        android:textColor="@color/colortexto"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -64,7 +66,9 @@
                         android:layout_height="wrap_content"
                         android:hint="Apellido"
                         android:inputType="textPersonName"
-                        android:textColor="@color/colortexto" />
+                        android:textColor="@color/colortexto"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -78,7 +82,9 @@
                         android:layout_height="wrap_content"
                         android:hint="Correo Electrónico"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/colortexto" />
+                        android:textColor="@color/colortexto"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -92,7 +98,9 @@
                         android:layout_height="wrap_content"
                         android:hint="Nombre de Usuario"
                         android:inputType="textPersonName"
-                        android:textColor="@color/colortexto" />
+                        android:textColor="@color/colortexto"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"/>
                 </android.support.design.widget.TextInputLayout>
 
                 <android.support.design.widget.TextInputLayout
@@ -103,8 +111,8 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-
-
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"
                         android:id="@+id/txtPassword"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -123,8 +131,8 @@
                     app:passwordToggleEnabled="true">
 
                     <EditText
-
-
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"
                         android:id="@+id/txtPasswordConfirm"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -146,17 +154,22 @@
                         android:layout_height="wrap_content"
                         android:hint="Teléfono"
                         android:inputType="number"
-                        android:textColor="@color/colortexto" />
+                        android:textColor="@color/colortexto"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"/>
                 </android.support.design.widget.TextInputLayout>
 
 
                 <Button
+                    android:layout_marginTop="20sp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ovalorange"
                     android:text="Registrarme"
                     android:id="@+id/btn_registrarse"
-                    android:textColor="@color/white"/>
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/centurygothic"/>
             </LinearLayout>
         </ScrollView>
 

@@ -16,7 +16,7 @@ import android.view.ViewGroup;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursos;
 import com.dybcatering.live4teach.R;
 
-public class MisActividades extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
+public class MisActividades extends Fragment {
     View myView;
     CardView cardView;
 
@@ -44,10 +44,5 @@ public class MisActividades extends Fragment implements NavigationView.OnNavigat
 
 
         return myView;
-    }
-
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        return false;
     }
 }

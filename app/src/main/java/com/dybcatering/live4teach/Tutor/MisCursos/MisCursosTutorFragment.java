@@ -1,50 +1,45 @@
-package com.dybcatering.live4teach.Tutor.Actividades;
+package com.dybcatering.live4teach.Tutor.MisCursos;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
+import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesDetalleFragment;
+import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetalleFragment;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Calificaciones.CalificacionesDetalleTutorFragment;
 
+public class MisCursosTutorFragment extends Fragment {
 
-public class MisActividadesTutorFragment extends Fragment {
-
-	View view;
-
-	CardView cardView;
+	View myView;
+	Button button;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
+		// Inflate the layout for this fragment
+		myView = inflater.inflate(R.layout.fragment_mis_cursos_tutor, container, false);
 
-		cardView = view.findViewById(R.id.misactividadesCardprimerfragment);
+		button = myView.findViewById(R.id.btnQuimica);
 
-
-		cardView.setOnClickListener(new View.OnClickListener() {
+		button.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				iniciartransicion();
+				IniciarTransicion();
 			}
 		});
-		view = inflater.inflate(R.layout.fragment_mis_actividades_tutor, container, false);
-		return view;
 
+		return myView ;
 	}
 
-	public void iniciartransicion(){
-		Fragment someFragment = new CalificacionesDetalleTutorFragment();
+	public void IniciarTransicion(){
+		Fragment someFragment = new MisCursosDetalleTutorDetalleFragment();
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
 		transaction.commit();
-
 	}
-
 }

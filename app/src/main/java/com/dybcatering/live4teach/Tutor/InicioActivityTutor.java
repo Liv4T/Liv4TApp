@@ -15,14 +15,13 @@ import android.widget.TextView;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
 import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
-import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
+import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
@@ -68,7 +67,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                             break;
                         case R.id.nav_mis_cursos_tutor:
                           //     if (sessionManager.isLoggin()){
-                            selectedFragment = new MisCursosFragment();
+                            selectedFragment = new MisCursosTutorFragment();
                            //  }else{
                             //    mostraralerta();
                              // selectedFragment = new CursosFragment();
@@ -76,7 +75,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                             break;
                         case R.id.nav_consultas_tutor:
 
-                            selectedFragment = new PerfilFragment();
+                            selectedFragment = new PerfilFragmentTutor();
                             break;
                         case R.id.nav_calificaciones_tutor:
                              //if (sessionManager.isLoggin()){
