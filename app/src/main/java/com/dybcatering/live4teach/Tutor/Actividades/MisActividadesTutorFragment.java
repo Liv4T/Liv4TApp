@@ -24,22 +24,22 @@ public class MisActividadesTutorFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 
-		cardView = view.findViewById(R.id.misactividadesCardprimerfragment);
+		view = inflater.inflate(R.layout.fragment_mis_actividades_tutor, container, false);
+			cardView = view.findViewById(R.id.misactividadesCardprimerfragment);
 
 
-		cardView.setOnClickListener(new View.OnClickListener() {
+			cardView.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				iniciartransicion();
 			}
 		});
-		view = inflater.inflate(R.layout.fragment_mis_actividades_tutor, container, false);
 		return view;
 
 	}
 
 	public void iniciartransicion(){
-		Fragment someFragment = new CalificacionesDetalleTutorFragment();
+		Fragment someFragment = new MisActividadesTutorDetalleFragment();
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
