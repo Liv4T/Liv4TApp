@@ -236,7 +236,7 @@ public class PrimerCurso extends AppCompatActivity {
         texto_nombre= findViewById(R.id.txtNombreCurso);
         String newGrocery = texto_nombre.getText().toString();
         String newGroceryQuantity = texto_nombre.getText().toString();
-        String newGroceryImage = "https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg";//texto_nombre.getText().toString();
+        String newGroceryImage = "https://imageneslive4teach.000webhostapp.com/imagenes/imagencurso.jpg";//texto_nombre.getText().toString();
 
         grocery.setName(newGrocery);
         grocery.setQuantity(newGroceryQuantity);

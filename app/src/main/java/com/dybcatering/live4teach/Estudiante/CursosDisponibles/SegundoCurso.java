@@ -153,11 +153,11 @@ public class SegundoCurso extends AppCompatActivity {
 
         if (id == R.id.mybutton) {
             sessionManager = new SessionManager(this);
-            if (sessionManager.isLoggin()){
+          //  if (sessionManager.isLoggin()){
                 guardar();
-            }else{
-                alert();
-            }
+            //}else{
+              //  alert();
+            //}
         }
         return super.onOptionsItemSelected(item);
     }
@@ -177,7 +177,7 @@ public class SegundoCurso extends AppCompatActivity {
 
         String newGrocery = texto_nombre.getText().toString();
         String newGroceryQuantity = texto_nombre.getText().toString();
-        String newGroceryImage = texto_nombre.getText().toString();
+        String newGroceryImage = "https://imageneslive4teach.000webhostapp.com/imagenes/html.jpg" ;// texto_nombre.getText().toString();
 
         grocery.setName(newGrocery);
         grocery.setQuantity(newGroceryQuantity);

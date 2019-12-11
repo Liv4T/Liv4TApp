@@ -18,7 +18,7 @@ import com.squareup.picasso.Picasso;
 public class CursosFragment extends Fragment {
 
     View myView;
-    public ImageView imagen, imagen_quinta, imagen_novena;
+    public ImageView imagen, imagen_segunda, imagen_tercera, imagen_cuarta, imagen_quinta, imagen_novena;
     public CardView primer_card,segundo_card, tercer_card, cuarto_card, quinto_card, sexto_card, septimo_card, octavo_card, noveno_card, decimo_card, onceavo_card, doceavo_card ;
 
     private Button btn;
@@ -28,6 +28,9 @@ public class CursosFragment extends Fragment {
         myView = inflater.inflate(R.layout.primer_fragment, container, false);
         new CheckInternetConnection(getActivity()).checkConnection();
         imagen = myView.findViewById(R.id.imagen_primera);
+        imagen_segunda = myView.findViewById(R.id.imagen_segunda);
+        imagen_tercera = myView.findViewById(R.id.imagen_tercera);
+        imagen_cuarta= myView.findViewById(R.id.imagen_cuarta);
         primer_card = myView.findViewById(R.id.primer_card);
         segundo_card = myView.findViewById(R.id.card_two);
         tercer_card = myView.findViewById(R.id.card_third);
@@ -53,9 +56,26 @@ public class CursosFragment extends Fragment {
 **
   */
 
-        Picasso.with(getActivity()).load("https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg")
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/html.jpg")
                 .placeholder(R.drawable.internetconnection).fit().into(imagen, new Callback() {
             @Override public    void onSuccess() {}
+            @Override public void onError() {}
+        });
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/imagencurso.jpg")
+                .placeholder(R.drawable.internetconnection).fit().into(imagen_segunda, new Callback() {
+            @Override public    void onSuccess() {}
+            @Override public void onError() {}
+        });
+
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/marketing.jpg")
+                .placeholder(R.drawable.internetconnection).fit().into(imagen_tercera, new Callback() {
+            @Override public    void onSuccess() {}
+            @Override public void onError() {}
+        });
+
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/quimica.jpg")
+                .placeholder(R.drawable.internetconnection).fit().into(imagen_cuarta, new Callback() {
+            @Override public void onSuccess() {}
             @Override public void onError() {}
         });
 
