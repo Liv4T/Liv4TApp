@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetalleFragment;
+import com.dybcatering.live4teach.Estudiante.Perfil.ActualizarDatosFragment;
 import com.dybcatering.live4teach.R;
 
 
@@ -32,13 +33,13 @@ public class MisCalificacionesFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                iniciartransicion();
+                swapFragment();
             }
         });
         return myView;
     }
 
-    private void iniciartransicion(){
+    private void swapFragment(){
         Fragment someFragment = new MisCalificacionesDetalleFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter

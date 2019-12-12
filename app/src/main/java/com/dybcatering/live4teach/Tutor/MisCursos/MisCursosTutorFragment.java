@@ -8,8 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesDetalleFragment;
-import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetalleFragment;
 import com.dybcatering.live4teach.R;
 
 public class MisCursosTutorFragment extends Fragment {

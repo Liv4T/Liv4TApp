@@ -56,24 +56,24 @@ public class CursosFragment extends Fragment {
 **
   */
 
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/html.jpg")
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/html.jpg").centerCrop()
                 .placeholder(R.drawable.internetconnection).fit().into(imagen, new Callback() {
             @Override public    void onSuccess() {}
             @Override public void onError() {}
         });
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/imagencurso.jpg")
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/imagencurso.jpg").centerCrop()
                 .placeholder(R.drawable.internetconnection).fit().into(imagen_segunda, new Callback() {
             @Override public    void onSuccess() {}
             @Override public void onError() {}
         });
 
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/marketing.jpg")
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/marketing.jpg").centerCrop()
                 .placeholder(R.drawable.internetconnection).fit().into(imagen_tercera, new Callback() {
             @Override public    void onSuccess() {}
             @Override public void onError() {}
         });
 
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/quimica.jpg")
+        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/quimica.jpg").centerCrop()
                 .placeholder(R.drawable.internetconnection).fit().into(imagen_cuarta, new Callback() {
             @Override public void onSuccess() {}
             @Override public void onError() {}
