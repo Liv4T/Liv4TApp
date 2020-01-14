@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -16,16 +15,12 @@ import android.widget.TextView;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
-import com.dybcatering.live4teach.Estudiante.Categorias.CategoriasCursos;
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
-import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
-import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
+import com.dybcatering.live4teach.Estudiante.CategoriasCursos.CategoriasCursos;
+import com.dybcatering.live4teach.Login.LoginActivity;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
-import com.dybcatering.live4teach.Estudiante.Perfil.Perfil;
 import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
-import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
@@ -62,7 +57,7 @@ public class InicioActivity extends AppCompatActivity {
                     switch (item.getItemId()) {
                         case R.id.nav_cursos_disponibles:
 
-                            selectedFragment = new CursosFragment();
+                            selectedFragment = new CategoriasCursos();
                             break;
                         case R.id.nav_mis_cursos:
                          //   if (sessionManager.isLoggin()){

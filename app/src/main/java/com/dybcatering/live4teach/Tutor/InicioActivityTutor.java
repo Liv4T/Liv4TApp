@@ -15,10 +15,8 @@ import android.widget.TextView;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
-import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
-import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
-import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesFragment;
-import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
+import com.dybcatering.live4teach.Login.LoginActivity;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
 import com.dybcatering.live4teach.Tutor.Calificaciones.CalificacionesTutorFragment;

@@ -188,7 +188,8 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
     public int contar(String valor){
         int total = 0;
-        String sql = " SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE "+ KEY_GROCERY_ITEM + " =" + "'"+valor+"'" ;
+        SQLiteDatabase db = this.getReadableDatabase();
+        String sql = " SELECT COUNT(*) FROM " + TABLE_NAME + " WHERE "+ KEY_GROCERY_ITEM + "=" + "'"+valor+"'" ;
 
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
 
@@ -196,13 +197,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             cursor.moveToFirst();
             total = cursor.getInt(0);
         }
-
+        db.close();
 
         return total;
     }
 
     public int contartotal(){
         int total = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
         String sql = " SELECT COUNT(*) FROM " + TABLE_NAME ;
 
         Cursor cursor = getReadableDatabase().rawQuery(sql, null);
@@ -212,7 +214,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             total = cursor.getInt(0);
         }
 
-
+        db.close();
         return total;
     }
 

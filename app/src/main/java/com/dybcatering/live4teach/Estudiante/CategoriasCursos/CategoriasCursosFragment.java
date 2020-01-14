@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.Categorias;
+package com.dybcatering.live4teach.Estudiante.CategoriasCursos;
 
 import android.app.Fragment;
 import android.content.Intent;

@@ -1,11 +1,10 @@
-package com.dybcatering.live4teach.Estudiante.Login;
+package com.dybcatering.live4teach.Login;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
-import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 
 import java.util.HashMap;
 

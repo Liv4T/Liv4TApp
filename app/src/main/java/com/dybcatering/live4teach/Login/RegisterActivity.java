@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.Login;
+package com.dybcatering.live4teach.Login;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 

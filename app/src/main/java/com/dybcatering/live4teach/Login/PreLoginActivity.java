@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.Login;
+package com.dybcatering.live4teach.Login;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -24,8 +24,10 @@ public class PreLoginActivity extends AppCompatActivity  {
 
     public String a;
 
+    public String boton;
 
-    private boolean clicked = false;
+    Boolean isclick = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,39 +39,61 @@ public class PreLoginActivity extends AppCompatActivity  {
             btnLogin = findViewById(R.id.btn_loginestu2);
             txtversion = findViewById(R.id.version);
             txtversion.setText("Versión: "+ BuildConfig.VERSION_NAME);
+
             txtRegistrarse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(PreLoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+                }
+            });
+           // final boolean[] isclick = {false};
+
+
+            btnEstudiante.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(PreLoginActivity.this, RegisterActivity.class);
-                    startActivity(intent);
+
+                    isclick = true;
+                    Toast.makeText(PreLoginActivity.this, "Usted ha Seleccionado Estudiante", Toast.LENGTH_SHORT).show();
+
                 }
             });
 
-            btnLogin.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(PreLoginActivity.this, InicioActivity.class);
-                    startActivity(intent);
-                    finish();
 
-                }
-            });
 
             btnTutor.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                  // / if (clicked){
-                      //  Toast.makeText(PreLoginActivity.this, "Presionó click la primera ves", Toast.LENGTH_SHORT).show();
 
-                    //}else{
+                    isclick = false;
+
+                    Toast.makeText(PreLoginActivity.this, "Usted ha Seleccionado Tutor", Toast.LENGTH_SHORT).show();
+
+                }
+            });
+
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (isclick == null){
+                        Toast.makeText(PreLoginActivity.this, "Por favor seleccione una opción", Toast.LENGTH_SHORT).show();
+                    }else if ((isclick)) {
+                        Intent intent = new Intent(PreLoginActivity.this, InicioActivity.class);
+                        startActivity(intent);
+                        finish();
+
+                        //Toast.makeText(PreLoginActivity.this, "prueba a", Toast.LENGTH_SHORT).show();
+                    }else{
                         Intent intent = new Intent(PreLoginActivity.this, InicioActivityTutor.class);
                         startActivity(intent);
                         finish();
-                    //}
-
-                      //  clicked = true;
+                       // Toast.makeText(PreLoginActivity.this, "prueba b", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
+
     }
 
 

@@ -1,8 +1,8 @@
-package com.dybcatering.live4teach.Estudiante.Categorias;
+package com.dybcatering.live4teach.Estudiante.CategoriasCursos;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CuartoCurso;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.SegundoCurso;
-import com.dybcatering.live4teach.Estudiante.CursosDisponibles.TercerCurso;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Estudiante.Perfil.ActualizarDatosFragment;
 import com.dybcatering.live4teach.R;
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
 
 public class CategoriasCursos extends Fragment {
 
@@ -31,6 +27,15 @@ public class CategoriasCursos extends Fragment {
                              Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.categorias_cursos, container, false);
         new CheckInternetConnection(getActivity()).checkConnection();
+
+        primer_card = myView.findViewById(R.id.primer_card);
+
+        primer_card.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				transicionFragment();
+			}
+		});
       /*  imagen = myView.findViewById(R.id.imagen_primera);
         imagen_segunda = myView.findViewById(R.id.imagen_segunda);
         imagen_tercera = myView.findViewById(R.id.imagen_tercera);
@@ -144,5 +149,9 @@ public class CategoriasCursos extends Fragment {
 
         return myView;
     }
+
+	private void transicionFragment() {
+
+	}
 
 }

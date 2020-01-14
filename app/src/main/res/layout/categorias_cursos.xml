@@ -273,7 +273,7 @@
                                 android:layout_weight="1"
                                 android:fontFamily="@font/centurygothic"
                                 android:gravity="center_vertical"
-                                android:text="Admon Empresas"
+                                android:text="Admon. Empresas"
                                 android:textColor="#000"
                                 android:textSize="12sp"
                                 android:textStyle="bold" />
@@ -1084,18 +1084,13 @@
 
 
                             <ImageView
-                                android:scaleType="centerCrop"
+                                android:scaleType="fitXY"
                                 android:adjustViewBounds="true"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginLeft="3dp"
                                 android:src="@drawable/primercategoria" />
-
-
-
-
-
 
                         </LinearLayout>
 

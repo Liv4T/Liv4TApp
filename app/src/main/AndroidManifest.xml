@@ -20,7 +20,7 @@
         <activity
             android:name=".Estudiante.Carrito.CarritoDetalleActivity"
             android:parentActivityName=".Estudiante.Carrito.CarritoActivity" />
-        <activity android:name=".Estudiante.Splash.SplashActivity">
+        <activity android:name=".Splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,15 +52,15 @@
             android:name=".Estudiante.CursosDisponibles.PrimerCurso"
             android:parentActivityName=".Estudiante.PrincipalActivity" />
         <activity
-            android:name=".Estudiante.Login.PreLoginActivity"
+            android:name=".Login.PreLoginActivity"
             android:theme="@style/AppThemeRegist.NoActionBar" />
-        <activity android:name=".Estudiante.Login.HomeActivity" />
+        <activity android:name=".Login.HomeActivity" />
         <activity
-            android:name=".Estudiante.Login.RegisterActivity"
-            android:parentActivityName=".Estudiante.Login.PreLoginActivity"
+            android:name=".Login.RegisterActivity"
+            android:parentActivityName=".Login.PreLoginActivity"
             android:theme="@style/AppThemeRegist" />
         <activity
-            android:name=".Estudiante.Login.LoginActivity"
+            android:name=".Login.LoginActivity"
             android:theme="@style/AppThemeLogin" />
         <activity
             android:name=".Estudiante.PrincipalActivity"

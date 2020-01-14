@@ -1,9 +1,8 @@
-package com.dybcatering.live4teach.Estudiante.Login;
+package com.dybcatering.live4teach.Login;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,7 +11,6 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
-import com.dybcatering.live4teach.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.R;
 
 public class LoginActivity extends AppCompatActivity {

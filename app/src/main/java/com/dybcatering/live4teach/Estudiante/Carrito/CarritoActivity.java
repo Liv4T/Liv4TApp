@@ -1,8 +1,6 @@
 package com.dybcatering.live4teach.Estudiante.Carrito;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -16,8 +14,6 @@ import android.widget.EditText;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.Estudiante.Carrito.UI.RecyclerViewAdapter;
-import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
-import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 

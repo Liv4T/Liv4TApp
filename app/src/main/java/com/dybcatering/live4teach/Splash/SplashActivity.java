@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.Splash;
+package com.dybcatering.live4teach.Splash;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,16 +6,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.daimajia.androidanimations.library.Techniques;
-import com.daimajia.androidanimations.library.YoYo;
-import com.dybcatering.live4teach.Estudiante.Login.PreLoginActivity;
+import com.dybcatering.live4teach.Login.PreLoginActivity;
 import com.dybcatering.live4teach.R;
 
 public class SplashActivity extends AppCompatActivity {
 
 
     private static int SPLASH_TIME_OUT = 3500;
-//    SessionManager sessionManager;
 
 
     @Override
@@ -30,10 +27,6 @@ public class SplashActivity extends AppCompatActivity {
            //     .playOn(findViewById(R.id.bienvenido));
         new Handler().postDelayed(new Runnable() {
 
-            /*
-             * Showing splash screen with a timer. This will be useful when you
-             * want to show case your app logo / company
-             */
 
             @Override
             public void run() {

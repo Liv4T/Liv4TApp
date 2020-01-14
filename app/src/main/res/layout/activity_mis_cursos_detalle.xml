@@ -7,7 +7,7 @@
     android:id="@+id/layout_reg_ini"
 
     android:paddingTop="20dp"
-    tools:context=".Estudiante.Login.RegisterActivity">
+    tools:context=".Login.RegisterActivity">
 
     <FrameLayout
         android:layout_width="match_parent"
