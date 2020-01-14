@@ -124,7 +124,7 @@
                 android:textSize="20sp"
                 android:textColor="@color/colortextoblanco"
                 android:layout_centerHorizontal="true"
-                android:background="@drawable/ovalyellow"/>
+                android:background="@drawable/ovalgreen"/>
 
 
             <TextView

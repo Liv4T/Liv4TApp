@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.CursosDisponibles;
+package com.dybcatering.live4teach.Estudiante.Categorias;
 
 import android.app.Fragment;
 import android.content.Intent;
@@ -14,11 +14,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CuartoCurso;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.SegundoCurso;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.TercerCurso;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 import com.squareup.picasso.Picasso;
 
-public class Cursos extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
+public class CategoriasCursosFragment extends Fragment implements NavigationView.OnNavigationItemSelectedListener {
     View myView;
 
     public ImageView imagen, imagen_quinta, imagen_novena;
@@ -28,7 +32,7 @@ public class Cursos extends Fragment implements NavigationView.OnNavigationItemS
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.primer_fragment, container, false);
+        myView = inflater.inflate(R.layout.categorias_cursos, container, false);
         new CheckInternetConnection(getActivity()).checkConnection();
         imagen = myView.findViewById(R.id.imagen_primera);
         primer_card = myView.findViewById(R.id.primer_card);

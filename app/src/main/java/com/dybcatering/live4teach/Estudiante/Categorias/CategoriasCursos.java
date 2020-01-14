@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.CursosDisponibles;
+package com.dybcatering.live4teach.Estudiante.Categorias;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,12 +10,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CuartoCurso;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.SegundoCurso;
+import com.dybcatering.live4teach.Estudiante.CursosDisponibles.TercerCurso;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-public class CursosFragment extends Fragment {
+public class CategoriasCursos extends Fragment {
 
     View myView;
     public ImageView imagen, imagen_segunda, imagen_tercera, imagen_cuarta, imagen_quinta, imagen_novena;
@@ -25,9 +29,9 @@ public class CursosFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.primer_fragment, container, false);
+        myView = inflater.inflate(R.layout.categorias_cursos, container, false);
         new CheckInternetConnection(getActivity()).checkConnection();
-        imagen = myView.findViewById(R.id.imagen_primera);
+      /*  imagen = myView.findViewById(R.id.imagen_primera);
         imagen_segunda = myView.findViewById(R.id.imagen_segunda);
         imagen_tercera = myView.findViewById(R.id.imagen_tercera);
         imagen_cuarta= myView.findViewById(R.id.imagen_cuarta);
@@ -38,7 +42,7 @@ public class CursosFragment extends Fragment {
         cuarto_card = myView.findViewById(R.id.card_fourth);
         // btn = myView.findViewById(R.id.btnAgregarCurso);
 
-      /*  btn.setOnClickListener(new View.OnClickListener() {
+        btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Toast.makeText(getActivity(), "has hecho click", Toast.LENGTH_SHORT).show();
@@ -56,7 +60,7 @@ public class CursosFragment extends Fragment {
 **                   into(imagen);
 **
   */
-
+/*
         Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/html.jpg").centerCrop()
                 .placeholder(R.drawable.internetconnection).fit().into(imagen, new Callback() {
             @Override public    void onSuccess() {}
@@ -127,7 +131,7 @@ public class CursosFragment extends Fragment {
                 .placeholder(R.drawable.internetconnection).fit().into(imagen_quinta, new Callback() {
             @Override public    void onSuccess() {}
             @Override public void onError() {}
-        });*/
+        });
 
 
         imagen_novena= myView.findViewById(R.id.imagen_novena);
@@ -135,7 +139,7 @@ public class CursosFragment extends Fragment {
                 .placeholder(R.drawable.internetconnection).fit().into(imagen_novena, new Callback() {
             @Override public    void onSuccess() {}
             @Override public void onError() {}
-        });
+        });*/
 
 
         return myView;

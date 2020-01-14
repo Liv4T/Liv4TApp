@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Estudiante.Categorias.CategoriasCursos;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.PrimerCurso;
 import com.dybcatering.live4teach.Estudiante.Login.LoginActivity;
@@ -44,7 +45,7 @@ public class InicioActivity extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new CursosFragment()).commit();
+                    new CategoriasCursos()).commit();
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);

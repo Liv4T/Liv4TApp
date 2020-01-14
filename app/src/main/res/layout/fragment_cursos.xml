@@ -113,7 +113,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="90dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/milti" />
+                               />
 
                             <TextView
 
@@ -171,7 +171,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="90dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/market" />
+                                />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -223,7 +223,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="90dp"
                                 android:scaleType="centerCrop"
-                                android:src="@drawable/quim" />
+                                />
 
                             <TextView
 

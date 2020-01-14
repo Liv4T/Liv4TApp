@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
+import com.dybcatering.live4teach.Estudiante.Categorias.CategoriasCursosFragment;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.Cursos;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.Login.SessionManager;
@@ -79,7 +80,7 @@ public class PrincipalActivity extends AppCompatActivity
         toolbar.setTitle("Cursos Disponibles");
         fragmentManager.beginTransaction()
                 .replace(R.id.content_frame
-                        , new Cursos())
+                        , new CategoriasCursosFragment())
                 .commit();
 
     }
