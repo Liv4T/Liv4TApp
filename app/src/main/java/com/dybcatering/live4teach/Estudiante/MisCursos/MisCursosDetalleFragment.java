@@ -88,6 +88,10 @@ public class MisCursosDetalleFragment extends Fragment {
 		}, true);
 	}
 
+	public void Ejemplo(){
+
+	}
+
 
 	private void setupViewPager (ViewPager viewPager){
 		SectionsPageAdapter adapter = new SectionsPageAdapter(getFragmentManager());
