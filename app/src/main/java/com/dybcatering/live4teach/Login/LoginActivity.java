@@ -10,7 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Splash.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.R;
 
 public class LoginActivity extends AppCompatActivity {

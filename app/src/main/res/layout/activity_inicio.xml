@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:scrollbarSize="1dp"
-    tools:context=".Estudiante.Inicio.InicioActivity">
+    tools:context=".Splash.Estudiante.Inicio.InicioActivity">
 
     <FrameLayout
         android:id="@+id/fragment_container"

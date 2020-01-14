@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/content_frame"
-    tools:context=".Tutor.Calificaciones.CalificacionesDetalleTutorFragment">
+    tools:context=".Splash.Tutor.Calificaciones.CalificacionesDetalleTutorFragment">
 
     <FrameLayout
         android:layout_width="match_parent"
