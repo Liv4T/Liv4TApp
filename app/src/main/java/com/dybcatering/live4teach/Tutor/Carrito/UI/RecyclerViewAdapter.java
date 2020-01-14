@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.Carrito.UI;
+package com.dybcatering.live4teach.Tutor.Carrito.UI;
 
 import android.content.Context;
 import android.content.Intent;
@@ -9,16 +9,17 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.dybcatering.live4teach.Estudiante.Carrito.CarritoDetalleActivity;
-import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
-import com.dybcatering.live4teach.Estudiante.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Carrito.CarritoDetalleTutorActivity;
+import com.dybcatering.live4teach.Tutor.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Tutor.Carrito.Model.Grocery;
+
+import java.util.List;
+
 //import com.theappnerds.shubham.grocerylist.Activities.DetailsActivity;
 //import com.theappnerds.shubham.grocerylist.Data.DatabaseHandler;
 //import com.theappnerds.shubham.grocerylist.Model.Grocery;
 //import com.theappnerds.shubham.grocerylist.R;
-
-import java.util.List;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
     private Context context;
@@ -94,7 +95,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                     int position = getAdapterPosition();
 
                     Grocery grocery = groceryItems.get(position);
-                    Intent intent = new Intent(context, CarritoDetalleActivity.class);
+                    Intent intent = new Intent(context, CarritoDetalleTutorActivity.class);
                     intent.putExtra("name", grocery.getName());
                     intent.putExtra("quantity", grocery.getQuantity());
                     intent.putExtra("imagen", grocery.getImagen());

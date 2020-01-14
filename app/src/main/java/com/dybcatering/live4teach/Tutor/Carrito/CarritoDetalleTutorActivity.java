@@ -1,8 +1,8 @@
-package com.dybcatering.live4teach.Estudiante.Carrito;
+package com.dybcatering.live4teach.Tutor.Carrito;
 
 import android.graphics.Paint;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -11,7 +11,7 @@ import com.dybcatering.live4teach.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
-public class CarritoDetalleActivity extends AppCompatActivity {
+public class CarritoDetalleTutorActivity extends AppCompatActivity {
     private TextView itemName, quantity, dateAdded, imageName, tachado;
     private int groceryId;
     private Button btnComprar;

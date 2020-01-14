@@ -237,7 +237,7 @@ public class SegundoCurso extends AppCompatActivity {
             public void run() {
                 dialog.dismiss();
                 //start a new activity
-                startActivity(new Intent(CarritoActivity.this, CarritoActivity.class));
+                startActivity(new Intent(CarritoTutorActivity.this, CarritoTutorActivity.class));
                 finish();
             }
         }, 1200); //  1 second.*/
