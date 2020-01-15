@@ -128,8 +128,8 @@ public class PerfilFragmentTutor extends Fragment {
         Fragment actualizarDatosFragment = new ActualizarDatosFragmentTutor();
 
         Bundle bundle = new Bundle();
-        tvname.setText("Daniel");
-        String nombre = tvname.getText().toString();
+        //tvname.setText("Daniel");
+        String nombre = "Daniel";//tvname.getText().toString();
         bundle.putString("nombre", nombre);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter

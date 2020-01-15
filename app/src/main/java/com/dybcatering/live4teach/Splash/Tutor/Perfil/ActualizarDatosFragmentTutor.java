@@ -25,7 +25,7 @@ public class ActualizarDatosFragmentTutor extends Fragment {
         Bundle bundle = getArguments();
         if (bundle != null) {
             String nombre = bundle.getString("nombre");
-            Toast.makeText(getActivity(), "El mensaje es " + nombre, Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getActivity(), "El mensaje es " + nombre, Toast.LENGTH_SHORT).show();
             actualizardatos_nombre.setText(nombre);
         }
 

@@ -15,7 +15,7 @@
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
             android:id="@+id/layo_ini"
-            android:background="#10000000">
+            >
 
 
             <ScrollView
@@ -35,7 +35,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         app:cardCornerRadius="8dp">
@@ -44,7 +44,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 
@@ -160,7 +160,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         app:cardCornerRadius="8dp">
 
@@ -168,7 +168,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 
@@ -210,7 +210,7 @@
                                 android:gravity="center_vertical"
                                 android:orientation="horizontal">
                                 <TextView
-                                    android:id="@+id/estado_cursoqu"
+                                    android:id="@+id/estado_cursoqui"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
@@ -290,14 +290,14 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         app:cardCornerRadius="8dp">
 
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical">
 
 
@@ -404,7 +404,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         app:cardCornerRadius="8dp">
@@ -413,7 +413,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 
@@ -495,7 +495,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         app:cardCornerRadius="8dp">
@@ -504,7 +504,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 
@@ -586,7 +586,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         app:cardCornerRadius="8dp">
@@ -595,7 +595,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 
@@ -677,7 +677,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         app:cardCornerRadius="8dp">
@@ -686,7 +686,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 
@@ -775,7 +775,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         app:cardCornerRadius="8dp">
@@ -784,7 +784,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 
@@ -895,7 +895,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_margin="8dp"
-                        android:background="#10000000"
+
                         android:paddingTop="20dp"
                         android:paddingBottom="20dp"
                         app:cardCornerRadius="8dp">
@@ -904,7 +904,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="#10000000"
+
                             android:orientation="vertical"
                             android:paddingBottom="5dp">
 

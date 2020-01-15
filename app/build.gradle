@@ -6,8 +6,8 @@ android {
         applicationId "com.dybcatering.live4teach"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 2
-        versionName "2.2.0-alpha"
+        versionCode 3
+        versionName "3.0.0-alpha"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

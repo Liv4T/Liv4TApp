@@ -2,6 +2,7 @@ package com.dybcatering.live4teach.Splash.Estudiante.CategoriasCursos;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,8 +10,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.dybcatering.live4teach.Splash.Estudiante.CategoriasCursos.SubCursoCategoria.ComunicacionCursos;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Estudiante.Perfil.ActualizarDatosFragment;
 
 public class CategoriasCursos extends Fragment {
 
@@ -33,7 +36,7 @@ public class CategoriasCursos extends Fragment {
 				transicionFragment();
 			}
 		});
-      /*  imagen = myView.findViewById(R.id.imagen_primera);
+        /*  imagen = myView.findViewById(R.id.imagen_primera);
         imagen_segunda = myView.findViewById(R.id.imagen_segunda);
         imagen_tercera = myView.findViewById(R.id.imagen_tercera);
         imagen_cuarta= myView.findViewById(R.id.imagen_cuarta);
@@ -50,7 +53,7 @@ public class CategoriasCursos extends Fragment {
                 Toast.makeText(getActivity(), "has hecho click", Toast.LENGTH_SHORT).show();
             }
         });*/
-//        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
+		//Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
         /*****************
          Picasso.with(getActivity()).load("http://digitalandroidservices.com/personal/cover1.jpg")
 **
@@ -62,7 +65,7 @@ public class CategoriasCursos extends Fragment {
 **                   into(imagen);
 **
   */
-/*
+		/*
         Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/html.jpg").centerCrop()
                 .placeholder(R.drawable.internetconnection).fit().into(imagen, new Callback() {
             @Override public    void onSuccess() {}
@@ -144,11 +147,16 @@ public class CategoriasCursos extends Fragment {
         });*/
 
 
+
         return myView;
     }
 
 	private void transicionFragment() {
-
+		Fragment someFragment = new ComunicacionCursos();
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
 	}
 
 }

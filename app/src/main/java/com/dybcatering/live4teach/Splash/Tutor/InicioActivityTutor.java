@@ -1,7 +1,10 @@
 package com.dybcatering.live4teach.Splash.Tutor;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -12,12 +15,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.Splash.Tutor.Actividades.MisActividadesTutorFragment;
 import com.dybcatering.live4teach.Splash.Tutor.Calificaciones.CalificacionesTutorFragment;
 import com.dybcatering.live4teach.Splash.Tutor.Consulta.ConsultaTutorFragment;
@@ -191,5 +196,38 @@ public class InicioActivityTutor extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                .setBackgroundColor(R.color.white)
+                //.setimageResource(R.drawable.internetconnection)
+                .setTextTitle("Información")
+                .setTextSubTitle("¿Deseas Cerrar la Sesión?")
+                .setCancelable(false)
+                //.setBody("Iniciar Sesión ")
+                .setPositiveButtonText("Aceptar")
+                .setPositiveColor(R.color.colorbonton)
+                .setNegativeButtonText("Cancelar")
+                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
+
+                        finish();
+                    }
+                })
+                .setOnNegativeClicked(new FancyAlertDialog.OnNegativeClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
+                        dialog.dismiss();
+                    }
+                })
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
+                .build();
+        alert.show();
     }
 }
