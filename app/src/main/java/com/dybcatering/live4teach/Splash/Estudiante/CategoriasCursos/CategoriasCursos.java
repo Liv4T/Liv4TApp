@@ -10,10 +10,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.Splash.Estudiante.CategoriasCursos.SubCursoCategoria.ComunicacionCursos;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.Perfil.ActualizarDatosFragment;
+import com.dybcatering.live4teach.Splash.SplashActivity;
 
 public class CategoriasCursos extends Fragment {
 
@@ -22,18 +24,21 @@ public class CategoriasCursos extends Fragment {
     public CardView primer_card,segundo_card, tercer_card, cuarto_card, quinto_card, sexto_card, septimo_card, octavo_card, noveno_card, decimo_card, onceavo_card, doceavo_card ;
 
     private Button btn;
+
+	private SessionManager session;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.categorias_cursos, container, false);
         new CheckInternetConnection(getActivity()).checkConnection();
-
+		session = new SessionManager(getActivity());
         primer_card = myView.findViewById(R.id.primer_card);
 
         primer_card.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				transicionFragment();
+
 			}
 		});
         /*  imagen = myView.findViewById(R.id.imagen_primera);

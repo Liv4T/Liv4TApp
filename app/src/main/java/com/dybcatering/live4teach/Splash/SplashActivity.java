@@ -7,7 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.dybcatering.live4teach.Login.PreLoginActivity;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Estudiante.Inicio.InicioActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -15,12 +17,16 @@ public class SplashActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 3500;
 
 
+    private SessionManager session;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ActionBar actionbar = getSupportActionBar();
         actionbar.hide();
+
+        session = new SessionManager(SplashActivity.this);
 
        // YoYo.with(Techniques.FadeInLeft)
          //       .duration(7000)
@@ -32,8 +38,14 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 // This method will be executed once the timer is over
                 // Start your app main activity
-                startActivity(new Intent(SplashActivity.this, PreLoginActivity.class));
-                finish();
+                if (!session.isLoggin()){
+
+                    startActivity(new Intent(SplashActivity.this, PreLoginActivity.class));
+                    finish();
+                }else{
+                    startActivity(new Intent(SplashActivity.this, InicioActivity.class));
+                    finish();
+                }
             }
         }, SPLASH_TIME_OUT);
     }

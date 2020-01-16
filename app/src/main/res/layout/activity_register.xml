@@ -36,7 +36,9 @@
                     android:id="@+id/spinnerregistro"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-
+                    android:textColor="@color/colortexto"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/centurygothic"
                     android:entries="@array/spinner"/>
 
                 <android.support.design.widget.TextInputLayout
@@ -48,7 +50,7 @@
                         android:id="@+id/txtNombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Nombre"
+                        android:hint="Tu Nombre"
                         android:inputType="textPersonName"
                         android:textColor="@color/colortexto"
                         android:textStyle="bold"
@@ -64,7 +66,7 @@
                         android:id="@+id/txtApellido"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Apellido"
+                        android:hint="Tu Apellido"
                         android:inputType="textPersonName"
                         android:textColor="@color/colortexto"
                         android:textStyle="bold"
@@ -143,21 +145,43 @@
                         android:textColor="@color/colortexto" />
                 </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/colortexto">
+                    android:orientation="horizontal" >
 
-                    <EditText
-                        android:id="@+id/txtTelefono"
-                        android:layout_width="match_parent"
+                    <com.rilixtech.CountryCodePicker
+                        android:id="@+id/ccp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:hint="Teléfono"
-                        android:inputType="number"
-                        android:textColor="@color/colortexto"
-                        android:textStyle="bold"
-                        android:fontFamily="@font/centurygothic"/>
-                </android.support.design.widget.TextInputLayout>
+                        android:layout_weight="1"
+                        app:ccp_hideNameCode="true"
+                       />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.05" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textColorHint="@color/colortexto">
+
+                        <EditText
+                            android:id="@+id/txtTelefono"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="@color/colortexto"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/centurygothic"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
 
 
                 <Button

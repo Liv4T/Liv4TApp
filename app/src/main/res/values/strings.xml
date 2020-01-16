@@ -74,4 +74,14 @@ Android gives you a world-class platform for creating apps and games for Android
 
     </string-array>
 
+
+    <string name="registermail1">¡Este es Diago y Benitez, CEO de Web API! \n \n¡Bienvenido a bordo con nosotros en nombre de nuestro equipo! \n
+     ¡Prometemos brindarle una experiencia de compra inolvidable en el futuro! \n \n
+     Entonces, ¿qué estás esperando, comienza a comprar y obtén lo mejor de nuestros productos justo en tu puerta!
+     \n \n
+     ¡Estamos felices de ayudarte! ¡En caso de cualquier consulta, contáctenos a nuestros manejadores mencionados a continuación! \n \n
+     Teléfono: + 571-78508229 \n
+     Correo electrónico: prueba.correo7521@gmail.com \n
+     Dirección: Calle 100 # 8a 55 (226025)</string>
+
 </resources>
