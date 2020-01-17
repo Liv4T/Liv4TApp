@@ -2,10 +2,10 @@ package com.dybcatering.live4teach.Login;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -23,8 +23,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
+import com.dybcatering.live4teach.Login.Request.RegisterRequest;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
+import com.kaopiz.kprogresshud.KProgressHUD;
 import com.rilixtech.CountryCodePicker;
 
 import org.json.JSONException;
@@ -33,9 +35,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private EditText nombre, apellido, email, usuario, password, c_password, telefono;
+    private EditText edtnombre, edtapellido, edtemail, edtusuario, edtpassword, edtc_password, edttelefono;
+    private String nombre, apellido, email, usuario, password, c_password, telefono;
     private Button btn_regist;
     private ProgressBar loading;
     private static String URL_REGIST = "http://192.168.1.101/live4teach/register.php";
@@ -43,6 +48,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     public Spinner spinnerRegistro;
 
     public CountryCodePicker ccp;
+
+
+    RequestQueue requestQueue;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,24 +62,25 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerRegistro.setAdapter(arrayAdapter);
         spinnerRegistro.setOnItemSelectedListener(this);
-        nombre = findViewById(R.id.txtNombre);
-        apellido= findViewById(R.id.txtApellido);
-        email = findViewById(R.id.txtMail);
-        usuario = findViewById(R.id.txtUsuario);
-        password = findViewById(R.id.txtPassword);
-        c_password = findViewById(R.id.txtPasswordConfirm);
-        telefono = findViewById(R.id.txtTelefono);
+        edtnombre = findViewById(R.id.txtNombre);
+        edtapellido= findViewById(R.id.txtApellido);
+        edtemail = findViewById(R.id.txtMail);
+        edtusuario = findViewById(R.id.txtUsuario);
+        edtpassword = findViewById(R.id.txtPassword);
+        edtc_password = findViewById(R.id.txtPasswordConfirm);
+        edttelefono = findViewById(R.id.txtTelefono);
         btn_regist = findViewById(R.id.btn_registrarse);
 
-        nombre.setEnabled(false);
-        apellido.setEnabled(false);
-        email.setEnabled(false);
-        usuario.setEnabled(false);
-        password.setEnabled(false);
-        c_password.setEnabled(false);
-        telefono.setEnabled(false);
+        edtnombre.setEnabled(false);
+        edtapellido.setEnabled(false);
+        edtemail.setEnabled(false);
+        edtusuario.setEnabled(false);
+        edtpassword.setEnabled(false);
+        edtc_password.setEnabled(false);
+        edttelefono.setEnabled(false);
         btn_regist.setEnabled(false);
 
+		requestQueue = Volley.newRequestQueue(RegisterActivity.this);
 
         // loading = findViewById(R.id.loading);
        // name = findViewById(R.id.name);
@@ -79,15 +90,55 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
         // btn_regist = findViewById(R.id.btn_regist);
         ccp = findViewById(R.id.ccp);
 
-        ccp.registerPhoneNumberTextView(telefono);
+        ccp.registerPhoneNumberTextView(edttelefono);
+
 
 
         btn_regist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-        //        Regist();
-                Toast.makeText(RegisterActivity.this, "el numero "+ ccp.getFullNumberWithPlus(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(RegisterActivity.this, "el pais es " + ccp.getSelectedCountryName(), Toast.LENGTH_SHORT).show();
+				//        Regist();
+
+
+                nombre =edtnombre.getText().toString();
+                apellido = edtapellido.getText().toString();
+                email = edtemail.getText().toString();
+                usuario = edtusuario.getText().toString();
+                password = edtpassword.getText().toString();
+                final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
+                        .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+                        .setLabel("Por Favor espera")
+                        .setCancellable(false)
+                        .setAnimationSpeed(2)
+                        .setDimAmount(0.5f)
+                        .show();
+                RegisterRequest registerRequest = new RegisterRequest(nombre, apellido,  email, usuario, password, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //progressDialog.dismiss();
+
+                        Log.e("Response from server", response);
+
+                        try {
+                            if (new JSONObject(response).getBoolean("success")) {
+                                progressDialog.dismiss();
+                                Toasty.success(RegisterActivity.this,"Registrado correctamente",Toast.LENGTH_SHORT,true).show();
+
+                                sendRegistrationEmail(nombre,email);
+
+
+                            } else
+                                progressDialog.dismiss();
+                                Toasty.error(RegisterActivity.this,"El Usuario ya existe",Toast.LENGTH_SHORT,true).show();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            progressDialog.dismiss();
+                            Toasty.error(RegisterActivity.this,"Fallo al Registrarse",Toast.LENGTH_LONG,true).show();
+                        }
+                    }
+                });
+                requestQueue.add(registerRequest);
+
             }
         });
 
@@ -118,13 +169,13 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                            Intent i = new Intent(Intent.ACTION_VIEW);
                            i.setData(Uri.parse(url));
                            startActivity(i);
-                           nombre.setEnabled(false);
-                           apellido.setEnabled(false);
-                           email.setEnabled(false);
-                           usuario.setEnabled(false);
-                           password.setEnabled(false);
-                           c_password.setEnabled(false);
-                           telefono.setEnabled(false);
+                           edtnombre.setEnabled(false);
+                           edtapellido.setEnabled(false);
+                           edtemail.setEnabled(false);
+                           edtusuario.setEnabled(false);
+                           edtpassword.setEnabled(false);
+                           edtc_password.setEnabled(false);
+                           edttelefono.setEnabled(false);
                            btn_regist.setEnabled(false);
                            finish();
                        }
@@ -139,21 +190,21 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
         } else if (text.equals("Estudiante")) {
-           nombre.setEnabled(true);
-           apellido.setEnabled(true);
-           email.setEnabled(true);
-           usuario.setEnabled(true);
-           password.setEnabled(true);
-           c_password.setEnabled(true);
-           telefono.setEnabled(true);
+           edtnombre.setEnabled(true);
+           edtapellido.setEnabled(true);
+           edtemail.setEnabled(true);
+           edtusuario.setEnabled(true);
+           edtpassword.setEnabled(true);
+           edtc_password.setEnabled(true);
+           edttelefono.setEnabled(true);
            btn_regist.setEnabled(true);
         } else if (text.equals("Seleccionar...")){
-           nombre.setEnabled(false);
-           apellido.setEnabled(false);
-           email.setEnabled(false);
-           usuario.setEnabled(false);
-           password.setEnabled(false);
-           c_password.setEnabled(false);
+           edtnombre.setEnabled(false);
+           edtapellido.setEnabled(false);
+           edtemail.setEnabled(false);
+           edtusuario.setEnabled(false);
+           edtpassword.setEnabled(false);
+           edtc_password.setEnabled(false);
        //   telefono.setEnabled(false);
            btn_regist.setEnabled(false);
 
@@ -711,62 +762,6 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 //"<p>Hola Mr/Miss, <b>'"+ name + "'</b></p>"+ "\n " + getString(R.string.registermail1))
                 .send();
 
-
-
-    }
-
-    private void Regist(){
-        loading.setVisibility(View.VISIBLE);
-        btn_regist.setVisibility(View.GONE);
-
-        final String name = this.nombre.getText().toString().trim();
-        final String email = this.email.getText().toString().trim();
-        final String password = this.password.getText().toString().trim();
-
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_REGIST,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try{
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-
-                            if (success.equals("1")) {
-                                Toast.makeText(RegisterActivity.this, "El registro tuvo exito", Toast.LENGTH_SHORT).show();
-                                sendRegistrationEmail(name, email);
-                            }
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            Toast.makeText(RegisterActivity.this, "El registro no tuvo exito" + e.toString(), Toast.LENGTH_SHORT).show();
-                            loading.setVisibility(View.GONE);
-                            btn_regist.setVisibility(View.VISIBLE);
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(RegisterActivity.this, "Register Error! " + error.toString(), Toast.LENGTH_SHORT).show();
-                        loading.setVisibility(View.GONE);
-                        btn_regist.setVisibility(View.VISIBLE);
-                    }
-                })
-
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("name", name);
-                params.put("email", email);
-                params.put("password", password);
-                return params;
-            }
-        };
-
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
 
 
     }
