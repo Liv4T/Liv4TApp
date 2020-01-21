@@ -1,10 +1,14 @@
 package com.dybcatering.live4teach.Login;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -40,10 +44,9 @@ import es.dmoral.toasty.Toasty;
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private EditText edtnombre, edtapellido, edtemail, edtusuario, edtpassword, edtc_password, edttelefono;
-    private String nombre, apellido, email, usuario, password, c_password, telefono;
+    private String verificar, nombre, apellido, email, usuario, password, c_password, telefono;
     private Button btn_regist;
-    private ProgressBar loading;
-    private static String URL_REGIST = "http://192.168.1.101/live4teach/register.php";
+    private static String URL_REGIST = "http://192.168.1.101/live4teach/pruebas/registertuto.php";
 
     public Spinner spinnerRegistro;
 
@@ -51,105 +54,107 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
     RequestQueue requestQueue;
+	ProgressDialog progressDialog;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
-        spinnerRegistro = findViewById(R.id.spinnerregistro);
-        ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.spinner, android.R.layout.simple_spinner_item);
-        arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerRegistro.setAdapter(arrayAdapter);
-        spinnerRegistro.setOnItemSelectedListener(this);
-        edtnombre = findViewById(R.id.txtNombre);
-        edtapellido= findViewById(R.id.txtApellido);
-        edtemail = findViewById(R.id.txtMail);
-        edtusuario = findViewById(R.id.txtUsuario);
-        edtpassword = findViewById(R.id.txtPassword);
-        edtc_password = findViewById(R.id.txtPasswordConfirm);
-        edttelefono = findViewById(R.id.txtTelefono);
-        btn_regist = findViewById(R.id.btn_registrarse);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_register);
+		spinnerRegistro = findViewById(R.id.spinnerregistro);
+		ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.spinner, android.R.layout.simple_spinner_item);
+		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		spinnerRegistro.setAdapter(arrayAdapter);
+		spinnerRegistro.setOnItemSelectedListener(this);
+		edtnombre = findViewById(R.id.txtNombre);
+		edtapellido = findViewById(R.id.txtApellido);
+		edtemail = findViewById(R.id.txtMail);
+		edtusuario = findViewById(R.id.txtUsuario);
+		edtpassword = findViewById(R.id.txtPassword);
+		edtc_password = findViewById(R.id.txtPasswordConfirm);
+		edttelefono = findViewById(R.id.txtTelefono);
+		btn_regist = findViewById(R.id.btn_registrarse);
 
-        edtnombre.setEnabled(false);
-        edtapellido.setEnabled(false);
-        edtemail.setEnabled(false);
-        edtusuario.setEnabled(false);
-        edtpassword.setEnabled(false);
-        edtc_password.setEnabled(false);
-        edttelefono.setEnabled(false);
-        btn_regist.setEnabled(false);
+		edtnombre.setEnabled(false);
+		edtapellido.setEnabled(false);
+		edtemail.setEnabled(false);
+		edtusuario.setEnabled(false);
+		edtpassword.setEnabled(false);
+		edtc_password.setEnabled(false);
+		edttelefono.setEnabled(false);
+		btn_regist.setEnabled(false);
+
+		edtpassword.addTextChangedListener(watcherContrasena);
+		edtc_password.addTextChangedListener(watcherConfirmarContrasena);
+
 
 		requestQueue = Volley.newRequestQueue(RegisterActivity.this);
 
-        // loading = findViewById(R.id.loading);
-       // name = findViewById(R.id.name);
-       // email = findViewById(R.id.email);
-       // password = findViewById(R.id.password);
-        /// c_password = findViewById(R.id.c_password);
-        // btn_regist = findViewById(R.id.btn_regist);
-        ccp = findViewById(R.id.ccp);
+		// loading = findViewById(R.id.loading);
+		// name = findViewById(R.id.name);
+		// email = findViewById(R.id.email);
+		// password = findViewById(R.id.password);
+		/// c_password = findViewById(R.id.c_password);
+		// btn_regist = findViewById(R.id.btn_regist);
+		ccp = findViewById(R.id.ccp);
 
-        ccp.registerPhoneNumberTextView(edttelefono);
-
-
-
-        btn_regist.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-				//        Regist();
+		ccp.registerPhoneNumberTextView(edttelefono);
 
 
-                nombre =edtnombre.getText().toString();
-                apellido = edtapellido.getText().toString();
-                email = edtemail.getText().toString();
-                usuario = edtusuario.getText().toString();
-                password = edtpassword.getText().toString();
-                final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
-                        .setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-                        .setLabel("Por Favor espera")
-                        .setCancellable(false)
-                        .setAnimationSpeed(2)
-                        .setDimAmount(0.5f)
-                        .show();
-                RegisterRequest registerRequest = new RegisterRequest(nombre, apellido,  email, usuario, password, new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        //progressDialog.dismiss();
+		btn_regist.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				if(ValidarContrasena() && ValidarConfirmarContrasena()){
 
-                        Log.e("Response from server", response);
+					nombre = edtnombre.getText().toString();
+					apellido = edtapellido.getText().toString();
+					email = edtemail.getText().toString();
+					usuario = edtusuario.getText().toString();
+					password = edtpassword.getText().toString();
 
-                        try {
-                            if (new JSONObject(response).getBoolean("success")) {
-                                progressDialog.dismiss();
-                                Toasty.success(RegisterActivity.this,"Registrado correctamente",Toast.LENGTH_SHORT,true).show();
+					final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
+							.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+							.setLabel("Please wait")
+							.setCancellable(false)
+							.setAnimationSpeed(2)
+							.setDimAmount(0.5f)
+							.show();
+					RegisterRequest registerRequest = new RegisterRequest(nombre, apellido, email,usuario, password, new Response.Listener<String>() {
+						@Override
+						public void onResponse(String response) {
+							progressDialog.dismiss();
 
-                                sendRegistrationEmail(nombre,email);
+							Log.e("Response from server", response);
 
+							try {
+								if (new JSONObject(response).getBoolean("success")) {
 
-                            } else
-                                progressDialog.dismiss();
-                                Toasty.error(RegisterActivity.this,"El Usuario ya existe",Toast.LENGTH_SHORT,true).show();
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                            progressDialog.dismiss();
-                            Toasty.error(RegisterActivity.this,"Fallo al Registrarse",Toast.LENGTH_LONG,true).show();
-                        }
-                    }
-                });
-                requestQueue.add(registerRequest);
+									Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
 
-            }
-        });
+									sendRegistrationEmail(nombre,email);
+									finish();
+
+								} else
+									Toasty.error(RegisterActivity.this,"El usuario ya existe",Toast.LENGTH_SHORT,true).show();
+							} catch (JSONException e) {
+								e.printStackTrace();
+								Toasty.error(RegisterActivity.this,"Falló el registro",Toast.LENGTH_LONG,true).show();
+							}
+						}
+					});
+					requestQueue.add(registerRequest);
 
 
 
-    }
+				}
+
+			}
+		});
+	}
 
 
 
-
-    @Override
+	@Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text =  parent.getItemAtPosition(position).toString();
        if (text.equals("Tutor")){
@@ -212,10 +217,63 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     }
 
+    private boolean ValidarContrasena(){
+
+		verificar = edtpassword.getText().toString();
+		return !(verificar.length() <6);
+	}
+
+	private boolean ValidarConfirmarContrasena(){
+    	verificar = edtc_password.getText().toString();
+    	return verificar.equals(edtc_password.getText().toString());
+	}
+
+	TextWatcher watcherConfirmarContrasena = new TextWatcher() {
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			//
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+			//
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			verificar = s.toString();
+
+			if (!verificar.equals(edtpassword.getText().toString())) {
+				edtc_password.setError("Las contraseñas no son iguales");
+			}
+		}
+	};
+
+	TextWatcher watcherContrasena = new TextWatcher() {
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+			//
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before, int count) {
+			//
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			verificar= s.toString();
+
+			if (verificar.length()<6 ){
+				edtpassword.setError("La contraseña debe ser mayor a 6 carácteres");
+			}
+		}
+	};
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
-
     }
+
+
     private void sendRegistrationEmail(final String name, final String emails) {
 
 
@@ -228,542 +286,543 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                 .withMailto(emails)
                 .withType(BackgroundMail.TYPE_HTML)
                 .withSubject("Saludos desde la aplicación")
-                .withBody("\t<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><meta name=\"x-apple-disable-message-reformatting\" /><meta name=\"apple-mobile-web-app-capable\" content=\"yes\" /><meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" /><meta name=\"format-detection\" content=\"telephone=no\" /><title></title><style type=\"text/css\">\n" +
+                .withBody("<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\"><html xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\"><head><meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" /><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" /><meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" /><meta name=\"x-apple-disable-message-reformatting\" /><meta name=\"apple-mobile-web-app-capable\" content=\"yes\" /><meta name=\"apple-mobile-web-app-status-bar-style\" content=\"black\" /><meta name=\"format-detection\" content=\"telephone=no\" /><title></title><style type=\"text/css\">\n" +
                         "/* Resets */\n" +
-                        "\t\t\t.ReadMsgBody { width: 100%; background-color: #ebebeb;}\n" +
-                        "\t\t\t.ExternalClass {width: 100%; background-color: #ebebeb;}\n" +
-                        "\t\t\t.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:100%;}\n" +
-                        "\t\t\ta[x-apple-data-detectors]{\n" +
-                        "\t\t\t\tcolor:inherit !important;\n" +
-                        "\t\t\t\ttext-decoration:none !important;\n" +
-                        "\t\t\t\tfont-size:inherit !important;\n" +
-                        "\t\t\t\tfont-family:inherit !important;\n" +
-                        "\t\t\t\tfont-weight:inherit !important;\n" +
-                        "\t\t\t\tline-height:inherit !important;\n" +
-                        "\t\t\t}        \n" +
-                        "\t\t\tbody {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;}\n" +
-                        "\t\t\tbody {margin:0; padding:0;}\n" +
-                        "\t\t\t.yshortcuts a {border-bottom: none !important;}\n" +
-                        "\t\t\t.rnb-del-min-width{ min-width: 0 !important; }\n" +
-                        "\n" +
-                        "\t\t\t/* Add new outlook css start */\n" +
-                        "\t\t\t.templateContainer{\n" +
-                        "\t\t\t\tmax-width:590px !important;\n" +
-                        "\t\t\t\twidth:auto !important;\n" +
-                        "\t\t\t}\n" +
-                        "\t\t\t/* Add new outlook css end */\n" +
-                        "\n" +
-                        "\t\t\t/* Image width by default for 3 columns */\n" +
-                        "\t\t\timg[class=\"rnb-col-3-img\"] {\n" +
-                        "\t\t\tmax-width:170px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* Image width by default for 2 columns */\n" +
-                        "\t\t\timg[class=\"rnb-col-2-img\"] {\n" +
-                        "\t\t\tmax-width:264px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* Image width by default for 2 columns aside small size */\n" +
-                        "\t\t\timg[class=\"rnb-col-2-img-side-xs\"] {\n" +
-                        "\t\t\tmax-width:180px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* Image width by default for 2 columns aside big size */\n" +
-                        "\t\t\timg[class=\"rnb-col-2-img-side-xl\"] {\n" +
-                        "\t\t\tmax-width:350px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* Image width by default for 1 column */\n" +
-                        "\t\t\timg[class=\"rnb-col-1-img\"] {\n" +
-                        "\t\t\tmax-width:550px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* Image width by default for header */\n" +
-                        "\t\t\timg[class=\"rnb-header-img\"] {\n" +
-                        "\t\t\tmax-width:590px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* Ckeditor line-height spacing */\n" +
-                        "\t\t\t.rnb-force-col p, ul, ol{margin:0px!important;}\n" +
-                        "\t\t\t.rnb-del-min-width p, ul, ol{margin:0px!important;}\n" +
-                        "\n" +
-                        "\t\t\t/* tmpl-2 preview */\n" +
-                        "\t\t\t.rnb-tmpl-width{ width:100%!important;}\n" +
-                        "\n" +
-                        "\t\t\t/* tmpl-11 preview */\n" +
-                        "\t\t\t.rnb-social-width{padding-right:15px!important;}\n" +
-                        "\n" +
-                        "\t\t\t/* tmpl-11 preview */\n" +
-                        "\t\t\t.rnb-social-align{float:right!important;}\n" +
-                        "\n" +
-                        "\t\t\t/* Ul Li outlook extra spacing fix */\n" +
-                        "\t\t\tli{mso-margin-top-alt: 0; mso-margin-bottom-alt: 0;}        \n" +
-                        "\n" +
-                        "\t\t\t/* Outlook fix */\n" +
-                        "\t\t\ttable {mso-table-lspace:0pt; mso-table-rspace:0pt;}\n" +
-                        "\t\t\n" +
-                        "\t\t\t/* Outlook fix */\n" +
-                        "\t\t\ttable, tr, td {border-collapse: collapse;}\n" +
-                        "\n" +
-                        "\t\t\t/* Outlook fix */\n" +
-                        "\t\t\tp,a,li,blockquote {mso-line-height-rule:exactly;} \n" +
-                        "\n" +
-                        "\t\t\t/* Outlook fix */\n" +
-                        "\t\t\t.msib-right-img { mso-padding-alt: 0 !important;}\n" +
-                        "\n" +
-                        "\t\t\t/* Fix text line height on preview */ \n" +
-                        "\t\t\t.content-spacing div {display: list-item; list-style-type: none;}\n" +
-                        "\n" +
-                        "\t\t\t@media only screen and (min-width:590px){\n" +
-                        "\t\t\t/* mac fix width */\n" +
-                        "\t\t\t.templateContainer{width:590px !important;}\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t@media screen and (max-width: 360px){\n" +
-                        "\t\t\t/* yahoo app fix width \"tmpl-2 tmpl-10 tmpl-13\" in android devices */\n" +
-                        "\t\t\t.rnb-yahoo-width{ width:360px !important;}\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t@media screen and (max-width: 380px){\n" +
-                        "\t\t\t/* fix width and font size \"tmpl-4 tmpl-6\" in mobile preview */\n" +
-                        "\t\t\t.element-img-text{ font-size:24px !important;}\n" +
-                        "\t\t\t.element-img-text2{ width:230px !important;}\n" +
-                        "\t\t\t.content-img-text-tmpl-6{ font-size:24px !important;}\n" +
-                        "\t\t\t.content-img-text2-tmpl-6{ width:220px !important;}\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t@media screen and (max-width: 480px) {\n" +
-                        "\t\t\ttd[class=\"rnb-container-padding\"] {\n" +
-                        "\t\t\tpadding-left: 10px !important;\n" +
-                        "\t\t\tpadding-right: 10px !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* force container nav to (horizontal) blocks */\n" +
-                        "\t\t\ttd.rnb-force-nav {\n" +
-                        "\t\t\tdisplay: inherit;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* fix text alignment \"tmpl-11\" in mobile preview */\n" +
-                        "\t\t\t.rnb-social-text-left {\n" +
-                        "\t\t\twidth: 100%;\n" +
-                        "\t\t\ttext-align: center;\n" +
-                        "\t\t\tmargin-bottom: 15px;\n" +
-                        "\t\t\t}\n" +
-                        "\t\t\t.rnb-social-text-right {\n" +
-                        "\t\t\twidth: 100%;\n" +
-                        "\t\t\ttext-align: center;\n" +
-                        "\t\t\t}\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t@media only screen and (max-width: 600px) {\n" +
-                        "\n" +
-                        "\t\t\t/* center the address &amp; social icons */\n" +
-                        "\t\t\t.rnb-text-center {text-align:center !important;}\n" +
-                        "\n" +
-                        "\t\t\t/* force container columns to (horizontal) blocks */\n" +
-                        "\t\t\ttd.rnb-force-col {\n" +
-                        "\t\t\tdisplay: block;\n" +
-                        "\t\t\tpadding-right: 0 !important;\n" +
-                        "\t\t\tpadding-left: 0 !important;\n" +
-                        "\t\t\twidth:100%;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-container {\n" +
-                        "\t\t\t width: 100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-btn-col-content {\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\t\t\ttable.rnb-col-3 {\n" +
-                        "\t\t\t/* unset table align=\"left/right\" */\n" +
-                        "\t\t\tfloat: none !important;\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\n" +
-                        "\t\t\t/* change left/right padding and margins to top/bottom ones */\n" +
-                        "\t\t\tmargin-bottom: 10px;\n" +
-                        "\t\t\tpadding-bottom: 10px;\n" +
-                        "\t\t\t/*border-bottom: 1px solid #eee;*/\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-last-col-3 {\n" +
-                        "\t\t\t/* unset table align=\"left/right\" */\n" +
-                        "\t\t\tfloat: none !important;\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-col-2 {\n" +
-                        "\t\t\t/* unset table align=\"left/right\" */\n" +
-                        "\t\t\tfloat: none !important;\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\n" +
-                        "\t\t\t/* change left/right padding and margins to top/bottom ones */\n" +
-                        "\t\t\tmargin-bottom: 10px;\n" +
-                        "\t\t\tpadding-bottom: 10px;\n" +
-                        "\t\t\t/*border-bottom: 1px solid #eee;*/\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-col-2-noborder-onright {\n" +
-                        "\t\t\t/* unset table align=\"left/right\" */\n" +
-                        "\t\t\tfloat: none !important;\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\n" +
-                        "\t\t\t/* change left/right padding and margins to top/bottom ones */\n" +
-                        "\t\t\tmargin-bottom: 10px;\n" +
-                        "\t\t\tpadding-bottom: 10px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-col-2-noborder-onleft {\n" +
-                        "\t\t\t/* unset table align=\"left/right\" */\n" +
-                        "\t\t\tfloat: none !important;\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\n" +
-                        "\t\t\t/* change left/right padding and margins to top/bottom ones */\n" +
-                        "\t\t\tmargin-top: 10px;\n" +
-                        "\t\t\tpadding-top: 10px;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-last-col-2 {\n" +
-                        "\t\t\t/* unset table align=\"left/right\" */\n" +
-                        "\t\t\tfloat: none !important;\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttable.rnb-col-1 {\n" +
-                        "\t\t\t/* unset table align=\"left/right\" */\n" +
-                        "\t\t\tfloat: none !important;\n" +
-                        "\t\t\twidth: 100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\timg.rnb-col-3-img {\n" +
-                        "\t\t\t/**max-width:none !important;**/\n" +
-                        "\t\t\twidth:100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\timg.rnb-col-2-img {\n" +
-                        "\t\t\t/**max-width:none !important;**/\n" +
-                        "\t\t\twidth:100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\timg.rnb-col-2-img-side-xs {\n" +
-                        "\t\t\t/**max-width:none !important;**/\n" +
-                        "\t\t\twidth:100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\timg.rnb-col-2-img-side-xl {\n" +
-                        "\t\t\t/**max-width:none !important;**/\n" +
-                        "\t\t\twidth:100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\timg.rnb-col-1-img {\n" +
-                        "\t\t\t/**max-width:none !important;**/\n" +
-                        "\t\t\twidth:100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\timg.rnb-header-img {\n" +
-                        "\t\t\t/**max-width:none !important;**/\n" +
-                        "\t\t\twidth:100% !important;\n" +
-                        "\t\t\tmargin:0 auto;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\timg.rnb-logo-img {\n" +
-                        "\t\t\t/**max-width:none !important;**/\n" +
-                        "\t\t\twidth:100% !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\ttd.rnb-mbl-float-none {\n" +
-                        "\t\t\tfloat:inherit !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t.img-block-center{text-align:center !important;}\n" +
-                        "\n" +
-                        "\t\t\t.logo-img-center\n" +
-                        "\t\t\t{\n" +
-                        "\t\t\t\tfloat:inherit !important;\n" +
-                        "\t\t\t}\n" +
-                        "\n" +
-                        "\t\t\t/* tmpl-11 preview */\n" +
-                        "\t\t\t.rnb-social-align{margin:0 auto !important; float:inherit !important;}\n" +
-                        "\n" +
-                        "\t\t\t/* tmpl-11 preview */\n" +
-                        "\t\t\t.rnb-social-center{display:inline-block;}\n" +
-                        "\n" +
-                        "\t\t\t/* tmpl-11 preview */\n" +
-                        "\t\t\t.social-text-spacing{margin-bottom:0px !important; padding-bottom:0px !important;}\n" +
-                        "\n" +
-                        "\t\t\t/* tmpl-11 preview */\n" +
-                        "\t\t\t.social-text-spacing2{padding-top:15px !important;}\n" +
-                        "\n" +
-                        "\t\t}</style><!--[if gte mso 11]><style type=\"text/css\">table{border-spacing: 0; }table td {border-collapse: separate;}</style><![endif]--><!--[if !mso]><!--><style type=\"text/css\">table{border-spacing: 0;} table td {border-collapse: collapse;}</style> <!--<![endif]--><!--[if gte mso 15]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--><!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--></head><body>\n" +
-                        "\n" +
-                        "\t<table border=\"0\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"main-template\" bgcolor=\"#ffffff\" style=\"background-color: rgb(255, 255, 255);\">\n" +
-                        "\n" +
-                        "\t\t<tbody><tr style=\"display:none !important; font-size:1px; mso-hide: all;\"><td></td><td></td></tr><tr>\n" +
-                        "\t\t\t<td align=\"center\" valign=\"top\">\n" +
-                        "\t\t\t<!--[if gte mso 9]>\n" +
-                        "\t\t\t\t\t\t\t<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"590\" style=\"width:590px;\">\n" +
-                        "\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t<td align=\"center\" valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
-                        "\t\t\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" class=\"templateContainer\" style=\"max-width:590px!important; width: 590px;\">\n" +
-                        "\t\t\t<tbody><tr>\n" +
-                        "\n" +
-                        "\t\t\t<td align=\"center\" valign=\"top\">\n" +
-                        "\n" +
-                        "\t\t\t\t<table class=\"rnb-del-min-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_2620\" id=\"Layout_2620\">\n" +
-                        "\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t<td class=\"rnb-del-min-width\" valign=\"top\" align=\"center\" style=\"min-width:590px;\">\n" +
-                        "\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" border=\"0\" height=\"30\" cellspacing=\"0\">\n" +
-                        "\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<td valign=\"top\" height=\"30\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<img width=\"20\" height=\"30\" style=\"display:block; max-height:30px; max-width:20px;\" alt=\"\" src=\"http://img.mailinblue.com/new_images/rnb/rnb_space.gif\">\n" +
-                        "\t\t\t\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t</td>\n" +
-                        "\t\t</tr><tr>\n" +
-                        "\n" +
-                        "\t\t\t<td align=\"center\" valign=\"top\">\n" +
-                        "\n" +
-                        "\t\t\t\t<div style=\"background-color: rgb(255, 255, 255); border-radius: 0px;\">\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100%;\">\n" +
-                        "\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t<td valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t<table class=\"rnb-del-min-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_1\" id=\"Layout_1\">\n" +
-                        "\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\" style=\"min-width:590px;\">\n" +
-                        "\t\t\t\t\t\t\t<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"rnb-container\" bgcolor=\"#ffffff\" style=\"background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(200, 200, 200); border-radius: 0px; padding-left: 20px; padding-right: 20px; border-collapse: separate;\">\n" +
-                        "\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<td height=\"40\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<td valign=\"top\" class=\"rnb-container-padding\" align=\"left\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" border=\"0\" align=\"center\" cellspacing=\"0\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"top\" align=\"center\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t<table cellpadding=\"0\" border=\"0\" align=\"left\" cellspacing=\"0\" class=\"logo-img-center\"> \n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"middle\" align=\"center\" style=\"line-height: 1px;\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<div style=\"border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;display:inline-block; \" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><div><img width=\"200\" vspace=\"0\" hspace=\"0\" border=\"0\" alt=\"Sendinblue\" style=\"float: left;max-width:200px;display:block;\" class=\"rnb-logo-img\" src=\"https://imageneslive4teach.000webhostapp.com/imagenes/liveteach_logo.png\"></div></div></td>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t</tbody></table></td>\n" +
-                        "\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<td height=\"40\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t</table>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\n" +
-                        "\t\t\t</div></td>\n" +
-                        "\t\t</tr><tr>\n" +
-                        "\n" +
-                        "\t\t\t<td align=\"center\" valign=\"top\">\n" +
-                        "\n" +
-                        "\t\t\t\t<div style=\"background-color: rgb(255, 255, 255); border-radius: 0px;\">\n" +
-                        "\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100%;\">\n" +
-                        "\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t<td valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t<table class=\"rnb-del-min-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:100%;\" name=\"Layout_5\">\n" +
-                        "\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\">\n" +
-                        "\t\t\t\t\t\t\t<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"rnb-container\" bgcolor=\"#ffffff\" style=\"background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 2px solid rgb(200, 200, 200);\">\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t<td height=\"30\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t<td valign=\"top\" class=\"rnb-container-padding\" align=\"left\">\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"rnb-columns-container\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"rnb-force-col\" valign=\"top\" style=\"padding-right: 0px;\">\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<table border=\"0\" valign=\"top\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" align=\"left\" class=\"rnb-col-1\">\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<td class=\"content-spacing\" style=\"font-size:16px; font-family:'Arial',Helvetica,sans-serif, sans-serif; color:#999; line-height: 21px;\"><div>\n" +
-                        "\t<div style=\"line-height:150%;\"><span style=\"font-size:18px;\"><span style=\"color:#33c0c9;\"><strong>Hola Sr/Srta"+ name +" ,</strong></span></span></div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:150%;\">&nbsp;</div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:150%;\">¡Este es Diago y Benitez, CEO de Web API! ¡Bienvenido a bordo con nosotros en nombre de nuestro equipo!,<a href=\"#\" style=\"text-decoration: solid; color: rgb(51, 192, 201);\" target=\"_blank\"></a>. ¡Prometemos brindarle una experiencia de compra inolvidable en el futuro!.</div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:150%;\">&nbsp;</div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:150%;\"><strong>Entonces, ¿qué estás esperando, comienza a comprar y obtén lo mejor de nuestros productos justo en tu puerta!           ¡Estamos felices de ayudarte! ¡En caso de cualquier consulta, contáctenos a nuestros manejadores mencionados a continuación!</strong></div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:150%;\">&nbsp;</div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:150%;\"><span style=\"color:#33c0c9;\"><span style=\"font-size:18px;\"><strong>Saludos cordiales,</strong></span></span></div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:150%;\">&nbsp;</div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:100%;\">Live4Teach<br>\n" +
-                        "\t&nbsp;</div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:100%;\"><span style=\"font-size:12px;\"><em>President/CEO<br>\n" +
-                        "\tAirBound</em></span></div>\n" +
-                        "\t</div>\n" +
-                        "\t</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody></table>\n" +
-                        "\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</td></tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t</tbody></table></td>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t<td height=\"30\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t</tbody></table><!--[if mso]>\n" +
-                        "\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t</table>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\n" +
-                        "\t\t\t\t</div></td>\n" +
-                        "\t\t</tr><tr>\n" +
-                        "\n" +
-                        "\t\t\t<td align=\"center\" valign=\"top\">\n" +
-                        "\n" +
-                        "\t\t\t\t<div style=\"background-color: rgb(255, 255, 255); border-radius: 0px;\">\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100%;\">\n" +
-                        "\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t<td valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<!--[if mso]>\n" +
-                        "\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t</table>\n" +
-                        "\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t</div></td>\n" +
-                        "\t\t</tr><tr>\n" +
-                        "\n" +
-                        "\t\t\t<td align=\"center\" valign=\"top\">\n" +
-                        "\n" +
-                        "\t\t\t\t<div style=\"background-color: rgb(255, 255, 255);\">\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<table class=\"rnb-del-min-width rnb-tmpl-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_3\" id=\"Layout_3\">\n" +
-                        "\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\" bgcolor=\"#ffffff\" style=\"min-width:590px; background-color: #ffffff; text-align: center;\">\n" +
-                        "\t\t\t\t\t\t\t\t<table width=\"590\" class=\"rnb-container\" cellpadding=\"0\" border=\"0\" align=\"center\" cellspacing=\"0\" bgcolor=\"#ffffff\" style=\"padding-right: 20px; padding-left: 20px; background-color: rgb(255, 255, 255);\">\n" +
-                        "\t\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<td height=\"10\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<td>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<div style=\"font-size:14px; color:#919191; font-weight:normal; text-align:center; font-family:'Arial',Helvetica,sans-serif;\"><div>\n" +
-                        "\t<div style=\"line-height:200%;\">Este correo fue enviado a "+email+"</div>\n" +
-                        "\n" +
-                        "\t<div style=\"line-height:200%;\">You received this email because you are registered with Your Company</div>\n" +
-                        "\n" +
-                        "\t<div>&nbsp;</div>\n" +
-                        "\t</div>\n" +
-                        "\t</div>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<div style=\"display: block; text-align: center;\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t<span style=\"font-size:14px; font-weight:normal; display: inline-block; text-align:center; font-family:'Arial',Helvetica,sans-serif;\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t\t\t<a style=\"text-decoration:none; color:#ccc;font-size:14px;font-weight:normal;font-family:'Arial',Helvetica,sans-serif;\" target=\"_blank\" href=\"{{ unsubscribe }}\"></a></span>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t</div>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t</td></tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<td height=\"10\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\n" +
-                        "\t\t\t\t\t\t\t\t\t</tr><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<td height=\"10\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t</tr></tbody></table>\n" +
-                        "\t\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t</div></td>\n" +
-                        "\t\t</tr><tr>\n" +
-                        "\n" +
-                        "\t\t\t<td align=\"center\" valign=\"top\">\n" +
-                        "\n" +
-                        "\t\t\t\t<div style=\"background-color: rgb(51, 192, 201);\">\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t\t<table class=\"rnb-del-min-width rnb-tmpl-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_4\" id=\"Layout_4\">\n" +
-                        "\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\" style=\"min-width:590px;\">\n" +
-                        "\t\t\t\t\t\t\t\t<table width=\"100%\" cellpadding=\"0\" border=\"0\" align=\"center\" cellspacing=\"0\" bgcolor=\"#33c0c9\" style=\"padding-right: 20px; padding-left: 20px; background-color: rgb(51, 192, 201);\">\n" +
-                        "\t\t\t\t\t\t\t\t\t<tbody><tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<td height=\"20\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<td style=\"font-size:14px; color:#ffffff; font-weight:normal; text-align:center; font-family:'Arial',Helvetica,sans-serif;\">\n" +
-                        "\t\t\t\t\t\t\t\t\t\t\t<div><div>© 2020 Live4Teach</div>\n" +
-                        "\t</div>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t</td></tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t<tr>\n" +
-                        "\t\t\t\t\t\t\t\t\t\t<td height=\"20\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
-                        "\t\t\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t</tbody></table>\n" +
-                        "\t\t\t\t\t\n" +
-                        "\t\t\t\t</div></td>\n" +
-                        "\t\t</tr></tbody></table>\n" +
-                        "\t\t\t\t<!--[if gte mso 9]>\n" +
-                        "\t\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t\t\t\t\t</tr>\n" +
-                        "\t\t\t\t\t\t\t</table>\n" +
-                        "\t\t\t\t\t\t\t<![endif]-->\n" +
-                        "\t\t\t\t\t\t\t</td>\n" +
-                        "\t\t\t</tr>\n" +
-                        "\t\t\t</tbody></table>\n" +
-                        "\n" +
-                        "\t</body></html>")
+                        ".ReadMsgBody { width: 100%; background-color: #ebebeb;}\n" +
+                        ".ExternalClass {width: 100%; background-color: #ebebeb;}\n" +
+                        ".ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height:100%;}\n" +
+                        "a[x-apple-data-detectors]{\n" +
+                        "color:inherit !important;\n" +
+                        "text-decoration:none !important;\n" +
+                        "font-size:inherit !important;\n" +
+                        "font-family:inherit !important;\n" +
+                        "font-weight:inherit !important;\n" +
+                        "line-height:inherit !important;\n" +
+                        "}        \n" +
+                        "body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;}\n" +
+                        "body {margin:0; padding:0;}\n" +
+                        ".yshortcuts a {border-bottom: none !important;}\n" +
+                        ".rnb-del-min-width{ min-width: 0 !important; }\n" +
+                        "\n" +
+                        "/* Add new outlook css start */\n" +
+                        ".templateContainer{\n" +
+                        "max-width:590px !important;\n" +
+                        "width:auto !important;\n" +
+                        "}\n" +
+                        "/* Add new outlook css end */\n" +
+                        "\n" +
+                        "/* Image width by default for 3 columns */\n" +
+                        "img[class=\"rnb-col-3-img\"] {\n" +
+                        "max-width:170px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* Image width by default for 2 columns */\n" +
+                        "img[class=\"rnb-col-2-img\"] {\n" +
+                        "max-width:264px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* Image width by default for 2 columns aside small size */\n" +
+                        "img[class=\"rnb-col-2-img-side-xs\"] {\n" +
+                        "max-width:180px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* Image width by default for 2 columns aside big size */\n" +
+                        "img[class=\"rnb-col-2-img-side-xl\"] {\n" +
+                        "max-width:350px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* Image width by default for 1 column */\n" +
+                        "img[class=\"rnb-col-1-img\"] {\n" +
+                        "max-width:550px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* Image width by default for header */\n" +
+                        "img[class=\"rnb-header-img\"] {\n" +
+                        "max-width:590px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* Ckeditor line-height spacing */\n" +
+                        ".rnb-force-col p, ul, ol{margin:0px!important;}\n" +
+                        ".rnb-del-min-width p, ul, ol{margin:0px!important;}\n" +
+                        "\n" +
+                        "/* tmpl-2 preview */\n" +
+                        ".rnb-tmpl-width{ width:100%!important;}\n" +
+                        "\n" +
+                        "/* tmpl-11 preview */\n" +
+                        ".rnb-social-width{padding-right:15px!important;}\n" +
+                        "\n" +
+                        "/* tmpl-11 preview */\n" +
+                        ".rnb-social-align{float:right!important;}\n" +
+                        "\n" +
+                        "/* Ul Li outlook extra spacing fix */\n" +
+                        "li{mso-margin-top-alt: 0; mso-margin-bottom-alt: 0;}        \n" +
+                        "\n" +
+                        "/* Outlook fix */\n" +
+                        "table {mso-table-lspace:0pt; mso-table-rspace:0pt;}\n" +
+                        "\n" +
+                        "/* Outlook fix */\n" +
+                        "table, tr, td {border-collapse: collapse;}\n" +
+                        "\n" +
+                        "/* Outlook fix */\n" +
+                        "p,a,li,blockquote {mso-line-height-rule:exactly;} \n" +
+                        "\n" +
+                        "/* Outlook fix */\n" +
+                        ".msib-right-img { mso-padding-alt: 0 !important;}\n" +
+                        "\n" +
+                        "/* Fix text line height on preview */ \n" +
+                        ".content-spacing div {display: list-item; list-style-type: none;}\n" +
+                        "\n" +
+                        "@media only screen and (min-width:590px){\n" +
+                        "/* mac fix width */\n" +
+                        ".templateContainer{width:590px !important;}\n" +
+                        "}\n" +
+                        "\n" +
+                        "@media screen and (max-width: 360px){\n" +
+                        "/* yahoo app fix width \"tmpl-2 tmpl-10 tmpl-13\" in android devices */\n" +
+                        ".rnb-yahoo-width{ width:360px !important;}\n" +
+                        "}\n" +
+                        "\n" +
+                        "@media screen and (max-width: 380px){\n" +
+                        "/* fix width and font size \"tmpl-4 tmpl-6\" in mobile preview */\n" +
+                        ".element-img-text{ font-size:24px !important;}\n" +
+                        ".element-img-text2{ width:230px !important;}\n" +
+                        ".content-img-text-tmpl-6{ font-size:24px !important;}\n" +
+                        ".content-img-text2-tmpl-6{ width:220px !important;}\n" +
+                        "}\n" +
+                        "\n" +
+                        "@media screen and (max-width: 480px) {\n" +
+                        "td[class=\"rnb-container-padding\"] {\n" +
+                        "padding-left: 10px !important;\n" +
+                        "padding-right: 10px !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* force container nav to (horizontal) blocks */\n" +
+                        "td.rnb-force-nav {\n" +
+                        "display: inherit;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* fix text alignment \"tmpl-11\" in mobile preview */\n" +
+                        ".rnb-social-text-left {\n" +
+                        "width: 100%;\n" +
+                        "text-align: center;\n" +
+                        "margin-bottom: 15px;\n" +
+                        "}\n" +
+                        ".rnb-social-text-right {\n" +
+                        "width: 100%;\n" +
+                        "text-align: center;\n" +
+                        "}\n" +
+                        "}\n" +
+                        "\n" +
+                        "@media only screen and (max-width: 600px) {\n" +
+                        "\n" +
+                        "/* center the address &amp; social icons */\n" +
+                        ".rnb-text-center {text-align:center !important;}\n" +
+                        "\n" +
+                        "/* force container columns to (horizontal) blocks */\n" +
+                        "td.rnb-force-col {\n" +
+                        "display: block;\n" +
+                        "padding-right: 0 !important;\n" +
+                        "padding-left: 0 !important;\n" +
+                        "width:100%;\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-container {\n" +
+                        " width: 100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-btn-col-content {\n" +
+                        "width: 100% !important;\n" +
+                        "}\n" +
+                        "table.rnb-col-3 {\n" +
+                        "/* unset table align=\"left/right\" */\n" +
+                        "float: none !important;\n" +
+                        "width: 100% !important;\n" +
+                        "\n" +
+                        "/* change left/right padding and margins to top/bottom ones */\n" +
+                        "margin-bottom: 10px;\n" +
+                        "padding-bottom: 10px;\n" +
+                        "/*border-bottom: 1px solid #eee;*/\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-last-col-3 {\n" +
+                        "/* unset table align=\"left/right\" */\n" +
+                        "float: none !important;\n" +
+                        "width: 100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-col-2 {\n" +
+                        "/* unset table align=\"left/right\" */\n" +
+                        "float: none !important;\n" +
+                        "width: 100% !important;\n" +
+                        "\n" +
+                        "/* change left/right padding and margins to top/bottom ones */\n" +
+                        "margin-bottom: 10px;\n" +
+                        "padding-bottom: 10px;\n" +
+                        "/*border-bottom: 1px solid #eee;*/\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-col-2-noborder-onright {\n" +
+                        "/* unset table align=\"left/right\" */\n" +
+                        "float: none !important;\n" +
+                        "width: 100% !important;\n" +
+                        "\n" +
+                        "/* change left/right padding and margins to top/bottom ones */\n" +
+                        "margin-bottom: 10px;\n" +
+                        "padding-bottom: 10px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-col-2-noborder-onleft {\n" +
+                        "/* unset table align=\"left/right\" */\n" +
+                        "float: none !important;\n" +
+                        "width: 100% !important;\n" +
+                        "\n" +
+                        "/* change left/right padding and margins to top/bottom ones */\n" +
+                        "margin-top: 10px;\n" +
+                        "padding-top: 10px;\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-last-col-2 {\n" +
+                        "/* unset table align=\"left/right\" */\n" +
+                        "float: none !important;\n" +
+                        "width: 100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "table.rnb-col-1 {\n" +
+                        "/* unset table align=\"left/right\" */\n" +
+                        "float: none !important;\n" +
+                        "width: 100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "img.rnb-col-3-img {\n" +
+                        "/**max-width:none !important;**/\n" +
+                        "width:100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "img.rnb-col-2-img {\n" +
+                        "/**max-width:none !important;**/\n" +
+                        "width:100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "img.rnb-col-2-img-side-xs {\n" +
+                        "/**max-width:none !important;**/\n" +
+                        "width:100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "img.rnb-col-2-img-side-xl {\n" +
+                        "/**max-width:none !important;**/\n" +
+                        "width:100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "img.rnb-col-1-img {\n" +
+                        "/**max-width:none !important;**/\n" +
+                        "width:100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "img.rnb-header-img {\n" +
+                        "/**max-width:none !important;**/\n" +
+                        "width:100% !important;\n" +
+                        "margin:0 auto;\n" +
+                        "}\n" +
+                        "\n" +
+                        "img.rnb-logo-img {\n" +
+                        "/**max-width:none !important;**/\n" +
+                        "width:100% !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "td.rnb-mbl-float-none {\n" +
+                        "float:inherit !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        ".img-block-center{text-align:center !important;}\n" +
+                        "\n" +
+                        ".logo-img-center\n" +
+                        "{\n" +
+                        "float:inherit !important;\n" +
+                        "}\n" +
+                        "\n" +
+                        "/* tmpl-11 preview */\n" +
+                        ".rnb-social-align{margin:0 auto !important; float:inherit !important;}\n" +
+                        "\n" +
+                        "/* tmpl-11 preview */\n" +
+                        ".rnb-social-center{display:inline-block;}\n" +
+                        "\n" +
+                        "/* tmpl-11 preview */\n" +
+                        ".social-text-spacing{margin-bottom:0px !important; padding-bottom:0px !important;}\n" +
+                        "\n" +
+                        "/* tmpl-11 preview */\n" +
+                        ".social-text-spacing2{padding-top:15px !important;}\n" +
+                        "\n" +
+                        "}</style><!--[if gte mso 11]><style type=\"text/css\">table{border-spacing: 0; }table td {border-collapse: separate;}</style><![endif]--><!--[if !mso]><!--><style type=\"text/css\">table{border-spacing: 0;} table td {border-collapse: collapse;}</style> <!--<![endif]--><!--[if gte mso 15]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--><!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--></head><body>\n" +
+                        "\n" +
+                        "<table border=\"0\" align=\"center\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" class=\"main-template\" bgcolor=\"#ffffff\" style=\"background-color: rgb(255, 255, 255);\">\n" +
+                        "\n" +
+                        "<tbody><tr style=\"display:none !important; font-size:1px; mso-hide: all;\"><td></td><td></td></tr><tr>\n" +
+                        "<td align=\"center\" valign=\"top\">\n" +
+                        "<!--[if gte mso 9]>\n" +
+                        "<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"590\" style=\"width:590px;\">\n" +
+                        "<tr>\n" +
+                        "<td align=\"center\" valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
+                        "<![endif]-->\n" +
+                        "<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"100%\" class=\"templateContainer\" style=\"max-width:590px!important; width: 590px;\">\n" +
+                        "<tbody><tr>\n" +
+                        "\n" +
+                        "<td align=\"center\" valign=\"top\">\n" +
+                        "\n" +
+                        "<table class=\"rnb-del-min-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_2620\" id=\"Layout_2620\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td class=\"rnb-del-min-width\" valign=\"top\" align=\"center\" style=\"min-width:590px;\">\n" +
+                        "<table width=\"100%\" cellpadding=\"0\" border=\"0\" height=\"30\" cellspacing=\"0\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td valign=\"top\" height=\"30\">\n" +
+                        "<img width=\"20\" height=\"30\" style=\"display:block; max-height:30px; max-width:20px;\" alt=\"\" src=\"http://img.mailinblue.com/new_images/rnb/rnb_space.gif\">\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "</td>\n" +
+                        "</tr><tr>\n" +
+                        "\n" +
+                        "<td align=\"center\" valign=\"top\">\n" +
+                        "\n" +
+                        "<div style=\"background-color: rgb(255, 255, 255); border-radius: 0px;\">\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100%;\">\n" +
+                        "<tr>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "<td valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
+                        "<![endif]-->\n" +
+                        "<table class=\"rnb-del-min-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_1\" id=\"Layout_1\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\" style=\"min-width:590px;\">\n" +
+                        "<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"rnb-container\" bgcolor=\"#ffffff\" style=\"background-color: rgb(255, 255, 255); border-bottom: 1px solid rgb(200, 200, 200); border-radius: 0px; padding-left: 20px; padding-right: 20px; border-collapse: separate;\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td height=\"40\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td valign=\"top\" class=\"rnb-container-padding\" align=\"left\">\n" +
+                        "<table width=\"100%\" cellpadding=\"0\" border=\"0\" align=\"center\" cellspacing=\"0\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td valign=\"top\" align=\"center\">\n" +
+                        "<table cellpadding=\"0\" border=\"0\" align=\"left\" cellspacing=\"0\" class=\"logo-img-center\"> \n" +
+                        "<tbody><tr>\n" +
+                        "<td valign=\"middle\" align=\"center\" style=\"line-height: 1px;\">\n" +
+                        "<div style=\"border-top:0px None #000;border-right:0px None #000;border-bottom:0px None #000;border-left:0px None #000;display:inline-block; \" cellspacing=\"0\" cellpadding=\"0\" border=\"0\"><div><img width=\"200\" vspace=\"0\" hspace=\"0\" border=\"0\" alt=\"Sendinblue\" style=\"float: left;max-width:200px;display:block;\" class=\"rnb-logo-img\" src=\"https://imageneslive4teach.000webhostapp.com/imagenes/liveteach_logo.png\"></div></div></td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table></td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td height=\"40\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "<!--[if mso]>\n" +
+                        "</td>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "</tr>\n" +
+                        "</table>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "</div></td>\n" +
+                        "</tr><tr>\n" +
+                        "\n" +
+                        "<td align=\"center\" valign=\"top\">\n" +
+                        "\n" +
+                        "<div style=\"background-color: rgb(255, 255, 255); border-radius: 0px;\">\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100%;\">\n" +
+                        "<tr>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "<td valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
+                        "<![endif]-->\n" +
+                        "<table class=\"rnb-del-min-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:100%;\" name=\"Layout_5\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\">\n" +
+                        "<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"rnb-container\" bgcolor=\"#ffffff\" style=\"background-color: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 2px solid rgb(200, 200, 200);\">\n" +
+                        "\n" +
+                        "<tbody><tr>\n" +
+                        "<td height=\"30\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td valign=\"top\" class=\"rnb-container-padding\" align=\"left\">\n" +
+                        "\n" +
+                        "<table width=\"100%\" border=\"0\" cellpadding=\"0\" cellspacing=\"0\" class=\"rnb-columns-container\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td class=\"rnb-force-col\" valign=\"top\" style=\"padding-right: 0px;\">\n" +
+                        "\n" +
+                        "<table border=\"0\" valign=\"top\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" align=\"left\" class=\"rnb-col-1\">\n" +
+                        "\n" +
+                        "<tbody><tr>\n" +
+                        "<td class=\"content-spacing\" style=\"font-size:16px; font-family:'Arial',Helvetica,sans-serif, sans-serif; color:#999; line-height: 21px;\"><div>\n" +
+                        "<div style=\"line-height:150%;\"><span style=\"font-size:18px;\"><span style=\"color:#33c0c9;\"><strong>Hola Sr/Srta "+ name +" ,</strong></span></span></div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:150%;\">&nbsp;</div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:150%;\">¡Este es Diago y Benitez, CEO de Web API! ¡Bienvenido a bordo con nosotros en nombre de nuestro equipo!,<a href=\"#\" style=\"text-decoration: solid; color: rgb(51, 192, 201);\" target=\"_blank\"></a>. ¡Prometemos brindarle una experiencia de compra inolvidable en el futuro!.</div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:150%;\">&nbsp;</div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:150%;\"><strong>Entonces, ¿qué estás esperando, comienza a comprar y obtén lo mejor de nuestros productos justo en tu puerta!           ¡Estamos felices de ayudarte! ¡En caso de cualquier consulta, contáctenos a nuestros manejadores mencionados a continuación!</strong></div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:150%;\">&nbsp;</div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:150%;\"><span style=\"color:#33c0c9;\"><span style=\"font-size:18px;\"><strong>Saludos cordiales,</strong></span></span></div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:150%;\">&nbsp;</div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:100%;\">Live4Teach<br>\n" +
+                        "&nbsp;</div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:100%;\"><span style=\"font-size:12px;\"><em>President/CEO<br>\n" +
+                        "AirBound</em></span></div>\n" +
+                        "</div>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "\n" +
+                        "</td></tr>\n" +
+                        "</tbody></table></td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td height=\"30\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table><!--[if mso]>\n" +
+                        "</td>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "</tr>\n" +
+                        "</table>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "</div></td>\n" +
+                        "</tr><tr>\n" +
+                        "\n" +
+                        "<td align=\"center\" valign=\"top\">\n" +
+                        "\n" +
+                        "<div style=\"background-color: rgb(255, 255, 255); border-radius: 0px;\">\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "<table align=\"center\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\" width=\"100%\" style=\"width:100%;\">\n" +
+                        "<tr>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "<td valign=\"top\" width=\"590\" style=\"width:590px;\">\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "</td>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "<!--[if mso]>\n" +
+                        "</tr>\n" +
+                        "</table>\n" +
+                        "<![endif]-->\n" +
+                        "\n" +
+                        "</div></td>\n" +
+                        "</tr><tr>\n" +
+                        "\n" +
+                        "<td align=\"center\" valign=\"top\">\n" +
+                        "\n" +
+                        "<div style=\"background-color: rgb(255, 255, 255);\">\n" +
+                        "\n" +
+                        "<table class=\"rnb-del-min-width rnb-tmpl-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_3\" id=\"Layout_3\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\" bgcolor=\"#ffffff\" style=\"min-width:590px; background-color: #ffffff; text-align: center;\">\n" +
+                        "<table width=\"590\" class=\"rnb-container\" cellpadding=\"0\" border=\"0\" align=\"center\" cellspacing=\"0\" bgcolor=\"#ffffff\" style=\"padding-right: 20px; padding-left: 20px; background-color: rgb(255, 255, 255);\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td height=\"10\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td>\n" +
+                        "<div style=\"font-size:14px; color:#919191; font-weight:normal; text-align:center; font-family:'Arial',Helvetica,sans-serif;\"><div>\n" +
+                        "<div style=\"line-height:200%;\">Este correo fue enviado a "+email+"</div>\n" +
+                        "\n" +
+                        "<div style=\"line-height:200%;\">You received this email because you are registered with Your Company</div>\n" +
+                        "\n" +
+                        "<div>&nbsp;</div>\n" +
+                        "</div>\n" +
+                        "</div>\n" +
+                        "<div style=\"display: block; text-align: center;\">\n" +
+                        "<span style=\"font-size:14px; font-weight:normal; display: inline-block; text-align:center; font-family:'Arial',Helvetica,sans-serif;\">\n" +
+                        "<a style=\"text-decoration:none; color:#ccc;font-size:14px;font-weight:normal;font-family:'Arial',Helvetica,sans-serif;\" target=\"_blank\" href=\"{{ unsubscribe }}\"></a></span>\n" +
+                        "</div>\n" +
+                        "</td></tr>\n" +
+                        "<tr>\n" +
+                        "<td height=\"10\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "\n" +
+                        "</tr><tr>\n" +
+                        "<td height=\"10\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr></tbody></table>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "\n" +
+                        "</div></td>\n" +
+                        "</tr><tr>\n" +
+                        "\n" +
+                        "<td align=\"center\" valign=\"top\">\n" +
+                        "\n" +
+                        "<div style=\"background-color: rgb(51, 192, 201);\">\n" +
+                        "\n" +
+                        "<table class=\"rnb-del-min-width rnb-tmpl-width\" width=\"100%\" cellpadding=\"0\" border=\"0\" cellspacing=\"0\" style=\"min-width:590px;\" name=\"Layout_4\" id=\"Layout_4\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td class=\"rnb-del-min-width\" align=\"center\" valign=\"top\" style=\"min-width:590px;\">\n" +
+                        "<table width=\"100%\" cellpadding=\"0\" border=\"0\" align=\"center\" cellspacing=\"0\" bgcolor=\"#33c0c9\" style=\"padding-right: 20px; padding-left: 20px; background-color: rgb(51, 192, 201);\">\n" +
+                        "<tbody><tr>\n" +
+                        "<td height=\"20\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "<tr>\n" +
+                        "<td style=\"font-size:14px; color:#ffffff; font-weight:normal; text-align:center; font-family:'Arial',Helvetica,sans-serif;\">\n" +
+                        "<div><div>© 2020 Live4Teach</div>\n" +
+                        "</div>\n" +
+                        "</td></tr>\n" +
+                        "<tr>\n" +
+                        "<td height=\"20\" style=\"font-size:1px; line-height:0px; mso-hide: all;\">&nbsp;</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "\n" +
+                        "</div></td>\n" +
+                        "</tr></tbody></table>\n" +
+                        "<!--[if gte mso 9]>\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</table>\n" +
+                        "<![endif]-->\n" +
+                        "</td>\n" +
+                        "</tr>\n" +
+                        "</tbody></table>\n" +
+                        "\n" +
+                        "</body></html>")
                 //"<p>Hola Mr/Miss, <b>'"+ name + "'</b></p>"+ "\n " + getString(R.string.registermail1))
                 .send();
 
 
 
     }
+
 }
 

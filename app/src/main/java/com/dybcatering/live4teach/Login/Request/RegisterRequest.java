@@ -18,13 +18,13 @@ public class RegisterRequest extends StringRequest {
 
 	private static final String REGISTER_URL = "http://192.168.1.101/live4teach/pruebas/register.php";
 	private Map<String, String> parameters;
-	public RegisterRequest(String name, String last_name, String email, String usuario, String password,  Response.Listener<String> listener) {
+	public RegisterRequest(String name, String last_name, String email, String user_name, String password,  Response.Listener<String> listener) {
 		super(Method.POST, REGISTER_URL, listener, null);
 		parameters = new HashMap<>();
 		parameters.put("name", name);
 		parameters.put("last_name", last_name);
 		parameters.put("email", email);
-		parameters.put("usuario", usuario);
+		parameters.put("user_name", user_name);
 		parameters.put("password", password);
 		//parameters.put("image", photo);
 

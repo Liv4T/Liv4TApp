@@ -18,6 +18,7 @@ import com.dybcatering.live4teach.Splash.Estudiante.Carrito.Data.DatabaseHandler
 import com.dybcatering.live4teach.Splash.Estudiante.CategoriasCursos.CategoriasCursos;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
+import com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCalificaciones.MisCalificacionesFragment;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosFragment;
 import com.dybcatering.live4teach.Splash.Estudiante.Perfil.PerfilFragment;
@@ -40,7 +41,7 @@ public class InicioActivity extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new CategoriasCursos()).commit();
+                    new CursosFragment()).commit();
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
