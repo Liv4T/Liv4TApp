@@ -1,7 +1,9 @@
 package com.dybcatering.live4teach.Login;
 
+import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -14,9 +16,12 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -36,6 +41,7 @@ import com.rilixtech.CountryCodePicker;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,8 +51,9 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
     private EditText edtnombre, edtapellido, edtemail, edtusuario, edtpassword, edtc_password, edttelefono;
     private String verificar, nombre, apellido, email, usuario, password, c_password, telefono;
-    private Button btn_regist;
+    private Button btn_regist, btn_date;
     private static String URL_REGIST = "http://192.168.1.101/live4teach/pruebas/registertuto.php";
+	private TextView txtDate;
 
     public Spinner spinnerRegistro;
 
@@ -74,6 +81,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		edtc_password = findViewById(R.id.txtPasswordConfirm);
 		edttelefono = findViewById(R.id.txtTelefono);
 		btn_regist = findViewById(R.id.btn_registrarse);
+		btn_date = findViewById(R.id.btn_date);
+		txtDate = findViewById(R.id.TxtFecha);
 
 		edtnombre.setEnabled(false);
 		edtapellido.setEnabled(false);
@@ -99,6 +108,29 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		ccp = findViewById(R.id.ccp);
 
 		ccp.registerPhoneNumberTextView(edttelefono);
+
+		btn_date.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Calendar calendar = Calendar.getInstance();
+				int year = calendar.get(Calendar.YEAR);
+				int month = calendar.get(Calendar.MONTH);
+				final int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+
+				DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this, R.style.DialogTheme, 
+						new DatePickerDialog.OnDateSetListener() {
+							@Override
+							public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+								txtDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+							}
+						}, year, month, dayOfMonth);
+				datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
+				datePickerDialog.show();
+
+
+			}
+		});
+
 
 
 		btn_regist.setOnClickListener(new View.OnClickListener() {
