@@ -1,11 +1,13 @@
 package com.dybcatering.live4teach.Login;
 
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,8 +15,10 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -25,22 +29,28 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 import com.dybcatering.live4teach.Login.Request.RegisterRequest;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.rilixtech.CountryCodePicker;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -52,23 +62,26 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     private EditText edtnombre, edtapellido, edtemail, edtusuario, edtpassword, edtc_password, edttelefono;
     private String verificar, nombre, apellido, email, usuario, password, c_password, telefono;
     private Button btn_regist, btn_date;
-    private static String URL_REGIST = "http://192.168.1.101/live4teach/pruebas/registertuto.php";
-	private TextView txtDate;
+	private static String URL_CARGAR = "https://dybcatering.com/back_live_app/listarcategorias.php";
 
-    public Spinner spinnerRegistro;
+	private TextView txtDate, ejemplo;
+
+    public Spinner spinnerRegistro, categoria;
 
     public CountryCodePicker ccp;
 
 
     RequestQueue requestQueue;
 	ProgressDialog progressDialog;
+	private Spinner CategoriaSpinner, SpinnerSubcategoria;
+	ArrayList<String> Subcategoria;
 
-
-    @Override
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 		spinnerRegistro = findViewById(R.id.spinnerregistro);
+		SpinnerSubcategoria= findViewById(R.id.spinnersubcategoria);
 		ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.spinner, android.R.layout.simple_spinner_item);
 		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerRegistro.setAdapter(arrayAdapter);
@@ -83,6 +96,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		btn_regist = findViewById(R.id.btn_registrarse);
 		btn_date = findViewById(R.id.btn_date);
 		txtDate = findViewById(R.id.TxtFecha);
+		Subcategoria=new ArrayList<>();
 
 		edtnombre.setEnabled(false);
 		edtapellido.setEnabled(false);
@@ -92,6 +106,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		edtc_password.setEnabled(false);
 		edttelefono.setEnabled(false);
 		btn_regist.setEnabled(false);
+
+		new CheckInternetConnection(this).checkConnection();
 
 		edtpassword.addTextChangedListener(watcherContrasena);
 		edtc_password.addTextChangedListener(watcherConfirmarContrasena);
@@ -109,6 +125,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 		ccp.registerPhoneNumberTextView(edttelefono);
 
+		loadSpinner(URL_CARGAR);
+
 		btn_date.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -117,7 +135,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 				int month = calendar.get(Calendar.MONTH);
 				final int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
-				DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this, R.style.DialogTheme, 
+				DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this, R.style.DialogTheme,
 						new DatePickerDialog.OnDateSetListener() {
 							@Override
 							public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -146,7 +164,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 					final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
 							.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
-							.setLabel("Please wait")
+							.setLabel("Por favor espera un momento")
 							.setCancellable(false)
 							.setAnimationSpeed(2)
 							.setDimAmount(0.5f)
@@ -167,10 +185,10 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 									finish();
 
 								} else
-									Toasty.error(RegisterActivity.this,"El usuario ya existe",Toast.LENGTH_SHORT,true).show();
+									Toasty.error(RegisterActivity.this,"El usuario ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
 							} catch (JSONException e) {
 								e.printStackTrace();
-								Toasty.error(RegisterActivity.this,"Falló el registro",Toast.LENGTH_LONG,true).show();
+								Toasty.error(RegisterActivity.this,"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
 							}
 						}
 					});
@@ -182,6 +200,10 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 			}
 		});
+
+
+
+
 	}
 
 
@@ -855,6 +877,36 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
     }
+
+	private void loadSpinner(String url){
+		RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
+		StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+			@Override
+			public void onResponse(String response) {
+				try{
+					JSONObject jsonObject=new JSONObject(response);
+					JSONArray jsonArray=jsonObject.getJSONArray("Registros");
+					for(int i=0;i<jsonArray.length();i++){
+						JSONObject jsonObject1=jsonArray.getJSONObject(i);
+						String subcat=jsonObject1.getString("name_category");
+						Subcategoria.add(subcat);
+					}
+
+					SpinnerSubcategoria.setAdapter(new ArrayAdapter<String>(RegisterActivity.this, android.R.layout.simple_spinner_dropdown_item, Subcategoria));
+				}catch (JSONException e){e.printStackTrace();}
+			}
+		}, new Response.ErrorListener() {
+			@Override
+			public void onErrorResponse(VolleyError error) {
+				error.printStackTrace();
+			}
+		});
+		int socketTimeout = 30000;
+		RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+		stringRequest.setRetryPolicy(policy);
+		requestQueue.add(stringRequest);
+	}
+
 
 }
 
