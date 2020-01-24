@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.Data.DatabaseHandler;
@@ -24,6 +25,8 @@ import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosFragment;
 import com.dybcatering.live4teach.Splash.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
+
+import java.util.HashMap;
 
 public class InicioActivity extends AppCompatActivity {
     public DatabaseHandler db;
@@ -45,6 +48,7 @@ public class InicioActivity extends AppCompatActivity {
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
+
 
     }
 

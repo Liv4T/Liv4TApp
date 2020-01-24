@@ -67,8 +67,8 @@ public class LoginActivity extends AppCompatActivity {
                 if (!mEmail.isEmpty() || !mPass.isEmpty()) {
                     validarlogin(mEmail, mPass);
                 } else {
-                    email.setError("Please insert email");
-                    password.setError("Please insert password");
+                    email.setError("Por favor ingresa tu usuario");
+                    password.setError("Por favor ingresa tu contraseña");
                 }
 
 
@@ -124,7 +124,7 @@ public class LoginActivity extends AppCompatActivity {
                                     intent1.putExtra("last_name", last_name);
                                     intent1.putExtra("type_user", type_user);
                                     intent1.putExtra("user_name", user_name);
-                                    if (type_user.equals("2")){
+                                    if (type_user.equals("3")){
                                         startActivity(intent);
                                         finish();
 

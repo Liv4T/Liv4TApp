@@ -184,7 +184,7 @@
 
 
 
-                    <TextView
+                    <!--TextView
                         android:id="@+id/cedula"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -192,7 +192,7 @@
                         android:paddingLeft="30dp"
                         style="@style/fonts"
                         android:text="Identificación"
-                        android:textColor="#424242"/>
+                        android:textColor="#424242"/-->
 
 
 

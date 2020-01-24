@@ -1,14 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Splash.Tutor.Perfil.CambiarContrasenaFragmentTutor">
 
-    <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/layoutemail"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:textColorHint="@color/colortexto"
+        app:passwordToggleEnabled="true">
+        <EditText
 
-</FrameLayout>
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="textPassword"
+            android:hint="@string/password"
+            android:textColor="@color/colortexto"
+            android:id="@+id/password"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="" />
+    </android.support.design.widget.TextInputLayout>
+
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/layoutpassword"
+        android:layout_width="match_parent"
+        android:textColorHint="@color/colortexto"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutemail"
+        app:passwordToggleEnabled="true">
+        <EditText
+
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="textPassword"
+            android:hint="Confirmar Contraseña"
+            android:textColor="@color/colortexto"
+            android:id="@+id/password_confirmar"
+            android:gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/ovalorange"
+        android:text="@string/cambiar"
+        android:textStyle="bold"
+        android:fontFamily="@font/centurygothic"
+        android:textColor="@color/colortextoblanco"
+        android:layout_below="@+id/layoutpassword"/>
+
+
+</RelativeLayout>
