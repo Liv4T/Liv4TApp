@@ -100,7 +100,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).addToBackStack("tag").commit();
 
                     return true;
                 }
@@ -198,7 +198,7 @@ public class InicioActivityTutor extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+   /* @Override
     public void onBackPressed() {
         FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
                 .setBackgroundColor(R.color.white)
@@ -229,5 +229,5 @@ public class InicioActivityTutor extends AppCompatActivity {
                 .setCancelable(false)
                 .build();
         alert.show();
-    }
+    }*/
 }

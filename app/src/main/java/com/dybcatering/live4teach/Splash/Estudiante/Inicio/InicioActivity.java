@@ -91,7 +91,7 @@ public class InicioActivity extends AppCompatActivity {
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+                            selectedFragment).addToBackStack("tag").commit();
 
                     return true;
                 }
@@ -187,7 +187,7 @@ public class InicioActivity extends AppCompatActivity {
     }
 
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
                 .setBackgroundColor(R.color.white)
@@ -217,5 +217,5 @@ public class InicioActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .build();
         alert.show();
-    }
+    }*/
 }

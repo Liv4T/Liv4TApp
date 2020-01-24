@@ -36,7 +36,7 @@ public class MisCursosFragment extends Fragment {
     private void swapFragment(){
         Fragment someFragment = new MisCursosDetalleFragment();
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+        transaction.replace(R.id.fragment_container, someFragment ).addToBackStack("tag"); // give your fragment container id in first parameter
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
