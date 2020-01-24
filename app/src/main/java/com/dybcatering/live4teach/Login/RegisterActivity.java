@@ -60,7 +60,7 @@ import es.dmoral.toasty.Toasty;
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     private EditText edtnombre, edtapellido, edtemail, edtusuario, edtpassword, edtc_password, edttelefono;
-    private String verificar, nombre, apellido, email, usuario, password, c_password, telefono;
+    private String verificar, nombre, apellido, email, usuario, password, c_password, telefono, fnacimiento, edad;
     private Button btn_regist, btn_date;
 	private static String URL_CARGAR = "https://dybcatering.com/back_live_app/listarcategorias.php";
 
@@ -71,9 +71,11 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     public CountryCodePicker ccp;
 
 
+    public String ageS;
+
     RequestQueue requestQueue;
 	ProgressDialog progressDialog;
-	private Spinner CategoriaSpinner, SpinnerSubcategoria;
+	private Spinner SpinnerSubcategoria;
 	ArrayList<String> Subcategoria;
 
 	@Override
@@ -131,15 +133,18 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 			@Override
 			public void onClick(View v) {
 				Calendar calendar = Calendar.getInstance();
-				int year = calendar.get(Calendar.YEAR);
-				int month = calendar.get(Calendar.MONTH);
+				final int year = calendar.get(Calendar.YEAR);
+				final int month = calendar.get(Calendar.MONTH);
 				final int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
 
 				DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this, R.style.DialogTheme,
 						new DatePickerDialog.OnDateSetListener() {
 							@Override
 							public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-								txtDate.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+
+								txtDate.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
+
+								Toast.makeText(RegisterActivity.this, getAge(year, month, day), Toast.LENGTH_SHORT).show();
 							}
 						}, year, month, dayOfMonth);
 				datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
@@ -159,8 +164,13 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 					nombre = edtnombre.getText().toString();
 					apellido = edtapellido.getText().toString();
 					email = edtemail.getText().toString();
+					telefono = edttelefono.getText().toString();
 					usuario = edtusuario.getText().toString();
 					password = edtpassword.getText().toString();
+					fnacimiento = txtDate.getText().toString();
+					 edad = getAge(2020, 1, 24);
+
+
 
 					final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
 							.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
@@ -169,7 +179,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 							.setAnimationSpeed(2)
 							.setDimAmount(0.5f)
 							.show();
-					RegisterRequest registerRequest = new RegisterRequest(nombre, apellido, email,usuario, password, new Response.Listener<String>() {
+					RegisterRequest registerRequest = new RegisterRequest(nombre, apellido, email,usuario, password,edad, fnacimiento, telefono, new Response.Listener<String>() {
 						@Override
 						public void onResponse(String response) {
 							progressDialog.dismiss();
@@ -907,6 +917,24 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		requestQueue.add(stringRequest);
 	}
 
+
+	private String getAge(int year, int month, int day){
+		Calendar dob = Calendar.getInstance();
+		Calendar today = Calendar.getInstance();
+
+		dob.set(year, month, day);
+
+		int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+		if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+			age--;
+		}
+
+		Integer ageInt = new Integer(age);
+		String ageS = ageInt.toString();
+
+		return ageS;
+	}
 
 }
 
