@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Splash.Estudiante.Perfil;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -14,7 +15,9 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dybcatering.live4teach.BuildConfig;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.nex3z.notificationbadge.NotificationBadge;
 
 import java.util.HashMap;
@@ -28,7 +31,7 @@ public class PerfilFragment extends Fragment {
     private Button namebutton;
     private CircleImageView primage;
     private Button updateDetails;
-    private LinearLayout addressview;
+    private LinearLayout addressview, cerrar_sesion;
 
     //to get user session data
     // private UserSession session;
@@ -39,6 +42,7 @@ public class PerfilFragment extends Fragment {
 
     NotificationBadge mBadge;
     private int count =0;
+    SessionManager sessionManager;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_perfil, container, false);
@@ -50,6 +54,7 @@ public class PerfilFragment extends Fragment {
         tvidenti= myView.findViewById(R.id.cedula);
         namebutton=myView.findViewById(R.id.btn_actualizar_perfil);
         txtVersion = myView.findViewById(R.id.txtPerfilVersion);
+        cerrar_sesion = myView.findViewById(R.id.cerrar_sesion_estudiante);
         txtVersion.setText("Versión: "+ BuildConfig.VERSION_NAME);
         final String nombre = tvname.getText().toString();
         final String correo = tvemail.getText().toString();
@@ -67,6 +72,42 @@ public class PerfilFragment extends Fragment {
                // intent.putExtra("telefono", telefono);
                // intent.putExtra("identificacion", identificacion);
                // startActivity(intent);
+            }
+        });
+
+        cerrar_sesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+                        .setBackgroundColor(R.color.white)
+                        //.setimageResource(R.drawable.internetconnection)
+                        .setTextTitle("Información")
+                        .setTextSubTitle("¿Deseas Cerrar la Sesión?")
+                        .setCancelable(false)
+                        //.setBody("Iniciar Sesión ")
+                        .setPositiveButtonText("Aceptar")
+                        .setPositiveColor(R.color.colorbonton)
+                        .setNegativeButtonText("Cancelar")
+                        .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                            @Override
+                            public void OnClick(View view, Dialog dialog) {
+                                sessionManager = new SessionManager(getContext());
+                                sessionManager.logoutEstudiante();
+                                getActivity().finish();
+                            }
+                        })
+                        .setOnNegativeClicked(new FancyAlertDialog.OnNegativeClicked() {
+                            @Override
+                            public void OnClick(View view, Dialog dialog) {
+                                dialog.dismiss();
+                            }
+                        })
+                        .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                        .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                        .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                        .setCancelable(false)
+                        .build();
+                alert.show();
             }
         });
         return myView;

@@ -6,10 +6,13 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.PreLoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.Inicio.InicioActivity;
+
+import java.util.HashMap;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -19,6 +22,8 @@ public class SplashActivity extends AppCompatActivity {
 
     private SessionManager session;
 
+    String getId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,6 +32,9 @@ public class SplashActivity extends AppCompatActivity {
         actionbar.hide();
 
         session = new SessionManager(SplashActivity.this);
+
+        HashMap<String, String> user = session.getUserDetail();
+        getId = user.get(SessionManager.ID);
 
        // YoYo.with(Techniques.FadeInLeft)
          //       .duration(7000)
@@ -40,9 +48,10 @@ public class SplashActivity extends AppCompatActivity {
                 // Start your app main activity
                 if (!session.isLoggin()){
 
-                    startActivity(new Intent(SplashActivity.this, PreLoginActivity.class));
+                    startActivity(new Intent(SplashActivity.this, LoginActivity.class));
 
                 }else{
+
                     startActivity(new Intent(SplashActivity.this, InicioActivity.class));
 
                 }

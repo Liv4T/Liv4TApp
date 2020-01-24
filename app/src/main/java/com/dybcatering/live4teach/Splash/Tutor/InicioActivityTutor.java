@@ -198,7 +198,7 @@ public class InicioActivityTutor extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
+    /*@Override
     public void onBackPressed() {
         FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
                 .setBackgroundColor(R.color.white)
@@ -213,7 +213,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                 .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
                     @Override
                     public void OnClick(View view, Dialog dialog) {
-
+                        sessionManager.logout();
                         finish();
                     }
                 })
@@ -229,5 +229,5 @@ public class InicioActivityTutor extends AppCompatActivity {
                 .setCancelable(false)
                 .build();
         alert.show();
-    }
+    }*/
 }

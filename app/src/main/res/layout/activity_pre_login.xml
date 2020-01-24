@@ -58,6 +58,7 @@
             android:textColor="@color/color"
             android:textAllCaps="false"
             android:background="@drawable/oval"
+            android:foreground="?attr/selectableItemBackgroundBorderless"
             />
 
 
@@ -71,7 +72,8 @@
             android:text="@string/tutor"
             android:textStyle="bold"
             android:layout_marginBottom="20dp"
-            android:textColor="@color/color" />
+            android:textColor="@color/color"
+            android:foreground="?attr/selectableItemBackgroundBorderless"/>
 
 
 
@@ -89,7 +91,8 @@
                 android:text="@string/iniciar"
                 android:textStyle="bold"
                 android:fontFamily="@font/centurygothic"
-                android:textColor="@color/colortextoblanco" />
+                android:textColor="@color/colortextoblanco"
+                android:foreground="?attr/selectableItemBackground"/>
 
         </LinearLayout>
         <TextView

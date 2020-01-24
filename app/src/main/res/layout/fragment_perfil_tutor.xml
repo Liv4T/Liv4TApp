@@ -306,8 +306,41 @@
                     android:background="@color/grey_light"
                     android:layout_marginTop="2dp"/>
 
-                <!--Update User Details-->
 
+                <LinearLayout
+                    android:id="@+id/cerrar_sesion_tutor"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <ImageView
+                        android:layout_gravity="center"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:src="@drawable/ic_cambiar_password"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        style="@style/fonts"
+                        android:layout_weight="0.9"
+                        android:text="Cerrar Sesión"
+                        android:textColor="#424242"/>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="match_parent"
+                        android:gravity="right"
+                        android:layout_weight="0.1"
+                        android:src="@drawable/rightarrow"/>
+
+                </LinearLayout>
 
 
             </LinearLayout>

@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 
 import com.dybcatering.live4teach.Splash.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Splash.SplashActivity;
+import com.dybcatering.live4teach.Splash.Tutor.InicioActivityTutor;
 
 import java.util.HashMap;
 
@@ -19,8 +20,10 @@ public class SessionManager {
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
     public static final String NAME = "NAME";
-    public static final String EMAIL = "EMAIL";
+    public static final String USER_NAME = "USER_NAME";
     public static final String ID = "ID";
+    public static final String TYPE_USER = "TYPE_USER";
+    public static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
     public SessionManager(Context context) {
         this.context = context;
@@ -28,12 +31,13 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String name, String email, String id){
+    public void createSession(String name, String user_name, String id, String typeuser){
 
         editor.putBoolean(LOGIN, true);
         editor.putString(NAME, name);
-        editor.putString(EMAIL, email);
+        editor.putString(USER_NAME, user_name);
         editor.putString(ID, id);
+        editor.putString(TYPE_USER, typeuser);
         editor.apply();
 
     }
@@ -55,9 +59,9 @@ public class SessionManager {
 
         HashMap<String, String> user = new HashMap<>();
         user.put(NAME, sharedPreferences.getString(NAME, null));
-        user.put(EMAIL, sharedPreferences.getString(EMAIL, null));
+        user.put(USER_NAME, sharedPreferences.getString(USER_NAME, null));
         user.put(ID, sharedPreferences.getString(ID, null));
-
+        user.put(TYPE_USER, sharedPreferences.getString(TYPE_USER, null));
         return user;
     }
 
@@ -67,8 +71,24 @@ public class SessionManager {
         editor.commit();
         Intent i = new Intent(context, SplashActivity.class);
         context.startActivity(i);
+        ((InicioActivityTutor) context).finish();
+
+    }
+
+
+    public void logoutEstudiante(){
+
+        editor.clear();
+        editor.commit();
+        Intent i = new Intent(context, SplashActivity.class);
+        context.startActivity(i);
         ((InicioActivity) context).finish();
 
+    }
+
+    public void setFirstTimeLaunch(boolean isFirstTime) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+        editor.commit();
     }
 
 }

@@ -228,7 +228,7 @@ public class HomeActivity extends AppCompatActivity {
 
                             if (success.equals("1")){
                                 Toast.makeText(HomeActivity.this, "Success!", Toast.LENGTH_SHORT).show();
-                                sessionManager.createSession(name, email, id);
+                               // sessionManager.createSession(name, email, id, ty);
                             }
 
                         } catch (JSONException e) {
