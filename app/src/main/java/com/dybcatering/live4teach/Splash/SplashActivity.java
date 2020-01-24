@@ -49,11 +49,11 @@ public class SplashActivity extends AppCompatActivity {
                 if (!session.isLoggin()){
 
                     startActivity(new Intent(SplashActivity.this, LoginActivity.class));
-
+                    finish();
                 }else{
 
                     startActivity(new Intent(SplashActivity.this, InicioActivity.class));
-
+                    finish();
                 }
             }
         }, SPLASH_TIME_OUT);

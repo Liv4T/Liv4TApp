@@ -321,7 +321,7 @@
                         android:layout_gravity="center"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
-                        android:src="@drawable/ic_cambiar_password"/>
+                        android:src="@drawable/ic_logout"/>
 
                     <TextView
                         android:layout_width="match_parent"
@@ -332,13 +332,6 @@
                         android:layout_weight="0.9"
                         android:text="Cerrar Sesión"
                         android:textColor="#424242"/>
-
-                    <ImageView
-                        android:layout_width="30dp"
-                        android:layout_height="match_parent"
-                        android:gravity="right"
-                        android:layout_weight="0.1"
-                        android:src="@drawable/rightarrow"/>
 
                 </LinearLayout>
 

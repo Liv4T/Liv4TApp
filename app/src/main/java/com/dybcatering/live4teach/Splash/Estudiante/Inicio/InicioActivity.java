@@ -187,13 +187,13 @@ public class InicioActivity extends AppCompatActivity {
     }
 
 
-    /*@Override
+    @Override
     public void onBackPressed() {
         FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
                 .setBackgroundColor(R.color.white)
                 //.setimageResource(R.drawable.internetconnection)
                 .setTextTitle("Información")
-                .setTextSubTitle("¿Deseas Cerrar la Sesión?")
+                .setTextSubTitle("¿Deseas Salir de la Aplicación?")
                 .setCancelable(false)
                 //.setBody("Iniciar Sesión ")
                 .setPositiveButtonText("Aceptar")
@@ -202,7 +202,6 @@ public class InicioActivity extends AppCompatActivity {
                 .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
                     @Override
                     public void OnClick(View view, Dialog dialog) {
-                        sessionManager.logout();
                         finish();
                     }
                 })
@@ -218,5 +217,5 @@ public class InicioActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .build();
         alert.show();
-    }*/
+    }
 }
