@@ -1066,21 +1066,21 @@
                         android:layout_height="150dp"
                         android:layout_margin="5dp"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/categoriauno"/>
+                        android:background="@drawable/catuno"/>
 
                     <ImageView
                         android:layout_width="fill_parent"
                         android:layout_height="150dp"
                         android:layout_margin="5dp"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/categoriados"/>
+                        android:background="@drawable/catdos"/>
 
                     <ImageView
                         android:layout_width="fill_parent"
                         android:layout_height="150dp"
                         android:layout_margin="5dp"
                         android:layout_gravity="center_vertical"
-                        android:background="@drawable/categoriatres"/>
+                        android:background="@drawable/cattres"/>
 
 
                 </LinearLayout>

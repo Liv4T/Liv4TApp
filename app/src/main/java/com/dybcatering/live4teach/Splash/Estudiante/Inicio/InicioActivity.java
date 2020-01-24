@@ -41,7 +41,7 @@ public class InicioActivity extends AppCompatActivity {
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new CursosFragment()).commit();
+                    new CategoriasCursos()).commit();
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
@@ -87,9 +87,7 @@ public class InicioActivity extends AppCompatActivity {
                                 //selectedFragment = new CursosFragment();
                             //}
                             break;
-                        default:
-                            selectedFragment = new MisCursosFragment();
-                            break;
+
                     }
 
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,

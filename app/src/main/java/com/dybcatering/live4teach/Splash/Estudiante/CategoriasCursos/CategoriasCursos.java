@@ -11,7 +11,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.dybcatering.live4teach.Login.SessionManager;
-import com.dybcatering.live4teach.Splash.Estudiante.CategoriasCursos.SubCursoCategoria.ComunicacionCursos;
+import com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.Perfil.ActualizarDatosFragment;
@@ -38,7 +38,7 @@ public class CategoriasCursos extends Fragment {
         primer_card.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-
+					transicionFragment();
 			}
 		});
         /*  imagen = myView.findViewById(R.id.imagen_primera);
@@ -157,7 +157,7 @@ public class CategoriasCursos extends Fragment {
     }
 
 	private void transicionFragment() {
-		Fragment someFragment = new ComunicacionCursos();
+		Fragment someFragment = new CursosFragment();
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
