@@ -244,8 +244,8 @@ public class PerfilFragmentTutor extends Fragment {
                                     String strPicture= object.getString("picture").trim();
                                     String strTelefono = object.getString("phone").trim();
                                     tvname.setText(strName);
-                                    tvemail.setText(strEmail);
-                                    tvphone.setText(strTelefono);
+                                   // tvemail.setText(strEmail);
+                                   // tvphone.setText(strTelefono);
                                     if (strPicture.equals("")) {
                                         primage.setImageResource(R.drawable.imagenperfil);
                                     } else {
