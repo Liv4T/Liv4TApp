@@ -86,6 +86,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void validarlogin(final String user_name, final String password) {
+        loading.setVisibility(View.VISIBLE);
+        btn_login.setVisibility(View.GONE);
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
@@ -127,11 +129,11 @@ public class LoginActivity extends AppCompatActivity {
                                     if (type_user.equals("3")){
                                         startActivity(intent);
                                         finish();
-
+                                        loading.setVisibility(View.GONE);
                                     }else{
                                         startActivity(intent1);
                                         finish();
-
+                                        loading.setVisibility(View.GONE);
                                     }
 
                                     loading.setVisibility(View.GONE);

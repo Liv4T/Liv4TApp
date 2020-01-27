@@ -49,7 +49,7 @@
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/name_button"
+                android:id="@+id/subir_fotoActualizarDatos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
@@ -76,7 +76,7 @@
                     android:textColorHint="@color/colortexto">
 
                     <EditText
-                        android:id="@+id/nombre_update"
+                        android:id="@+id/nombreActualizarDatos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Nombre"
@@ -91,7 +91,49 @@
                     android:textColorHint="@color/colortexto">
 
                     <EditText
-                        android:id="@+id/email_update"
+                        android:id="@+id/apellidoActualizarDatos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Apellido"
+                        android:inputType="textPersonName"
+                        android:textColor="@color/colortexto" />
+                </android.support.design.widget.TextInputLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colortexto"
+                    android:textColorHint="@color/colortexto">
+
+                    <EditText
+                        android:id="@+id/telefonoActualizarDatos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Teléfono"
+                        android:inputType="text|phone"
+                        android:textColor="@color/colortexto" />
+                </android.support.design.widget.TextInputLayout>
+
+                <TextView
+                    android:id="@+id/txtUsuarioActualizarDatos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Usuario"
+                    android:textSize="20dp"
+                    android:fontFamily="@font/centurygothic"
+
+                    android:gravity="left"
+                    android:textStyle="bold"/>
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colortexto"
+                    android:textColorHint="@color/colortexto">
+
+                    <EditText
+                        android:id="@+id/emailActualizarDatos"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Correo"
@@ -100,35 +142,8 @@
                 </android.support.design.widget.TextInputLayout>
 
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colortexto"
-                    android:textColorHint="@color/colortexto">
 
-                    <EditText
-                        android:id="@+id/telefono_update"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Teléfono"
-                        android:inputType="text|phone"
-                        android:textColor="@color/colortexto" />
-                </android.support.design.widget.TextInputLayout>
 
-                <android.support.design.widget.TextInputLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colortexto"
-                    android:textColorHint="@color/colortexto">
-
-                    <EditText
-                        android:id="@+id/identificacion_update"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="Identificación"
-                        android:inputType="text|number"
-                        android:textColor="@color/colortexto" />
-                </android.support.design.widget.TextInputLayout>
 
 
 

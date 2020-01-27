@@ -7,7 +7,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 4
-        versionName "5.0.0-beta"
+        versionName "5.5.0-beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -67,4 +67,11 @@ dependencies {
     implementation 'com.github.GrenderG:Toasty:1.4.2'
 
     implementation 'com.kaopiz:kprogresshud:1.1.0'
+
+    implementation  'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
+
+
+    implementation 'com.facebook.fresco:fresco:2.0.0'
+
+
 }

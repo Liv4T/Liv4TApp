@@ -2,6 +2,7 @@ package com.dybcatering.live4teach.Splash.Estudiante.Perfil;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -20,14 +21,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dybcatering.live4teach.BuildConfig;
+import com.dybcatering.live4teach.Login.HomeActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.nex3z.notificationbadge.NotificationBadge;
+import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
@@ -93,7 +97,8 @@ public class PerfilFragment extends Fragment {
             public void onClick(View v) {
 
                 swapFragment();
-               // Intent intent = new Intent(getActivity(), ActualizarDatos.class);
+               // Intent intent = new Intent(getActivity(), HomeActivity.class);
+              //  startActivity(intent);
                // intent.putExtra("nombre", nombre);
                // intent.putExtra("correo", correo);
                // intent.putExtra("telefono", telefono);
@@ -174,7 +179,23 @@ public class PerfilFragment extends Fragment {
                                     if (strPicture.equals("")) {
                                         primage.setImageResource(R.drawable.imagenperfil);
                                     } else {
-                                        Picasso.with(getActivity()).load(strPicture).into(primage);
+
+                                        /*Picasso.with(getActivity()).load(strPicture).centerCrop()
+                                                .placeholder(R.drawable.internetconnection).fit().into(primage, new Callback() {
+                                            @Override public    void onSuccess() {}
+                                            @Override public void onError() {}
+                                        });
+                                        Picasso.with()
+                                                .load(strPicture)
+                                                .resize (50, 50)
+                                                .centerCrop()
+                                                .into(primage);
+                                                 Glide.with(this)
+                                                .load(strPicture)
+                                                .into(primage);
+                                        */
+
+
                                     }
 
 

@@ -46,9 +46,9 @@ public class HomeActivity extends AppCompatActivity {
     private Button btn_logout, btn_photo_upload;
     SessionManager sessionManager;
     String getId;
-    private static String URL_READ = "http://192.168.1.18:8080/Androidlogin/read_detail.php";
-    private static String URL_EDIT = "http://192.168.1.18:8080/Androidlogin/edit_detail.php";
-    private static String URL_UPLOAD = "http://192.168.18.8080/Androidlogin/upload.php";
+    private static String URL_READ = "https://dybcatering.com/back_live_app/read_detail.php";
+    private static String URL_EDIT = "https://dybcatering.com/back_live_app/edit_detail.php";
+    private static String URL_UPLOAD = "http://dybcatering.com/back_live_app/upload.php";
     private Menu action;
     private Bitmap bitmap;
     CircleImageView profile_image;
@@ -82,7 +82,7 @@ public class HomeActivity extends AppCompatActivity {
                 chooseFile();
             }
         });
-
+        getUserDetail();
     }
 
     //getUserDetail
@@ -262,13 +262,12 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    private void chooseFile(){
+    private void chooseFile() {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+        startActivityForResult(Intent.createChooser(intent, "Selecciona tu imagen de preferencia"), 1);
     }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -291,7 +290,9 @@ public class HomeActivity extends AppCompatActivity {
     private void UploadPicture(final String id, final String photo) {
 
         final ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setMessage("Uploading...");
+
+        progressDialog.setMessage("Subiendo...");
+
         progressDialog.show();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_UPLOAD,
@@ -299,19 +300,19 @@ public class HomeActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(String response) {
                         progressDialog.dismiss();
-                        Log.i(TAG, response.toString());
+                        Log.i(TAG, response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
 
-                            if (success.equals("1")){
-                                Toast.makeText(HomeActivity.this, "Success!", Toast.LENGTH_SHORT).show();
+                            if (success.equals("1")) {
+                                Toast.makeText(HomeActivity.this, "Exito!", Toast.LENGTH_SHORT).show();
                             }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                             progressDialog.dismiss();
-                            Toast.makeText(HomeActivity.this, "Try Again!"+e.toString(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(HomeActivity.this, "Intenta de nuevo por favor!" + e.toString(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 },
@@ -321,13 +322,12 @@ public class HomeActivity extends AppCompatActivity {
                         progressDialog.dismiss();
                         Toast.makeText(HomeActivity.this, "Try Again!" + error.toString(), Toast.LENGTH_SHORT).show();
                     }
-                })
-        {
+                }) {
             @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
+            protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
                 params.put("id", id);
-                params.put("photo", photo);
+                params.put("picture", photo);
 
                 return params;
             }
@@ -336,10 +336,9 @@ public class HomeActivity extends AppCompatActivity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
 
-
     }
 
-    public String getStringImage(Bitmap bitmap){
+    public String getStringImage(Bitmap bitmap) {
 
         ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.JPEG, 100, byteArrayOutputStream);
