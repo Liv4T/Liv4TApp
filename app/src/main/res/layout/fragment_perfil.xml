@@ -205,7 +205,7 @@
                     android:layout_marginTop="2dp"/>
 
                 <LinearLayout
-                    android:id="@+id/addressview"
+                    android:id="@+id/changepassword"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"

@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Tutor.Perfil;
+package com.dybcatering.live4teach.Splash.Estudiante.Perfil;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -27,7 +27,7 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
-public class CambiarContrasenaFragmentTutor extends Fragment {
+public class CambiarContrasenaFragment extends Fragment {
 
 	public TextView contrasena, confirmar_contrasena;
 	public Button btnConfirmar;
@@ -42,7 +42,7 @@ public class CambiarContrasenaFragmentTutor extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		myView = inflater.inflate(R.layout.cambiar_contrasena_fragment_tutor, container, false);
+		myView = inflater.inflate(R.layout.cambiar_contrasena_fragment, container, false);
 		sessionManager = new SessionManager(getActivity());
 		HashMap<String, String> user = sessionManager.getUserDetail();
 		id = user.get(SessionManager.ID);

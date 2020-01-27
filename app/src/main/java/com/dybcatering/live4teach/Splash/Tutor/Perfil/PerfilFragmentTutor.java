@@ -206,7 +206,7 @@ public class PerfilFragmentTutor extends Fragment {
 
     private void cambiarContrasena(){
         Fragment actualizarDatosFragment = new CambiarContrasenaFragmentTutor();
-
+        //tvname.setText("Daniel");
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack

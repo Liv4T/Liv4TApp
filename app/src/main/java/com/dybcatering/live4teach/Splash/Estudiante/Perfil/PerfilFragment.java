@@ -33,6 +33,7 @@ import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Login.HomeActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Tutor.Perfil.CambiarContrasenaFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Callback;
@@ -55,7 +56,7 @@ public class PerfilFragment extends Fragment {
     private Button namebutton;
     private CircleImageView primage;
     private Button updateDetails;
-    private LinearLayout addressview, cerrar_sesion;
+    private LinearLayout changepassword, cerrar_sesion;
 
     //to get user session data
     // private UserSession session;
@@ -81,7 +82,7 @@ public class PerfilFragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
         HashMap<String, String> user = sessionManager.getUserDetail();
         id = user.get(SessionManager.ID);
-        addressview = myView.findViewById(R.id.addressview);
+        changepassword = myView.findViewById(R.id.changepassword);
         primage=myView.findViewById(R.id.profilepicestudiante);
         tvname=myView.findViewById(R.id.nameview);
         tvemail=myView.findViewById(R.id.emailview);
@@ -111,6 +112,13 @@ public class PerfilFragment extends Fragment {
                // intent.putExtra("telefono", telefono);
                // intent.putExtra("identificacion", identificacion);
                // startActivity(intent);
+            }
+        });
+
+        changepassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                cambiarContrasena();
             }
         });
 
@@ -288,4 +296,14 @@ public class PerfilFragment extends Fragment {
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
         transaction.commit();
     }
+
+    private void cambiarContrasena(){
+        Fragment actualizarDatosFragment = new CambiarContrasenaFragment();
+        //tvname.setText("Daniel");
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
+
 }
