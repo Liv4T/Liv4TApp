@@ -39,7 +39,7 @@
                         app:pager_animation_span="1100" />
 
                     <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profilepic"
+                        android:id="@+id/profilepicestudiante"
                         android:layout_width="140dp"
                         android:layout_height="140dp"
                         android:layout_marginLeft="30dp"
@@ -55,7 +55,7 @@
                         android:id="@+id/btn_actualizar_perfil"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/profilepic"
+                        android:layout_toRightOf="@+id/profilepicestudiante"
                         android:elevation="5dp"
                         android:text="ACTUALIZAR DATOS"
                         android:layout_marginTop="180dp"
@@ -77,7 +77,7 @@
                         android:textSize="12sp"
                         android:paddingRight="20dp"
                         android:paddingTop="10dp"
-                        android:layout_toRightOf="@+id/profilepic"/>
+                        android:layout_toRightOf="@+id/profilepicestudiante"/>
 
                 </RelativeLayout>
 

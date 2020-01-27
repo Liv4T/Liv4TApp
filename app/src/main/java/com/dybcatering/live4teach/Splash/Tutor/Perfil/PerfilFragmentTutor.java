@@ -42,7 +42,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 public class PerfilFragmentTutor extends Fragment {
     View myView;
-    private TextView tvname, tvemail,tvphone, tvidenti, txtVersion;
+    private TextView tvname, tvlast_name, tvadress, tvphone, tvidenti, tvemail, tvuser, txtVersion;
 
     private Button namebutton;
     private CircleImageView primage;
@@ -76,9 +76,12 @@ public class PerfilFragmentTutor extends Fragment {
         cambiar_contrasena = myView.findViewById(R.id.cambiar_contrasena);
         primage=myView.findViewById(R.id.profilepic);
         tvname=myView.findViewById(R.id.nameview);
-        tvemail=myView.findViewById(R.id.emailview);
+        tvlast_name = myView.findViewById(R.id.last_name);
+        tvadress=myView.findViewById(R.id.address);
+        tvemail=myView.findViewById(R.id.email);
         tvphone=myView.findViewById(R.id.mobileview);
-        tvidenti= myView.findViewById(R.id.cedula);
+        tvuser= myView.findViewById(R.id.user_name);
+        tvidenti= myView.findViewById(R.id.identif_id);
         namebutton=myView.findViewById(R.id.btn_actualizar_perfil);
         txtVersion = myView.findViewById(R.id.txtPerfilVersion);
         cerrar_sesion= myView.findViewById(R.id.cerrar_sesion_tutor);
@@ -193,15 +196,10 @@ public class PerfilFragmentTutor extends Fragment {
 
     private void swapFragment(){
         Fragment actualizarDatosFragment = new ActualizarDatosFragmentTutor();
-
-        Bundle bundle = new Bundle();
         //tvname.setText("Daniel");
-        String nombre = "Daniel";//tvname.getText().toString();
-        bundle.putString("nombre", nombre);
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter
         transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-		actualizarDatosFragment.setArguments(bundle);
 		transaction.commit();
 
     }
@@ -240,12 +238,20 @@ public class PerfilFragmentTutor extends Fragment {
                                     JSONObject object = jsonArray.getJSONObject(i);
 
                                     String strName = object.getString("name").trim();
-                                    String strEmail = object.getString("email").trim();
-                                    String strPicture= object.getString("picture").trim();
+                                    String strLastName = object.getString("last_name").trim();
+                                    String strAdress= object.getString("address").trim();
                                     String strTelefono = object.getString("phone").trim();
+                                    String strIdentificacion= object.getString("id_number").trim();
+                                    String strEmail = object.getString("email").trim();
+                                    String strUser= object.getString("user_name").trim();
+                                    String strPicture= object.getString("picture").trim();
                                     tvname.setText(strName);
-                                   // tvemail.setText(strEmail);
-                                   // tvphone.setText(strTelefono);
+                                    tvlast_name.setText(strLastName);
+                                    tvadress.setText(strAdress);
+                                    tvphone.setText(strTelefono);
+                                    tvidenti.setText(strIdentificacion);
+                                    tvemail.setText(strEmail);
+                                    tvuser.setText(strUser);
                                     if (strPicture.equals("")) {
                                         primage.setImageResource(R.drawable.imagenperfil);
                                     } else {

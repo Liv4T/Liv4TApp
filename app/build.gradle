@@ -68,10 +68,7 @@ dependencies {
 
     implementation 'com.kaopiz:kprogresshud:1.1.0'
 
-    implementation  'com.github.khizar1556.MKVideoPlayer:mkvideoplayer:0.1.5'
 
-
-    implementation 'com.facebook.fresco:fresco:2.0.0'
 
 
 }

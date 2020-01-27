@@ -39,6 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import es.dmoral.toasty.Toasty;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -204,7 +205,8 @@ public class ActualizarDatosFragment extends Fragment {
                             String success = jsonObject.getString("success");
 
                             if (success.equals("1")) {
-                                Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
+                                Toasty.success(getContext(), "Exito al Actualizar los datos", Toast.LENGTH_SHORT).show();
+                                //Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
                                 sessionManager.createSession(nombre, usuario, id, "3");
                             }
 

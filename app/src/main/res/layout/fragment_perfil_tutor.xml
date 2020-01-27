@@ -103,7 +103,33 @@
                         android:gravity="center_vertical"
                         android:paddingLeft="30dp"
                         style="@style/fonts"
-                        android:text=""
+                        android:text="Nombre"
+                        android:textColor="#424242"/>
+
+                </LinearLayout>
+                <View android:layout_width="match_parent"
+                    android:layout_height="@dimen/view_width_small"
+                    android:background="@color/grey_light"
+                    android:layout_marginTop="2dp"/>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+
+
+                    <TextView
+                        android:id="@+id/last_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        style="@style/fonts"
+                        android:text="Apellido"
                         android:textColor="#424242"/>
 
                 </LinearLayout>
@@ -124,13 +150,13 @@
 
 
                     <TextView
-                        android:id="@+id/apellido"
+                        android:id="@+id/address"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
                         android:paddingLeft="30dp"
                         style="@style/fonts"
-                        android:text="Apellido"
+                        android:text="Dirección"
                         android:textColor="#424242"/>
 
 
@@ -185,70 +211,7 @@
 
 
                     <TextView
-                        android:id="@+id/direccion"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="30dp"
-                        style="@style/fonts"
-                        android:text="Dirección"
-                        android:textColor="#424242"/>
-
-
-
-
-                </LinearLayout>
-
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_width_small"
-                    android:background="@color/grey_light"
-                    android:layout_marginTop="2dp"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
-
-
-
-                    <TextView
-                        android:id="@+id/experiencia"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:paddingLeft="30dp"
-                        style="@style/fonts"
-                        android:text="Última Experiencia"
-                        android:textColor="#424242"/>
-
-
-
-
-                </LinearLayout>
-
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_width_small"
-                    android:background="@color/grey_light"
-                    android:layout_marginTop="2dp"/>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp">
-
-
-
-                    <TextView
-                        android:id="@+id/profesion"
+                        android:id="@+id/identif_id"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="center_vertical"
@@ -261,6 +224,76 @@
 
 
                 </LinearLayout>
+
+
+                <View android:layout_width="match_parent"
+                    android:layout_height="@dimen/view_width_small"
+                    android:background="@color/grey_light"
+                    android:layout_marginTop="2dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+
+
+                    <TextView
+                        android:id="@+id/user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        style="@style/fonts"
+                        android:text="Usuario"
+                        android:textColor="#424242"/>
+
+
+
+
+                </LinearLayout>
+
+                <View android:layout_width="match_parent"
+                    android:layout_height="@dimen/view_width_small"
+                    android:background="@color/grey_light"
+                    android:layout_marginTop="2dp"/>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="30dp"
+                        style="@style/fonts"
+                        android:text="Correo"
+                        android:textColor="#424242"/>
+
+
+
+
+                </LinearLayout>
+
+                <View android:layout_width="match_parent"
+                    android:layout_height="@dimen/view_width_small"
+                    android:background="@color/grey_light"
+                    android:layout_marginTop="2dp"/>
+
+
                 <View android:layout_width="match_parent"
                     android:layout_height="@dimen/view_width_small"
                     android:background="@color/grey_light"

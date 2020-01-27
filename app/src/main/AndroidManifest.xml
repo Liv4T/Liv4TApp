@@ -17,7 +17,8 @@
         android:theme="@style/AppThemeRegist"
         android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Splash.Estudiante.Inicio.InicioActivity"></activity>
+        <activity android:name=".Splash.Estudiante.Inicio.InicioActivity"
+            android:label="Live4Teach"></activity>
         <activity
             android:name=".Splash.Estudiante.Carrito.CarritoDetalleActivity"
             android:parentActivityName=".Splash.Estudiante.Carrito.CarritoActivity" />

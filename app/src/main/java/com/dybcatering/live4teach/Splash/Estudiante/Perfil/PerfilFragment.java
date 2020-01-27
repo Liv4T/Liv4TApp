@@ -3,6 +3,8 @@ package com.dybcatering.live4teach.Splash.Estudiante.Perfil;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -11,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -19,6 +22,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
@@ -33,6 +37,7 @@ import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,6 +73,8 @@ public class PerfilFragment extends Fragment {
     private static String URL_READ = "https://dybcatering.com/back_live_app/read_detail.php";
 
     private static final String TAG = PerfilFragment.class.getSimpleName(); //getting the info
+
+    private ImageLoader imageLoader;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.fragment_perfil, container, false);
@@ -75,7 +82,7 @@ public class PerfilFragment extends Fragment {
         HashMap<String, String> user = sessionManager.getUserDetail();
         id = user.get(SessionManager.ID);
         addressview = myView.findViewById(R.id.addressview);
-        primage=myView.findViewById(R.id.profilepic);
+        primage=myView.findViewById(R.id.profilepicestudiante);
         tvname=myView.findViewById(R.id.nameview);
         tvemail=myView.findViewById(R.id.emailview);
         tvphone=myView.findViewById(R.id.mobileview);
@@ -171,7 +178,7 @@ public class PerfilFragment extends Fragment {
 
                                     String strName = object.getString("name").trim();
                                     String strEmail = object.getString("email").trim();
-                                    String strPicture= object.getString("picture").trim();
+                                    final String strPicture= object.getString("picture").trim();
                                     String strTelefono = object.getString("phone").trim();
                                     tvname.setText(strName);
                                     tvemail.setText(strEmail);
@@ -179,6 +186,9 @@ public class PerfilFragment extends Fragment {
                                     if (strPicture.equals("")) {
                                         primage.setImageResource(R.drawable.imagenperfil);
                                     } else {
+
+                                        Picasso.with(getContext()).load(strPicture).into(primage);
+
 
                                         /*Picasso.with(getActivity()).load(strPicture).centerCrop()
                                                 .placeholder(R.drawable.internetconnection).fit().into(primage, new Callback() {
