@@ -20,6 +20,8 @@
     <string name="seleccionar">Seleccionar...</string>
     <string name="noconnection">Conéctese a una red WIFI o active los datos móviles</string>
     <string name="update_details"> Actualizar datos</string>
+    <string name="olvidecontrasena"> OLVIDÉ MI CONTRASEÑA</string>
+    <string name="textolvide"> Solo necesitamos su cuenta de correo electrónico registrada para enviarle las instrucciones de reestablecimiento de contraseña</string>
 
     <string name="add_item">Add First Item</string>
 

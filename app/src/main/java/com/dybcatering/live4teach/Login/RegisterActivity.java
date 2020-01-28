@@ -818,7 +818,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                         "<tr>\n" +
                         "<td>\n" +
                         "<div style=\"font-size:14px; color:#919191; font-weight:normal; text-align:center; font-family:'Arial',Helvetica,sans-serif;\"><div>\n" +
-                        "<div style=\"line-height:200%;\">Este correo fue enviado a "+email+"</div>\n" +
+                        "<div style=\"line-height:200%;\">Este correo fue enviado a "+emails+"</div>\n" +
                         "\n" +
                         "<div style=\"line-height:200%;\">You received this email because you are registered with Your Company</div>\n" +
                         "\n" +

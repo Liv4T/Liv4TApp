@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText email, password;
     private Button btn_login;
-    private TextView link_regist;
+    private TextView link_regist, text_olvide_contrasena;
     private ProgressBar loading;
     private static String URL_LOGIN = "https://dybcatering.com/back_live_app/login.php";
     SessionManager sessionManager;
@@ -54,7 +54,7 @@ public class LoginActivity extends AppCompatActivity {
       //  spinner = findViewById(R.id.spinner);
 
          link_regist = findViewById(R.id.text_registro);
-
+        text_olvide_contrasena = findViewById(R.id.text_olvide_contrasena);
 
 
 
@@ -80,6 +80,15 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        text_olvide_contrasena.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, OlvideContrasena.class);
+                startActivity(intent);
+
             }
         });
 

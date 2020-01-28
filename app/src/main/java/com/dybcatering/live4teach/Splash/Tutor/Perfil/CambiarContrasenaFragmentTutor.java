@@ -56,7 +56,13 @@ public class CambiarContrasenaFragmentTutor extends Fragment {
 		btnConfirmar.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				enviarDatos();
+				if (stContrasena.equals(stConfirmarContrasena)){
+
+					enviarDatos();
+				}else{
+					contrasena.setError("Las contraseñas no coinciden");
+					confirmar_contrasena.setError("Las contraseñas no coinciden");
+				}
 			}
 		});
 

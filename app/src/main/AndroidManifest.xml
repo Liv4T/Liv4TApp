@@ -2,23 +2,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.dybcatering.live4teach">
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
-        android:networkSecurityConfig="@xml/network_security_config"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Splash.Estudiante.Inicio.InicioActivity"
-            android:label="Live4Teach"></activity>
+        <activity android:name=".Login.OlvideContrasena">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Login.LoginActivity"/>
+        </activity>
+        <activity
+            android:name=".Splash.Estudiante.Inicio.InicioActivity"
+            android:label="Live4Teach" />
         <activity
             android:name=".Splash.Estudiante.Carrito.CarritoDetalleActivity"
             android:parentActivityName=".Splash.Estudiante.Carrito.CarritoActivity" />
@@ -38,9 +46,7 @@
         <activity
             android:name=".Splash.Estudiante.Perfil.ActualizarDatos"
             android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
-
-        <activity android:name=".Splash.Estudiante.MisCertificados.MisCertificadosDetalle" />
-        <!--    android:parentActivityName=".Estudiante.PrincipalActivity" /-->
+        <activity android:name=".Splash.Estudiante.MisCertificados.MisCertificadosDetalle" /> <!-- android:parentActivityName=".Estudiante.PrincipalActivity" / -->
         <activity
             android:name=".Splash.Estudiante.CursosDisponibles.CuartoCurso"
             android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
@@ -70,9 +76,7 @@
             android:label="@string/title_activity_principal"
             android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity android:name=".Splash.Estudiante.SubPrimerActivity" />
-
         <activity android:name=".Splash.Tutor.InicioActivityTutor" />
     </application>
-
 
 </manifest>
