@@ -105,7 +105,7 @@ public class ActualizarDatosFragmentTutor extends Fragment {
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Guardando...");
         progressDialog.show();
-
+        progressDialog.setCancelable(false);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
                 new Response.Listener<String>() {
                     @Override

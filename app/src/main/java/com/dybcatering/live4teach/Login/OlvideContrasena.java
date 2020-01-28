@@ -1,11 +1,13 @@
 package com.dybcatering.live4teach.Login;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -31,6 +33,7 @@ public class OlvideContrasena extends AppCompatActivity {
 
 	public EditText usuario;
 	public Button btnEnviar;
+	public TextView regresar;
 	private static String URL_FORGOT_PASSWORD= "https://dybcatering.com/back_live_app/forgot_password_user.php";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class OlvideContrasena extends AppCompatActivity {
 		setContentView(R.layout.activity_olvide_contrasena);
 		usuario = findViewById(R.id.user_name);
 		btnEnviar = findViewById(R.id.btn_enviar);
+		regresar = findViewById(R.id.text_olvide_contrasena);
 		btnEnviar.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -47,6 +51,14 @@ public class OlvideContrasena extends AppCompatActivity {
 				}else{
 					Toast.makeText(OlvideContrasena.this, "El campo no puede estar vacío", Toast.LENGTH_SHORT).show();
 				}
+			}
+		});
+		regresar.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(OlvideContrasena.this, LoginActivity.class);
+				finish();
+				startActivity(intent);
 			}
 		});
 	}
