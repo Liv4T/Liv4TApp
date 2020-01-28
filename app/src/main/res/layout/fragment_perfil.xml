@@ -173,7 +173,7 @@
                     android:background="@color/grey_light"
                     android:layout_marginTop="2dp"/>
 
-                <LinearLayout
+                <!--LinearLayout
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
@@ -184,7 +184,7 @@
 
 
 
-                    <!--TextView
+                    <TextView
                         android:id="@+id/cedula"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -192,17 +192,14 @@
                         android:paddingLeft="30dp"
                         style="@style/fonts"
                         android:text="Identificación"
-                        android:textColor="#424242"/-->
+                        android:textColor="#424242"/>
 
 
 
 
-                </LinearLayout>
+                </LinearLayout-->
 
-                <View android:layout_width="match_parent"
-                    android:layout_height="@dimen/view_width_small"
-                    android:background="@color/grey_light"
-                    android:layout_marginTop="2dp"/>
+
 
                 <LinearLayout
                     android:id="@+id/changepassword"
