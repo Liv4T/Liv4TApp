@@ -46,121 +46,34 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
     private ProgressBar progressBar;
 
     private Button btn;
+    public static final String EXTRANOMBRE = "name";
+    public static final String EXTRACATEGORIA = "id_category";
+    public static final String EXTRASUBCATEGORIA = "id_subcategory";
+    public static final String EXTRAMETODOLOGIA = "methodology";
+    public static final String EXTRABIENVENIDA = "welcome";
+    public static final String EXTRAINTENSIDAD = "intention";
+    public static final String EXTRAINTENSIDADAC = "intensityAC";
+    public static final String EXTRACOMPENTENCIAS = "competences";
+    public static final String EXTRAINTENSIDADTA = "intensityTA";
+    public static final String EXTRALOGRO ="Achievement";
+    public static final String EXTRAINDICADORA = "indicatorA";
+    public static final String EXTRAMAPA = "map";
+    public static final String EXTRAMETODOLOGIAG = "methodologyG";
+    public static final String EXTRATIPO = "type";
+    public static final String EXTRADESCRIPCION ="description";
+    public static final String EXTRAPRESENTACION ="presentation";
+    public static final String EXTRAIDUSER = "id_user";
+    public static final String EXTRADESCRIPCIONO = "descriptionO";
+    public static final String EXTRAACTUALIZADOEN = "updated_at";
+    public static final String EXTRACREADOEN = "created_at";
+    public static final String EXTRAESTADO = "state";
+    public static final String EXTRAPUBLICADO = "publish";
+    public static final String EXTRAIMAGEN = "image";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.primer_fragment, container, false);
         new CheckInternetConnection(getActivity()).checkConnection();
-      /**  imagen = myView.findViewById(R.id.imagen_primera);
-        imagen_segunda = myView.findViewById(R.id.imagen_segunda);
-        imagen_tercera = myView.findViewById(R.id.imagen_tercera);
-        imagen_cuarta= myView.findViewById(R.id.imagen_cuarta);
-        imagen_quinta = myView.findViewById(R.id.imagen_quinta);
-        primer_card = myView.findViewById(R.id.primer_card);
-        segundo_card = myView.findViewById(R.id.card_two);
-        tercer_card = myView.findViewById(R.id.card_third);
-        cuarto_card = myView.findViewById(R.id.card_fourth);
-        // btn = myView.findViewById(R.id.btnAgregarCurso);
-
-      /*  btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(getActivity(), "has hecho click", Toast.LENGTH_SHORT).show();
-            }
-        });*/
-//        Picasso.with(getActivity()).load("http://192.168.1.101/imagenes/primer_curso.jpg")
-        /*****************
-         Picasso.with(getActivity()).load("http://digitalandroidservices.com/personal/cover1.jpg")
-**
-  **              .fit().
-    **            //      resize(400,400).
-      **          // resize(100,100).
-        **                centerInside().
-**
-**                   into(imagen);
-**
-
-
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/html.jpg").centerCrop()
-                .placeholder(R.drawable.internetconnection).fit().into(imagen, new Callback() {
-            @Override public    void onSuccess() {}
-            @Override public void onError() {}
-        });
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/imagencurso.jpg").centerCrop()
-                .placeholder(R.drawable.internetconnection).fit().into(imagen_segunda, new Callback() {
-            @Override public    void onSuccess() {}
-            @Override public void onError() {}
-        });
-
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/marketing.jpg").centerCrop()
-                .placeholder(R.drawable.internetconnection).fit().into(imagen_tercera, new Callback() {
-            @Override public    void onSuccess() {}
-            @Override public void onError() {}
-        });
-
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/quimica.jpg").centerCrop()
-                .placeholder(R.drawable.internetconnection).fit().into(imagen_cuarta, new Callback() {
-            @Override public void onSuccess() {}
-            @Override public void onError() {}
-        });
-
-        Picasso.with(getActivity()).load("https://imageneslive4teach.000webhostapp.com/imagenes/varios.jpg").centerCrop()
-                .placeholder(R.drawable.internetconnection).fit().into(imagen_quinta, new Callback() {
-            @Override public void onSuccess() {}
-            @Override public void onError() {}
-        });
-
-
-        primer_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), PrimerCurso.class);
-                startActivity(intent);
-               // getActivity().finish();
-            }
-        });
-
-
-        segundo_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SegundoCurso.class);
-                startActivity(intent);
-               // getActivity().finish();
-            }
-        });
-        tercer_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), TercerCurso.class);
-                startActivity(intent);
-          //      getActivity().finish();
-            }
-        });
-        cuarto_card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), CuartoCurso.class);
-                startActivity(intent);
-            //    getActivity().finish();
-            }
-        });
-
-     /*   imagen_quinta = myView.findViewById(R.id.imagen_quinta);
-        Picasso.with(getActivity()).load("https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg")
-                .placeholder(R.drawable.internetconnection).fit().into(imagen_quinta, new Callback() {
-            @Override public    void onSuccess() {}
-            @Override public void onError() {}
-        });
-
-
-        imagen_novena= myView.findViewById(R.id.imagen_novena);
-        Picasso.with(getActivity()).load("https://pruebalive4teach.000webhostapp.com/imagenes/primer_curso.jpg")
-                .placeholder(R.drawable.internetconnection).fit().into(imagen_novena, new Callback() {
-            @Override public    void onSuccess() {}
-            @Override public void onError() {}
-        });
-**/
         mRecyclerView = myView.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 2));
@@ -208,8 +121,7 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
                                 String estado = hit.getString("state");
                                 String publicado = hit.getString("publish");
                                 String imagen= hit.getString("image");
-                                mexampleItems.add(new ExampleItem( nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias
-                                , intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen));
+                                mexampleItems.add(new ExampleItem( nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias, intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen));
 
                             }
 
@@ -234,7 +146,32 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
 
     @Override
     public void onItemClick(int position) {
-
+        Intent intent = new Intent(getActivity(), CursosDetalle.class);
+        ExampleItem clickedItem =mexampleItems.get(position);
+        intent.putExtra(EXTRANOMBRE, clickedItem.getNombre());
+        intent.putExtra(EXTRACATEGORIA, clickedItem.getCategoria());
+        intent.putExtra(EXTRASUBCATEGORIA, clickedItem.getSubCategoria());
+        intent.putExtra(EXTRAMETODOLOGIA, clickedItem.getMetodologia());
+        intent.putExtra(EXTRABIENVENIDA, clickedItem.getBienvenida());
+        intent.putExtra(EXTRAINTENSIDAD, clickedItem.getIntensidad());
+        intent.putExtra(EXTRAINTENSIDADAC, clickedItem.getIntensidadAC());
+        intent.putExtra(EXTRACOMPENTENCIAS, clickedItem.getCompetencias());
+        intent.putExtra(EXTRAINTENSIDADTA, clickedItem.getIntensidadTA());
+        intent.putExtra(EXTRALOGRO, clickedItem.getLogro());
+        intent.putExtra(EXTRAINDICADORA, clickedItem.getIndicadorA());
+        intent.putExtra(EXTRAMAPA, clickedItem.getMapa());
+        intent.putExtra(EXTRAMETODOLOGIAG, clickedItem.getMetodologiaG());
+        intent.putExtra(EXTRATIPO, clickedItem.getTipo());
+        intent.putExtra(EXTRADESCRIPCION, clickedItem.getDescripcion());
+        intent.putExtra(EXTRAPRESENTACION, clickedItem.getPresentacion());
+        intent.putExtra(EXTRAIDUSER, clickedItem.getIdUsuario());
+        intent.putExtra(EXTRADESCRIPCIONO, clickedItem.getDescripcionO());
+        intent.putExtra(EXTRAACTUALIZADOEN, clickedItem.getActualizadoEn());
+        intent.putExtra(EXTRACREADOEN, clickedItem.getCreadoEn());
+        intent.putExtra(EXTRAESTADO, clickedItem.getEstado());
+        intent.putExtra(EXTRAPUBLICADO, clickedItem.getPublicar());
+        intent.putExtra(EXTRAIMAGEN, clickedItem.getImagen());
+        startActivity(intent);
 
     }
 }

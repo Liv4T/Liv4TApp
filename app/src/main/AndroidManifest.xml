@@ -19,10 +19,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".Splash.Estudiante.CursosDisponibles.CursosDetalle"></activity>
         <activity android:name=".Login.OlvideContrasena">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Login.LoginActivity"/>
+                android:value=".Login.LoginActivity" />
         </activity>
         <activity
             android:name=".Splash.Estudiante.Inicio.InicioActivity"
