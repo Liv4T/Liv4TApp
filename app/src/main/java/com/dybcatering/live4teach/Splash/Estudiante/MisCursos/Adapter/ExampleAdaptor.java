@@ -69,6 +69,8 @@ public class ExampleAdaptor extends RecyclerView.Adapter<ExampleAdaptor.ExampleV
         String estado = currentItem.getEstado();
         String publicar = currentItem.getPublicar();
         String imagen = currentItem.getImagen();
+        String precio = currentItem.getPrecio();
+        String videoapoyo = currentItem.getVideoPresentacion();
 
 
         holder.mNombreCurso.setText(nombre);
