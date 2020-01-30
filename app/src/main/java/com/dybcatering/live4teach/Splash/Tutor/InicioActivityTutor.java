@@ -1,10 +1,7 @@
 package com.dybcatering.live4teach.Splash.Tutor;
 
-import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -15,14 +12,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Splash.Estudiante.PrincipalActivity;
 import com.dybcatering.live4teach.Splash.Tutor.Actividades.MisActividadesTutorFragment;
 import com.dybcatering.live4teach.Splash.Tutor.Calificaciones.CalificacionesTutorFragment;
 import com.dybcatering.live4teach.Splash.Tutor.Consulta.ConsultaTutorFragment;

@@ -50,18 +50,6 @@
             android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
         <activity android:name=".Splash.Estudiante.MisCertificados.MisCertificadosDetalle" /> <!-- android:parentActivityName=".Estudiante.PrincipalActivity" / -->
         <activity
-            android:name=".Splash.Estudiante.CursosDisponibles.CuartoCurso"
-            android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
-        <activity
-            android:name=".Splash.Estudiante.CursosDisponibles.TercerCurso"
-            android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
-        <activity
-            android:name=".Splash.Estudiante.CursosDisponibles.SegundoCurso"
-            android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
-        <activity
-            android:name=".Splash.Estudiante.CursosDisponibles.PrimerCurso"
-            android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
-        <activity
             android:name=".Login.PreLoginActivity"
             android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity android:name=".Login.HomeActivity" />
@@ -72,11 +60,6 @@
         <activity
             android:name=".Login.LoginActivity"
             android:theme="@style/AppThemeLogin" />
-        <activity
-            android:name=".Splash.Estudiante.PrincipalActivity"
-            android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="@string/title_activity_principal"
-            android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity android:name=".Splash.Estudiante.SubPrimerActivity" />
         <activity android:name=".Splash.Tutor.InicioActivityTutor" />
     </application>

@@ -40,10 +40,12 @@ import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.Cur
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAMETODOLOGIA;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAMETODOLOGIAG;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRANOMBRE;
+import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAPRECIO;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAPRESENTACION;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAPUBLICADO;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRASUBCATEGORIA;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRATIPO;
+import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAVIDEOPRESENTACION;
 import static com.squareup.picasso.Picasso.Priority.HIGH;
 
 public class CursosDetalle extends AppCompatActivity {
@@ -100,6 +102,8 @@ public class CursosDetalle extends AppCompatActivity {
 		final String estado = intent.getStringExtra(EXTRAESTADO);
 		final String publicado= intent.getStringExtra(EXTRAPUBLICADO);
 		final String imagen = intent.getStringExtra(EXTRAIMAGEN);
+		final String precio = intent.getStringExtra(EXTRAPRECIO);
+		final String videopresentacion = intent.getStringExtra(EXTRAVIDEOPRESENTACION);
 
 
 

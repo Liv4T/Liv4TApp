@@ -24,9 +24,11 @@ public class ExampleItem {
     private String Estado;
     private String Publicar;
     private String Imagen;
+    private String Precio;
+    private String VideoPresentacion;
 
 
-    public ExampleItem(String nombre, String categoria, String subCategoria, String metodologia, String bienvenida, String intensidad, String intensidadAC, String competencias, String intensidadTA, String logro, String indicadorA, String mapa, String metodologiaG, String tipo, String descripcion, String presentacion, String idUsuario, String descripcionO, String actualizadoEn, String creadoEn, String estado, String publicar, String imagen) {
+    public ExampleItem(String nombre, String categoria, String subCategoria, String metodologia, String bienvenida, String intensidad, String intensidadAC, String competencias, String intensidadTA, String logro, String indicadorA, String mapa, String metodologiaG, String tipo, String descripcion, String presentacion, String idUsuario, String descripcionO, String actualizadoEn, String creadoEn, String estado, String publicar, String imagen, String precio, String videoPresentacion) {
         Nombre = nombre;
         Categoria = categoria;
         SubCategoria = subCategoria;
@@ -50,6 +52,8 @@ public class ExampleItem {
         Estado = estado;
         Publicar = publicar;
         Imagen = imagen;
+        Precio = precio;
+        VideoPresentacion = videoPresentacion;
     }
 
     public String getNombre() {
@@ -144,5 +148,11 @@ public class ExampleItem {
         return Imagen;
     }
 
+    public String getPrecio() {
+        return Precio;
+    }
 
+    public String getVideoPresentacion() {
+        return VideoPresentacion;
+    }
 }

@@ -66,6 +66,8 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
     public static final String EXTRAESTADO = "state";
     public static final String EXTRAPUBLICADO = "publish";
     public static final String EXTRAIMAGEN = "image";
+    public static final String EXTRAPRECIO = "price";
+    public static final String EXTRAVIDEOPRESENTACION = "video_presentacion";
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -118,7 +120,9 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
                                 String estado = hit.getString("state");
                                 String publicado = hit.getString("publish");
                                 String imagen= hit.getString("image");
-                                mexampleItems.add(new ExampleItem( nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias, intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen));
+                                String precio = hit.getString("price");
+                                String videopresentacion = hit.getString("video_presentacion");
+                                mexampleItems.add(new ExampleItem( nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias, intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen, precio, videopresentacion));
 
                             }
 
@@ -168,6 +172,8 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
         intent.putExtra(EXTRAESTADO, clickedItem.getEstado());
         intent.putExtra(EXTRAPUBLICADO, clickedItem.getPublicar());
         intent.putExtra(EXTRAIMAGEN, clickedItem.getImagen());
+        intent.putExtra(EXTRAPRECIO, clickedItem.getPrecio());
+        intent.putExtra(EXTRAVIDEOPRESENTACION, clickedItem.getVideoPresentacion());
         startActivity(intent);
 
     }
