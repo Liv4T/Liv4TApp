@@ -1,9 +1,285 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Splash.Estudiante.CursosDisponibles.CursosDetalle">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+
+
+        <RelativeLayout
+            android:id="@+id/layout_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                android:id="@+id/imagen_curso"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_margin="20dp" />
+
+
+            <TextView
+                android:id="@+id/tab_counter_text"
+                android:text="Precio: $80.000"
+                android:layout_alignRight="@id/imagen_curso"
+                android:layout_alignBottom="@id/imagen_curso"
+                android:layout_width="80dp"
+                android:layout_margin="20dp"
+                android:layout_gravity="center"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textColor="@color/color"
+                android:fontFamily="@font/centurygothic"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/textImagen"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:text="" />
+
+        </RelativeLayout>
+
+
+
+        <TextView
+            android:id="@+id/txtNombreCurso"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layout_slider"
+            android:fontFamily="@font/centurygothic"
+            android:layout_margin="5dp"
+            android:textColor="@color/color"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/txtDescripcion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginBottom="20dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/centurygothic"
+            android:textStyle="bold"
+            android:layout_below="@id/txtNombreCurso"
+            android:text="" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtDescripcion"
+            android:paddingBottom="60dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            >
+
+            <TextView
+                android:id="@+id/txtCompetencias"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:gravity="center_horizontal"
+                android:id="@+id/objetivos"
+                android:layout_width="match_parent"
+                android:layout_below="@id/txtCompetencias"
+                android:text="Objetivos"
+                android:textSize="25sp"
+                android:layout_height="wrap_content">
+
+            </TextView>
+
+
+            <RelativeLayout
+                android:id="@+id/relativevermas"
+                android:layout_below="@+id/objetivos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/description_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:background="#BEBEBEBE"
+                    android:elevation="5dp"
+                    android:text="@string/desc_content" />
+
+                <ImageButton
+                    android:id="@+id/show"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/description_text"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:clickable="true" />
+
+                <View
+                    android:id="@+id/view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/description_text"
+                    android:layout_marginTop="5dp"
+                    android:layout_toLeftOf="@+id/show"
+                    android:background="#000" />
+
+                <ImageButton
+                    android:id="@+id/hide"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/description_text"
+                    android:clickable="true"
+                    android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/txtTemario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:gravity="center_horizontal"
+                    android:textSize="25sp"
+                    android:layout_below="@id/hide"
+                    android:text="Temario" />
+
+
+                <TextView
+                    android:id="@+id/segunda_descripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:layout_below="@+id/txtTemario"
+                    android:background="#BEBEBEBE"
+                    android:elevation="5dp"
+                    android:text="" />
+
+                <ImageButton
+                    android:id="@+id/vermassegundo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/segunda_descripcion"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:clickable="true" />
+
+                <View
+                    android:id="@+id/view2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/segunda_descripcion"
+                    android:layout_marginTop="5dp"
+                    android:layout_toLeftOf="@+id/show"
+                    android:background="#000" />
+
+                <ImageButton
+                    android:id="@+id/hide2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/segunda_descripcion"
+                    android:clickable="true"
+                    android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                    android:visibility="invisible" />
+
+
+                <TextView
+                    android:id="@+id/txtRequisitos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/hide2"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="Requisitos"
+                    android:gravity="center_horizontal"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/tercera_descripcion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:maxLines="5"
+                    android:layout_below="@+id/txtRequisitos"
+                    android:background="#BEBEBEBE"
+                    android:elevation="5dp"
+                    android:text="@string/desc_content" />
+
+                <ImageButton
+                    android:id="@+id/vermastercero"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tercera_descripcion"
+                    android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                    android:clickable="true" />
+
+                <View
+                    android:id="@+id/view3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="2dp"
+                    android:layout_below="@+id/tercera_descripcion"
+                    android:layout_marginTop="5dp"
+                    android:layout_toLeftOf="@+id/show"
+                    android:background="#000" />
+
+                <ImageButton
+                    android:id="@+id/hide3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/tercera_descripcion"
+                    android:clickable="true"
+                    android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                    android:visibility="invisible" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:layout_below="@+id/hide3">
+
+
+
+                </RelativeLayout>
+
+
+            </RelativeLayout>
+
+
+
+        </RelativeLayout>
+        </ScrollView>
+        <ImageView
+            android:id="@+id/footer"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:orientation="vertical"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center|bottom"
+            android:src="@drawable/livetech">
+
+        </ImageView>
+
+
+    </RelativeLayout>
+
 
 </android.support.constraint.ConstraintLayout>

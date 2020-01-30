@@ -2,7 +2,6 @@ package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.Adapter;
 
 public class ExampleItem {
     private String Nombre;
-
     private String Categoria;
     private String SubCategoria;
     private String Metodologia;

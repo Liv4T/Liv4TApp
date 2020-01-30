@@ -35,7 +35,7 @@
                         android:fontFamily="@font/centurygothic"
                         android:gravity="center_vertical"
                         android:text=""
-                        android:textColor="#000"
+                        android:textColor="@color/color"
                         android:textSize="16sp"
                         android:textStyle="bold"/>
 

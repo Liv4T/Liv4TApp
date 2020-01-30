@@ -11,6 +11,8 @@ import com.dybcatering.live4teach.R;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
+import static com.squareup.picasso.Picasso.Priority.HIGH;
+
 public class CarritoDetalleActivity extends AppCompatActivity {
     private TextView itemName, quantity, dateAdded, imageName, tachado;
     private int groceryId;
@@ -38,10 +40,16 @@ public class CarritoDetalleActivity extends AppCompatActivity {
       //      itemName.setText(bundle.getString("name"));
         //    quantity.setText(bundle.getString("quantity"));
             Picasso.with(this).load(bundle.getString("imagen"))
-                    .placeholder(R.drawable.internetconnection).fit().into(imgcarritodetalle, new Callback() {
-                @Override public void onSuccess() {}
-                @Override public void onError() {}
-            });
+                    .priority(HIGH)
+                    .fit()
+                    .centerInside()
+                    .into(imgcarritodetalle);
+
+//            Picasso.with(this).load(bundle.getString("imagen"))
+  //                  .placeholder(R.drawable.internetconnection).fit().into(imgcarritodetalle, new Callback() {
+    //            @Override public void onSuccess() {}
+      //          @Override public void onError() {}
+        //    });
 
            // imageName.setText(bundle.getString("imagen"));
             dateAdded.setText(bundle.getString("date"));

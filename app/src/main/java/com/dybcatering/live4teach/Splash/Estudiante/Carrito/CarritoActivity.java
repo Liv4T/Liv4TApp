@@ -38,21 +38,6 @@ public class CarritoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_carrito); Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-
-      //  FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-       /* fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-
-                createPopDialog();
-
-
-            }
-        });
-*/
         db = new DatabaseHandler(this);
 
        // Toast.makeText(this, db.getGroceriesCount(), Toast.LENGTH_SHORT).show();
@@ -73,7 +58,7 @@ public class CarritoActivity extends AppCompatActivity {
             for (Grocery c : groceryList) {
                 Grocery grocery = new Grocery();
                 grocery.setName(c.getName());
-                grocery.setQuantity("Curso: " + c.getQuantity());
+                grocery.setQuantity("Descripción: " + c.getQuantity());
                 grocery.setId(c.getId());
                 grocery.setDateItemAdded("Agregado en: " + c.getDateItemAdded());
                 grocery.setImagen(""+ c.getImagen());
