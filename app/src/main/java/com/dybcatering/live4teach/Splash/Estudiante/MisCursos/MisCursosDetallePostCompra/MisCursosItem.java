@@ -1,7 +1,9 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.AdapterMisCursos;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra;
 
 public class MisCursosItem {
+	private String id;
 	private String name;
+// falta agregar los demas de https://dybcatering.com/back_live_app/miscursos/cursos_unidades.php
 	/*private String hability;
 	private String presentation;
 	private String competences_e1;

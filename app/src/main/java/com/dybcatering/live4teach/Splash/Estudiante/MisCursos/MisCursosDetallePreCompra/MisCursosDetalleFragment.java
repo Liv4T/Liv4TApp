@@ -1,34 +1,69 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.Tabs;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePreCompra;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
-
-
+import com.airbnb.lottie.LottieAnimationView;
 import com.dybcatering.live4teach.R;
+import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
 
-public class Tab1Fragment extends Fragment {
-	public static final String TAG = "Tab1Fragment";
+public class MisCursosDetalleFragment extends Fragment {
 
-	private Button btnTest;
+	YouTubePlayer youTubePlayer;
+	LottieAnimationView scrolldebajo;
 	View view;
 	TextView descText, segunda_desc, tercera_desc;
 	ProgressBar progressBar;
 	ImageButton show, hide, show2, hide2, show3, hide3;
-	@Nullable
+	private static final String TAG = "MisCursosDetalle";
+
+
+	private TabLayout tabLayout;
+	private AppBarLayout appBarLayout;
+	private ViewPager viewPager;
+
 	@Override
-	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_tab1, container, false);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+	    View view = inflater.inflate(R.layout.fragment_mis_cursos_detalle, container, false);
+
+		tabLayout = view.findViewById(R.id.tablayout_id);
+		appBarLayout = view.findViewById(R.id.appBarId);
+		viewPager = view.findViewById(R.id.viewpager);
+
+		ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+		adapter.AddFragment(new ClasesFragment(), "Listado de Clases");
+		adapter.AddFragment(new AcercaCursoFragment(), "Acerca de este curso");
+		//adapter.AddFragment(new TerceroFragment(), "TerceroFragment");
+		viewPager.setAdapter(adapter);
+		tabLayout.setupWithViewPager(viewPager);
+
+		return view;
+		}
+	}
+	/**	scrolldebajo = view.findViewById(R.id.buttoniniciar);
+
+		scrolldebajo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Toast.makeText(getActivity(), "hola", Toast.LENGTH_SHORT).show();
+				reproducirvideo(view);
+
+
+			}
+		});
+
+
+
 
 
 		progressBar = view.findViewById(R.id.progressBar_horizontal);
@@ -123,71 +158,30 @@ public class Tab1Fragment extends Fragment {
 			}
 		});
 
-		/**onInitializedListener = new com.google.android.youtube.player.YouTubePlayer.OnInitializedListener() {
-		@Override
-		public void onInitializationSuccess(com.google.android.youtube.player.YouTubePlayer.Provider provider, com.google.android.youtube.player.YouTubePlayer youTubePlayer, boolean b) {
-		Log.d(TAG, "Iniciando video");
-		youTubePlayer.loadVideo("YQRHrco73g4");
-		}
 
-		@Override
-		public void onInitializationFailure(com.google.android.youtube.player.YouTubePlayer.Provider provider, YouTubeInitializationResult youTubeInitializationResult) {
-		Log.d(TAG, "Falla");
-		}
-		};
-
-		 button.setOnClickListener(new View.OnClickListener() {
-		@Override
-		public void onClick(View v) {
-		Log.d(TAG,"se realizo click");
-		youTubePlayerView.initialize(YouTubeConfig.getApiKey(), onInitializedListener);
-
-
-		Log.d(TAG, "exito");
-
-		if (progressStatus == 100) {
-		progressStatus = 0;
-		}
-
-		new Thread(new Runnable() {
-		@Override
-		public void run() {
-		while (progressStatus < 100) {
-		// Update the progress status
-		progressStatus += 1;
-
-		// Try to sleep the thread for 20 milliseconds
-		try {
-		Thread.sleep(80);  //3 seconds
-		} catch (InterruptedException e) {
-		e.printStackTrace();
-		}
-
-		// Update the progress bar
-		handler.post(new Runnable() {
-		@Override
-		public void run() {
-		progressBar.setProgress(progressStatus);
-		// Show the progress on TextView
-		//tv.setText(progressStatus + "/100");
-		}
-		});
-		}
-		}
-		}).start();
-		}
-		});
-		 **/
-
-
-		btnTest = view.findViewById(R.id.btn_test1);
-
-		btnTest.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Toast.makeText(getActivity(), "Prueba de testing", Toast.LENGTH_SHORT).show();
-			}
-		});
-		return view;
 	}
+
+	public void reproducirvideo(View view) {
+		YouTubePlayerView youTubePlayerView = view.findViewById(R.id.youtube_player_view);
+
+		youTubePlayerView.initialize(new YouTubePlayerInitListener() {
+			@Override
+			public void onInitSuccess(final YouTubePlayer initializedYouTubePlayer) {
+				initializedYouTubePlayer.addListener(new AbstractYouTubePlayerListener() {
+					@Override
+					public void onReady() {
+						initializedYouTubePlayer.loadVideo("v9oyNBBXDi8", 0);
+					}
+
+				});
+
+			}
+		}, true);
+	}
+
+	public void Ejemplo(){
+
+	}
+
 }
+**/

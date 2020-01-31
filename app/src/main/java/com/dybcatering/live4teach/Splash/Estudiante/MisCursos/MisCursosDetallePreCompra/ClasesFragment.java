@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetalle;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePreCompra;
 
 import android.net.Uri;
 import android.os.Bundle;

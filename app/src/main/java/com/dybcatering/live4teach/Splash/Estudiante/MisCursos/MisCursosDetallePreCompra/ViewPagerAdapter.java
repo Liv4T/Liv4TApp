@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetalle;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePreCompra;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

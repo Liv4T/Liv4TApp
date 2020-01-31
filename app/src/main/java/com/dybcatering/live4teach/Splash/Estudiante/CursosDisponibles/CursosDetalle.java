@@ -81,7 +81,6 @@ public class CursosDetalle extends AppCompatActivity {
 	private UnidadesAdaptor mUnidadesAdaptor;
 	private ArrayList<UnidadesItem> munidadesItems;
 	private RequestQueue mRequestQueue;
-	private static String URL_READ = "https://dybcatering.com/back_live_app/cursos/cursos_unidades.php";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
