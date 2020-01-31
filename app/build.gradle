@@ -68,6 +68,10 @@ dependencies {
 
     implementation 'com.kaopiz:kprogresshud:1.1.0'
 
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.7.3'
+    implementation 'com.google.android.exoplayer:exoplayer-dash:2.7.3'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.7.3'
+
 
 
 }
