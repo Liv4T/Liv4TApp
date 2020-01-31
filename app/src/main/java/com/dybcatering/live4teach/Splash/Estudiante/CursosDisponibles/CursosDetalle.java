@@ -20,7 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.CarritoActivity;
@@ -36,6 +36,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAACTUALIZADOEN;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRABIENVENIDA;
@@ -45,6 +47,7 @@ import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.Cur
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRADESCRIPCION;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRADESCRIPCIONO;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAESTADO;
+import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAID;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAIDUSER;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAIMAGEN;
 import static com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.CursosFragment.EXTRAINDICADORA;
@@ -99,6 +102,7 @@ public class CursosDetalle extends AppCompatActivity {
 		show3= findViewById(R.id.vermastercero);
 		hide3 = findViewById(R.id.hide3);
 		Intent intent= getIntent();
+		final String id = intent.getStringExtra(EXTRAID);
 		final String nombre = intent.getStringExtra(EXTRANOMBRE);
 		final String categoria = intent.getStringExtra(EXTRACATEGORIA);
 		final String subcategoria = intent.getStringExtra(EXTRASUBCATEGORIA);
@@ -231,190 +235,31 @@ public class CursosDetalle extends AppCompatActivity {
 
 		mRequestQueue = Volley.newRequestQueue(CursosDetalle.this);
 
-		obtenerUnidades();
+
+		ObtenerDatos(id);
 	}
 
-	/*private void obtenerUnidades() {
-		final ProgressDialog progressDialog = new ProgressDialog(CursosDetalle.this);
-		progressDialog.setMessage("Cargando...");
-		progressDialog.show();
-		progressDialog.setCancelable(false);
-		StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_READ,
+	private void ObtenerDatos(final String id) {
+
+		String url = "http://dybcatering.com/back_live_app/cursos/cursos_unidades.php";
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
 				new Response.Listener<String>() {
 					@Override
 					public void onResponse(String response) {
-						progressDialog.dismiss();
 						try {
 							JSONObject jsonObject = new JSONObject(response);
-							String success = jsonObject.getString("success");
-							JSONArray jsonArray = jsonObject.getJSONArray("read");
-
-							if (success.equals("1")) {
-
-								for (int i = 0; i < jsonArray.length(); i++) {
-
-									JSONObject object = jsonArray.getJSONObject(i);
-
-
-									String name= object.getString("name");
-									String hability = object.getString("hability");
-									String presentation= object.getString("presentation");
-									String competences_e1= object.getString("competences_e1");
-									String competences_e2= object.getString("competences_e2");
-									String competences_e3= object.getString("competences_e3");
-									String competences_t1= object.getString("competences_t1");
-									String competences_t2= object.getString("competences_t2");
-									String competences_t3= object.getString("competences_t3");
-									String result1= object.getString("result1");
-									String result2= object.getString("result2");
-									String result3= object.getString("result3");
-									String unit= object.getString("unit");
-									String result4= object.getString("result4");
-									String comper11= object.getString("comper11");
-									String comper12= object.getString("comper12");
-									String comper13= object.getString("comper13");
-									String comper21= object.getString("comper21");
-									String comper22= object.getString("comper22");
-									String comper23= object.getString("comper23");
-									String comper31= object.getString("comper31");
-									String comper32= object.getString("comper32");
-									String comper33= object.getString("comper33");
-									String comper41= object.getString("comper41");
-									String comper42= object.getString("comper42");
-									String comper43= object.getString("comper43");
-									String question= object.getString("question");
-									String ready= object.getString("ready");
-									String nameV= object.getString("nameV");
-									String video_apoyo= object.getString("video_apoyo");
-									String projecting= object.getString("projecting");
-									String topic= object.getString("topic");
-									String challenge= object.getString("challenge");
-									String doing= object.getString("doing");
-									String bibliography= object.getString("bibliography");
-									String content= object.getString("content");
-									String id_course= object.getString("id_course");
-									String type= object.getString("type");
-
-
-									munidadesItems.add(new UnidadesItem(name, hability, presentation, competences_e1, competences_e2, competences_e3, competences_t1, competences_t2, competences_t3, result1, result2, result3, unit, result4, comper11, comper12, comper13, comper21, comper22, comper23, comper31, comper32, comper33, comper41, comper42, comper43, question, ready, nameV, video_apoyo, projecting, topic, challenge, doing, bibliography, content, id_course, type));
-
-									/*String strName = object.getString("name").trim();
-									String strApellido = object.getString("last_name").trim();
-									String strEmail = object.getString("email").trim();
-									String strUsuario = object.getString("user_name").trim();
-									String strPicture= object.getString("picture").trim();
-									String strTelefono = object.getString("phone").trim();
-									edtNombre.setText(strName);
-									edtApellido.setText(strApellido);
-									edtTelefono.setText(strTelefono);
-									edtCorreo.setText(strEmail);
-									txtUsuario.setText(strUsuario);
-									if (strPicture.equals("")) {
-										imvprofile.setImageResource(R.drawable.imagenperfil);
-									} else {
-										Picasso.with(getActivity()).load(strPicture).centerCrop()
-												.placeholder(R.drawable.internetconnection).fit().into(imvprofile, new Callback() {
-											@Override public    void onSuccess() {}
-											@Override public void onError() {}
-										});
-										//Picasso.with(getActivity()).load(strPicture).into(imvprofile);
-									}
-
-
-								}
-								mUnidadesAdaptor = new UnidadesAdaptor(CursosDetalle.this, munidadesItems);
-								mRecyclerView.setAdapter(mUnidadesAdaptor);
-								mUnidadesAdaptor.setOnClickItemListener(CursosDetalle.this);
-
-
-							}
-
-						} catch (JSONException e) {
-							e.printStackTrace();
-							progressDialog.dismiss();
-							Toast.makeText(CursosDetalle.this, "Error de conexión ", Toast.LENGTH_SHORT).show();
-						}
-
-					}
-				},
-				new Response.ErrorListener() {
-					@Override
-					public void onErrorResponse(VolleyError error) {
-						progressDialog.dismiss();
-						Toast.makeText(CursosDetalle.this, "Error de conexión  ", Toast.LENGTH_SHORT).show();
-					}
-				}) {
-			@Override
-			protected Map<String, String> getParams() {
-				Map<String, String> params = new HashMap<>();
-				params.put("id", "1");
-				return params;
-			}
-		};
-
-		RequestQueue requestQueue = Volley.newRequestQueue(CursosDetalle.this);
-		requestQueue.add(stringRequest);
-
-	}*/
-
-	public void obtenerUnidades(){
-		String url = "http://dybcatering.com/back_live_app/cursos/cursos_unidades.php";
-
-		JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-				new Response.Listener<JSONObject>() {
-					@Override
-					public void onResponse(JSONObject response) {
-						try {
-							JSONArray jsonArray = response.getJSONArray("Registros");
+							JSONArray jsonArray = jsonObject.getJSONArray("Registros");
 							for (int i = 0; i < jsonArray.length(); i++) {
 								JSONObject hit = jsonArray.getJSONObject(i);
 								String name= hit.getString("name");
 								String topic= hit.getString("topic");
-								/*String hability = hit.getString("hability");
-								String presentation= hit.getString("presentation");
-								String competences_e1= hit.getString("competences_e1");
-								String competences_e2= hit.getString("competences_e2");
-								String competences_e3= hit.getString("competences_e3");
-								String competences_t1= hit.getString("competences_t1");
-								String competences_t2= hit.getString("competences_t2");
-								String competences_t3= hit.getString("competences_t3");
-								String result1= hit.getString("result1");
-								String result2= hit.getString("result2");
-								String result3= hit.getString("result3");
-								String unit= hit.getString("unit");
-								String result4= hit.getString("result4");
-								String comper11= hit.getString("comper11");
-								String comper12= hit.getString("comper12");
-								String comper13= hit.getString("comper13");
-								String comper21= hit.getString("comper21");
-								String comper22= hit.getString("comper22");
-								String comper23= hit.getString("comper23");
-								String comper31= hit.getString("comper31");
-								String comper32= hit.getString("comper32");
-								String comper33= hit.getString("comper33");
-								String comper41= hit.getString("comper41");
-								String comper42= hit.getString("comper42");
-								String comper43= hit.getString("comper43");
-								String question= hit.getString("question");
-								String ready= hit.getString("ready");
-								String nameV= hit.getString("nameV");
-								String video_apoyo= hit.getString("video_apoyo");
-								String projecting= hit.getString("projecting");
-								String challenge= hit.getString("challenge");
-								String doing= hit.getString("doing");
-								String bibliography= hit.getString("bibliography");
-								String content= hit.getString("content");
-								String id_course= hit.getString("id_course");
-								String type= hit.getString("type");*/
-
-
-								munidadesItems.add(new UnidadesItem(name, topic));// hability, presentation, competences_e1, competences_e2, competences_e3, competences_t1, competences_t2, competences_t3, result1, result2, result3, unit, result4, comper11, comper12, comper13, comper21, comper22, comper23, comper31, comper32, comper33, comper41, comper42, comper43, question, ready, nameV, video_apoyo, projecting, topic, challenge, doing, bibliography, content, id_course, type));
-
+								munidadesItems.add(new UnidadesItem(name, topic));
 							}
 
 							mUnidadesAdaptor = new UnidadesAdaptor(CursosDetalle.this, munidadesItems);
 							mRecyclerView.setAdapter(mUnidadesAdaptor);
-//							mUnidadesAdaptor.setOnClickItemListener((UnidadesAdaptor.OnItemClickListener) CursosDetalle.this);
+//							mExampleAdaptor.setOnClickItemListener(CursosFragment.this);
 
 						} catch (JSONException e) {
 							e.printStackTrace();
@@ -425,9 +270,17 @@ public class CursosDetalle extends AppCompatActivity {
 			public void onErrorResponse(VolleyError error) {
 				error.printStackTrace();
 			}
-		});
+		}) {
+			@Override
+			protected Map<String, String > getParams(){
+				Map<String, String> params = new HashMap<>();
+				params.put("id", id);
+				return params;
+			}
+		};
 
-		mRequestQueue.add(request);
+		RequestQueue requestQueue = Volley.newRequestQueue(CursosDetalle.this);
+		requestQueue.add(stringRequest);
 	}
 
 	public void mostrar(){

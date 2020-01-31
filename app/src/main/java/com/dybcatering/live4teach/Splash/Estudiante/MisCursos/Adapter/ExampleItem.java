@@ -1,6 +1,7 @@
 package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.Adapter;
 
 public class ExampleItem {
+    private String Id;
     private String Nombre;
     private String Categoria;
     private String SubCategoria;
@@ -28,7 +29,8 @@ public class ExampleItem {
     private String VideoPresentacion;
 
 
-    public ExampleItem(String nombre, String categoria, String subCategoria, String metodologia, String bienvenida, String intensidad, String intensidadAC, String competencias, String intensidadTA, String logro, String indicadorA, String mapa, String metodologiaG, String tipo, String descripcion, String presentacion, String idUsuario, String descripcionO, String actualizadoEn, String creadoEn, String estado, String publicar, String imagen, String precio, String videoPresentacion) {
+    public ExampleItem(String id, String nombre, String categoria, String subCategoria, String metodologia, String bienvenida, String intensidad, String intensidadAC, String competencias, String intensidadTA, String logro, String indicadorA, String mapa, String metodologiaG, String tipo, String descripcion, String presentacion, String idUsuario, String descripcionO, String actualizadoEn, String creadoEn, String estado, String publicar, String imagen, String precio, String videoPresentacion) {
+        Id = id;
         Nombre = nombre;
         Categoria = categoria;
         SubCategoria = subCategoria;
@@ -54,6 +56,10 @@ public class ExampleItem {
         Imagen = imagen;
         Precio = precio;
         VideoPresentacion = videoPresentacion;
+    }
+
+    public String getId(){
+        return Id;
     }
 
     public String getNombre() {

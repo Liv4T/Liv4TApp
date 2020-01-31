@@ -20,9 +20,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.Adapter.ExampleAdaptor;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.Adapter.ExampleItem;
-import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -43,6 +43,7 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
     private ProgressBar progressBar;
 
     private Button btn;
+    public static final String EXTRAID = "id";
     public static final String EXTRANOMBRE = "name";
     public static final String EXTRACATEGORIA = "id_category";
     public static final String EXTRASUBCATEGORIA = "id_subcategory";
@@ -97,6 +98,7 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
                             JSONArray jsonArray = response.getJSONArray("Registros");
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject hit = jsonArray.getJSONObject(i);
+                                String id = hit.getString("id");
                                 String nombre = hit.getString("name");
                                 String categoria = hit.getString("id_category");
                                 String subcategoria = hit.getString("id_subcategory");
@@ -122,7 +124,7 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
                                 String imagen= hit.getString("image");
                                 String precio = hit.getString("price");
                                 String videopresentacion = hit.getString("video_presentacion");
-                                mexampleItems.add(new ExampleItem( nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias, intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen, precio, videopresentacion));
+                                mexampleItems.add(new ExampleItem(id, nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias, intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen, precio, videopresentacion));
 
                             }
 
@@ -149,6 +151,7 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
     public void onItemClick(int position) {
         Intent intent = new Intent(getActivity(), CursosDetalle.class);
         ExampleItem clickedItem =mexampleItems.get(position);
+        intent.putExtra(EXTRAID, clickedItem.getId());
         intent.putExtra(EXTRANOMBRE, clickedItem.getNombre());
         intent.putExtra(EXTRACATEGORIA, clickedItem.getCategoria());
         intent.putExtra(EXTRASUBCATEGORIA, clickedItem.getSubCategoria());

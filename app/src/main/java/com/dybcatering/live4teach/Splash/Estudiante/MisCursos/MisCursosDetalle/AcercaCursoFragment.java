@@ -8,9 +8,9 @@ import android.view.ViewGroup;
 
 import com.dybcatering.live4teach.R;
 
-public class AcercaCurso extends Fragment {
+public class AcercaCursoFragment extends Fragment {
 	View view;
-	public AcercaCurso() {
+	public AcercaCursoFragment() {
 		// Required empty public constructor
 	}
 	@Override

@@ -42,7 +42,7 @@ public class MisCursosDetalleFragment extends Fragment {
 
 		ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
 		adapter.AddFragment(new ClasesFragment(), "Listado de Clases");
-		adapter.AddFragment(new AcercaCurso(), "Acerca de este curso");
+		adapter.AddFragment(new AcercaCursoFragment(), "Acerca de este curso");
 		//adapter.AddFragment(new TerceroFragment(), "TerceroFragment");
 		viewPager.setAdapter(adapter);
 		tabLayout.setupWithViewPager(viewPager);
