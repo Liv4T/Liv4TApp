@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.AdapterUnidades;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.AdapterUnidadesSinComprar;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

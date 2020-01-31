@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetalle.MisCursosDetalleFragment;
 
 public class MisCursosFragment extends Fragment {
     View myView;

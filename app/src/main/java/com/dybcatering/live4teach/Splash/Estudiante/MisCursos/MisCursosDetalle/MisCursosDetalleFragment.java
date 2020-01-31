@@ -1,21 +1,20 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetalle;
 
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.dybcatering.live4teach.R;
-import com.pierfrancescosoffritti.youtubeplayer.player.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
-import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerInitListener;
-import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView;
 
 public class MisCursosDetalleFragment extends Fragment {
 
@@ -26,12 +25,32 @@ public class MisCursosDetalleFragment extends Fragment {
 	ProgressBar progressBar;
 	ImageButton show, hide, show2, hide2, show3, hide3;
 	private static final String TAG = "MisCursosDetalle";
+
+
+	private TabLayout tabLayout;
+	private AppBarLayout appBarLayout;
+	private ViewPager viewPager;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-		final View view = inflater.inflate (R.layout.fragment_mis_cursos_detalle, container, false);
+	    View view = inflater.inflate(R.layout.fragment_mis_cursos_detalle, container, false);
 
-		scrolldebajo = view.findViewById(R.id.buttoniniciar);
+		tabLayout = view.findViewById(R.id.tablayout_id);
+		appBarLayout = view.findViewById(R.id.appBarId);
+		viewPager = view.findViewById(R.id.viewpager);
+
+		ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+		adapter.AddFragment(new ClasesFragment(), "Listado de Clases");
+		adapter.AddFragment(new AcercaCurso(), "Acerca de este curso");
+		//adapter.AddFragment(new TerceroFragment(), "TerceroFragment");
+		viewPager.setAdapter(adapter);
+		tabLayout.setupWithViewPager(viewPager);
+
+		return view;
+		}
+	}
+	/**	scrolldebajo = view.findViewById(R.id.buttoniniciar);
 
 		scrolldebajo.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -139,7 +158,7 @@ public class MisCursosDetalleFragment extends Fragment {
 			}
 		});
 
-		return view;
+
 	}
 
 	public void reproducirvideo(View view) {
@@ -165,3 +184,4 @@ public class MisCursosDetalleFragment extends Fragment {
 	}
 
 }
+**/

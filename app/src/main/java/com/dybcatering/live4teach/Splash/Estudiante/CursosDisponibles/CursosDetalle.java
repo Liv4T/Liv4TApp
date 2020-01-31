@@ -26,8 +26,8 @@ import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Splash.Estudiante.Carrito.Model.Grocery;
-import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.AdapterUnidades.UnidadesAdaptor;
-import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.AdapterUnidades.UnidadesItem;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.AdapterUnidadesSinComprar.UnidadesAdaptor;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.AdapterUnidadesSinComprar.UnidadesItem;
 import com.pd.chocobar.ChocoBar;
 import com.squareup.picasso.Picasso;
 
