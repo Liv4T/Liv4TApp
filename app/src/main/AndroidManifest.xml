@@ -60,7 +60,6 @@
         <activity
             android:name=".Login.LoginActivity"
             android:theme="@style/AppThemeLogin" />
-        <activity android:name=".Splash.Estudiante.SubPrimerActivity" />
         <activity android:name=".Splash.Tutor.InicioActivityTutor" />
     </application>
 

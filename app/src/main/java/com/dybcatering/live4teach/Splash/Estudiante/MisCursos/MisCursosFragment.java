@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnItemClickListener{
     View myView;
 	private RecyclerView mRecyclerView;
@@ -139,14 +141,15 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 						} catch (JSONException e) {
 							e.printStackTrace();
 							progressDialog.dismiss();
-							Toast.makeText(getActivity(), "Error de conexión ", Toast.LENGTH_SHORT).show();
+							Toasty.error(getContext(), "Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT).show();
 						}
 					}
 				}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
+				error.printStackTrace();
 				progressDialog.dismiss();
-				Toast.makeText(getActivity(), "Error de conexión  ", Toast.LENGTH_SHORT).show();
+				Toasty.error(getContext(), "Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT).show();
 			}
 		}) {
 			@Override
