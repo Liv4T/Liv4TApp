@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Splash.Estudiante.MisCursos;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -91,11 +93,15 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 	private void ObtenerDatos(final String id) {
 
 		String url = "http://dybcatering.com/back_live_app/miscursos/cursos_unidades_prueba.php";
-
+		final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+		progressDialog.setMessage("Cargando...");
+		progressDialog.show();
+		progressDialog.setCancelable(false);
 		StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
 				new Response.Listener<String>() {
 					@Override
 					public void onResponse(String response) {
+						progressDialog.dismiss();
 						try {
 							JSONObject jsonObject = new JSONObject(response);
 							JSONArray jsonArray = jsonObject.getJSONArray("Registros");
@@ -132,12 +138,15 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 
 						} catch (JSONException e) {
 							e.printStackTrace();
+							progressDialog.dismiss();
+							Toast.makeText(getActivity(), "Error de conexión ", Toast.LENGTH_SHORT).show();
 						}
 					}
 				}, new Response.ErrorListener() {
 			@Override
 			public void onErrorResponse(VolleyError error) {
-				error.printStackTrace();
+				progressDialog.dismiss();
+				Toast.makeText(getActivity(), "Error de conexión  ", Toast.LENGTH_SHORT).show();
 			}
 		}) {
 			@Override
