@@ -3,92 +3,131 @@ package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetalleP
 public class MisCursosItem {
 	private String id;
 	private String name;
-// falta agregar los demas de https://dybcatering.com/back_live_app/miscursos/cursos_unidades.php
-	/*private String hability;
-	private String presentation;
-	private String competences_e1;
-	private String competences_e2;
-	private String competences_e3;
-	private String competences_t1;
-	private String competences_t2;
-	private String competences_t3;
-	private String result1;
-	private String result2;
-	private String result3;
-	private String unit;
-	private String result4;
-	private String comper11;
-	private String comper12;
-	private String comper13;
-	private String comper21;
-	private String comper22;
-	private String comper23;
-	private String comper31;
-	private String comper32;
-	private String comper33;
-	private String comper41;
-	private String comper42;
-	private String comper43;
-	private String question;
-	private String ready;
-	private String nameV;
-	private String video_apoyo;
-	private String projecting;
+	private String methodology;
+	private String welcome;
+	private String intention;
+	private String intensityAC;
+	private String competences;
+	private String intensityTA;
+	private String achievement;
+	private String indicatorA;
+	private String methodologyG;
+	private String type;
+	private String description;
+	private String descriptionO;
+	private String updated_at;
+	private String state;
+	private String image;
+	private String video_presentacion;
 	private String topic;
-	private String challenge;
-	private String doing;
-	private String bibliography;
-	private String content;
-	private String id_course;*/
-	private String topic;
+	private String publish;
+	private String idtemas;
 
-	public MisCursosItem(String name, String topic) {
+	public MisCursosItem(String id, String name, String methodology, String welcome, String intention, String intensityAC, String competences, String intensityTA, String achievement, String indicatorA, String methodologyG, String type, String description, String descriptionO, String updated_at, String state, String image, String video_presentacion, String topic, String publish, String idtemas) {
+		this.id = id;
 		this.name = name;
-/*		this.hability = hability;
-		this.presentation = presentation;
-		this.competences_e1 = competences_e1;
-		this.competences_e2 = competences_e2;
-		this.competences_e3 = competences_e3;
-		this.competences_t1 = competences_t1;
-		this.competences_t2 = competences_t2;
-		this.competences_t3 = competences_t3;
-		this.result1 = result1;
-		this.result2 = result2;
-		this.result3 = result3;
-		this.unit = unit;
-		this.result4 = result4;
-		this.comper11 = comper11;
-		this.comper12 = comper12;
-		this.comper13 = comper13;
-		this.comper21 = comper21;
-		this.comper22 = comper22;
-		this.comper23 = comper23;
-		this.comper31 = comper31;
-		this.comper32 = comper32;
-		this.comper33 = comper33;
-		this.comper41 = comper41;
-		this.comper42 = comper42;
-		this.comper43 = comper43;
-		this.question = question;
-		this.ready = ready;
-		this.nameV = nameV;
-		this.video_apoyo = video_apoyo;
-		this.projecting = projecting;
-
-		this.challenge = challenge;
-		this.doing = doing;
-		this.bibliography = bibliography;
-		this.content = content;
-		this.id_course = id_course;
-		this.type = type;*/
+		this.methodology = methodology;
+		this.welcome = welcome;
+		this.intention = intention;
+		this.intensityAC = intensityAC;
+		this.competences = competences;
+		this.intensityTA = intensityTA;
+		this.achievement = achievement;
+		this.indicatorA = indicatorA;
+		this.methodologyG = methodologyG;
+		this.type = type;
+		this.description = description;
+		this.descriptionO = descriptionO;
+		this.updated_at = updated_at;
+		this.state = state;
+		this.image = image;
+		this.video_presentacion = video_presentacion;
 		this.topic = topic;
+		this.publish = publish;
+		this.idtemas = idtemas;
+	}
+
+	public String getId() {
+		return id;
 	}
 
 	public String getName() {
 		return name;
 	}
 
+	public String getMethodology() {
+		return methodology;
+	}
+
+	public String getWelcome() {
+		return welcome;
+	}
+
+	public String getIntention() {
+		return intention;
+	}
+
+	public String getIntensityAC() {
+		return intensityAC;
+	}
+
+	public String getCompetences() {
+		return competences;
+	}
+
+	public String getIntensityTA() {
+		return intensityTA;
+	}
+
+	public String getAchievement() {
+		return achievement;
+	}
+
+	public String getIndicatorA() {
+		return indicatorA;
+	}
+
+	public String getMethodologyG() {
+		return methodologyG;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public String getDescriptionO() {
+		return descriptionO;
+	}
+
+	public String getUpdated_at() {
+		return updated_at;
+	}
+
+	public String getState() {
+		return state;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public String getVideo_presentacion() {
+		return video_presentacion;
+	}
+
 	public String getTopic() {
 		return topic;
+	}
+
+	public String getPublish() {
+		return publish;
+	}
+
+	public String getIdtemas() {
+		return idtemas;
 	}
 }

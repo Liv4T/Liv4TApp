@@ -43,45 +43,27 @@ public class MisCursosAdaptor extends RecyclerView.Adapter<MisCursosAdaptor.Exam
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
         MisCursosItem currentItem = mExampleList.get(position);
 
+        String id = currentItem.getId();
         String nombre = currentItem.getName();
-       /* String habilidad = currentItem.getHability();
-        String presentacion = currentItem.getPresentation();
-        String competencia1 = currentItem.getCompetences_e1();
-        String competencia2 = currentItem.getCompetences_e2();
-        String competencia3 = currentItem.getCompetences_e3();
-        String resultado1 = currentItem.getResult1();
-        String resultado2 = currentItem.getResult2();
-        String resultado3 = currentItem.getResult3();
-        String unidad = currentItem.getUnit();
-        String resultado4 = currentItem.getResult4();
-        String comper11 = currentItem.getComper11();
-        String comper12 = currentItem.getComper12();
-        String comper13 = currentItem.getComper13();
-        String comper21 = currentItem.getComper21();
-        String comper22 = currentItem.getComper22();
-        String comper23 = currentItem.getComper23();
-        String comper31 = currentItem.getComper31();
-        String comper32 = currentItem.getComper32();
-        String comper33 = currentItem.getComper33();
-        String comper41 = currentItem.getComper33();
-        String comper42= currentItem.getComper33();
-        String comper43 = currentItem.getComper33();
-        String question= currentItem.getQuestion();
-        String ready= currentItem.getReady();
-        String nameV= currentItem.getNameV();
-        String video_apoyo =currentItem.getVideo_apoyo();
-        String projecting = currentItem.getProjecting();
-        String tema = currentItem.getTopic();
-        String challenge = currentItem.getChallenge();
-        String doing = currentItem.getDoing();
-        String bibliography = currentItem.getBibliography();
-        String content = currentItem.getContent();
-        String id_course = currentItem.getId_course();*/
+        String methodology = currentItem.getMethodology();
+        String welcome = currentItem.getWelcome();
+        String intention = currentItem.getIntention();
+        String intensityAC = currentItem.getIntensityAC();
+        String competences = currentItem.getCompetences();
+        String intensityTA = currentItem.getIntensityTA();
+        String achievement = currentItem.getAchievement();
+        String indicatorA = currentItem.getIndicatorA();
+        String methodologyG = currentItem.getMethodologyG();
+        String type = currentItem.getType();
+        String description = currentItem.getDescription();
+        String descriptionO = currentItem.getDescriptionO();
+        String updated_at = currentItem.getUpdated_at();
+        String state = currentItem.getState();
+        String image = currentItem.getImage();
+        String video_presentacion = currentItem.getVideo_presentacion();
         String topic = currentItem.getTopic();
-
-
-//        String resultadoaprendizaje= currentItem.getResult4();
-  //      String competenciasevaluacion= currentItem.getResult4();
+        String publish = currentItem.getPublish();
+        String idtemas = currentItem.getIdtemas();
 
 
 
