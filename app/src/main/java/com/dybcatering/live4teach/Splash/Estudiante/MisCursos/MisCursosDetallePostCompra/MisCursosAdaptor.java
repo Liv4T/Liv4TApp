@@ -68,9 +68,9 @@ public class MisCursosAdaptor extends RecyclerView.Adapter<MisCursosAdaptor.Exam
 
 
         holder.mTextNombreCurso.setText(nombre);
-        holder.mEstadoCurso.setText(topic);
-        holder.mTemaUnidad.setText(topic);
-        holder.mActividad.setText(topic);
+        holder.mEstadoCurso.setText(publish);
+        holder.mTemaUnidad.setText(descriptionO);
+//        holder.mActividad.setText(topic);
        // holder.mImageDestacado.setText(destacado);
         //holder.mBarrio.setText("B.° : " + barrio);
         //holder.mVistas.setText("Veces Visto : " + cantidad_vistas);
@@ -83,6 +83,9 @@ public class MisCursosAdaptor extends RecyclerView.Adapter<MisCursosAdaptor.Exam
     public int getItemCount() {
         return mExampleList.size();
     }
+
+   // public void setOnClickItemListener(MisCursosFragment misCursosFragment) {
+    //}/
 
     public interface OnItemClickListener {
         void onItemClick(int position);

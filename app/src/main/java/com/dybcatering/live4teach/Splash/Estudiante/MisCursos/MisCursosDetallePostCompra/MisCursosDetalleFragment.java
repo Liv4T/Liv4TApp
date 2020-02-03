@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePreCompra;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;

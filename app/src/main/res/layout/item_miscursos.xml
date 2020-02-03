@@ -101,7 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/centurygothic"
-                android:text="Actividades"
+                android:text=""
                 android:textColor="@color/color"
                 android:textSize="15sp"
                 android:paddingLeft="2dp"
