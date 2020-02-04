@@ -16,7 +16,7 @@ import com.airbnb.lottie.LottieAnimationView;
 import com.dybcatering.live4teach.R;
 import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
 
-public class MisCursosDetalleFragment extends Fragment {
+public class  MisCursosDetalleFragment extends Fragment {
 
 	YouTubePlayer youTubePlayer;
 	LottieAnimationView scrolldebajo;
@@ -26,7 +26,6 @@ public class MisCursosDetalleFragment extends Fragment {
 	ImageButton show, hide, show2, hide2, show3, hide3;
 	private static final String TAG = "MisCursosDetalle";
 
-
 	private TabLayout tabLayout;
 	private AppBarLayout appBarLayout;
 	private ViewPager viewPager;
@@ -34,13 +33,15 @@ public class MisCursosDetalleFragment extends Fragment {
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-	    View view = inflater.inflate(R.layout.fragment_mis_cursos_detalle, container, false);
+		View view = inflater.inflate(R.layout.fragment_mis_cursos_detalle, container, false);
 
 		tabLayout = view.findViewById(R.id.tablayout_id);
 		appBarLayout = view.findViewById(R.id.appBarId);
 		viewPager = view.findViewById(R.id.viewpager);
 
+
 		ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+		//adapter = new ViewPagerAdapter(getChildFragmentManager(), MisCursosDetalleFragment.this);
 		adapter.AddFragment(new ClasesFragment(), "Listado de Clases");
 		adapter.AddFragment(new AcercaCursoFragment(), "Acerca de este curso");
 		//adapter.AddFragment(new TerceroFragment(), "TerceroFragment");
@@ -48,7 +49,7 @@ public class MisCursosDetalleFragment extends Fragment {
 		tabLayout.setupWithViewPager(viewPager);
 
 		return view;
-		}
+	}
 	}
 	/**	scrolldebajo = view.findViewById(R.id.buttoniniciar);
 

@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.R;
 
@@ -18,6 +19,12 @@ public class AcercaCursoFragment extends Fragment {
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
 		view = inflater.inflate(R.layout.fragment_acerca_curso, container, false);
+
+		Bundle arguments = getParentFragment().getArguments();
+
+		String idrecibido = arguments.getString("id");
+
+		Toast.makeText(getContext(), "el texto es "+ idrecibido, Toast.LENGTH_SHORT).show();
 		return view;
 	}
 

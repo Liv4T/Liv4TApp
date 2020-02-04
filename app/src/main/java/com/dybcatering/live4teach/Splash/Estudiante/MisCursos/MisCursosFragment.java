@@ -126,7 +126,7 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 								String updated_at = hit.getString("updated_at");
 								String state = hit.getString("state");
 								String image = hit.getString("image");
-								String video_presentacion = hit.getString("video_presentacion");
+								String video_presentacion = hit.getString("video_presentation");
 								String topic = hit.getString("topic");
 								String publish = hit.getString("publish");
 								String idunidad = hit.getString("idunidad");
@@ -179,9 +179,11 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 	public void onItemClick(int position) {
 
 		Fragment someFragment = new MisCursosDetalleFragment();
-//		MisCursosItem clickedItem = mcursosItems.get(position);
+		MisCursosItem clickedItem = mcursosItems.get(position);
 		Bundle arguments = new Bundle();
-		arguments.putString(EXTRAID, "id");
+		arguments.putString(EXTRAID, clickedItem.getId());
+		arguments.putString("daniel", "hola");
+		someFragment.setArguments(arguments);
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, someFragment ).addToBackStack("tag"); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack

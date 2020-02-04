@@ -108,7 +108,7 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
                                 String intensidadac = hit.getString("intensityAC");
                                 String competencias = hit.getString("competences");
                                 String intensidadta = hit.getString("intensityTA");
-                                String logro = hit.getString("Achievement");
+                                String logro = hit.getString("achievement");
                                 String indicadora = hit.getString("indicatorA");
                                 String mapa = hit.getString("map");
                                 String metodologiag = hit.getString("methodologyG");
@@ -123,7 +123,7 @@ public class CursosFragment extends Fragment implements ExampleAdaptor.OnItemCli
                                 String publicado = hit.getString("publish");
                                 String imagen= hit.getString("image");
                                 String precio = hit.getString("price");
-                                String videopresentacion = hit.getString("video_presentacion");
+                                String videopresentacion = hit.getString("video_presentation");
                                 mexampleItems.add(new ExampleItem(id, nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias, intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen, precio, videopresentacion));
 
                             }
