@@ -58,7 +58,7 @@ public class VideosAdaptor extends RecyclerView.Adapter<VideosAdaptor.ExampleVie
 
         holder.mId.setText(id);
         holder.mNombreVideo.setText(nombrevideo);
-        holder.mDuracion.setText(duracionvideo);
+        holder.mDuracion.setText("Duración: "+ duracionvideo);
     //    Picasso.with(mContext).load(imagen).fit().centerInside().into(holder.mImageView);
 
 

@@ -21,7 +21,7 @@
             <!-- First column -->
 
             <LinearLayout
-                android:layout_width="0dip"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
 
@@ -29,21 +29,30 @@
                     android:id="@+id/txtId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textAlignment="center"
                     android:text="1"/>
 
             </LinearLayout>
 
 
             <LinearLayout
-                android:layout_width="0dip"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/txtNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nombre"/>
+                    android:text="Nombre"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:id="@+id/txtDuracion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text=""/>
 
             </LinearLayout>
 
@@ -51,11 +60,7 @@
         </LinearLayout>
 
 
-        <TextView
-            android:id="@+id/txtDuracion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""/>
+
 
 
 

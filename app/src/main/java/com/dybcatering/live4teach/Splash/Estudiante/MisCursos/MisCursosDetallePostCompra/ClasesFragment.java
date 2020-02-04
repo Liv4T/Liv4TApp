@@ -74,11 +74,13 @@ public class ClasesFragment extends Fragment implements VideosAdaptor.OnItemClic
 
 		String idrecibido = arguments.getString("id");
 
-		Toast.makeText(getContext(), "desde clases fragment el texto es "+ idrecibido, Toast.LENGTH_SHORT).show();
+		ObtenerDatos(idrecibido);
+
+	//	Toast.makeText(getContext(), "desde clases fragment el texto es "+ idrecibido, Toast.LENGTH_SHORT).show();
 
 	//	Toast.makeText(getActivity(), "el mensaje es"+ idrecibido, Toast.LENGTH_SHORT).show();
 
-		//initializePlayer("https://dybcatering.com/back_live_app/videos/videoplayback.mp4");
+	//	initializePlayer("https://dybcatering.com/back_live_app/videos/videoplayback.mp4");
 
 		return view;
 	}
