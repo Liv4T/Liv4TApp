@@ -31,6 +31,7 @@ import com.google.android.exoplayer2.source.ExtractorMediaSource;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.ui.PlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
+import com.google.android.exoplayer2.util.Util;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -45,6 +46,9 @@ import es.dmoral.toasty.Toasty;
 public class ClasesFragment extends Fragment implements VideosAdaptor.OnItemClickListener{
 	View view;
 	PlayerView playerView;
+	private boolean playWhenReady = true;
+	private int currentWindow = 0;
+	private long playbackPosition = 0;
 	//public ClasesFragment() {
 		// Required empty public constructor
 	//}
@@ -52,7 +56,7 @@ public class ClasesFragment extends Fragment implements VideosAdaptor.OnItemClic
 	private VideosAdaptor misVideosAdaptor;
 	private ArrayList<VideosItem> mvideosItems;
 	private RequestQueue mRequestQueue;
-
+	private SimpleExoPlayer player;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -76,37 +80,11 @@ public class ClasesFragment extends Fragment implements VideosAdaptor.OnItemClic
 
 		ObtenerDatos(idrecibido);
 
-	//	Toast.makeText(getContext(), "desde clases fragment el texto es "+ idrecibido, Toast.LENGTH_SHORT).show();
-
-	//	Toast.makeText(getActivity(), "el mensaje es"+ idrecibido, Toast.LENGTH_SHORT).show();
-
-	//	initializePlayer("https://dybcatering.com/back_live_app/videos/videoplayback.mp4");
 
 		return view;
 	}
 
-	private void initializePlayer(String link) {
-		SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(
-				new DefaultRenderersFactory(getContext()),
-				new DefaultTrackSelector(), new DefaultLoadControl());
-		String filePath = "https://d17h27t6h515a5.cloudfront.net/topher/2017/April/58ffdcc8_5-mix-wet-and-cry-batter-together-brownies/5-mix-wet-and-cry-batter-together-brownies.mp4";
-		//Environment.getExternalStorageDirectory() + File.separator +
-//				"video" + File.separator + "video1.mp4";
-		Log.e("filepath", filePath);
-		Uri uri = Uri.parse(link);
 
-		ExtractorMediaSource audioSource = new ExtractorMediaSource(
-				uri,
-				new DefaultDataSourceFactory(getContext(), "MyExoplayer"),
-				new DefaultExtractorsFactory(),
-				null,
-				null
-		);
-
-		player.prepare(audioSource);
-		playerView.setPlayer(player);
-		player.setPlayWhenReady(false);
-	}
 	private void ObtenerDatos(final String id) {
 
 		String url = "http://dybcatering.com/back_live_app/miscursos/listarvideos.php";
@@ -160,11 +138,74 @@ public class ClasesFragment extends Fragment implements VideosAdaptor.OnItemClic
 
 		RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
 		requestQueue.add(stringRequest);
+
+
 	}
 
 
 	@Override
 	public void onItemClick(int position) {
 
+		VideosItem videosItem = mvideosItems.get(position);
+		String link = videosItem.getVideo();
+
+		initializePlayer(link);
+
+	}
+
+	private void initializePlayer(String link) {
+
+		SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(
+				new DefaultRenderersFactory(getContext()),
+				new DefaultTrackSelector(), new DefaultLoadControl());
+		//String filePath = "https://dybcatering.com/back_live_app/videos/htmlalta.mp4";
+		//Environment.getExternalStorageDirectory() + File.separator +
+//				"video" + File.separator + "video1.mp4";
+		Log.e("filepath", link);
+		Uri uri = Uri.parse(link);
+		ExtractorMediaSource audioSource = new ExtractorMediaSource(
+				uri,
+				new DefaultDataSourceFactory(getContext(), "MyExoplayer"),
+				new DefaultExtractorsFactory(),
+				null,
+				null
+		);
+
+//		player.prepare(audioSource);
+//		playerView.setPlayer(player);
+//		player.setPlayWhenReady(true);
+
+		player.setPlayWhenReady(playWhenReady);
+		player.seekTo(currentWindow, playbackPosition);
+		playerView.setPlayer(player);
+		player.prepare(audioSource, true, true);
+
+//		player.prepare(audioSource);
+//		playerView.setPlayer(player);
+//		player.setPlayWhenReady(false);
+
+
+	}
+
+
+
+	@Override
+	public void onPause() {
+		super.onPause();
+		if (Util.SDK_INT < 24) {
+			releasePlayer();
+		}
+	}
+
+
+	
+	private void releasePlayer() {
+		if (player != null) {
+			playWhenReady = player.getPlayWhenReady();
+			playbackPosition = player.getCurrentPosition();
+			currentWindow = player.getCurrentWindowIndex();
+			player.release();
+			player = null;
+		}
 	}
 }
