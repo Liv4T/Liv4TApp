@@ -188,32 +188,6 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 		transaction.replace(R.id.fragment_container, someFragment ).addToBackStack("tag"); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
 		transaction.commit();
-
-/*		Intent intent = new Intent(getActivity(), ClasesFragment.class);
-		MisCursosItem clickedItem =mcursosItems.get(position);
-		intent.putExtra(EXTRAID, clickedItem.getId());
-		intent.putExtra(EXTRANAME, clickedItem.getName());
-		intent.putExtra(EXTRAMETHODOLOGY, clickedItem.getMethodology());
-		intent.putExtra(EXTRAWELCOME, clickedItem.getWelcome());
-		intent.putExtra(EXTRAINTENTION, clickedItem.getIntention());
-		intent.putExtra(EXTRAINTENSITYAC, clickedItem.getIntensityAC());
-		intent.putExtra(EXTRACOMPETENCES, clickedItem.getCompetences());
-		intent.putExtra(EXTRAINTENSITYTA, clickedItem.getIntensityAC());
-		intent.putExtra(EXTRAACHIEVEMENT, clickedItem.getAchievement());
-		intent.putExtra(EXTRAINDICATORA, clickedItem.getIndicatorA());
-		intent.putExtra(EXTRAMETHODOLOGYG, clickedItem.getMethodologyG());
-		intent.putExtra(EXTRATYPE, clickedItem.getType());
-		intent.putExtra(EXTRADESCRIPTION, clickedItem.getDescription());
-		intent.putExtra(EXTRADESCRIPTIONO, clickedItem.getDescriptionO());
-		intent.putExtra(EXTRAUPDATED_AT, clickedItem.getUpdated_at());
-		intent.putExtra(EXTRASTATE, clickedItem.getState());
-		intent.putExtra(EXTRAIMAGE, clickedItem.getImage());
-		intent.putExtra(EXTRAVIDEO_PRESENTACION, clickedItem.getVideo_presentacion());
-		intent.putExtra(EXTRATOPIC, clickedItem.getTopic());
-		intent.putExtra(EXTRAPUBLISH, clickedItem.getPublish());
-		intent.putExtra(EXTRAIDTEMAS, clickedItem.getIdtemas());
-		startActivity(intent);
-*/
 	}
 
 
