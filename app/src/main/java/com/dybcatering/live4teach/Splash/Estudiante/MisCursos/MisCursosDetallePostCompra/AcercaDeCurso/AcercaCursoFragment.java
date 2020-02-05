@@ -32,6 +32,12 @@ public class AcercaCursoFragment extends Fragment {
 				//Toast.makeText(getActivity(), "hola", Toast.LENGTH_SHORT).show();
 			}
 		});
+		Bundle arguments = getParentFragment().getArguments();
+
+		String idrecibido = arguments.getString("id");
+		Intent intent = new Intent(getActivity(), AcercaCursoActivity.class);
+		intent.putExtra(EXTRAID, idrecibido);
+
 		compartir.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -52,17 +58,8 @@ public class AcercaCursoFragment extends Fragment {
 		//Toast.makeText(getContext(), "el texto es "+ idrecibido, Toast.LENGTH_SHORT).show();
 		return view;
 	}
-
 	public void TransicionAcercade(){
-//		Fragment someFragment = new AcercaCursoDetalleFragment();
-//		MisCursosItem clickedItem = mcursosItems.get(position);
-	//	Bundle arguments = new Bundle();
-	//	arguments.putString(EXTRAID, "id");
-//		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 
-//		transaction.replace(R.id.fragment_container, someFragment ).addToBackStack("tag"); // give your fragment container id in first parameter
-//		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-//		transaction.commit();
 		Bundle arguments = getParentFragment().getArguments();
 
 		String idrecibido = arguments.getString("id");
@@ -75,6 +72,11 @@ public class AcercaCursoFragment extends Fragment {
 	}
 
 	private void CompartirCurso() {
+		Intent sendIntent = new Intent();
+		sendIntent.setAction(Intent.ACTION_SEND);
+		sendIntent.putExtra(Intent.EXTRA_TEXT, "Existen excelentes cursos en Live4Teach, ven y échales un vistazo");
+		sendIntent.setType("text/plain");
+		startActivity(sendIntent);
 	}
 
 	private void IniciarPantallaActividades() {
