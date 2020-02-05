@@ -74,7 +74,7 @@ public class AcercaCursoFragment extends Fragment {
 	private void CompartirCurso() {
 		Intent sendIntent = new Intent();
 		sendIntent.setAction(Intent.ACTION_SEND);
-		sendIntent.putExtra(Intent.EXTRA_TEXT, "Existen excelentes cursos en Live4Teach, ven y échales un vistazo");
+		sendIntent.putExtra(Intent.EXTRA_TEXT, "Existen excelentes cursos en Live4Teach, ven y dales un vistazo");
 		sendIntent.setType("text/plain");
 		startActivity(sendIntent);
 	}

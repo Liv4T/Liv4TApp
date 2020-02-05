@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_container"
-    tools:context=".Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosDetalleFragment"
+    tools:context=".Splash.Estudiante.MisCursos.MisCursosDetalleFragment"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout

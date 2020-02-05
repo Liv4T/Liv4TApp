@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases;
 
 import android.app.ProgressDialog;
 import android.net.Uri;

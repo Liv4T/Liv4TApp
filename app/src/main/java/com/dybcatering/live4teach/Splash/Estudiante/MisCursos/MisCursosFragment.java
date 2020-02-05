@@ -21,9 +21,8 @@ import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosAdaptor;
-import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosDetalleFragment;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosItem;
-import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.ClasesFragment;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;

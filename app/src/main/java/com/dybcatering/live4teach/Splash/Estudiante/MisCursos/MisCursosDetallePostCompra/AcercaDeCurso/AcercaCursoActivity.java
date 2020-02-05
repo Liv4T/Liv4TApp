@@ -41,9 +41,9 @@ public class AcercaCursoActivity extends AppCompatActivity {
 		setContentView(R.layout.activity_acerca_curso);
 		textView = findViewById(R.id.textdescripcion);
 		Intent intent = getIntent();
-		final String nombre = intent.getStringExtra(EXTRAID);
+		final String enviado = intent.getStringExtra(EXTRAID);
 
-		getCourseDetail(nombre);
+		getCourseDetail(enviado);
 		Toolbar toolbar = findViewById(R.id.toolbarId);
 		setSupportActionBar(toolbar);
 		ActionBar actionBar = getSupportActionBar();

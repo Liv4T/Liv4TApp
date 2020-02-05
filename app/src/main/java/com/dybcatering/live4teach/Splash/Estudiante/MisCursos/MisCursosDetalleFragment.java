@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -15,6 +15,8 @@ import android.widget.TextView;
 import com.airbnb.lottie.LottieAnimationView;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.ViewPagerAdapter;
 import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
 
 public class  MisCursosDetalleFragment extends Fragment {
