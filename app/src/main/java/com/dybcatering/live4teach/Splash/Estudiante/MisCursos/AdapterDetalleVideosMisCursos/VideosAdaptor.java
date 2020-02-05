@@ -56,7 +56,7 @@ public class VideosAdaptor extends RecyclerView.Adapter<VideosAdaptor.ExampleVie
 
 
 
-        holder.mId.setText(id);
+//        holder.mId.setText(id);
         holder.mNombreVideo.setText(nombrevideo);
         holder.mDuracion.setText("Duración: "+ duracionvideo);
     //    Picasso.with(mContext).load(imagen).fit().centerInside().into(holder.mImageView);
@@ -81,7 +81,7 @@ public class VideosAdaptor extends RecyclerView.Adapter<VideosAdaptor.ExampleVie
             super(itemView);
            // mImageView = itemView.findViewById(R.id.imagen_curso);
             mNombreVideo= itemView.findViewById(R.id.txtNombre);
-            mId= itemView.findViewById(R.id.txtId);
+            //mId= itemView.findViewById(R.id.txtId);
             mDuracion = itemView.findViewById(R.id.txtDuracion);
             //mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             //mTextViewDescription = itemView.findViewById(R.id.text_view_description);

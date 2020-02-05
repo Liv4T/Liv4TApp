@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment;
 import com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayer;
 
 public class  MisCursosDetalleFragment extends Fragment {

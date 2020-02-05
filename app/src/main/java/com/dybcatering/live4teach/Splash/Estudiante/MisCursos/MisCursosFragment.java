@@ -164,7 +164,7 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 		requestQueue.add(stringRequest);
 	}
 
-	private void swapFragment(int position){
+	private void swapFragment(){
 		Fragment someFragment = new ClasesFragment();
 //		MisCursosItem clickedItem = mcursosItems.get(position);
 		Bundle arguments = new Bundle();
