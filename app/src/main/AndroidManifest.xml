@@ -49,7 +49,7 @@
             android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
         <activity android:name=".Splash.Estudiante.MisCursos.MisCursosDetalleVerMas" />
         <activity android:name=".Splash.Estudiante.MisCalificaciones.MisCalificacionesDetalle" />
-        <activity android:name=".Splash.Estudiante.MisActividades.MisActividadesDetalle" />
+        <activity android:name=".Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.MisActividadesDetalle" />
         <activity
             android:name=".Splash.Estudiante.Perfil.ActualizarDatos"
             android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />

@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.MisActividades;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
