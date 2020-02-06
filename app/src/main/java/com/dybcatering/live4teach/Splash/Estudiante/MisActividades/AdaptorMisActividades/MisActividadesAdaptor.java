@@ -39,7 +39,7 @@ public class MisActividadesAdaptor extends RecyclerView.Adapter<MisActividadesAd
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.cursos_item, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.mis_actividades_item, parent, false);
         return new ExampleViewHolder(v);
     }
 
