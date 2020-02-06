@@ -46,7 +46,7 @@
         </activity>
         <activity
             android:name=".Splash.Estudiante.Carrito.CarritoActivity"
-            android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
+            android:parentActivityName=".Splash.Estudiante.Inicio.InicioActivity" />
         <activity android:name=".Splash.Estudiante.MisCursos.MisCursosDetalleVerMas" />
         <activity android:name=".Splash.Estudiante.MisCalificaciones.MisCalificacionesDetalle" />
         <activity android:name=".Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.MisActividadesDetalle" />

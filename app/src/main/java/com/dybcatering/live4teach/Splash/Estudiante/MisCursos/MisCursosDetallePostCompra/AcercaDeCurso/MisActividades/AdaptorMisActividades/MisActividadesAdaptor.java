@@ -70,7 +70,7 @@ public class MisActividadesAdaptor extends RecyclerView.Adapter<MisActividadesAd
         String feedback_date = currentItem.getFecharetroalimentacion();
 
         holder.mtxtMisActividades.setText(name);
-  //      holder.mDescripcionCurso.setText(descripcion);
+        holder.mtxtTipoActividad.setText(activitytype);
        // holder.mImageDestacado.setText(destacado);
         //holder.mBarrio.setText("B.° : " + barrio);
         //holder.mVistas.setText("Veces Visto : " + cantidad_vistas);
@@ -90,14 +90,14 @@ public class MisActividadesAdaptor extends RecyclerView.Adapter<MisActividadesAd
 
     public class ExampleViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView  mtxtMisActividades, mtxtCategorias, mtxtFechaEvalaucion;
+        public TextView  mtxtMisActividades, mtxtTipoActividad;
         public Button mBarrio;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
 
             mtxtMisActividades= itemView.findViewById(R.id.txtMisActividades);
-          //  mtxtCategorias= itemView.findViewById(R.id.txtCategorias);
+            mtxtTipoActividad= itemView.findViewById(R.id.txtCategorias);
 //            mtxtFechaEvalaucion = itemView.findViewById(R.id.txtFechaEvalaucion);
 
             //mTextViewCreator = itemView.findViewById(R.id.text_view_creator);

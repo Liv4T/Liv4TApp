@@ -187,7 +187,9 @@ public class AcercaCursoFragment extends Fragment implements MisActividadesAdapt
 
 	@Override
 	public void onItemClick(int position) {
-		Toast.makeText(getContext(), "ha seleccionado " + position, Toast.LENGTH_SHORT).show();
+		ItemMisActividades  clickeditem = mItemsMisActividades.get(position);
+		String prueba = clickeditem.getName();
+		Toast.makeText(getContext(), "ha seleccionado " + prueba, Toast.LENGTH_SHORT).show();
 	}
 
 

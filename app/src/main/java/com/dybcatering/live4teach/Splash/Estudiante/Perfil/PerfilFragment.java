@@ -2,9 +2,11 @@ package com.dybcatering.live4teach.Splash.Estudiante.Perfil;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -152,7 +154,19 @@ public class PerfilFragment extends Fragment {
         primage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
+                builder.setCancelable(true);
+                builder.setIcon(  R.drawable.imagenperfil);
+                builder.setInverseBackgroundForced(true);
+                builder.setPositiveButton("Accept",new DialogInterface.OnClickListener(){
 
+                    @Override
+                    public void onClick(DialogInterface dialog, int which){
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert=builder.create();
+                alert.show();
             }
         });
         return myView;
@@ -195,28 +209,9 @@ public class PerfilFragment extends Fragment {
 
                                         Picasso.with(getContext()).load(strPicture).into(primage);
 
-
-                                        /*Picasso.with(getActivity()).load(strPicture).centerCrop()
-                                                .placeholder(R.drawable.internetconnection).fit().into(primage, new Callback() {
-                                            @Override public    void onSuccess() {}
-                                            @Override public void onError() {}
-                                        });
-                                        Picasso.with()
-                                                .load(strPicture)
-                                                .resize (50, 50)
-                                                .centerCrop()
-                                                .into(primage);
-                                                 Glide.with(this)
-                                                .load(strPicture)
-                                                .into(primage);
-                                        */
-
-
                                     }
 
-
                                 }
-
 
                             }
 
