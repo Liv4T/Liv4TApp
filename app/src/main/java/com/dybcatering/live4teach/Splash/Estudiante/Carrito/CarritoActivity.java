@@ -57,6 +57,7 @@ public class CarritoActivity extends AppCompatActivity {
         }else{
             for (Grocery c : groceryList) {
                 Grocery grocery = new Grocery();
+                grocery.setId(c.getId());
                 grocery.setName(c.getName());
                 grocery.setQuantity("Descripción: " + c.getQuantity());
                 grocery.setId(c.getId());

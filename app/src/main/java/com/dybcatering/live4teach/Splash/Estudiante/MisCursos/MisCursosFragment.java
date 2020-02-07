@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +21,9 @@ import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosAdaptor;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosItem;
-import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -62,7 +63,7 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 	public static final String EXTRAPUBLISH = "publish";
 	public static final String EXTRAIDTEMAS = "idtemas";
 	SessionManager sessionManager;
-
+	private static final String TAG = MisCursosFragment.class.getSimpleName(); //getting the info
 	String id_usuario;
     @Override
     public View onCreateView(LayoutInflater inflater, final ViewGroup container,
@@ -102,6 +103,7 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 				new Response.Listener<String>() {
 					@Override
 					public void onResponse(String response) {
+						Log.i(TAG, response);
 						progressDialog.dismiss();
 						try {
 							JSONObject jsonObject = new JSONObject(response);
