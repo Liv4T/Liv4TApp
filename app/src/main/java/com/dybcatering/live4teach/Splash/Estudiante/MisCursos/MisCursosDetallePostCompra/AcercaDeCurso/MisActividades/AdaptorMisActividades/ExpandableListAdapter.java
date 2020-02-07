@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.Adapter;
+package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.AdaptorMisActividades;
 
 import android.content.Context;
 import android.graphics.Typeface;

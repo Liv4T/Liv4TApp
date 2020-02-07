@@ -10,7 +10,10 @@
         android:id="@+id/toolbarId"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:backgroundTint="@color/colorPrimary"/>
+        android:outlineAmbientShadowColor="@color/colortextoblanco"
+        android:outlineSpotShadowColor="@color/colortextoblanco"
+        app:titleTextColor="@color/colortextoblanco"
+        android:background="@color/colorPrimary"/>
 
     <ScrollView
         android:id="@+id/scroll"

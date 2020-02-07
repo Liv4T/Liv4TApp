@@ -8,7 +8,7 @@ import android.widget.ExpandableListView;
 import android.widget.Toast;
 
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.Adapter.ExpandableListAdapter;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.AdaptorMisActividades.ExpandableListAdapter;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
 
 import java.util.ArrayList;
@@ -81,7 +81,7 @@ public class MisActividadesDetalle extends AppCompatActivity {
         final String feedbackdate = intent.getStringExtra(EXTRAFEEDBACKDATE);
 
         listView = (ExpandableListView)findViewById(R.id.expandmisactividades);
-        Toast.makeText(this, "el texto es "+ acttivitytype, Toast.LENGTH_SHORT).show();
+
         initData();
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listHashMap);
         listView.setAdapter(listAdapter);
