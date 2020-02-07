@@ -21,6 +21,7 @@ import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.AdaptorMisActividades.ItemMisActividades;
 import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.AdaptorMisActividades.MisActividadesAdaptor;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.MisActividadesDetalle;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +40,30 @@ public class AcercaCursoFragment extends Fragment implements MisActividadesAdapt
 	}
 	LinearLayout acercade, compartir, actividades;
 	public static final String EXTRAID= "id";
+	public static final String EXTRANOMBRE = "name";
+	public static final String EXTRANOMBRECURSO = "nombrecurso";
+	public static final String EXTRAIDUSER = "id_user";
+	public static final String EXTRAACTIVITYTYPE = "activitytype";
+	public static final String EXTRAESTIMATEDDURATIONPLATFORM = "estimated_duration_platform";
+	public static final String EXTRAESTIMATEDDURATIONAUTONOMOUSWORK="estimated_duration_autonomous_work";
+	public static final String EXTRATHEMECONTEXTUALIZATION="theme_contextualization";
+	public static final String EXTRAACTIVITY="activity";
+	public static final String EXTRATYPERESOURCES1 = "type_resources_1";
+	public static final String EXTRATYPERESOURCES2 = "type_resources_2";
+	public static final String EXTRATYPERESOURCES3 = "type_resources_3";
+	public static final String EXTRAORIGINRESOURCES1 = "origin_resource1";
+	public static final String EXTRAORIGINRESOURCES2 = "origin_resource2";
+	public static final String EXTRAORIGINRESOURCES3 = "origin_resource3";
+	public static final String EXTRADELIVERABLES = "deliverables";
+	public static final String EXTRAEVALUATIONCRITERIA1 = "evaluation_criteria1";
+	public static final String EXTRAEVALUATIONCRITERIA2 = "evaluation_criteria2";
+	public static final String EXTRAEVALUATIONCRITERIA3 = "evaluation_criteria3";
+	public static final String EXTRAWORKTIME= "work_time";
+	public static final String EXTRAMOMENTEVALUATIONFROM= "moment_evaluation_from";
+	public static final String EXTRAMOMENTEVALUATIONUP= "moment_evaluation_up";
+	public static final String EXTRAEVIDENCESEND= "evidence_send";
+	public static final String EXTRAINTERVENINGACTOR = "intervening_actor";
+	public static final String EXTRAFEEDBACKDATE = "feedback_date";
 
 	private RecyclerView mRecyclerView;
 	private MisActividadesAdaptor misActividadesAdaptor;
@@ -187,9 +212,39 @@ public class AcercaCursoFragment extends Fragment implements MisActividadesAdapt
 
 	@Override
 	public void onItemClick(int position) {
+		Intent intent = new Intent(getActivity(), MisActividadesDetalle.class);
+
+
 		ItemMisActividades  clickeditem = mItemsMisActividades.get(position);
-		String prueba = clickeditem.getName();
-		Toast.makeText(getContext(), "ha seleccionado " + prueba, Toast.LENGTH_SHORT).show();
+		intent.putExtra(EXTRAID, clickeditem.getId());
+		intent.putExtra(EXTRANOMBRE, clickeditem.getName());
+		intent.putExtra(EXTRANOMBRECURSO, clickeditem.getNombrecurso());
+		intent.putExtra(EXTRAIDUSER, clickeditem.getId_user());
+		intent.putExtra(EXTRAACTIVITYTYPE, clickeditem.getActivitytype());
+		intent.putExtra(EXTRAESTIMATEDDURATIONPLATFORM, clickeditem.getDuracionestimadaplataforma());
+		intent.putExtra(EXTRAESTIMATEDDURATIONAUTONOMOUSWORK, clickeditem.getDuracionestimadatrabajoautonomo());
+		intent.putExtra(EXTRATHEMECONTEXTUALIZATION, clickeditem.getContextualizaciondeltema());
+		intent.putExtra(EXTRAACTIVITY, clickeditem.getActividad());
+		intent.putExtra(EXTRATYPERESOURCES1, clickeditem.getTiporecursos1());
+		intent.putExtra(EXTRATYPERESOURCES2, clickeditem.getTiporecursos2());
+		intent.putExtra(EXTRATYPERESOURCES3, clickeditem.getTiporecursos3());
+		intent.putExtra(EXTRAORIGINRESOURCES1, clickeditem.getOrigenrecurso1());
+		intent.putExtra(EXTRAORIGINRESOURCES2, clickeditem.getOrigenrecurso2());
+		intent.putExtra(EXTRAORIGINRESOURCES3, clickeditem.getOrigenrecurso3());
+		intent.putExtra(EXTRADELIVERABLES, clickeditem.getEntregables());
+		intent.putExtra(EXTRAEVALUATIONCRITERIA1, clickeditem.getCriteriosevaluacion1());
+		intent.putExtra(EXTRAEVALUATIONCRITERIA2, clickeditem.getCriteriosevaluacion2());
+		intent.putExtra(EXTRAEVALUATIONCRITERIA3, clickeditem.getCriteriosevaluacion3());
+		intent.putExtra(EXTRAWORKTIME, clickeditem.getTiempotrabajo());
+		intent.putExtra(EXTRAMOMENTEVALUATIONFROM, clickeditem.getMomentoevaluaciondesde());
+		intent.putExtra(EXTRAMOMENTEVALUATIONUP, clickeditem.getMomentoevaluacionhasta());
+		intent.putExtra(EXTRAEVIDENCESEND, clickeditem.getEvidenciaenvio());
+		intent.putExtra(EXTRAINTERVENINGACTOR, clickeditem.getActorinterviniente());
+		intent.putExtra(EXTRAFEEDBACKDATE, clickeditem.getFecharetroalimentacion());
+
+		//String prueba = clickeditem.getName();
+		startActivity(intent);
+
 	}
 
 

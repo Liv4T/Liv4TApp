@@ -1,18 +1,45 @@
 package com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades;
 
-import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.Estudiante.CursosDisponibles.Adapter.ExpandableListAdapter;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
-import com.dybcatering.live4teach.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAACTIVITY;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAACTIVITYTYPE;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRADELIVERABLES;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAESTIMATEDDURATIONAUTONOMOUSWORK;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAESTIMATEDDURATIONPLATFORM;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAEVALUATIONCRITERIA1;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAEVALUATIONCRITERIA2;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAEVALUATIONCRITERIA3;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAEVIDENCESEND;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAFEEDBACKDATE;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAID;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAIDUSER;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAINTERVENINGACTOR;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAMOMENTEVALUATIONFROM;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAMOMENTEVALUATIONUP;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRANOMBRE;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRANOMBRECURSO;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAORIGINRESOURCES1;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAORIGINRESOURCES2;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAORIGINRESOURCES3;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRATHEMECONTEXTUALIZATION;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRATYPERESOURCES1;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRATYPERESOURCES2;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRATYPERESOURCES3;
+import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAWORKTIME;
 
 public class MisActividadesDetalle extends AppCompatActivity {
     private ExpandableListView listView;
@@ -25,7 +52,36 @@ public class MisActividadesDetalle extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mis_actividades_detalle);
         new CheckInternetConnection(this).checkConnection();
+        Intent intent = getIntent();
+
+        final String id=intent.getStringExtra(EXTRAID);
+        final String name =intent.getStringExtra(EXTRANOMBRE);
+        final String nombrecurso=intent.getStringExtra(EXTRANOMBRECURSO);
+        final String idusuario=intent.getStringExtra(EXTRAIDUSER);
+        final String acttivitytype=intent.getStringExtra(EXTRAACTIVITYTYPE);
+        final String durationplatform = intent.getStringExtra(EXTRAESTIMATEDDURATIONPLATFORM);
+        final String durationeautonomouswork = intent.getStringExtra(EXTRAESTIMATEDDURATIONAUTONOMOUSWORK);
+        final String themecontextualization = intent.getStringExtra(EXTRATHEMECONTEXTUALIZATION);
+        final String activity = intent.getStringExtra(EXTRAACTIVITY);
+        final String typeresources1= intent.getStringExtra(EXTRATYPERESOURCES1);
+        final String typeresources2= intent.getStringExtra(EXTRATYPERESOURCES2);
+        final String typeresources3= intent.getStringExtra(EXTRATYPERESOURCES3);
+        final String originresources1 = intent.getStringExtra(EXTRAORIGINRESOURCES1);
+        final String originresources2 = intent.getStringExtra(EXTRAORIGINRESOURCES2);
+        final String originresources3 = intent.getStringExtra(EXTRAORIGINRESOURCES3);
+        final String deliverables = intent.getStringExtra(EXTRADELIVERABLES);
+        final String evaluationcriteria1= intent.getStringExtra(EXTRAEVALUATIONCRITERIA1);
+        final String evaluationcriteria2= intent.getStringExtra(EXTRAEVALUATIONCRITERIA2);
+        final String evaluationcriteria3= intent.getStringExtra(EXTRAEVALUATIONCRITERIA3);
+        final String worktime = intent.getStringExtra(EXTRAWORKTIME);
+        final String momentevaluationfrom= intent.getStringExtra(EXTRAMOMENTEVALUATIONFROM);
+        final String momentevaluationup= intent.getStringExtra(EXTRAMOMENTEVALUATIONUP);
+        final String evidencesend = intent.getStringExtra(EXTRAEVIDENCESEND);
+        final String interveningactor= intent.getStringExtra(EXTRAINTERVENINGACTOR);
+        final String feedbackdate = intent.getStringExtra(EXTRAFEEDBACKDATE);
+
         listView = (ExpandableListView)findViewById(R.id.expandmisactividades);
+        Toast.makeText(this, "el texto es "+ acttivitytype, Toast.LENGTH_SHORT).show();
         initData();
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listHashMap);
         listView.setAdapter(listAdapter);
