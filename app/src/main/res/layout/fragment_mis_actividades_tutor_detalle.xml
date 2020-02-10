@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_container"
-    tools:context=".Splash.Tutor.Actividades.MisActividadesTutorDetalleFragment">
+    tools:context=".Tutor.Actividades.MisActividadesTutorDetalleFragment">
 
 
     <ScrollView

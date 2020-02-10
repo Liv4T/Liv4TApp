@@ -18,9 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.dybcatering.live4teach.Splash.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Splash.Tutor.InicioActivityTutor;
+import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
 
 import org.json.JSONArray;
 import org.json.JSONException;

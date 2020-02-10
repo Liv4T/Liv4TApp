@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_container"
-    tools:context=".Splash.Tutor.MisCursos.MisCursosDetalleTutorDetalleFragment">
+    tools:context=".Tutor.MisCursos.MisCursosDetalleTutorDetalleFragment">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

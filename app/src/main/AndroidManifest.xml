@@ -19,25 +19,25 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.Cuestionario.CuestionarioActivity"
+        <activity android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.Cuestionario.CuestionarioActivity"
             android:theme="@style/AppThemeRegist.NoActionBar"></activity>
         <activity
-            android:name=".Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoActivity"
+            android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoActivity"
             android:theme="@style/AppThemeRegist.NoActionBar"></activity>
         <activity
-            android:name=".Splash.Estudiante.CursosDisponibles.CursosDetalle"
-            android:parentActivityName=".Splash.Estudiante.Inicio.InicioActivity" />
+            android:name=".Estudiante.CursosDisponibles.CursosDetalle"
+            android:parentActivityName=".Estudiante.Inicio.InicioActivity" />
         <activity android:name=".Login.OlvideContrasena">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Login.LoginActivity" />
         </activity>
         <activity
-            android:name=".Splash.Estudiante.Inicio.InicioActivity"
+            android:name=".Estudiante.Inicio.InicioActivity"
             android:label="Live4Teach" />
         <activity
-            android:name=".Splash.Estudiante.Carrito.CarritoDetalleActivity"
-            android:parentActivityName=".Splash.Estudiante.Carrito.CarritoActivity" />
+            android:name=".Estudiante.Carrito.CarritoDetalleActivity"
+            android:parentActivityName=".Estudiante.Carrito.CarritoActivity" />
         <activity android:name=".Splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,15 +46,15 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Splash.Estudiante.Carrito.CarritoActivity"
-            android:parentActivityName=".Splash.Estudiante.Inicio.InicioActivity" />
-        <activity android:name=".Splash.Estudiante.MisCursos.MisCursosDetalleVerMas" />
-        <activity android:name=".Splash.Estudiante.MisCalificaciones.MisCalificacionesDetalle" />
-        <activity android:name=".Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.MisActividadesDetalle" />
+            android:name=".Estudiante.Carrito.CarritoActivity"
+            android:parentActivityName=".Estudiante.Inicio.InicioActivity" />
+        <activity android:name=".Estudiante.MisCursos.MisCursosDetalleVerMas" />
+        <activity android:name=".Estudiante.MisCalificaciones.MisCalificacionesDetalle" />
+        <activity android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.MisActividadesDetalle" />
         <activity
-            android:name=".Splash.Estudiante.Perfil.ActualizarDatos"
-            android:parentActivityName=".Splash.Estudiante.PrincipalActivity" />
-        <activity android:name=".Splash.Estudiante.MisCertificados.MisCertificadosDetalle" /> <!-- android:parentActivityName=".Estudiante.PrincipalActivity" / -->
+            android:name=".Estudiante.Perfil.ActualizarDatos"
+            android:parentActivityName=".Estudiante.PrincipalActivity" />
+        <activity android:name=".Estudiante.MisCertificados.MisCertificadosDetalle" /> <!-- android:parentActivityName=".Estudiante.PrincipalActivity" / -->
         <activity
             android:name=".Login.PreLoginActivity"
             android:theme="@style/AppThemeRegist.NoActionBar" />
@@ -66,7 +66,7 @@
         <activity
             android:name=".Login.LoginActivity"
             android:theme="@style/AppThemeLogin" />
-        <activity android:name=".Splash.Tutor.InicioActivityTutor" />
+        <activity android:name=".Tutor.InicioActivityTutor" />
     </application>
 
 </manifest>

@@ -1,13 +1,9 @@
 package com.dybcatering.live4teach.Login;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.app.TimePickerDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,20 +11,15 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,7 +31,7 @@ import com.android.volley.toolbox.Volley;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 import com.dybcatering.live4teach.Login.Request.RegisterRequest;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.rilixtech.CountryCodePicker;
@@ -50,10 +41,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
-import java.util.HashMap;
-import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 

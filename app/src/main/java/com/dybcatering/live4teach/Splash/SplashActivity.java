@@ -7,11 +7,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.dybcatering.live4teach.Login.LoginActivity;
-import com.dybcatering.live4teach.Login.PreLoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Splash.Estudiante.Inicio.InicioActivity;
-import com.dybcatering.live4teach.Splash.Tutor.InicioActivityTutor;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
 
 import java.util.HashMap;
 

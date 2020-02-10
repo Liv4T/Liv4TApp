@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Splash.Estudiante.CursosDisponibles.CuartoCurso">
+    tools:context=".Estudiante.CursosDisponibles.CuartoCurso">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".Splash.Estudiante.CursosDisponibles.SegundoCurso"
+        tools:context=".Estudiante.CursosDisponibles.SegundoCurso"
         android:orientation="vertical">
 
 
