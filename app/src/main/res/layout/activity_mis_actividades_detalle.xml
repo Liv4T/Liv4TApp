@@ -43,19 +43,197 @@
             android:gravity="center"
             android:textColor="@color/colorbonton"
             android:padding="10dp"/>
-        <ExpandableListView
-            android:layout_below="@id/textView6"
-            android:id="@+id/expandmisactividades"
+        <ScrollView
+            android:layout_below="@+id/textView6"
             android:layout_width="match_parent"
-            android:fontFamily="@font/centurygothic"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="70dp"
-            android:paddingLeft="@dimen/activity_horizontal_margin_left"
-            android:paddingRight="@dimen/activity_horizontal_margin_right"
-            tools:ignore="MissingConstraints">
+            android:layout_height="wrap_content">
+            <RelativeLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                >
+
+                <TextView
+                    android:id="@+id/txtCompetencias"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:id="@+id/objetivos"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/txtCompetencias"
+                    android:text="Objetivos"
+                    android:textSize="25sp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
 
 
-        </ExpandableListView>
+                <RelativeLayout
+                    android:id="@+id/relativevermas"
+                    android:layout_below="@+id/objetivos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/description_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="5"
+                        android:elevation="5dp"
+                        android:text="@string/desc_content" />
+
+                    <ImageButton
+                        android:id="@+id/show"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:clickable="true" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/show"
+                        android:background="#000" />
+
+                    <ImageButton
+                        android:id="@+id/hide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:clickable="true"
+                        android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/txtTemario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center_horizontal"
+                        android:textSize="25sp"
+                        android:layout_below="@id/hide"
+                        android:text="Temario" />
+
+
+                    <TextView
+                        android:id="@+id/segunda_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="5"
+                        android:layout_below="@+id/txtTemario"
+                        android:elevation="5dp"
+                        android:text="" />
+
+                    <ImageButton
+                        android:id="@+id/vermassegundo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/segunda_descripcion"
+                        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:clickable="true" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/segunda_descripcion"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/show"
+                        android:background="#000" />
+
+                    <ImageButton
+                        android:id="@+id/hide2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/segunda_descripcion"
+                        android:clickable="true"
+                        android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                        android:visibility="invisible" />
+
+
+                    <TextView
+                        android:id="@+id/txtRequisitos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/hide2"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Requisitos"
+                        android:gravity="center_horizontal"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/tercera_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="5"
+                        android:layout_below="@+id/txtRequisitos"
+                        android:elevation="5dp"
+                        android:text="@string/desc_content" />
+
+                    <ImageButton
+                        android:id="@+id/vermastercero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/tercera_descripcion"
+                        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:clickable="true" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/tercera_descripcion"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/show"
+                        android:background="#000" />
+
+                    <ImageButton
+                        android:id="@+id/hide3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/tercera_descripcion"
+                        android:clickable="true"
+                        android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                        android:visibility="invisible" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:layout_below="@+id/hide3">
+
+                        <Button
+                            android:id="@+id/iniciaract"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Iniciar Actividad" />
+                    </RelativeLayout>
+
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+        </ScrollView>
+
+
 
 
 

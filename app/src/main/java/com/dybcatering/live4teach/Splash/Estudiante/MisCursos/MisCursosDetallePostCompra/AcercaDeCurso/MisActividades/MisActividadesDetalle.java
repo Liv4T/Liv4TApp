@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ExpandableListView;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.AdaptorMisActividades.ExpandableListAdapter;
 import com.dybcatering.live4teach.Splash.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.Cuestionario.CuestionarioActivity;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,11 +42,15 @@ import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDe
 import static com.dybcatering.live4teach.Splash.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment.EXTRAWORKTIME;
 
 public class MisActividadesDetalle extends AppCompatActivity {
-    private ExpandableListView listView;
-    private ExpandableListAdapter listAdapter;
+   // private ExpandableListView listView;
+   // private ExpandableListAdapter listAdapter;
     private List<String> listDataHeader;
     private HashMap<String, List<String >> listHashMap;
+    ImageButton show, hide, show2, hide2, show3, hide3;
+    TextView txtNombreCurso, txtDescripcion, txtIntension, txtCompetencias, txtImagen;
 
+    TextView  segunda_desc, tercera_desc;
+    Button btnIniciarActividad;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,35 +58,134 @@ public class MisActividadesDetalle extends AppCompatActivity {
         new CheckInternetConnection(this).checkConnection();
         Intent intent = getIntent();
 
-        final String id=intent.getStringExtra(EXTRAID);
-        final String name =intent.getStringExtra(EXTRANOMBRE);
-        final String nombrecurso=intent.getStringExtra(EXTRANOMBRECURSO);
-        final String idusuario=intent.getStringExtra(EXTRAIDUSER);
-        final String acttivitytype=intent.getStringExtra(EXTRAACTIVITYTYPE);
+        final String id = intent.getStringExtra(EXTRAID);
+        final String name = intent.getStringExtra(EXTRANOMBRE);
+        final String nombrecurso = intent.getStringExtra(EXTRANOMBRECURSO);
+        final String idusuario = intent.getStringExtra(EXTRAIDUSER);
+        final String acttivitytype = intent.getStringExtra(EXTRAACTIVITYTYPE);
         final String durationplatform = intent.getStringExtra(EXTRAESTIMATEDDURATIONPLATFORM);
         final String durationeautonomouswork = intent.getStringExtra(EXTRAESTIMATEDDURATIONAUTONOMOUSWORK);
         final String themecontextualization = intent.getStringExtra(EXTRATHEMECONTEXTUALIZATION);
         final String activity = intent.getStringExtra(EXTRAACTIVITY);
-        final String typeresources1= intent.getStringExtra(EXTRATYPERESOURCES1);
-        final String typeresources2= intent.getStringExtra(EXTRATYPERESOURCES2);
-        final String typeresources3= intent.getStringExtra(EXTRATYPERESOURCES3);
+        final String typeresources1 = intent.getStringExtra(EXTRATYPERESOURCES1);
+        final String typeresources2 = intent.getStringExtra(EXTRATYPERESOURCES2);
+        final String typeresources3 = intent.getStringExtra(EXTRATYPERESOURCES3);
         final String originresources1 = intent.getStringExtra(EXTRAORIGINRESOURCES1);
         final String originresources2 = intent.getStringExtra(EXTRAORIGINRESOURCES2);
         final String originresources3 = intent.getStringExtra(EXTRAORIGINRESOURCES3);
         final String deliverables = intent.getStringExtra(EXTRADELIVERABLES);
-        final String evaluationcriteria1= intent.getStringExtra(EXTRAEVALUATIONCRITERIA1);
-        final String evaluationcriteria2= intent.getStringExtra(EXTRAEVALUATIONCRITERIA2);
-        final String evaluationcriteria3= intent.getStringExtra(EXTRAEVALUATIONCRITERIA3);
+        final String evaluationcriteria1 = intent.getStringExtra(EXTRAEVALUATIONCRITERIA1);
+        final String evaluationcriteria2 = intent.getStringExtra(EXTRAEVALUATIONCRITERIA2);
+        final String evaluationcriteria3 = intent.getStringExtra(EXTRAEVALUATIONCRITERIA3);
         final String worktime = intent.getStringExtra(EXTRAWORKTIME);
-        final String momentevaluationfrom= intent.getStringExtra(EXTRAMOMENTEVALUATIONFROM);
-        final String momentevaluationup= intent.getStringExtra(EXTRAMOMENTEVALUATIONUP);
+        final String momentevaluationfrom = intent.getStringExtra(EXTRAMOMENTEVALUATIONFROM);
+        final String momentevaluationup = intent.getStringExtra(EXTRAMOMENTEVALUATIONUP);
         final String evidencesend = intent.getStringExtra(EXTRAEVIDENCESEND);
-        final String interveningactor= intent.getStringExtra(EXTRAINTERVENINGACTOR);
+        final String interveningactor = intent.getStringExtra(EXTRAINTERVENINGACTOR);
         final String feedbackdate = intent.getStringExtra(EXTRAFEEDBACKDATE);
+        txtNombreCurso = findViewById(R.id.txtNombreCurso);
+        txtDescripcion = findViewById(R.id.txtDescripcion);
+        txtIntension = findViewById(R.id.description_text);
+        txtCompetencias = findViewById(R.id.txtCompetencias);
+        txtImagen = findViewById(R.id.textImagen);
+        show = findViewById(R.id.show);
+        hide = findViewById(R.id.hide);
+        segunda_desc = findViewById(R.id.segunda_descripcion);
+        show2 = findViewById(R.id.vermassegundo);
+        hide2 = findViewById(R.id.hide2);
+        tercera_desc = findViewById(R.id.tercera_descripcion);
+        show3 = findViewById(R.id.vermastercero);
+        hide3 = findViewById(R.id.hide3);
+        btnIniciarActividad = findViewById(R.id.iniciaract);
+        show.setOnClickListener(new View.OnClickListener() {
 
-        listView = (ExpandableListView)findViewById(R.id.expandmisactividades);
+            @Override
+            public void onClick(View v) {
+                show.setVisibility(View.INVISIBLE);
+                hide.setVisibility(View.VISIBLE);
+                txtIntension.setMaxLines(Integer.MAX_VALUE);
+                //ocultar los otros, se debe implementar en los demas
 
-        initData();
+                hide2.setVisibility(View.INVISIBLE);
+                show2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(5);
+                hide3.setVisibility(View.INVISIBLE);
+                show3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(5);
+
+            }
+        });
+        hide.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                hide.setVisibility(View.INVISIBLE);
+                show.setVisibility(View.VISIBLE);
+                txtIntension.setMaxLines(5);
+
+            }
+        });
+
+        show3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show3.setVisibility(View.INVISIBLE);
+                hide3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(Integer.MAX_VALUE);
+
+                hide.setVisibility(View.INVISIBLE);
+                show.setVisibility(View.VISIBLE);
+                txtIntension.setMaxLines(5);
+                hide2.setVisibility(View.INVISIBLE);
+                show2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(5);
+
+
+            }
+        });
+        show2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                show2.setVisibility(View.INVISIBLE);
+                hide2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(Integer.MAX_VALUE);
+
+                hide.setVisibility(View.INVISIBLE);
+                show.setVisibility(View.VISIBLE);
+                txtIntension.setMaxLines(5);
+                hide3.setVisibility(View.INVISIBLE);
+                show3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(5);
+
+            }
+        });
+        hide2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                hide2.setVisibility(View.INVISIBLE);
+                show2.setVisibility(View.VISIBLE);
+                segunda_desc.setMaxLines(5);
+            }
+        });
+
+        hide3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                hide3.setVisibility(View.INVISIBLE);
+                show3.setVisibility(View.VISIBLE);
+                tercera_desc.setMaxLines(5);
+            }
+        });
+        btnIniciarActividad.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                IniciarActividad();
+            }
+        });
+
+
+/*        initData();
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listHashMap);
         listView.setAdapter(listAdapter);
 
@@ -105,7 +208,7 @@ public class MisActividadesDetalle extends AppCompatActivity {
         });
     }
 
-    private void initData() {
+ /*   private void initData() {
         listDataHeader = new ArrayList<>();
         listHashMap = new HashMap<>();
 
@@ -161,5 +264,11 @@ public class MisActividadesDetalle extends AppCompatActivity {
 
 
 
+    }*/
+    }
+
+    public void IniciarActividad(){
+        Intent intent = new Intent(MisActividadesDetalle.this, CuestionarioActivity.class);
+        startActivity(intent);
     }
 }
