@@ -2,11 +2,9 @@ package com.dybcatering.live4teach.Estudiante.Perfil;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -151,24 +149,7 @@ public class PerfilFragment extends Fragment {
             }
         });
 
-        primage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder builder=new AlertDialog.Builder(getActivity());
-                builder.setCancelable(true);
-                builder.setIcon(  R.drawable.imagenperfil);
-                builder.setInverseBackgroundForced(true);
-                builder.setPositiveButton("Accept",new DialogInterface.OnClickListener(){
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which){
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog alert=builder.create();
-                alert.show();
-            }
-        });
         return myView;
     }
 
@@ -241,6 +222,33 @@ public class PerfilFragment extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
 
+        primage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+                        .setBackgroundColor(R.color.white)
+                        .setimageResource( R.drawable.imagenperfil)
+                        .setTextTitle("Perfil")
+                        .setPositiveButtonText("Aceptar")
+                        .setPositiveColor(R.color.colorbonton)
+                        .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                            @Override
+                            public void OnClick(View view, Dialog dialog) {
+
+                                dialog.dismiss();
+
+
+                            }
+                        })
+                        .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                        .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                        .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                        .setCancelable(false)
+                        .build();
+                alert.show();
+            }
+        });
+
     }
 
     private void inflateImageSlider() {
@@ -248,17 +256,17 @@ public class PerfilFragment extends Fragment {
         // Using Image Slider -----------------------------------------------------------------------
         sliderShow = myView.findViewById(R.id.slider);
 
-        HashMap<String,String> url_maps = new HashMap<String, String>();
-        url_maps.put("Descripción 1", "http://digitalandroidservices.com/personal/cover1.jpg");
-        url_maps.put("Descripción 2", "http://digitalandroidservices.com/personal/cover2.png");
-        url_maps.put("Descripción 3", "http://digitalandroidservices.com/personal/cover3.png");
+       // HashMap<String,String> url_maps = new HashMap<String, String>();
+       // url_maps.put("Descripción 1", "http://digitalandroidservices.com/personal/cover1.jpg");
+       // url_maps.put("Descripción 2", "http://digitalandroidservices.com/personal/cover2.png");
+       // url_maps.put("Descripción 3", "http://digitalandroidservices.com/personal/cover3.png");
 
         HashMap<String,Integer> file_maps = new HashMap<String, Integer>();
         file_maps.put("Descripción 1",R.drawable.cover1);
         file_maps.put("Descripción 2",R.drawable.cover2);
         file_maps.put("Descripción 3",R.drawable.cover3);
 
-        for (String s:url_maps.keySet()){
+        for (String s:file_maps.keySet()){
             //  DefaultSliderView sliderView=new DefaultSliderView(PrimerCurso.this);
             // sliderView.image(s);
             // sliderShow.addSlider(sliderView);
