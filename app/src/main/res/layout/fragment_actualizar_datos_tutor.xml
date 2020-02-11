@@ -167,7 +167,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Correo Electrónico"
-                        android:inputType="text|number"
+                        android:inputType="text|textEmailAddress"
                         android:textColor="@color/colortexto" />
                 </android.support.design.widget.TextInputLayout>
 

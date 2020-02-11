@@ -119,7 +119,7 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 								String intensityAC = hit.getString("intensityAC");
 								String competences = hit.getString("competences");
 								String intensityTA = hit.getString("intensityTA");
-								String Achievement = hit.getString("Achievement");
+								String Achievement = hit.getString("achievement");
 								String indicatorA = hit.getString("indicatorA");
 								String methodologyG = hit.getString("methodologyG");
 								String type = hit.getString("type");
