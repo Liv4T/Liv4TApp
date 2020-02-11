@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.dybcatering.live4teach.R;
@@ -95,6 +96,8 @@ public class MisCursosAdaptor extends RecyclerView.Adapter<MisCursosAdaptor.Exam
 
         public TextView  mTextNombreCurso, mEstadoCurso, mTemaUnidad, mActividad;
 
+        public Button mIngresar;
+
         public ExampleViewHolder(View itemView) {
             super(itemView);
            // mImageView = itemView.findViewById(R.id.imagen_curso);
@@ -102,12 +105,13 @@ public class MisCursosAdaptor extends RecyclerView.Adapter<MisCursosAdaptor.Exam
             mEstadoCurso= itemView.findViewById(R.id.estado_curso);
             mTemaUnidad = itemView.findViewById(R.id.tema_unidad);
             mActividad = itemView.findViewById(R.id.actividad);
+            mIngresar = itemView.findViewById(R.id.btnIngresar);
             //mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             //mTextViewDescription = itemView.findViewById(R.id.text_view_description);
             //mBarrio = itemView.findViewById(R.id.text_barrio);
             //mVistas = itemView.findViewById(R.id.text_view_vistas);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            mIngresar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mListener != null) {

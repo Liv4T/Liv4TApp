@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,12 +19,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.dybcatering.live4teach.Login.SessionManager;
-import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosAdaptor;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.MisCursosItem;
+import com.dybcatering.live4teach.Login.SessionManager;
+import com.dybcatering.live4teach.R;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -94,7 +95,7 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 
 	private void ObtenerDatos(final String id) {
 
-		String url = "http://dybcatering.com/back_live_app/miscursos/cursos_unidades_prueba.php";
+		String url = "http://dybcatering.com/back_live_app/miscursos/cursos_unidades.php";
 		final ProgressDialog progressDialog = new ProgressDialog(getActivity());
 		progressDialog.setMessage("Cargando...");
 		progressDialog.show();
@@ -142,7 +143,12 @@ public class MisCursosFragment extends Fragment implements MisCursosAdaptor.OnIt
 						} catch (JSONException e) {
 							e.printStackTrace();
 							progressDialog.dismiss();
-							Toasty.error(getContext(), "Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT).show();
+							Toast toast= Toast.makeText(getContext(),
+									"Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT);
+							toast.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
+							toast.show();
+							//Toasty toasty = Toasty.error(getContext(), "Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT).show();
+
 						}
 					}
 				}, new Response.ErrorListener() {

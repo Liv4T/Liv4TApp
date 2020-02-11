@@ -108,7 +108,7 @@
                 />
 
             <Button
-                android:id="@+id/btnQuimica"
+                android:id="@+id/btnIngresar"
                 android:layout_width="100dp"
                 android:layout_height="30dp"
                 android:layout_gravity="center"
