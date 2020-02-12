@@ -85,6 +85,8 @@ public class ClasesFragment extends Fragment implements VideosAdaptor.OnItemClic
 	}
 
 
+
+
 	private void ObtenerDatos(final String id) {
 
 		String url = "http://dybcatering.com/back_live_app/miscursos/listarvideos.php";

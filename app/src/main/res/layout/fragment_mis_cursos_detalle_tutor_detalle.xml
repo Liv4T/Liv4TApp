@@ -1,287 +1,313 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_container"
-    tools:context=".Tutor.MisCursos.MisCursosDetalleTutorFragment">
+    tools:context=".Tutor.MisCursos.MisCursosDetalleTutorFragment"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txtTotalInscritos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="23sp"
+        android:text="Total Inscritos : " />
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:elevation="0dp"
+        android:id="@+id/appBarId">
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.design.widget.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabTextAppearance="@android:style/TextAppearance.Widget.TabWidget"
+        android:id="@+id/tablayout_id"
+        app:tabTextColor="@color/colortexto">
+
+    </android.support.design.widget.TabLayout>
+
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/viewpager">
+
+    </android.support.v4.view.ViewPager>
+
+    <!--FrameLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:id="@+id/layout_reg"
-            android:orientation="horizontal">
+            android:id="@+id/layout_reg">
 
 
-            <!--RelativeLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
 
 
+                    <com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView
+                        android:id="@+id/youtube_player_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp" />
 
-                <com.pierfrancescosoffritti.youtubeplayer.player.YouTubePlayerView
-                    android:id="@+id/youTube"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp" />
 
-                <ScrollView
-                    android:id="@+id/scrolldebajo"
+            <ScrollView
+                android:id="@+id/scrolldebajo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/youtube_player_view">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/buttoniniciar"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    app:lottie_loop="true"
+                    app:lottie_autoPlay="true"
+                    app:lottie_fileName="animated.json" />
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_toRightOf="@id/buttoniniciar"
+                    style="@style/CustomRatingBar"
+                    android:scaleX="0.5"
+                    android:scaleY="0.5"/>
+
+
+
+                <TextView
+                    android:id="@+id/textView2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@id/youTube">
 
+
+                    android:layout_toRightOf="@id/buttoniniciar"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_marginTop="40dp"
+                    android:gravity="center"
+                    android:text="HTML PARA PRINCIPIANTES"
+                    android:textColor="@color/color"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/progressBar_horizontal"
+                    style="?android:attr/progressBarStyleHorizontal"
+                    android:layout_width="match_parent"
+                    android:layout_margin="5dp"
+                    android:max="100"
+                    android:progress="0"
+                    android:layout_toRightOf="@id/buttoniniciar"
+                    android:layout_below="@id/textView2"
+                    android:progressDrawable="@drawable/greenprogress"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:layout_below="@id/buttoniniciar"
+                    android:text="Descripción del curso:" />
+
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:id="@+id/objetivos"
+                    android:layout_width="match_parent"
+                    android:layout_below="@id/textView4"
+                    android:text="Objetivos del curso"
+                    android:textSize="25sp"
+                    android:layout_height="wrap_content">
+
+                </TextView>
+
+
+                <RelativeLayout
+                    android:id="@+id/relativevermas"
+                    android:layout_below="@+id/objetivos"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:id="@+id/description_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="5"
+                        android:background="#BEBEBEBE"
+                        android:elevation="5dp"
+                        android:text="@string/desc_content" />
+
+                    <ImageButton
+                        android:id="@+id/show"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:clickable="true" />
+
+                    <View
+                        android:id="@+id/view1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/description_text"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/show"
+                        android:background="#000" />
+
+                    <ImageButton
+                        android:id="@+id/hide"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/description_text"
+                        android:clickable="true"
+                        android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                        android:visibility="invisible" />
+
+                    <TextView
+                        android:id="@+id/txtTemario"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
+                        android:gravity="center_horizontal"
+                        android:textSize="25sp"
+                        android:layout_below="@id/hide"
+                        android:text="Temario" />
+
+
+                    <TextView
+                        android:id="@+id/segunda_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="5"
+                        android:layout_below="@+id/txtTemario"
+                        android:background="#BEBEBEBE"
+                        android:elevation="5dp"
+                        android:text="@string/desc_content" />
+
+                    <ImageButton
+                        android:id="@+id/vermassegundo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/segunda_descripcion"
+                        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:clickable="true" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/segunda_descripcion"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/show"
+                        android:background="#000" />
+
+                    <ImageButton
+                        android:id="@+id/hide2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/segunda_descripcion"
+                        android:clickable="true"
+                        android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                        android:visibility="invisible" />
+
+
+                    <TextView
+                        android:id="@+id/txtRequisitos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/hide2"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="5dp"
+                        android:text="Requisitos"
+                        android:gravity="center_horizontal"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/tercera_descripcion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:maxLines="5"
+                        android:layout_below="@+id/txtRequisitos"
+                        android:background="#BEBEBEBE"
+                        android:elevation="5dp"
+                        android:text="@string/desc_content" />
+
+                    <ImageButton
+                        android:id="@+id/vermastercero"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/tercera_descripcion"
+                        android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
+                        android:clickable="true" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="2dp"
+                        android:layout_below="@+id/tercera_descripcion"
+                        android:layout_marginTop="5dp"
+                        android:layout_toLeftOf="@+id/show"
+                        android:background="#000" />
+
+                    <ImageButton
+                        android:id="@+id/hide3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/tercera_descripcion"
+                        android:clickable="true"
+                        android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
+                        android:visibility="invisible" />
 
                     <RelativeLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
 
-                        <com.airbnb.lottie.LottieAnimationView
-                            android:id="@+id/buttoniniciar"
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
-                            app:lottie_loop="true"
-                            app:lottie_autoPlay="true"
-                            app:lottie_fileName="animated.json" />
-
-                        <RatingBar
-                            android:id="@+id/ratingBar"
-                            android:layout_toRightOf="@id/buttoniniciar"
-                            style="@style/CustomRatingBar"
-                            android:scaleX="0.5"
-                            android:scaleY="0.5"/>
-
-
-
-                        <TextView
-                            android:id="@+id/textView2"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-
-
-                            android:layout_toRightOf="@id/buttoniniciar"
-                            android:fontFamily="@font/centurygothic"
-                            android:layout_marginTop="40dp"
-                            android:gravity="center"
-                            android:text="HTML PARA PRINCIPIANTES"
-                            android:textColor="@color/color"
-                            android:textStyle="bold" />
-
-                        <ProgressBar
-                            android:id="@+id/progressBar_horizontal"
-                            style="?android:attr/progressBarStyleHorizontal"
-                            android:layout_width="match_parent"
-                            android:layout_margin="5dp"
-                            android:max="100"
-                            android:progress="0"
-                            android:layout_toRightOf="@id/buttoniniciar"
-                            android:layout_below="@id/textView2"
-                            android:progressDrawable="@drawable/greenprogress"
-                            android:layout_height="wrap_content" />
-
-                        <TextView
-                            android:id="@+id/textView4"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="5dp"
-                            android:textSize="15sp"
-                            android:textStyle="bold"
-                            android:layout_below="@id/buttoniniciar"
-                            android:text="Descripción del curso:" />
-
-                        <TextView
-                            android:gravity="center_horizontal"
-                            android:id="@+id/objetivos"
-                            android:layout_width="match_parent"
-                            android:layout_below="@id/textView4"
-                            android:text="Objetivos del curso"
-                            android:textSize="25sp"
-                            android:layout_height="wrap_content">
-
-                        </TextView>
-
-
-                        <RelativeLayout
-                            android:id="@+id/relativevermas"
-                            android:layout_below="@+id/objetivos"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:padding="20dp">
-
-                            <TextView
-                                android:id="@+id/description_text"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:maxLines="5"
-                                android:background="#BEBEBEBE"
-                                android:elevation="5dp"
-                                android:text="@string/desc_content" />
-
-                            <ImageButton
-                                android:id="@+id/show"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_below="@+id/description_text"
-                                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
-                                android:clickable="true" />
-
-                            <View
-                                android:id="@+id/view1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="2dp"
-                                android:layout_below="@+id/description_text"
-                                android:layout_marginTop="5dp"
-                                android:layout_toLeftOf="@+id/show"
-                                android:background="#000" />
-
-                            <ImageButton
-                                android:id="@+id/hide"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_below="@+id/description_text"
-                                android:clickable="true"
-                                android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
-                                android:visibility="invisible" />
-
-                            <TextView
-                                android:id="@+id/txtTemario"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:gravity="center_horizontal"
-                                android:textSize="25sp"
-                                android:layout_below="@id/hide"
-                                android:text="Temario" />
-
-
-                            <TextView
-                                android:id="@+id/segunda_descripcion"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:maxLines="5"
-                                android:layout_below="@+id/txtTemario"
-                                android:background="#BEBEBEBE"
-                                android:elevation="5dp"
-                                android:text="@string/desc_content" />
-
-                            <ImageButton
-                                android:id="@+id/vermassegundo"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_below="@+id/segunda_descripcion"
-                                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
-                                android:clickable="true" />
-
-                            <View
-                                android:id="@+id/view2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="2dp"
-                                android:layout_below="@+id/segunda_descripcion"
-                                android:layout_marginTop="5dp"
-                                android:layout_toLeftOf="@+id/show"
-                                android:background="#000" />
-
-                            <ImageButton
-                                android:id="@+id/hide2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_below="@+id/segunda_descripcion"
-                                android:clickable="true"
-                                android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
-                                android:visibility="invisible" />
-
-
-                            <TextView
-                                android:id="@+id/txtRequisitos"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_below="@id/hide2"
-                                android:layout_marginTop="8dp"
-                                android:layout_marginBottom="5dp"
-                                android:text="Requisitos"
-                                android:gravity="center_horizontal"
-                                android:textSize="25sp" />
-
-                            <TextView
-                                android:id="@+id/tercera_descripcion"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:maxLines="5"
-                                android:layout_below="@+id/txtRequisitos"
-                                android:background="#BEBEBEBE"
-                                android:elevation="5dp"
-                                android:text="@string/desc_content" />
-
-                            <ImageButton
-                                android:id="@+id/vermastercero"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_below="@+id/tercera_descripcion"
-                                android:background="@drawable/ic_keyboard_arrow_down_black_24dp"
-                                android:clickable="true" />
-
-                            <View
-                                android:id="@+id/view3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="2dp"
-                                android:layout_below="@+id/tercera_descripcion"
-                                android:layout_marginTop="5dp"
-                                android:layout_toLeftOf="@+id/show"
-                                android:background="#000" />
-
-                            <ImageButton
-                                android:id="@+id/hide3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_alignParentRight="true"
-                                android:layout_below="@+id/tercera_descripcion"
-                                android:clickable="true"
-                                android:background="@drawable/ic_keyboard_arrow_up_black_24dp"
-                                android:visibility="invisible" />
-
-
-
-                        </RelativeLayout>
-
-
-
-
-                        <TextView
-                            android:id="@+id/textView3"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center"
-                            android:fontFamily="@font/centurygothic"
-                            android:textStyle="bold"
-                            android:textSize="20sp"
-                            android:textColor="@android:color/black"
-                            android:layout_below="@id/textViewdesc"
-                            android:text="INTRODUCCIÓN" />
-
-
-
+                        android:layout_below="@+id/hide3">
 
 
 
                     </RelativeLayout>
 
+                </RelativeLayout>
 
-
-                </ScrollView>
-
-
+            </RelativeLayout>
 
 
 
-            </RelativeLayout-->
+            </ScrollView>
+
+
+            </RelativeLayout>
 
 
         </LinearLayout>
-</FrameLayout>
+</FrameLayout-->
+</LinearLayout>

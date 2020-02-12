@@ -187,7 +187,6 @@ public class MisCursosTutorFragment extends Fragment implements AdaptadorMisCurs
 		ItemMisCursosTutor clickedItem = mcursosItems.get(position);
 		Bundle arguments = new Bundle();
 		arguments.putString(EXTRAID, clickedItem.getId());
-		arguments.putString("daniel", "hola");
 		someFragment.setArguments(arguments);
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, someFragment ).addToBackStack("tag"); // give your fragment container id in first parameter

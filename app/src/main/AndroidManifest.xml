@@ -48,7 +48,6 @@
         <activity
             android:name=".Estudiante.Carrito.CarritoActivity"
             android:parentActivityName=".Estudiante.Inicio.InicioActivity" />
-        <activity android:name=".Estudiante.MisCursos.MisCursosDetalleVerMas" />
         <activity android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.MisActividadesDetalle" />
         <activity
             android:name=".Estudiante.Perfil.ActualizarDatos"
