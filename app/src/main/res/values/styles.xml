@@ -80,8 +80,7 @@
     </style>
 
 
-
-    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar" >
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
         <item name="android:numStars">5</item>
         <item name="android:stepSize">1.0</item>
         <item name="android:layout_width">wrap_content</item>
@@ -89,6 +88,7 @@
         <item name="android:layout_marginLeft">4dp</item>
 
     </style>
+
     <style name="DialogTheme" parent="Theme.AppCompat.Light">
         <item name="colorAccent">@color/colorPrimary</item>
     </style>

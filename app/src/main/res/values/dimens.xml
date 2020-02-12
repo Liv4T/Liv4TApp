@@ -33,8 +33,6 @@
     3
 
 
-
-
     <dimen name="text_size_xsmall">8dp</dimen>
     <dimen name="text_size_small">10dp</dimen>
     <dimen name="text_size_medium">12dp</dimen>

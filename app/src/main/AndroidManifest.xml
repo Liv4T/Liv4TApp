@@ -19,11 +19,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.Cuestionario.CuestionarioActivity"
-            android:theme="@style/AppThemeRegist.NoActionBar"></activity>
+        <activity
+            android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.Cuestionario.CuestionarioActivity"
+            android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity
             android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoActivity"
-            android:theme="@style/AppThemeRegist.NoActionBar"></activity>
+            android:theme="@style/AppThemeRegist.NoActionBar" />
         <activity
             android:name=".Estudiante.CursosDisponibles.CursosDetalle"
             android:parentActivityName=".Estudiante.Inicio.InicioActivity" />
