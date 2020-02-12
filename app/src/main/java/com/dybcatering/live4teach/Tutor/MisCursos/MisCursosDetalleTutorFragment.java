@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dybcatering.live4teach.R;
-public class MisCursosDetalleTutorDetalleFragment extends Fragment {
+public class MisCursosDetalleTutorFragment extends Fragment {
 
 	View view;
 

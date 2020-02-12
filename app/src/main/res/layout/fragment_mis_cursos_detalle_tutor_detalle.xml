@@ -5,15 +5,16 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/fragment_container"
-    tools:context=".Tutor.MisCursos.MisCursosDetalleTutorDetalleFragment">
+    tools:context=".Tutor.MisCursos.MisCursosDetalleTutorFragment">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
-            android:id="@+id/layout_reg">
+            android:id="@+id/layout_reg"
+            android:orientation="horizontal">
 
 
-            <RelativeLayout
+            <!--RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -252,7 +253,7 @@
 
 
 
-                        <!--TextView
+                        <TextView
                             android:id="@+id/textView3"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -262,7 +263,7 @@
                             android:textSize="20sp"
                             android:textColor="@android:color/black"
                             android:layout_below="@id/textViewdesc"
-                            android:text="INTRODUCCIÓN" /-->
+                            android:text="INTRODUCCIÓN" />
 
 
 
@@ -279,7 +280,7 @@
 
 
 
-            </RelativeLayout>
+            </RelativeLayout-->
 
 
         </LinearLayout>

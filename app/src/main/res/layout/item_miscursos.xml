@@ -104,8 +104,7 @@
                 android:text=""
                 android:textColor="@color/color"
                 android:textSize="15sp"
-                android:paddingLeft="2dp"
-                />
+                android:paddingLeft="2dp" />
 
             <Button
                 android:id="@+id/btnIngresar"

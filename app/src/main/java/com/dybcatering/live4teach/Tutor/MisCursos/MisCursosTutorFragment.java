@@ -11,7 +11,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -21,7 +20,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
-import com.dybcatering.live4teach.Estudiante.MisCalificaciones.Adaptador.AdaptorMisCalificaciones;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.MisCursos.Adaptador.AdaptadorMisCursosTutor;
@@ -37,10 +35,9 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
-public class MisCursosTutorFragment extends Fragment implements AdaptorMisCalificaciones.OnItemClickListener {
+public class MisCursosTutorFragment extends Fragment implements AdaptadorMisCursosTutor.OnItemClickListener {
 
 	View myView;
-	Button button;
 	private RecyclerView mRecyclerView;
 	private AdaptadorMisCursosTutor misCursosAdaptor;
 	private ArrayList<ItemMisCursosTutor> mcursosItems;
@@ -150,7 +147,7 @@ public class MisCursosTutorFragment extends Fragment implements AdaptorMisCalifi
 							progressDialog.dismiss();
 							Toast toast= Toast.makeText(getContext(),
 									"Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT);
-							toast.setGravity(Gravity.TOP| Gravity.CENTER_HORIZONTAL, 0, 0);
+							toast.setGravity(Gravity.CENTER_HORIZONTAL| Gravity.CENTER_HORIZONTAL, 0, 0);
 							toast.show();
 							//Toasty toasty = Toasty.error(getContext(), "Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT).show();
 
@@ -177,7 +174,7 @@ public class MisCursosTutorFragment extends Fragment implements AdaptorMisCalifi
 	}
 
 	public void IniciarTransicion(){
-		Fragment someFragment = new MisCursosDetalleTutorDetalleFragment();
+		Fragment someFragment = new MisCursosDetalleTutorFragment();
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
@@ -186,6 +183,15 @@ public class MisCursosTutorFragment extends Fragment implements AdaptorMisCalifi
 
 	@Override
 	public void onItemClick(int position) {
-
+		Fragment someFragment = new MisCursosDetalleTutorFragment();
+		ItemMisCursosTutor clickedItem = mcursosItems.get(position);
+		Bundle arguments = new Bundle();
+		arguments.putString(EXTRAID, clickedItem.getId());
+		arguments.putString("daniel", "hola");
+		someFragment.setArguments(arguments);
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, someFragment ).addToBackStack("tag"); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
 	}
 }

@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 
 import java.util.ArrayList;
 
@@ -93,8 +92,6 @@ public class AdaptadorMisCursosTutor extends RecyclerView.Adapter<AdaptadorMisCu
         return mExampleList.size();
     }
 
-    public void setOnClickItemListener(MisCursosTutorFragment misCursosTutorFragment) {
-    }
 
     public interface OnItemClickListener {
         void onItemClick(int position);
