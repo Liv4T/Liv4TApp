@@ -111,35 +111,35 @@ public class MisCursosTutorFragment extends Fragment implements AdaptorMisCalifi
 							for (int i = 0; i < jsonArray.length(); i++) {
 								JSONObject hit = jsonArray.getJSONObject(i);
 								String id = hit.getString("id");
-								String nombre = hit.getString("name");
-								String idcategory = hit.getString("id_category");
-								String idsubcategory = hit.getString("id_subcategory");
+								String name = hit.getString("name");
+								String id_category= hit.getString("id_category");
+								String id_subcategory= hit.getString("id_subcategory");
 								String methodology = hit.getString("methodology");
 								String welcome = hit.getString("welcome");
 								String intention = hit.getString("intention");
 								String intensityAC = hit.getString("intensityAC");
 								String competences = hit.getString("competences");
 								String intensityTA = hit.getString("intensityTA");
-								String Achievement = hit.getString("achievement");
-								String map = hit.getString("map");
+								String achievement = hit.getString("achievement");
 								String indicatorA = hit.getString("indicatorA");
+								String map = hit.getString("map");
 								String methodologyG = hit.getString("methodologyG");
 								String type = hit.getString("type");
 								String description = hit.getString("description");
 								String presentation = hit.getString("presentation");
-								String iduser = hit.getString("id_user");
+								String id_user = hit.getString("id_user");
 								String descriptionO = hit.getString("descriptionO");
 								String updated_at = hit.getString("updated_at");
+								String created_at = hit.getString("created_at");
 								String state = hit.getString("state");
-								String image = hit.getString("image");
-								String video_presentacion = hit.getString("video_presentation");
-								String topic = hit.getString("topic");
 								String publish = hit.getString("publish");
-								String idunidad = hit.getString("idunidad");
-								String total = hit.getString("total");
-								mcursosItems.add(new ItemMisCursosTutor(id, nombre, idcategory, idsubcategory, methodology, welcome, intention, intensityAC, competences,
-										intensityTA, Achievement, indicatorA, map, methodologyG, type, description, presentation, iduser, descriptionO, updated_at, state, image,
-										video_presentacion, topic, publish, idunidad, total));
+								String image = hit.getString("image");
+								String price = hit.getString("price");
+								String video_presentacion = hit.getString("video_presentation");
+
+								mcursosItems.add(new ItemMisCursosTutor(id, name, id_category, id_subcategory, methodology, welcome, intention, intensityAC, competences,
+										intensityTA, achievement, indicatorA, map, methodologyG, type, description, presentation, id_user, descriptionO, updated_at, created_at,
+										state, publish, image, price, video_presentacion));
 							}
 							misCursosAdaptor = new AdaptadorMisCursosTutor(getActivity(), mcursosItems);
 							mRecyclerView.setAdapter(misCursosAdaptor);

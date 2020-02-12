@@ -7,7 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.dybcatering.live4teach.R;
@@ -38,7 +37,7 @@ public class AdaptadorMisCursosTutor extends RecyclerView.Adapter<AdaptadorMisCu
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.cursos_item, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.item_miscursos, parent, false);
         return new ExampleViewHolder(v);
     }
 
@@ -49,8 +48,8 @@ public class AdaptadorMisCursosTutor extends RecyclerView.Adapter<AdaptadorMisCu
 
         String id= currentItem.getId();
         String name = currentItem.getName();
-        String id_category = currentItem.getId_category();
-        String id_subcategory = currentItem.getId_subcategory();
+        String id_category = currentItem.getId_Category();
+        String id_subcategory = currentItem.getId_SubCategory();
         String methodology = currentItem.getMethodology();
         String welcome = currentItem.getWelcome();
         String intention = currentItem.getIntention();
@@ -60,11 +59,11 @@ public class AdaptadorMisCursosTutor extends RecyclerView.Adapter<AdaptadorMisCu
         String achievement = currentItem.getAchievement();
         String indicatorA = currentItem.getIndicatorA();
         String map = currentItem.getMap();
-        String methodologyG = currentItem.getMehodologyG();
+        String methodologyG = currentItem.getMethodologyG();
         String type = currentItem.getType();
         String description = currentItem.getDescription();
         String presentation =currentItem.getPresentation();
-        String iduser = currentItem.getId_user();
+        String iduser = currentItem.getId_User();
         String descriptionO = currentItem.getDescriptionO();
         String updated_at = currentItem.getUpdated_at();
         String created_at = currentItem.getCreated_at();
@@ -73,9 +72,12 @@ public class AdaptadorMisCursosTutor extends RecyclerView.Adapter<AdaptadorMisCu
         String image = currentItem.getImage();
         String price = currentItem.getPrice();
         String video_presentation = currentItem.getVideo_presentation();
-        String totalinscritos = currentItem.getTotalinscritos();
 
 
+
+        holder.mTextNombreCurso.setText(name);
+        holder.mEstadoCurso.setText(publish);
+        holder.mTemaUnidad.setText(descriptionO);
       //  holder.mNombreCurso.setText(nombre);
        // holder.mDescripcionCurso.setText(descripcion);
        // holder.mImageDestacado.setText(destacado);
@@ -100,21 +102,22 @@ public class AdaptadorMisCursosTutor extends RecyclerView.Adapter<AdaptadorMisCu
 
     public class ExampleViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView mImageView;
-        public TextView  mNombreCurso, mDescripcionCurso;
-        public Button mBarrio;
+        public TextView  mTextNombreCurso, mEstadoCurso, mTemaUnidad, mActividad;
 
+        public Button mIngresar;
         public ExampleViewHolder(View itemView) {
             super(itemView);
-            mImageView = itemView.findViewById(R.id.imagen_curso);
-            mNombreCurso= itemView.findViewById(R.id.titulo);
-            mDescripcionCurso= itemView.findViewById(R.id.descripcion);
+            mTextNombreCurso= itemView.findViewById(R.id.txtnombre_curso);
+            mEstadoCurso= itemView.findViewById(R.id.estado_curso);
+            mTemaUnidad = itemView.findViewById(R.id.tema_unidad);
+            mActividad = itemView.findViewById(R.id.actividad);
+            mIngresar = itemView.findViewById(R.id.btnIngresar);
             //mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             //mTextViewDescription = itemView.findViewById(R.id.text_view_description);
             //mBarrio = itemView.findViewById(R.id.text_barrio);
             //mVistas = itemView.findViewById(R.id.text_view_vistas);
 
-            itemView.setOnClickListener(new View.OnClickListener() {
+            mIngresar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (mListener != null) {

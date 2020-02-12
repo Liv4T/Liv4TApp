@@ -1,10 +1,11 @@
 package com.dybcatering.live4teach.Tutor.MisCursos.Adaptador;
 
 public class ItemMisCursosTutor {
+
 	private String Id;
 	private String Name;
-	private String Id_category;
-	private String Id_subcategory;
+	private String Id_Category;
+	private String Id_SubCategory;
 	private String Methodology;
 	private String Welcome;
 	private String Intention;
@@ -14,11 +15,11 @@ public class ItemMisCursosTutor {
 	private String Achievement;
 	private String IndicatorA;
 	private String Map;
-	private String MehodologyG;
+	private String MethodologyG;
 	private String Type;
 	private String Description;
 	private String Presentation;
-	private String Id_user;
+	private String Id_User;
 	private String DescriptionO;
 	private String Updated_at;
 	private String Created_at;
@@ -27,13 +28,12 @@ public class ItemMisCursosTutor {
 	private String Image;
 	private String Price;
 	private String Video_presentation;
-	private String Totalinscritos;
 
-	public ItemMisCursosTutor(String id, String name, String id_category, String id_subcategory, String methodology, String welcome, String intention, String intensityAC, String competences, String intensityTA, String achievement, String indicatorA, String map, String mehodologyG, String type, String description, String presentation, String id_user, String descriptionO, String updated_at, String created_at, String state, String publish, String image, String price, String video_presentation, String totalinscritos) {
+	public ItemMisCursosTutor(String id, String name, String id_Category, String id_SubCategory, String methodology, String welcome, String intention, String intensityAC, String competences, String intensityTA, String achievement, String indicatorA, String map, String methodologyG, String type, String description, String presentation, String id_User, String descriptionO, String updated_at, String created_at, String state, String publish, String image, String price, String video_presentation) {
 		Id = id;
 		Name = name;
-		Id_category = id_category;
-		Id_subcategory = id_subcategory;
+		Id_Category = id_Category;
+		Id_SubCategory = id_SubCategory;
 		Methodology = methodology;
 		Welcome = welcome;
 		Intention = intention;
@@ -43,11 +43,11 @@ public class ItemMisCursosTutor {
 		Achievement = achievement;
 		IndicatorA = indicatorA;
 		Map = map;
-		MehodologyG = mehodologyG;
+		MethodologyG = methodologyG;
 		Type = type;
 		Description = description;
 		Presentation = presentation;
-		Id_user = id_user;
+		Id_User = id_User;
 		DescriptionO = descriptionO;
 		Updated_at = updated_at;
 		Created_at = created_at;
@@ -56,7 +56,6 @@ public class ItemMisCursosTutor {
 		Image = image;
 		Price = price;
 		Video_presentation = video_presentation;
-		Totalinscritos = totalinscritos;
 	}
 
 	public String getId() {
@@ -67,12 +66,12 @@ public class ItemMisCursosTutor {
 		return Name;
 	}
 
-	public String getId_category() {
-		return Id_category;
+	public String getId_Category() {
+		return Id_Category;
 	}
 
-	public String getId_subcategory() {
-		return Id_subcategory;
+	public String getId_SubCategory() {
+		return Id_SubCategory;
 	}
 
 	public String getMethodology() {
@@ -111,8 +110,8 @@ public class ItemMisCursosTutor {
 		return Map;
 	}
 
-	public String getMehodologyG() {
-		return MehodologyG;
+	public String getMethodologyG() {
+		return MethodologyG;
 	}
 
 	public String getType() {
@@ -127,8 +126,8 @@ public class ItemMisCursosTutor {
 		return Presentation;
 	}
 
-	public String getId_user() {
-		return Id_user;
+	public String getId_User() {
+		return Id_User;
 	}
 
 	public String getDescriptionO() {
@@ -161,9 +160,5 @@ public class ItemMisCursosTutor {
 
 	public String getVideo_presentation() {
 		return Video_presentation;
-	}
-
-	public String getTotalinscritos() {
-		return Totalinscritos;
 	}
 }
