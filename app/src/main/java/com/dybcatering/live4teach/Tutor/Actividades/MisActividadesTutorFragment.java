@@ -2,6 +2,7 @@ package com.dybcatering.live4teach.Tutor.Actividades;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.OvershootInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -45,6 +48,7 @@ public class MisActividadesTutorFragment extends Fragment  implements AdaptadorM
 	private AdaptadorMisActividadesTutor misActividadesAdaptor;
 	private ArrayList<ItemAdaptadorActividadesTutor> mactividadesItems;
 	private RequestQueue mRequestQueue;
+	private FloatingActionButton fab;
 	SessionManager sessionManager;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,25 +63,38 @@ public class MisActividadesTutorFragment extends Fragment  implements AdaptadorM
 		mRecyclerView = view.findViewById(R.id.recycler_view);
 		mRecyclerView.setHasFixedSize(true);
 		mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
 		mactividadesItems = new ArrayList<>();
 
 		mRequestQueue = Volley.newRequestQueue(getActivity());
 
 		ObtenerDatos(id_usuario);
+		fab = view.findViewById(R.id.fab);
+		ScaleAnimation anim = new ScaleAnimation(0,1,0,1);
+		anim.setFillBefore(true);
+		anim.setFillAfter(true);
+		anim.setFillEnabled(true);
+		anim.setDuration(1500);
+		anim.setInterpolator(new OvershootInterpolator());
+		fab.startAnimation(anim);
+		fab.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				iniciartransicion();
+			}
+		});
 		return view;
 
 	}
 
 	public void iniciartransicion(){
-		Fragment someFragment = new MisActividadesTutorDetalleFragment();
+		Fragment someFragment = new MisActividadesTutorInsertFragment();
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
 		transaction.commit();
 
 	}
-	
+
 
 
 	@Override
