@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -51,7 +52,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		SpinnerCurso = view.findViewById(R.id.spcurso);
 		SpinnerUnidad = view.findViewById(R.id.spunidad);
 		listarCurso(id_usuario);
-
+		//listarUnidad();
 		return view;
 	}
 
@@ -93,49 +94,70 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
 		stringRequest.setRetryPolicy(policy);
 		requestQueue.add(stringRequest);
-//		final String CursoUnidad = SpinnerCurso.getSelectedItem().toString();
+		SpinnerCurso.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+			@Override
+			public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+				// your code here
 
-		//listarUnidad(CursoUnidad);
+				listarUnidad(SpinnerCurso.getSelectedItem().toString());
+
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parentView) {
+				// your code here
+			}
+
+		});
+
+
 	}
 
-	private void listarUnidad(final String CursoUnidad){
-		String URL_CARGAR = "https://dybcatering.com/back_live_app/miscursos/misactividades/tutor/listarunidad.php";
-		RequestQueue requestQueue=Volley.newRequestQueue(getActivity().getApplicationContext());
-		StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_CARGAR, new Response.Listener<String>() {
-			@Override
-			public void onResponse(String response) {
-				try{
-					JSONObject jsonObject=new JSONObject(response);
-					JSONArray jsonArray=jsonObject.getJSONArray("Registros");
-					for(int i=0;i<jsonArray.length();i++){
-						JSONObject jsonObject1=jsonArray.getJSONObject(i);
-						String name=jsonObject1.getString("name");
-						Unidad.add(name);
-					}
-					SpinnerUnidad.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, Unidad));
+	private void listarUnidad(final String Curso){
+			Unidad.clear();
+			String URL_CARGAR = "https://dybcatering.com/back_live_app/miscursos/misactividades/tutor/listarunidad.php";
+			RequestQueue requestQueue=Volley.newRequestQueue(getActivity().getApplicationContext());
+			StringRequest stringRequest=new StringRequest(Request.Method.POST, URL_CARGAR, new Response.Listener<String>() {
+				@Override
+				public void onResponse(String response) {
+					try{
+						JSONObject jsonObject=new JSONObject(response);
+						JSONArray jsonArray=jsonObject.getJSONArray("Registros");
+						for(int i=0;i<jsonArray.length();i++){
+							JSONObject jsonObject1=jsonArray.getJSONObject(i);
+							String name=jsonObject1.getString("name");
+							if (name.isEmpty()){
+								Unidad.clear();
+							}else{
 
-				}catch (JSONException e){
-					e.printStackTrace();
-					Toast.makeText(getContext(), "algo salio mal" + e, Toast.LENGTH_SHORT).show();}
-			}
-		}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				error.printStackTrace();
-				Toast.makeText(getActivity(), "algo salio mal" + error, Toast.LENGTH_SHORT).show();
-			}
-		}) {
-			@Override
-			protected Map<String, String> getParams() {
-				Map<String, String> params = new HashMap<>();
-				params.put("name", CursoUnidad);
-				return params;
-			}
-		};
-		int socketTimeout = 30000;
-		RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
-		stringRequest.setRetryPolicy(policy);
-		requestQueue.add(stringRequest);
+								Unidad.add(name);
+							}
+						}
+						SpinnerUnidad.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, Unidad));
+
+					}catch (JSONException e){
+						e.printStackTrace();
+						Toast.makeText(getContext(), "algo salio mal" + e, Toast.LENGTH_SHORT).show();}
+				}
+			}, new Response.ErrorListener() {
+				@Override
+				public void onErrorResponse(VolleyError error) {
+					error.printStackTrace();
+					Toast.makeText(getActivity(), "algo salio mal" + error, Toast.LENGTH_SHORT).show();
+				}
+			}) {
+				@Override
+				protected Map<String, String> getParams() {
+					Map<String, String> params = new HashMap<>();
+					params.put("name", Curso);
+					return params;
+				}
+			};
+			int socketTimeout = 30000;
+			RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+			stringRequest.setRetryPolicy(policy);
+			requestQueue.add(stringRequest);
+
 	}
 
 }
