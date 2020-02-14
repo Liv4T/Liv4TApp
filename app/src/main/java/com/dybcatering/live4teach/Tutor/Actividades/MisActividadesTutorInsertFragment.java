@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class MisActividadesTutorInsertFragment extends Fragment {
 
 	private static final String TAG = MisActividadesTutorInsertFragment.class.getSimpleName(); //getting the info
@@ -156,7 +158,44 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		btnregistrarse.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Guardar();
+				if (edttiempoestimado.getText().toString().isEmpty() || edttrabajoautonomo.getText().toString().isEmpty() ||
+						edtcontextualizacion.getText().toString().isEmpty() || edtactividad.getText().toString().isEmpty() ||
+						edttiporecursos1.getText().toString().isEmpty() || origenrecursos1.getText().toString().isEmpty() ||
+						edttiporecursos2.getText().toString().isEmpty() || origenrecursos2.getText().toString().isEmpty() ||
+						edttiporecursos3.getText().toString().isEmpty() || origenrecursos3.getText().toString().isEmpty() ||
+						edtentregables.getText().toString().isEmpty() || criteriosevaluacion1.getText().toString().isEmpty() ||
+						criteriosevaluacion2.getText().toString().isEmpty() || criteriosevaluacion3.getText().toString().isEmpty() ||
+						evidenciasasociadas.getText().toString().isEmpty()){
+
+
+					final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+							.setBackgroundColor(R.color.white)
+							.setimageResource(R.drawable.incompleto)
+							.setTextTitle("Campos Incompletos")
+							.setBody("Por favor valida que todos los campos esten diligenciados correctamente")
+							.setPositiveButtonText("Aceptar")
+							.setPositiveColor(R.color.colorbonton)
+							.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+								@Override
+								public void OnClick(View view, Dialog dialog) {
+									dialog.dismiss();
+								}
+							})
+							.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+							.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+							.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+							.setCancelable(false)
+							.build();
+					alert.show();
+
+
+				}else{
+
+					Guardar();
+				}
+
+
+
 			}
 		});
 		listarCurso(id_usuario);
@@ -273,6 +312,104 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 	}
 
 	public void Guardar(){
+		final String stSpinnerCurso = this.SpinnerCurso.getSelectedItem().toString();
+		final String stSpinnerUnidad = this.SpinnerUnidad.getSelectedItem().toString();
+		final String stSpinnerTipoActividad = this.SpinnerActividad.getSelectedItem().toString();
+		final String stTiempoestimado =this.edttiempoestimado.getText().toString().trim();
+		final String stTrabajoautonomo = this.edttrabajoautonomo.getText().toString().trim();
+		final String stContextualizacoin = this.edtcontextualizacion.getText().toString().trim();
+		final String stActividad = this.edtactividad.getText().toString().trim();
+		final String stTipoRecursos1 = this.edttiporecursos1.getText().toString().trim();
+		final String stTipoRecursos2 = this.edttiporecursos2.getText().toString().trim();
+		final String stTipoRecursos3 = this.edttiporecursos3.getText().toString().trim();
+		final String stOrigenRecursos1= this.origenrecursos1.getText().toString().trim();
+		final String stOrigenRecursos2= this.origenrecursos2.getText().toString().trim();
+		final String stOrigenRecursos3= this.origenrecursos3.getText().toString().trim();
+		final String stentregables = this.edtentregables.getText().toString().trim();
+		final String stcriteriosevaluacion1= this.criteriosevaluacion1.getText().toString().trim();
+		final String stcriteriosevaluacion2= this.criteriosevaluacion2.getText().toString().trim();
+		final String stcriteriosevaluacion3= this.criteriosevaluacion3.getText().toString().trim();
+		final String stevidenciasasociadas= this.evidenciasasociadas.getText().toString().trim();
+
+		String url = "";
+
+		StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+				new Response.Listener<String>() {
+					@Override
+					public void onResponse(String response) {
+						try {
+							JSONObject jsonObject = new JSONObject(response);
+							String success = jsonObject.getString("success");
+
+							if (success.equals("1")) {
+								Toasty.error(getActivity(), "Registro exitoso!", Toast.LENGTH_SHORT).show();
+								//startActivity(new Intent(Re.this, LoginActivity.class));
+							} else if (success.equals("2")){
+								final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+										.setBackgroundColor(R.color.white)
+										.setimageResource(R.drawable.incompleto)
+										.setTextTitle("Error en el registro")
+										.setBody("Por favor valida que todos los campos esten diligenciados correctamente")
+										.setPositiveButtonText("Aceptar")
+										.setPositiveColor(R.color.colorbonton)
+										.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+											@Override
+											public void OnClick(View view, Dialog dialog) {
+												dialog.dismiss();
+											}
+										})
+										.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+										.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+										.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+										.setCancelable(false)
+										.build();
+								alert.show();
+							}
+
+
+						} catch (JSONException e) {
+							e.printStackTrace();
+							Toasty.error(getActivity(), "Algo salio mal! " + e.toString(), Toast.LENGTH_SHORT).show();
+
+						}
+					}
+				},
+				new Response.ErrorListener() {
+					@Override
+					public void onErrorResponse(VolleyError error) {
+						Toasty.error(getActivity(), "Algo salio mal! " + error.toString(), Toast.LENGTH_SHORT).show();
+
+					}
+				})
+
+		{
+			@Override
+			protected Map<String, String> getParams() {
+				Map<String, String> params = new HashMap<>();
+				params.put("NombreCurso", stSpinnerCurso);
+				params.put("NombreUnidad", stSpinnerUnidad);
+				params.put("TipoActividad", stSpinnerTipoActividad);
+				params.put("estimated_duration_platform", stTiempoestimado);
+				params.put("estimated_duration_autonomous_work", stTrabajoautonomo);
+				params.put("theme_contextualization", stContextualizacoin);
+				params.put("activity", stActividad);
+				params.put("type_resources_1", stTipoRecursos1);
+				params.put("type_resources_2", stTipoRecursos2);
+				params.put("type_resources_3", stTipoRecursos3);
+				params.put("origin_resource1", stOrigenRecursos1);
+				params.put("origin_resource2", stOrigenRecursos2);
+				params.put("origin_resource3", stOrigenRecursos3);
+				params.put("deliverables", stentregables);
+				params.put("evaluation_criteria1", stcriteriosevaluacion1);
+				params.put("evaluation_criteria2", stcriteriosevaluacion2);
+				params.put("evaluation_criteria3", stcriteriosevaluacion3);
+				return params;
+			}
+		};
+
+		RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+		requestQueue.add(stringRequest);
+
 
 	}
 
