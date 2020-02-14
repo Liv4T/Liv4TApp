@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Tutor.Actividades;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -7,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -20,6 +22,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -39,6 +42,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 	ArrayList<String> Curso;
 	ArrayList<String> Unidad;
 	private RequestQueue mRequestQueue;
+	private Button btninfocontext, btnactividad, btnentregables;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -51,6 +55,81 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		id_usuario = user.get(SessionManager.ID);
 		SpinnerCurso = view.findViewById(R.id.spcurso);
 		SpinnerUnidad = view.findViewById(R.id.spunidad);
+		btninfocontext = view.findViewById(R.id.btninfocontext);
+		btnactividad = view.findViewById(R.id.btnactividadcontext);
+		btnentregables = view.findViewById(R.id.btnentregables);
+		btninfocontext.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+						.setBackgroundColor(R.color.white)
+						.setimageResource(R.drawable.ic_info)
+						.setTextSubTitle("Contextualización del Tema")
+						.setBody("Redactar la contextualización del tema a la que se va a referir la actividad planteada")
+						.setPositiveButtonText("Aceptar")
+						.setPositiveColor(R.color.colorbonton)
+						.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+							@Override
+							public void OnClick(View view, Dialog dialog) {
+									dialog.dismiss();
+								}
+						})
+						.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setCancelable(false)
+						.build();
+				alert.show();
+			}
+		});
+		btnactividad.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+						.setBackgroundColor(R.color.white)
+						.setimageResource(R.drawable.ic_info)
+						.setTextSubTitle("Actividad")
+						.setBody("Describir de forma clara y sencilla la actividad que debe realizar de acuerdo con el tema y el propósito a evaluar. (referir cuales son los recursos con los que cuenta el estudiante, Ej. Videos, lecturas, vClass y otros)")
+						.setPositiveButtonText("Aceptar")
+						.setPositiveColor(R.color.colorbonton)
+						.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+							@Override
+							public void OnClick(View view, Dialog dialog) {
+								dialog.dismiss();
+							}
+						})
+						.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setCancelable(false)
+						.build();
+				alert.show();
+			}
+		});
+		btnentregables.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+						.setBackgroundColor(R.color.white)
+						.setimageResource(R.drawable.ic_info)
+						.setTextSubTitle("Entregables")
+						.setBody("Describir de forma clara y sencilla los entregables que debe enviar el estudiante al tutor de acuerdo con el tema y el propósito a evaluar.")
+						.setPositiveButtonText("Aceptar")
+						.setPositiveColor(R.color.colorbonton)
+						.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+							@Override
+							public void OnClick(View view, Dialog dialog) {
+								dialog.dismiss();
+							}
+						})
+						.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setCancelable(false)
+						.build();
+				alert.show();
+			}
+		});
 		listarCurso(id_usuario);
 		//listarUnidad();
 		return view;
