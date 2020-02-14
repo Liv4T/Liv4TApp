@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_margin="@dimen/fab_margin">
 
         <ScrollView
             android:layout_width="match_parent"
@@ -24,18 +25,30 @@
                     android:id="@+id/Curso"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Curso" />
+                    android:text="Curso"
+                    android:textColor="@color/color"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <Spinner
                     android:id="@+id/spcurso"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold" />
 
                 <TextView
                     android:id="@+id/unidad"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Unidad" />
+                    android:text="Unidad"
+                    android:textColor="@color/color"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <Spinner
                     android:id="@+id/spunidad"
@@ -46,7 +59,11 @@
                     android:id="@+id/textView21"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tipo Actividad" />
+                    android:text="Tipo Actividad"
+                    android:textColor="@color/color"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <Spinner
                     android:id="@+id/sptipoactividad"
@@ -57,7 +74,11 @@
                     android:id="@+id/textView22"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Tiempo Estimado" />
+                    android:text="Tiempo Estimado"
+                    android:textColor="@color/color"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/editText"
@@ -65,21 +86,29 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Tiempo estimado de duración en plataforma"
-                    android:inputType="text"/>
+                    android:inputType="text"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/textView23"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="estimated_duration_autonomous_work" />
+                    android:text="Duración Estimada de Trabajo Autónomo" />
 
                 <EditText
                     android:id="@+id/editText4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="Duración estimada de trabajo autonomo"
-                    android:inputType="text" />
+                    android:hint="Duración Estimada de Trabajo Autónomo"
+                    android:inputType="text"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -90,7 +119,11 @@
                        android:id="@+id/textView24"
                        android:layout_width="wrap_content"
                        android:layout_height="wrap_content"
-                       android:text="Contextualización del Tema" />
+                       android:text="Contextualización del Tema"
+                       android:textColor="@color/color"
+                       android:fontFamily="@font/centurygothic"
+                       android:layout_alignParentBottom="true"
+                       android:textStyle="bold"/>
 
                    <Button
                        android:id="@+id/btninfocontext"
@@ -106,7 +139,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Contextualización del Tema"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
 
                 <LinearLayout
@@ -117,7 +154,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Actividad" />
+                        android:text="Actividad"
+                        android:textColor="@color/color"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
 
                     <Button
                         android:id="@+id/btnactividadcontext"
@@ -136,13 +177,18 @@
                     android:layout_height="100dp"
                     android:ems="10"
                     android:hint="Actividad"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/textView27"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Recursos Necesarios para la actividad" />
+                    android:text="Recursos Necesarios para la actividad"
+                    />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -156,7 +202,11 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Tipo de Recursos 1"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#000"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
 
                     <EditText
                         android:id="@+id/editText13"
@@ -165,7 +215,11 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Origen Recursos 1"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#000"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -180,7 +234,11 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Tipo de Recursos 2"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#000"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
 
                     <EditText
                         android:id="@+id/editText11"
@@ -189,7 +247,11 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Origen Recursos 2"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#000"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -204,7 +266,11 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Tipo de Recursos 3"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#000"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
 
                     <EditText
                         android:id="@+id/editText15"
@@ -213,7 +279,11 @@
                         android:layout_weight="1"
                         android:ems="10"
                         android:hint="Origen Recursos 3"
-                        android:inputType="textPersonName" />
+                        android:inputType="textPersonName"
+                        android:textColor="#000"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -224,7 +294,11 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Entregables" />
+                        android:text="Entregables"
+                        android:textColor="@color/color"
+                        android:fontFamily="@font/centurygothic"
+                        android:layout_alignParentBottom="true"
+                        android:textStyle="bold"/>
 
                     <Button
                         android:id="@+id/btnentregables"
@@ -240,13 +314,21 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Entregables"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/textView29"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Criterios de Evaluación / Evidencias Asociadas(desempeño, producto y conocimiento)" />
+                    android:text="Criterios de Evaluación / Evidencias Asociadas(desempeño, producto y conocimiento)"
+                    android:textColor="@color/color"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/editText17"
@@ -254,7 +336,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Criterios de Evaluación 1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/editText18"
@@ -262,7 +348,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Criterios de Evaluación 2"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/editText19"
@@ -270,7 +360,11 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Criterios de Evaluación 3"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <EditText
                     android:id="@+id/editText20"
@@ -278,9 +372,14 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Evidencias Asociadas 1"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:textColor="#000"
+                    android:fontFamily="@font/centurygothic"
+                    android:layout_alignParentBottom="true"
+                    android:textStyle="bold"/>
 
                 <Button
+                    android:layout_margin="20dp"
                     android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

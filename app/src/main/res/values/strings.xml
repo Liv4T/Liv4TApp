@@ -89,4 +89,10 @@ Android gives you a world-class platform for creating apps and games for Android
     <string name="cambiar">Cambiar Contraseña</string>
     <string name="title_activity_ejemploactivida">Ejemploactivida</string>
 
+    <string-array name="Actividades">
+
+        <item>Cuestionario 4 Preguntas</item>
+
+    </string-array>
+
 </resources>

@@ -55,6 +55,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		id_usuario = user.get(SessionManager.ID);
 		SpinnerCurso = view.findViewById(R.id.spcurso);
 		SpinnerUnidad = view.findViewById(R.id.spunidad);
+		SpinnerActividad = view.findViewById(R.id.sptipoactividad);
 		btninfocontext = view.findViewById(R.id.btninfocontext);
 		btnactividad = view.findViewById(R.id.btnactividadcontext);
 		btnentregables = view.findViewById(R.id.btnentregables);
@@ -131,7 +132,11 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 			}
 		});
 		listarCurso(id_usuario);
-		//listarUnidad();
+		ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getActivity(),  R.array.Actividades, android.R.layout.simple_spinner_item);
+		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		SpinnerActividad.setAdapter(adapter);
+
+
 		return view;
 	}
 
