@@ -81,7 +81,7 @@
                     android:textStyle="bold"/>
 
                 <EditText
-                    android:id="@+id/editText"
+                    android:id="@+id/edtTiempoEstimadoDuracion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -99,7 +99,7 @@
                     android:text="Duración Estimada de Trabajo Autónomo" />
 
                 <EditText
-                    android:id="@+id/editText4"
+                    android:id="@+id/edtTiempoTrabajoAutonomo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -134,7 +134,7 @@
                </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editText5"
+                    android:id="@+id/edtContextualizacionTema"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -172,7 +172,7 @@
 
 
                 <EditText
-                    android:id="@+id/editText6"
+                    android:id="@+id/edtActividad"
                     android:layout_width="match_parent"
                     android:layout_height="100dp"
                     android:ems="10"
@@ -196,7 +196,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editText12"
+                        android:id="@+id/edtTipoRecursos1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -209,17 +209,17 @@
                         android:textStyle="bold"/>
 
                     <EditText
-                        android:id="@+id/editText13"
+                        android:id="@+id/edtOrigenRecursos1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
                         android:layout_weight="1"
                         android:ems="10"
+                        android:fontFamily="@font/centurygothic"
                         android:hint="Origen Recursos 1"
                         android:inputType="textPersonName"
                         android:textColor="#000"
-                        android:fontFamily="@font/centurygothic"
-                        android:layout_alignParentBottom="true"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -228,7 +228,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editText10"
+                        android:id="@+id/edtTipoRecursos2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -241,7 +241,7 @@
                         android:textStyle="bold"/>
 
                     <EditText
-                        android:id="@+id/editText11"
+                        android:id="@+id/edtOrigenRecursos2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -260,7 +260,7 @@
                     android:orientation="horizontal">
 
                     <EditText
-                        android:id="@+id/editText14"
+                        android:id="@+id/edtTipoRecursos3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -273,7 +273,7 @@
                         android:textStyle="bold"/>
 
                     <EditText
-                        android:id="@+id/editText15"
+                        android:id="@+id/edtOrigenRecursos3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -309,7 +309,7 @@
                 </LinearLayout>
 
                 <EditText
-                    android:id="@+id/editText16"
+                    android:id="@+id/edtEntregables"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -331,7 +331,7 @@
                     android:textStyle="bold"/>
 
                 <EditText
-                    android:id="@+id/editText17"
+                    android:id="@+id/edtCriteriosEvaluacion1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -343,7 +343,7 @@
                     android:textStyle="bold"/>
 
                 <EditText
-                    android:id="@+id/editText18"
+                    android:id="@+id/edtCriteriosEvaluacion2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -355,7 +355,7 @@
                     android:textStyle="bold"/>
 
                 <EditText
-                    android:id="@+id/editText19"
+                    android:id="@+id/edtCriteriosEvaluacion3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -367,7 +367,7 @@
                     android:textStyle="bold"/>
 
                 <EditText
-                    android:id="@+id/editText20"
+                    android:id="@+id/edtEvidenciasAsociadas"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
@@ -380,7 +380,7 @@
 
                 <Button
                     android:layout_margin="20dp"
-                    android:id="@+id/button"
+                    android:id="@+id/btnRegistrar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Registrar"

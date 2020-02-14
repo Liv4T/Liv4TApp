@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -42,7 +43,12 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 	ArrayList<String> Curso;
 	ArrayList<String> Unidad;
 	private RequestQueue mRequestQueue;
-	private Button btninfocontext, btnactividad, btnentregables;
+	private Button btninfocontext, btnactividad, btnentregables, btnregistrarse;
+	private EditText edttiempoestimado, edttrabajoautonomo, edtcontextualizacion, edtactividad,
+					edttiporecursos1, edttiporecursos2, edttiporecursos3,
+					origenrecursos1, origenrecursos2, origenrecursos3,
+					edtentregables, criteriosevaluacion1, criteriosevaluacion2,
+					criteriosevaluacion3, evidenciasasociadas;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -56,9 +62,25 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		SpinnerCurso = view.findViewById(R.id.spcurso);
 		SpinnerUnidad = view.findViewById(R.id.spunidad);
 		SpinnerActividad = view.findViewById(R.id.sptipoactividad);
+		edttiempoestimado = view.findViewById(R.id.edtTiempoEstimadoDuracion);
+		edttrabajoautonomo = view.findViewById(R.id.edtTiempoTrabajoAutonomo);
+		edtcontextualizacion = view.findViewById(R.id.edtContextualizacionTema);
+		edtactividad = view.findViewById(R.id.edtActividad);
+		edttiporecursos1= view.findViewById(R.id.edtTipoRecursos1);
+		origenrecursos1 = view.findViewById(R.id.edtOrigenRecursos1);
+		edttiporecursos2 = view.findViewById(R.id.edtTipoRecursos2);
+		origenrecursos2 = view.findViewById(R.id.edtOrigenRecursos2);
+		edttiporecursos3= view.findViewById(R.id.edtTipoRecursos3);
+		origenrecursos3= view.findViewById(R.id.edtOrigenRecursos3);
+		edtentregables = view.findViewById(R.id.edtEntregables);
+		criteriosevaluacion1 = view.findViewById(R.id.edtCriteriosEvaluacion1);
+		criteriosevaluacion2 = view.findViewById(R.id.edtCriteriosEvaluacion2);
+		criteriosevaluacion3 = view.findViewById(R.id.edtCriteriosEvaluacion3);
+		evidenciasasociadas = view.findViewById(R.id.edtEvidenciasAsociadas);
 		btninfocontext = view.findViewById(R.id.btninfocontext);
 		btnactividad = view.findViewById(R.id.btnactividadcontext);
 		btnentregables = view.findViewById(R.id.btnentregables);
+		btnregistrarse = view.findViewById(R.id.btnRegistrar);
 		btninfocontext.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -129,6 +151,12 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 						.setCancelable(false)
 						.build();
 				alert.show();
+			}
+		});
+		btnregistrarse.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Guardar();
 			}
 		});
 		listarCurso(id_usuario);
@@ -241,6 +269,10 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 			RetryPolicy policy = new DefaultRetryPolicy(socketTimeout, DefaultRetryPolicy.DEFAULT_MAX_RETRIES, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
 			stringRequest.setRetryPolicy(policy);
 			requestQueue.add(stringRequest);
+
+	}
+
+	public void Guardar(){
 
 	}
 
