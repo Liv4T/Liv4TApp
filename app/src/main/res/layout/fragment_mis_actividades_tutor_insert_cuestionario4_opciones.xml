@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tutor.Actividades.InsertCuestionario4Opciones.MisActividadesTutorInsertCuestionario4Opciones">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pregunta" />
+
+            <EditText
+                android:id="@+id/txtPregunta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Pregunta"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Respuesta Correcta" />
+
+            <EditText
+                android:id="@+id/txtRespuestaCorrecta"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Respuesta Correcta"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Respuesta Incorrecta 1" />
+
+            <EditText
+                android:id="@+id/txtRespuestaIncorrecta1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Respuesta Incorrecta 1"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Respuesta Incorrecta 2" />
+
+            <EditText
+                android:id="@+id/txtRespuestaIncorrecta2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Respuesta Incorrecta 2"
+                android:inputType="textPersonName" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Respuesta Incorrecta 3" />
+
+            <EditText
+                android:id="@+id/txtRespuestaIncorrecta3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Respuesta Incorrecta 3"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/btnguardar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Guardar "
+                android:background="@drawable/ovalorange"
+                android:textStyle="bold"
+                android:fontFamily="@font/centurygothic"
+                android:textColor="@color/colortextoblanco"/>
+
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
