@@ -1,9 +1,11 @@
 package com.dybcatering.live4teach.Tutor.Actividades;
 
 import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -34,6 +37,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import es.dmoral.toasty.Toasty;
+
 public class MisActividadesTutorInsertFragment extends Fragment {
 
 	private static final String TAG = MisActividadesTutorInsertFragment.class.getSimpleName(); //getting the info
@@ -50,6 +55,10 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 					origenrecursos1, origenrecursos2, origenrecursos3,
 					edtentregables, criteriosevaluacion1, criteriosevaluacion2,
 					criteriosevaluacion3, evidenciasasociadas;
+
+	public String strLastId;
+
+	private TextView lastid;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -78,6 +87,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		criteriosevaluacion2 = view.findViewById(R.id.edtCriteriosEvaluacion2);
 		criteriosevaluacion3 = view.findViewById(R.id.edtCriteriosEvaluacion3);
 		evidenciasasociadas = view.findViewById(R.id.edtEvidenciasAsociadas);
+		lastid = view.findViewById(R.id.id_last);
 		btninfocontext = view.findViewById(R.id.btninfocontext);
 		btnactividad = view.findViewById(R.id.btnactividadcontext);
 		btnentregables = view.findViewById(R.id.btnentregables);
@@ -343,8 +353,27 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 							String success = jsonObject.getString("success");
 
 							if (success.equals("1")) {
-								Toast.makeText(getActivity(), "Registro exitoso!", Toast.LENGTH_SHORT).show();
-								//startActivity(new Intent(Re.this, LoginActivity.class));
+								final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+										.setBackgroundColor(R.color.white)
+										.setimageResource(R.drawable.ic_info)
+										.setTextSubTitle("Registro Exitoso!")
+										.setBody("Ahora vamos a registrar la planeación didactica de esta actividad ")
+										.setPositiveButtonText("Aceptar")
+										.setPositiveColor(R.color.colorbonton)
+										.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+											@Override
+											public void OnClick(View view, Dialog dialog) {
+												dialog.dismiss();
+												swapFragment();
+											}
+										})
+										.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+										.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+										.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+										.setCancelable(false)
+										.build();
+
+								alert.show();
 							} else if (success.equals("2")){
 								final Dialog mailDialog = new Dialog(getActivity());
 								mailDialog.getWindow();
@@ -408,33 +437,52 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 
 	}
 
-}
+	private void swapFragment() {
+		String url = "https://dybcatering.com/back_live_app/miscursos/misactividades/tutor/listarultimaactividad.php";
+		final ProgressDialog progressDialog = new ProgressDialog(getActivity());
+		progressDialog.setMessage("Cargando...");
+		progressDialog.show();
+		progressDialog.setCancelable(false);
+		StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
+				new Response.Listener<String>() {
+					@Override
+					public void onResponse(String response) {
+						progressDialog.dismiss();
+						try {
+							JSONObject jsonObject = new JSONObject(response);
+							JSONArray jsonArray = jsonObject.getJSONArray("Registros");
 
+								JSONObject hit = jsonArray.getJSONObject(0);
+								String id = hit.getString("id");
+							//	Toast.makeText(getContext(), "el id es" + id, Toast.LENGTH_SHORT).show();
+								lastid.setText(id);
+							Fragment someFragment = new MisActividadesTutorPlaneacionDidactica();
+							FragmentTransaction transaction = getFragmentManager().beginTransaction();
+							Bundle arguments = new Bundle();
+							String envio = lastid.getText().toString();
+							arguments.putString("idactividad", envio);
+							//arguments.putString("daniel", "hola");
+							someFragment.setArguments(arguments);
+							transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+							transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+							transaction.commit();
 
-
-/*ActivityRequest activityRequest = new ActivityRequest(stSpinnerCurso, stSpinnerUnidad, stSpinnerUnidad,stSpinnerTipoActividad,
-				stTiempoestimado, stTrabajoautonomo, stContextualizacoin, stActividad, stTipoRecursos1, stTipoRecursos2, stTipoRecursos3,
-				stOrigenRecursos1, stOrigenRecursos2, stOrigenRecursos3, stentregables, stcriteriosevaluacion1, stcriteriosevaluacion2, stcriteriosevaluacion3,  new Response.Listener<String>(){
+						} catch (JSONException e) {
+							e.printStackTrace();
+							progressDialog.dismiss();
+							Toasty.error(getContext(), "Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT).show();
+						}
+					}
+				}, new Response.ErrorListener() {
 			@Override
-			public void onResponse(String response) {
-			//	progressDialog.dismiss();
-
-				Log.e("Response from server", response);
-
-				try {
-					if (new JSONObject(response).getBoolean("success")) {
-
-						Toasty.success(getActivity(),"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
-
-
-
-					} else
-						Toasty.error(getActivity(),"La actividad ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
-				} catch (JSONException e) {
-					e.printStackTrace();
-					Toasty.error(getActivity(),"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
-				}
+			public void onErrorResponse(VolleyError error) {
+				error.printStackTrace();
+				progressDialog.dismiss();
+				Toasty.error(getContext(), "Parece que algo salió mal o aun no has agregado cursos", Toast.LENGTH_SHORT).show();
 			}
 		});
-		requestQueue.add(activityRequest);
-*/
+		RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
+		requestQueue.add(stringRequest);
+	}
+
+}
