@@ -1,6 +1,7 @@
 package com.dybcatering.live4teach.Tutor.Actividades;
 
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -33,8 +34,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-import es.dmoral.toasty.Toasty;
-
 public class MisActividadesTutorInsertFragment extends Fragment {
 
 	private static final String TAG = MisActividadesTutorInsertFragment.class.getSimpleName(); //getting the info
@@ -44,7 +43,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 	private Spinner SpinnerCurso, SpinnerUnidad, SpinnerActividad;
 	ArrayList<String> Curso;
 	ArrayList<String> Unidad;
-	private RequestQueue mRequestQueue;
+	RequestQueue requestQueue;
 	private Button btninfocontext, btnactividad, btnentregables, btnregistrarse;
 	private EditText edttiempoestimado, edttrabajoautonomo, edtcontextualizacion, edtactividad,
 					edttiporecursos1, edttiporecursos2, edttiporecursos3,
@@ -83,6 +82,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		btnactividad = view.findViewById(R.id.btnactividadcontext);
 		btnentregables = view.findViewById(R.id.btnentregables);
 		btnregistrarse = view.findViewById(R.id.btnRegistrar);
+		requestQueue = Volley.newRequestQueue(getActivity());
 		btninfocontext.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -191,7 +191,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 
 				}else{
 
-					Guardar();
+					Guardar(id_usuario);
 				}
 
 
@@ -311,7 +311,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 
 	}
 
-	public void Guardar(){
+	public void Guardar(final String id){
 		final String stSpinnerCurso = this.SpinnerCurso.getSelectedItem().toString();
 		final String stSpinnerUnidad = this.SpinnerUnidad.getSelectedItem().toString();
 		final String stSpinnerTipoActividad = this.SpinnerActividad.getSelectedItem().toString();
@@ -331,7 +331,8 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 		final String stcriteriosevaluacion3= this.criteriosevaluacion3.getText().toString().trim();
 		final String stevidenciasasociadas= this.evidenciasasociadas.getText().toString().trim();
 
-		String url = "";
+
+	String url = "https://dybcatering.com/back_live_app/miscursos/misactividades/tutor/insertaractividad.php";
 
 		StringRequest stringRequest = new StringRequest(Request.Method.POST, url,
 				new Response.Listener<String>() {
@@ -342,34 +343,27 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 							String success = jsonObject.getString("success");
 
 							if (success.equals("1")) {
-								Toasty.error(getActivity(), "Registro exitoso!", Toast.LENGTH_SHORT).show();
+								Toast.makeText(getActivity(), "Registro exitoso!", Toast.LENGTH_SHORT).show();
 								//startActivity(new Intent(Re.this, LoginActivity.class));
 							} else if (success.equals("2")){
-								final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
-										.setBackgroundColor(R.color.white)
-										.setimageResource(R.drawable.incompleto)
-										.setTextTitle("Error en el registro")
-										.setBody("Por favor valida que todos los campos esten diligenciados correctamente")
-										.setPositiveButtonText("Aceptar")
-										.setPositiveColor(R.color.colorbonton)
-										.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
-											@Override
-											public void OnClick(View view, Dialog dialog) {
-												dialog.dismiss();
+								final Dialog mailDialog = new Dialog(getActivity());
+								mailDialog.getWindow();
+								android.app.AlertDialog alertDialog = new android.app.AlertDialog.Builder(getActivity(), R.style.AppTheme).create();
+								alertDialog.setTitle("Error");
+								alertDialog.setMessage("Error en el registro, intenta nuevamente");
+								alertDialog.setButton(android.app.AlertDialog.BUTTON_NEUTRAL, "OK",
+										new DialogInterface.OnClickListener() {
+											public void onClick(DialogInterface dialog, int which) {
+
 											}
-										})
-										.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
-										.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
-										.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
-										.setCancelable(false)
-										.build();
-								alert.show();
+										});
+								alertDialog.show();
 							}
 
 
 						} catch (JSONException e) {
 							e.printStackTrace();
-							Toasty.error(getActivity(), "Algo salio mal! " + e.toString(), Toast.LENGTH_SHORT).show();
+							Toast.makeText(getActivity(), "Algo salio mal! " + e.toString(), Toast.LENGTH_SHORT).show();
 
 						}
 					}
@@ -377,7 +371,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 				new Response.ErrorListener() {
 					@Override
 					public void onErrorResponse(VolleyError error) {
-						Toasty.error(getActivity(), "Algo salio mal! " + error.toString(), Toast.LENGTH_SHORT).show();
+						Toast.makeText(getActivity(), "Algo salio mal! " + error.toString(), Toast.LENGTH_SHORT).show();
 
 					}
 				})
@@ -386,9 +380,10 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 			@Override
 			protected Map<String, String> getParams() {
 				Map<String, String> params = new HashMap<>();
-				params.put("NombreCurso", stSpinnerCurso);
-				params.put("NombreUnidad", stSpinnerUnidad);
-				params.put("TipoActividad", stSpinnerTipoActividad);
+				params.put("id_courses", stSpinnerCurso);
+				params.put("id_unit", stSpinnerUnidad);
+				params.put("id_user", id);
+				params.put("activitytype", stSpinnerTipoActividad);
 				params.put("estimated_duration_platform", stTiempoestimado);
 				params.put("estimated_duration_autonomous_work", stTrabajoautonomo);
 				params.put("theme_contextualization", stContextualizacoin);
@@ -414,3 +409,32 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 	}
 
 }
+
+
+
+/*ActivityRequest activityRequest = new ActivityRequest(stSpinnerCurso, stSpinnerUnidad, stSpinnerUnidad,stSpinnerTipoActividad,
+				stTiempoestimado, stTrabajoautonomo, stContextualizacoin, stActividad, stTipoRecursos1, stTipoRecursos2, stTipoRecursos3,
+				stOrigenRecursos1, stOrigenRecursos2, stOrigenRecursos3, stentregables, stcriteriosevaluacion1, stcriteriosevaluacion2, stcriteriosevaluacion3,  new Response.Listener<String>(){
+			@Override
+			public void onResponse(String response) {
+			//	progressDialog.dismiss();
+
+				Log.e("Response from server", response);
+
+				try {
+					if (new JSONObject(response).getBoolean("success")) {
+
+						Toasty.success(getActivity(),"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
+
+
+
+					} else
+						Toasty.error(getActivity(),"La actividad ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
+				} catch (JSONException e) {
+					e.printStackTrace();
+					Toasty.error(getActivity(),"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
+				}
+			}
+		});
+		requestQueue.add(activityRequest);
+*/
