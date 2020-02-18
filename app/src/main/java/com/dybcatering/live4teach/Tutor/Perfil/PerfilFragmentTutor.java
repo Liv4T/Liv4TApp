@@ -149,6 +149,19 @@ public class PerfilFragmentTutor extends Fragment {
             }
         });
 
+        primage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment actualizarDatosFragment = new PerfilFragmentFotoPerfilTutor();
+                //tvname.setText("Daniel");
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
+
+            }
+        });
+
         return myView;
     }
 
