@@ -22,7 +22,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Actividades.InsertCuestionario4Opciones.MisActividadesTutorInsertCuestionario4Opciones;
+import com.dybcatering.live4teach.Tutor.Actividades.InsertCuestionario4Opciones.MisActividadesTutorInsertCuestionario4OpcionesFragment;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 import org.json.JSONException;
@@ -229,7 +229,7 @@ public class MisActividadesTutorPlaneacionDidactica extends Fragment {
 	}
 
 	private void iniciarTransicionGuardarActividad() {
-		Fragment someFragment = new MisActividadesTutorInsertCuestionario4Opciones();
+		Fragment someFragment = new MisActividadesTutorInsertCuestionario4OpcionesFragment();
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		Bundle arguments = getArguments();
 

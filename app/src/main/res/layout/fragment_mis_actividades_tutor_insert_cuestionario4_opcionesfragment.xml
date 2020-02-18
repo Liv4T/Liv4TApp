@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tutor.Actividades.InsertCuestionario4Opciones.MisActividadesTutorInsertCuestionario4Opciones">
+    tools:context=".Tutor.Actividades.InsertCuestionario4Opciones.MisActividadesTutorInsertCuestionario4OpcionesFragment">
 
     <ScrollView
         android:layout_width="match_parent"
