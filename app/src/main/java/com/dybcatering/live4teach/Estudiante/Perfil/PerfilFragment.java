@@ -27,6 +27,7 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dybcatering.live4teach.BuildConfig;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentFotoPerfilTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.nex3z.notificationbadge.NotificationBadge;
 import com.squareup.picasso.Picasso;
@@ -148,7 +149,18 @@ public class PerfilFragment extends Fragment {
                 alert.show();
             }
         });
+        primage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Fragment actualizarDatosFragment = new PerfilFragmentFotoPerfilTutor();
+                //tvname.setText("Daniel");
+                FragmentTransaction transaction = getFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, actualizarDatosFragment ); // give your fragment container id in first parameter
+                transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+                transaction.commit();
 
+            }
+        });
 
         return myView;
     }
