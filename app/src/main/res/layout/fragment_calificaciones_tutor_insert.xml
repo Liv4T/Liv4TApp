@@ -26,7 +26,7 @@
                 android:textStyle="bold"/>
 
             <Spinner
-                android:id="@+id/spinner"
+                android:id="@+id/spinnerCurso"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -41,7 +41,7 @@
                 android:textStyle="bold"/>
 
             <Spinner
-                android:id="@+id/spinner2"
+                android:id="@+id/spinnerEstudiante"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -56,7 +56,7 @@
                 android:textStyle="bold"/>
 
             <Spinner
-                android:id="@+id/spinner3"
+                android:id="@+id/spinnerActividad"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

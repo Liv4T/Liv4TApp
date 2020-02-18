@@ -41,8 +41,6 @@ import es.dmoral.toasty.Toasty;
 
 public class MisActividadesTutorInsertFragment extends Fragment {
 
-	private static final String TAG = MisActividadesTutorInsertFragment.class.getSimpleName(); //getting the info
-	private static String URL_READ = "https://dybcatering.com/back_live_app/miscursos/detail_course.php";
 	SessionManager sessionManager;
 	String id_usuario;
 	private Spinner SpinnerCurso, SpinnerUnidad, SpinnerActividad;
@@ -297,6 +295,7 @@ public class MisActividadesTutorInsertFragment extends Fragment {
 						SpinnerUnidad.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, Unidad));
 
 					}catch (JSONException e){
+
 						e.printStackTrace();
 						Toast.makeText(getContext(), "algo salio mal" + e, Toast.LENGTH_SHORT).show();}
 				}
