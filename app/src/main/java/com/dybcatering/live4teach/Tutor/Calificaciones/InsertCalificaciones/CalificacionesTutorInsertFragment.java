@@ -104,8 +104,8 @@ public class CalificacionesTutorInsertFragment extends Fragment {
 				@Override
 				public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 					// your code here
+					//listarEstudianteInscrito(SpinnerCurso.getSelectedItem().toString());
 					listarEstudianteInscrito(SpinnerCurso.getSelectedItem().toString());
-
 				}
 
 				@Override
@@ -116,6 +116,8 @@ public class CalificacionesTutorInsertFragment extends Fragment {
 			});
 
 		}
+
+
 
 		private void listarEstudianteInscrito(final String Curso) {
 			EstudianteInscrito.clear();
@@ -141,9 +143,9 @@ public class CalificacionesTutorInsertFragment extends Fragment {
 						SpinnerEstudianteInscrito.setAdapter(new ArrayAdapter<String>(getActivity().getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, EstudianteInscrito));
 
 					}catch (JSONException e){
-						EstudianteInscrito.clear();
+						//EstudianteInscrito.removeAll(EstudianteInscrito);
 						e.printStackTrace();
-					//	Toast.makeText(getContext(), "algo salio mal" + e, Toast.LENGTH_SHORT).show();
+						Toast.makeText(getContext(), "algo salio mal" + e, Toast.LENGTH_SHORT).show();
 					}
 				}
 			}, new Response.ErrorListener() {
