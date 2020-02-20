@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -29,10 +30,18 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Login.Request.RegisterRequest;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.rilixtech.CountryCodePicker;
 
@@ -42,6 +51,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 
 import es.dmoral.toasty.Toasty;
 
@@ -66,6 +76,9 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 	private Spinner SpinnerSubcategoria;
 	ArrayList<String> Subcategoria;
 
+
+	FirebaseAuth auth;
+	DatabaseReference reference;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -138,6 +151,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 				datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 				datePickerDialog.show();
 
+				auth = FirebaseAuth.getInstance();
+
 
 			}
 		});
@@ -180,6 +195,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 									Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
 
 									sendRegistrationEmail(nombre,email);
+									register(usuario, email, password);
 									finish();
 
 								} else
@@ -922,6 +938,45 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		String ageS = ageInt.toString();
 
 		return ageS;
+	}
+
+	private void register(final String username, final String email, String password){
+		auth.createUserWithEmailAndPassword(email, password)
+				.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+					@Override
+					public void onComplete(@NonNull Task<AuthResult> task) {
+						if (task.isSuccessful()){
+							FirebaseUser firebaseUser = auth.getCurrentUser();
+							assert firebaseUser != null;
+							String userid = firebaseUser.getUid();
+							//cambio de firebaseUser.getUid a random generico de 20 caracteres
+
+							reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+
+							HashMap<String, String> hashMap = new HashMap<>();
+							hashMap.put("id",userid);
+							hashMap.put("username", username);
+							hashMap.put("imageURL", "default");
+							hashMap.put("status", "Desconectado");
+							hashMap.put("search", username.toLowerCase());
+
+
+							reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+								@Override
+								public void onComplete(@NonNull Task<Void> task) {
+									if (task.isSuccessful()){
+										Intent intent = new Intent(RegisterActivity.this, InicioActivity.class);
+										intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+										startActivity(intent);
+										finish();
+									}
+								}
+							});
+						} else  {
+							Toast.makeText(RegisterActivity.this, "No puedes registrarte con este email y contraseña", Toast.LENGTH_SHORT).show();
+						}
+					}
+				});
 	}
 
 }

@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetalleFragment;
+import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 
 import java.util.ArrayList;
 import java.util.List;
