@@ -134,7 +134,7 @@ public class MessageActivity extends AppCompatActivity {
 				assert user != null;
 				username.setText(user.getUsername());
 				if (user.getImageURL().equals("default")){
-					profile_image.setImageResource(R.mipmap.ic_launcher);
+					profile_image.setImageResource(R.drawable.logo);
 				}else{
 					Picasso.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
 //					Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);

@@ -12,8 +12,8 @@ import android.os.Build;
 
 public class OreoNotification extends ContextWrapper {
 
-	private static final String CHANNEL_ID ="com.dybcatering.chatfirebase";
-	private static final String CHANNEL_NAME ="ChatFirebase";
+	private static final String CHANNEL_ID ="com.dybcatering.live4teach";
+	private static final String CHANNEL_NAME ="Live4Teach";
 
 	private NotificationManager notificationManager;
 

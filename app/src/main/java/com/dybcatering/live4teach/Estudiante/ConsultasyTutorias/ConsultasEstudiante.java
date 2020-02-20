@@ -62,7 +62,7 @@ public class ConsultasEstudiante extends Fragment {
 	//	((AppCompatActivity)getActivity()).setTitle("");
 
 		//profile_image= view.findViewById(R.id.profile_image);
-		username = view.findViewById(R.id.username_profile);
+		//username = view.findViewById(R.id.username_profile);
 
 		firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
@@ -71,7 +71,7 @@ public class ConsultasEstudiante extends Fragment {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				User user  = dataSnapshot.getValue(User.class);
-				username.setText(user.getUsername());
+		//		username.setText(user.getUsername());
 			/*	if (user.getImageURL().equals("default")){
 					profile_image.setImageResource(R.drawable.perfil);
 				}else {
