@@ -19,6 +19,13 @@
         app:showAsAction="ifRoom"/>
 
     <item
+        android:id="@+id/nav_consultas"
+        android:enabled="true"
+        android:icon="@drawable/ic_consulta"
+        android:title="Consultas"
+        app:showAsAction="ifRoom"/>
+
+    <item
         android:id="@+id/nav_mis_calificaciones"
         android:enabled="true"
         android:icon="@drawable/ic_icono_calificaciones1"
