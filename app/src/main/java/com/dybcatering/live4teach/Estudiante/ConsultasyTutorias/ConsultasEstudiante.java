@@ -57,11 +57,11 @@ public class ConsultasEstudiante extends Fragment {
 		// Inflate the layout for this fragment
 		View view = inflater.inflate(R.layout.fragment_consultas_estudiante, container, false);
 
-		Toolbar toolbar = view.findViewById(R.id.toolbar);
+		//Toolbar toolbar = view.findViewById(R.id.toolbar);
 	//	((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
 	//	((AppCompatActivity)getActivity()).setTitle("");
 
-		profile_image= view.findViewById(R.id.profile_image);
+		//profile_image= view.findViewById(R.id.profile_image);
 		username = view.findViewById(R.id.username_profile);
 
 		firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -72,11 +72,11 @@ public class ConsultasEstudiante extends Fragment {
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				User user  = dataSnapshot.getValue(User.class);
 				username.setText(user.getUsername());
-				if (user.getImageURL().equals("default")){
+			/*	if (user.getImageURL().equals("default")){
 					profile_image.setImageResource(R.drawable.perfil);
 				}else {
 					Picasso.with(getContext()).load(user.getImageURL()).into(profile_image);
-				}
+				}*/
 			}
 
 			@Override
