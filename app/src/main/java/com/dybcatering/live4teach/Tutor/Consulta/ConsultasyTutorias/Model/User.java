@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model;
+package com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Model;
 
 public class User  {
     private String id;

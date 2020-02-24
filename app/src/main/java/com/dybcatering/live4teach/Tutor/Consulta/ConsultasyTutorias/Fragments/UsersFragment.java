@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Fragments;
+package com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Fragments;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,9 +11,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Adapter.UserAdapter;
-import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.User;
+
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Adapter.UserAdapter;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

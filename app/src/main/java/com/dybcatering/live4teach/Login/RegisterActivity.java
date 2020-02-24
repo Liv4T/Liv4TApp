@@ -195,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 									Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
 
 									sendRegistrationEmail(nombre,email);
-									register(usuario, email, password);
+									register(usuario, email, password, "3");
 									finish();
 
 								} else
@@ -940,7 +940,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		return ageS;
 	}
 
-	private void register(final String username, final String email, String password){
+	private void register(final String username, final String email, String password, final String tipousuario){
 		auth.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 					@Override
@@ -959,6 +959,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 							hashMap.put("imageURL", "default");
 							hashMap.put("status", "Desconectado");
 							hashMap.put("search", username.toLowerCase());
+							hashMap.put("type_user", tipousuario);
 
 
 							reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -966,7 +967,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 								public void onComplete(@NonNull Task<Void> task) {
 									if (task.isSuccessful()){
 										Intent intent = new Intent(RegisterActivity.this, InicioActivity.class);
-										intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+										//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 										startActivity(intent);
 										finish();
 									}
