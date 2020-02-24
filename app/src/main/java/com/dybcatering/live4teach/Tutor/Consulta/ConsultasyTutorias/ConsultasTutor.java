@@ -31,9 +31,9 @@ import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ConsultasEstudiante extends Fragment {
+public class ConsultasTutor extends Fragment {
 
-	public ConsultasEstudiante() {
+	public ConsultasTutor() {
 		// Required empty public constructor
 	}
 
@@ -47,7 +47,7 @@ public class ConsultasEstudiante extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		// Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.fragment_consultas_estudiante, container, false);
+		View view = inflater.inflate(R.layout.fragment_consultas_tutor, container, false);
 
 		//Toolbar toolbar = view.findViewById(R.id.toolbar);
 	//	((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);

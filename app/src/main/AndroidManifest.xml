@@ -69,6 +69,7 @@
             android:theme="@style/AppThemeLogin" />
         <activity android:name=".Tutor.InicioActivityTutor" />
         <activity android:name=".Estudiante.ConsultasyTutorias.MessageActivity" />
+        <activity android:name=".Tutor.Consulta.ConsultasyTutorias.MessageActivity" />
         <service android:name=".Estudiante.ConsultasyTutorias.Notifications.MyFirebaseIdService"
             android:enabled="true"
             android:exported="true">

@@ -18,9 +18,10 @@ public class RegisterRequest extends StringRequest {
 
 	private static final String REGISTER_URL = "https://dybcatering.com/back_live_app/register.php";
 	private Map<String, String> parameters;
-	public RegisterRequest(String name, String last_name, String email, String user_name, String password, String age, String birthday, String phone,  Response.Listener<String> listener) {
+	public RegisterRequest(String uuid,String name, String last_name, String email, String user_name, String password, String age, String birthday, String phone,  Response.Listener<String> listener) {
 		super(Method.POST, REGISTER_URL, listener, null);
 		parameters = new HashMap<>();
+		parameters.put("uuid", uuid);
 		parameters.put("name", name);
 		parameters.put("last_name", last_name);
 		parameters.put("email", email);

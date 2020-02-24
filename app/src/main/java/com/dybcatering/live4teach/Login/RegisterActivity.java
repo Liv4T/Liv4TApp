@@ -151,13 +151,13 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 				datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
 				datePickerDialog.show();
 
-				auth = FirebaseAuth.getInstance();
+
 
 
 			}
 		});
 
-
+		auth = FirebaseAuth.getInstance();
 
 		btn_regist.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -172,8 +172,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 					password = edtpassword.getText().toString();
 					fnacimiento = txtDate.getText().toString();
 					 edad = getAge(2020, 1, 24);
-
-
+					//cambio de firebaseUser.getUid a random generico de 20 caracteres
 
 					final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
 							.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
@@ -182,31 +181,76 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 							.setAnimationSpeed(2)
 							.setDimAmount(0.5f)
 							.show();
-					RegisterRequest registerRequest = new RegisterRequest(nombre, apellido, email,usuario, password,edad, fnacimiento, telefono, new Response.Listener<String>() {
-						@Override
-						public void onResponse(String response) {
-							progressDialog.dismiss();
 
-							Log.e("Response from server", response);
 
-							try {
-								if (new JSONObject(response).getBoolean("success")) {
+					auth.createUserWithEmailAndPassword(email, password)
+							.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+								@Override
+								public void onComplete(@NonNull Task<AuthResult> task) {
+									if (task.isSuccessful()){
+										FirebaseUser firebaseUser = auth.getCurrentUser();
+										assert firebaseUser != null;
+										String userid = firebaseUser.getUid();
+										//cambio de firebaseUser.getUid a random generico de 20 caracteres
 
-									Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
+										reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
 
-									sendRegistrationEmail(nombre,email);
-									register(usuario, email, password, "3");
-									finish();
+										HashMap<String, String> hashMap = new HashMap<>();
+										hashMap.put("id",userid);
+										hashMap.put("username", usuario);
+										hashMap.put("imageURL", "default");
+										hashMap.put("status", "Desconectado");
+										hashMap.put("search", usuario.toLowerCase());
+										hashMap.put("type_user", "3");
 
-								} else
-									Toasty.error(RegisterActivity.this,"El usuario ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
-							} catch (JSONException e) {
-								e.printStackTrace();
-								Toasty.error(RegisterActivity.this,"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
-							}
-						}
-					});
-					requestQueue.add(registerRequest);
+										reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+											@Override
+											public void onComplete(@NonNull Task<Void> task) {
+												if (task.isSuccessful()){
+													Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+													//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+													startActivity(intent);
+													//finish();
+												//	Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
+
+													sendRegistrationEmail(nombre,email);
+												}
+											}
+										});
+
+										RegisterRequest registerRequest = new RegisterRequest(userid, nombre, apellido, email,usuario, password,edad, fnacimiento, telefono, new Response.Listener<String>() {
+											@Override
+											public void onResponse(String response) {
+												progressDialog.dismiss();
+
+												Log.e("Response from server", response);
+
+												try {
+													if (new JSONObject(response).getBoolean("success")) {
+
+														Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
+
+														//sendRegistrationEmail(nombre,email);
+														//register(usuario, email, password, "3");
+														//finish();
+
+													} else
+														Toasty.error(RegisterActivity.this,"El usuario ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
+												} catch (JSONException e) {
+													e.printStackTrace();
+													Toasty.error(RegisterActivity.this,"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
+												}
+											}
+										});
+										requestQueue.add(registerRequest);
+
+
+									}
+								}
+							});
+
+
+
 
 
 
@@ -966,7 +1010,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 								@Override
 								public void onComplete(@NonNull Task<Void> task) {
 									if (task.isSuccessful()){
-										Intent intent = new Intent(RegisterActivity.this, InicioActivity.class);
+										Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
 										//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
 										startActivity(intent);
 										finish();

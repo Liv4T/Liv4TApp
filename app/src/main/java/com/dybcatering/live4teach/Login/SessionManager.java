@@ -12,6 +12,7 @@ import com.dybcatering.live4teach.Splash.SplashActivity;
 import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
@@ -78,7 +79,7 @@ public class SessionManager {
         Intent i = new Intent(context, SplashActivity.class);
         context.startActivity(i);
         ((InicioActivityTutor) context).finish();
-
+        FirebaseAuth.getInstance().signOut();
         FirebaseMessaging.getInstance().unsubscribeFromTopic("tutores")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -99,7 +100,7 @@ public class SessionManager {
         Intent i = new Intent(context, SplashActivity.class);
         context.startActivity(i);
         ((InicioActivity) context).finish();
-
+        FirebaseAuth.getInstance().signOut();
         FirebaseMessaging.getInstance().unsubscribeFromTopic("estudiantes")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
