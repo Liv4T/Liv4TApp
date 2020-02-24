@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -24,6 +25,8 @@ import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Notification
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Notifications.MyResponse;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Notifications.Sender;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Notifications.Token;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -32,6 +35,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -56,7 +60,7 @@ public class MessageActivity extends AppCompatActivity {
 	ImageButton btn_send;
 	EditText text_send;
 
-	com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Adapter.MessageAdapter MessageAdapter;
+    MessageAdapter MessageAdapter;
 	List<Chat> mchat;
 
 	RecyclerView recyclerView;

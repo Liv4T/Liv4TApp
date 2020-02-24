@@ -3,6 +3,7 @@ package com.dybcatering.live4teach.Login;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,7 +22,11 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.MessageActivity;
 import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -135,11 +141,36 @@ public class LoginActivity extends AppCompatActivity {
                                     intent1.putExtra("last_name", last_name);
                                     intent1.putExtra("type_user", type_user);
                                     intent1.putExtra("user_name", user_name);
+
                                     if (type_user.equals("3")){
+                                        FirebaseMessaging.getInstance().subscribeToTopic("estudiantes")
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        String msg = getString(R.string.msg_subscribed);
+                                                        if (!task.isSuccessful()) {
+                                                            msg = getString(R.string.msg_subscribe_failed);
+                                                        }
+                                                        //Log.d(TAG, msg);
+                                                        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                         startActivity(intent);
                                         finish();
                                         loading.setVisibility(View.GONE);
                                     }else{
+                                        FirebaseMessaging.getInstance().subscribeToTopic("tutores")
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        String msg = getString(R.string.msg_subscribed);
+                                                        if (!task.isSuccessful()) {
+                                                            msg = getString(R.string.msg_subscribe_failed);
+                                                        }
+                                                        //Log.d(TAG, msg);
+                                                        Toast.makeText(LoginActivity.this, msg, Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
                                         startActivity(intent1);
                                         finish();
                                         loading.setVisibility(View.GONE);

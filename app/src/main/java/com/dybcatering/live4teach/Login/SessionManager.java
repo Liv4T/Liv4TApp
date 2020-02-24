@@ -3,10 +3,16 @@ package com.dybcatering.live4teach.Login;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.SplashActivity;
 import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
 
@@ -73,6 +79,16 @@ public class SessionManager {
         context.startActivity(i);
         ((InicioActivityTutor) context).finish();
 
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("tutores")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Toast.makeText(context, "se ha cerrado la sesion", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
+
     }
 
 
@@ -83,6 +99,16 @@ public class SessionManager {
         Intent i = new Intent(context, SplashActivity.class);
         context.startActivity(i);
         ((InicioActivity) context).finish();
+
+        FirebaseMessaging.getInstance().unsubscribeFromTopic("estudiantes")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+
+                        Toast.makeText(context, "se ha cerrado la sesion", Toast.LENGTH_SHORT).show();
+
+                    }
+                });
 
     }
 
