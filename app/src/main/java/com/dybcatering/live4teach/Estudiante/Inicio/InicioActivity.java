@@ -17,6 +17,7 @@ import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.CategoriasCursos.CategoriasCursos;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.ConsultasEstudiante;
+import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.InsertConsultasyTutorias;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;

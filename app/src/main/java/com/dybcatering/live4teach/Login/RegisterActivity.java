@@ -249,22 +249,12 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 								}
 							});
 
-
-
-
-
-
 				}
 
 			}
 		});
 
-
-
-
 	}
-
-
 
 	@Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

@@ -100,6 +100,7 @@ public class ConsultasEstudiante extends Fragment {
 					Chat chat = snapshot.getValue(Chat.class);
 					if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()){
 						unread++;
+						viewPager.setAdapter(viewPagerAdapter);
 					}
 				}
 
