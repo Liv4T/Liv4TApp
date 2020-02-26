@@ -31,17 +31,24 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import es.dmoral.toasty.Toasty;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+
+import static java.time.LocalDate.now;
 
 public class MessageActivity extends AppCompatActivity {
 
@@ -119,7 +126,7 @@ public class MessageActivity extends AppCompatActivity {
 				if (!msg.equals("")){
 					sendMessage(firebaseUser.getUid(), userId, msg);
 				}else {
-					Toast.makeText(MessageActivity.this, "El mensaje se encuentra vacío", Toast.LENGTH_SHORT).show();
+					Toasty.error(MessageActivity.this, "El mensaje se encuentra vacío", Toast.LENGTH_SHORT).show();
 				}
 				text_send.setText("");
 			}
@@ -176,6 +183,8 @@ public class MessageActivity extends AppCompatActivity {
 	private void sendMessage(String sender, final String receiver, String message){
 
 		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd G 'at' HH:mm:ss z");
+		String currentDateandTime = sdf.format(new Date());
 		final String userId = intent.getStringExtra("userid");
 
 		HashMap<String, Object> hashMap = new HashMap<>();
@@ -183,6 +192,7 @@ public class MessageActivity extends AppCompatActivity {
 		hashMap.put("receiver", receiver);
 		hashMap.put("message", message);
 		hashMap.put("isseen", false);
+		hashMap.put("date", currentDateandTime);
 
 		reference.child("Chats").push().setValue(hashMap);
 
@@ -239,8 +249,7 @@ public class MessageActivity extends AppCompatActivity {
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 					Token token = dataSnapshot1.getValue(Token.class);
-					Data data = new Data(firebaseUser.getUid(), R.drawable.logo, username+": "+ message, "Nuevo Mensaje"
-											, userId);
+					Data data = new Data(firebaseUser.getUid(), R.drawable.logo, username+": "+ message, "Nuevo Mensaje", userId);
 
 					Sender sender = new Sender(data, token.getToken());
 

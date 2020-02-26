@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Fragments.ChatsFragment;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.Fragments.UsersFragment;
@@ -24,6 +25,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -42,7 +44,8 @@ public class ConsultasTutor extends Fragment {
 
 	FirebaseUser firebaseUser;
 	DatabaseReference reference;
-
+	Query query;
+	SessionManager sessionManager;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -56,10 +59,29 @@ public class ConsultasTutor extends Fragment {
 		//profile_image= view.findViewById(R.id.profile_image);
 		//username = view.findViewById(R.id.username_profile);
 
-		firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+		//firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+		sessionManager = new SessionManager(getContext());
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		final String username = user.get(SessionManager.USER_NAME);
 
-		reference.addValueEventListener(new ValueEventListener() {
+		query = FirebaseDatabase.getInstance().getReference("Users")
+				.orderByChild("username")
+				.equalTo(username);
+
+		query.addValueEventListener(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+				User user  = dataSnapshot.getValue(User.class);
+			}
+
+			@Override
+			public void onCancelled(@NonNull DatabaseError databaseError) {
+
+			}
+		});
+	//	reference = FirebaseDatabase.getInstance().getReference("Users").child("mildredfigueroaq+1");//firebaseUser.getUid());
+
+	/*	reference.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				User user  = dataSnapshot.getValue(User.class);
@@ -68,29 +90,30 @@ public class ConsultasTutor extends Fragment {
 					profile_image.setImageResource(R.drawable.perfil);
 				}else {
 					Picasso.with(getContext()).load(user.getImageURL()).into(profile_image);
-				}*/
+				}
 			}
 
 			@Override
 			public void onCancelled(@NonNull DatabaseError databaseError) {
 
 			}
-		});
+		});*/
 
 		final TabLayout tabLayout = view.findViewById(R.id.tablayout);
 		final ViewPager viewPager = view.findViewById(R.id.view_pager);
 
 
 
-		reference = FirebaseDatabase.getInstance().getReference("Chats");
-		reference.addValueEventListener(new ValueEventListener() {
+		query = FirebaseDatabase.getInstance().getReference("Chats");
+		query.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
 				int unread = 0;
 				for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 					Chat chat = snapshot.getValue(Chat.class);
-					if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()){
+					//if (chat.getReceiver().equals(usernamefirebaseUser.getUid()) && !chat.isIsseen()){
+					if (chat.getReceiver().equals(username) && !chat.isIsseen()){
 						unread++;
 					}
 				}
@@ -156,14 +179,14 @@ public class ConsultasTutor extends Fragment {
 	}
 
 
-	private void status(String status){
-
-		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+	/*private void status(String status){
+		query =  FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
+				.equalTo(username);//child(firebaseUser.getUid());
 
 		HashMap<String , Object> hashMap = new HashMap<>();
 		hashMap.put("status", status);
 
-		reference.updateChildren(hashMap);
+		//reference.updateChildren(hashMap);
 	}
 
 
@@ -177,5 +200,5 @@ public class ConsultasTutor extends Fragment {
 	public void onPause() {
 		super.onPause();
 		status("Desconectado");
-	}
+	}*/
 }

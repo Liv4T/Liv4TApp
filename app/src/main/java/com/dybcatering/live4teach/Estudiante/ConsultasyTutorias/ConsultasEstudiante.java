@@ -1,6 +1,7 @@
 package com.dybcatering.live4teach.Estudiante.ConsultasyTutorias;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -51,6 +52,8 @@ public class ConsultasEstudiante extends Fragment {
 	FirebaseUser firebaseUser;
 	DatabaseReference reference;
 
+	SharedPreferences sharedPreferences;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -63,7 +66,6 @@ public class ConsultasEstudiante extends Fragment {
 
 		//profile_image= view.findViewById(R.id.profile_image);
 		//username = view.findViewById(R.id.username_profile);
-
 		firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
 

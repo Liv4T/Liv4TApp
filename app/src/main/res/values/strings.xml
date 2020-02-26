@@ -76,6 +76,13 @@ Android gives you a world-class platform for creating apps and games for Android
 
     </string-array>
 
+    <string-array name="consulta">
+
+        <item>Seleccionar...</item>
+        <item>Consulta Online</item>
+        <item>Consulta Offline</item>
+    </string-array>
+
 
     <string name="registermail1">¡Este es Diago y Benitez, CEO de Web API! \n \n¡Bienvenido a bordo con nosotros en nombre de nuestro equipo! \n
      ¡Prometemos brindarle una experiencia de compra inolvidable en el futuro! \n \n

@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
@@ -25,6 +26,13 @@ import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.ConsultasTut
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 
 public class InicioActivityTutor extends AppCompatActivity {
     public DatabaseHandler db;
@@ -46,7 +54,27 @@ public class InicioActivityTutor extends AppCompatActivity {
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        String username = user.get(SessionManager.USER_NAME);
+        Query query = FirebaseDatabase.getInstance().getReference("Users")
+                .orderByChild("username")
+                .equalTo(username);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.exists()){
+                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                        Toast.makeText(InicioActivityTutor.this, "encontrado", Toast.LENGTH_SHORT).show();
+                    }
+                }
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 
 

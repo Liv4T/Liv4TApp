@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
+import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Token;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.SplashActivity;
@@ -13,6 +14,10 @@ import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.HashMap;
@@ -80,6 +85,7 @@ public class SessionManager {
         context.startActivity(i);
         ((InicioActivityTutor) context).finish();
         FirebaseAuth.getInstance().signOut();
+        removeToken();
         FirebaseMessaging.getInstance().unsubscribeFromTopic("tutores")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -101,6 +107,7 @@ public class SessionManager {
         context.startActivity(i);
         ((InicioActivity) context).finish();
         FirebaseAuth.getInstance().signOut();
+        removeToken();
         FirebaseMessaging.getInstance().unsubscribeFromTopic("estudiantes")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -118,5 +125,18 @@ public class SessionManager {
         editor.commit();
     }
 
+
+
+
+    private void removeToken() {
+
+
+        String refreshToken= FirebaseInstanceId.getInstance().getToken();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
+        Token token = new Token(refreshToken);
+        reference.child(firebaseUser.getUid()).removeValue();
+    }
 }
 

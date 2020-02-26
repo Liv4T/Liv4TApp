@@ -73,7 +73,8 @@ public class InicioActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_consultas:
                             if (sessionManager.isLoggin()){
-                                selectedFragment = new ConsultasEstudiante();
+                                //selectedFragment = new ConsultasEstudiante();
+                                selectedFragment = new InsertConsultasyTutorias();
                             }else{
                                 mostraralerta();
                                 selectedFragment = new CursosFragment();
