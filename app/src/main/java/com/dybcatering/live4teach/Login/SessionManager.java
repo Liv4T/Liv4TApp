@@ -85,7 +85,7 @@ public class SessionManager {
         context.startActivity(i);
         ((InicioActivityTutor) context).finish();
         FirebaseAuth.getInstance().signOut();
-        removeToken();
+        //removeToken();
         FirebaseMessaging.getInstance().unsubscribeFromTopic("tutores")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -107,7 +107,7 @@ public class SessionManager {
         context.startActivity(i);
         ((InicioActivity) context).finish();
         FirebaseAuth.getInstance().signOut();
-        removeToken();
+     //   removeToken();
         FirebaseMessaging.getInstance().unsubscribeFromTopic("estudiantes")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
