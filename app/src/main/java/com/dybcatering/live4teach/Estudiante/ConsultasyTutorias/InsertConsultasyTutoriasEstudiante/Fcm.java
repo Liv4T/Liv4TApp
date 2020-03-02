@@ -77,7 +77,7 @@ public class Fcm extends FirebaseMessagingService {
 				.setContentTitle("Nuevo Consulta: " + detalle)
 				.setSmallIcon(R.drawable.logo)
 				.setContentText("Usuario: " + titulo)
-				.setContentIntent(clickintent())
+				.setContentIntent(clickintent(titulo, detalle))
 				.setContentInfo("nuevo");
 		Random random = new Random();
 		int idNotify = random.nextInt(8000);
@@ -88,9 +88,10 @@ public class Fcm extends FirebaseMessagingService {
 		nm.notify(idNotify, builder.build());
 	}
 
-	public PendingIntent clickintent(){
+	public PendingIntent clickintent(String titulo, String detalle){
 		Intent nf  = new Intent(getApplicationContext(), ListadoConsultasDisponibles.class);
-		nf.putExtra("color", "rojo");
+		nf.putExtra("titulo", titulo);
+		nf.putExtra("detalle", detalle);
 		nf.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		return PendingIntent.getActivity(this, 0, nf, 0);
 	}
