@@ -79,6 +79,8 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 	Intent intent;
 	APIService apiService;
 
+	DatabaseReference databaseReference;
+
 	boolean notify = false;
 	private static String URL_READ = "https://dybcatering.com/back_live_app/read_detail.php";
 
@@ -115,13 +117,14 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 			public void onClick(View v) {
 				String nombreestudiante = txtNombreEstudiante.getText().toString();
 				String mensaje = editText.getText().toString();
+				String categoria = spinner.getSelectedItem().toString();
 
-				if (editText.getText().equals("")){
+				if (editText.getText().equals("") || spinner.getSelectedItem().toString().equals("Seleccionar...")){
 
 					Toast.makeText(getContext(), "la consulta se encuentra vacia", Toast.LENGTH_SHORT).show();
 
 				}else {
-						enviarMensajeTema(mensaje, nombreestudiante);
+						enviarMensajeTema(nombreestudiante, mensaje, categoria);
 				}
 			}
 		});
@@ -146,7 +149,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 
 		if (text.equals("Seleccionar...")){
 
-			Toast.makeText(getContext(), "No puede seleccionarse este"+ text, Toast.LENGTH_SHORT).show();
+			Toast.makeText(getContext(), "Debes Seleccionar una Opción "+ text, Toast.LENGTH_SHORT).show();
 		}else{
 			Toast.makeText(getContext(), "Seleccion"+ text, Toast.LENGTH_SHORT).show();
 
@@ -225,7 +228,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		Toast.makeText(getContext(), "el valor es" + valor, Toast.LENGTH_SHORT).show();
 	}
 
-	private void enviarMensajeTema(String titulo, String detalle){
+	private void enviarMensajeTema(String nombreestudiante, String mensaje, String tipo){
 
 		RequestQueue myRequest = Volley.newRequestQueue(getContext());
 		JSONObject json  = new JSONObject();
@@ -236,8 +239,8 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 			json.put("to", "/topics/"+"tutores");
 			JSONObject notificacion = new JSONObject();
 
-			notificacion.put("titulo", titulo);
-			notificacion.put("detalle", detalle);
+			notificacion.put("titulo", nombreestudiante);
+			notificacion.put("detalle", mensaje);
 
 			json.put("data", notificacion);
 
@@ -256,11 +259,43 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 				}
 			};
 			myRequest.add(request);
+			guardarMensaje(nombreestudiante, tipo, mensaje);
 
 		}catch (JSONException e){
 			e.printStackTrace();
 
 		}
 	}
+
+	private void guardarMensaje(final String nombreestudiante, final String categoria, String mensaje) {
+		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+		String receptor ="vacio";
+		String estado = "no resuelta";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		hashMap.put("id", firebaseUser.getUid());
+		hashMap.put("remitente", nombreestudiante);
+		hashMap.put("categoria", categoria);
+		hashMap.put("mensaje", mensaje);
+		hashMap.put("receptor", receptor);
+		hashMap.put("estado", estado);
+		reference.child("ConsultasEnviadas").push().setValue(hashMap);
+		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadas")
+				//.child(firebaseUser.getUid())
+				.child(firebaseUser.getUid())
+				.child(nombreestudiante);
+
+		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+				if (!dataSnapshot.exists()){
+					chatRef.child("id").child(firebaseUser.getUid());
+				}
+			}
+			@Override
+			public void onCancelled(@NonNull DatabaseError databaseError) {
+			}
+		});
+		}
+
 
 }

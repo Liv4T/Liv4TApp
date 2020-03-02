@@ -73,9 +73,9 @@ public class Fcm extends FirebaseMessagingService {
 		}
 		builder.setAutoCancel(true)
 				.setWhen(System.currentTimeMillis())
-				.setContentTitle(titulo)
+				.setContentTitle("Nuevo Consulta: " + detalle)
 				.setSmallIcon(R.drawable.logo)
-				.setContentText(detalle)
+				.setContentText("Usuario: " + titulo)
 				.setContentIntent(clickintent())
 				.setContentInfo("nuevo");
 		Random random = new Random();
