@@ -17,9 +17,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Fragments.APIService;
@@ -40,6 +42,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -118,8 +121,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 					Toast.makeText(getContext(), "la consulta se encuentra vacia", Toast.LENGTH_SHORT).show();
 
 				}else {
-
-					sendMessage(nombreestudiante, "ConsultasEnviadas",mensaje );
+						enviarMensajeTema(mensaje, nombreestudiante);
 				}
 			}
 		});
@@ -135,98 +137,9 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		return view;
 	}
 
-	private void sendMessage(final String nombreestudiante, final String categoria, String mensaje) {
-
-		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
-
-		HashMap<String, Object> hashMap = new HashMap<>();
-		hashMap.put("remitente", nombreestudiante);
-		hashMap.put("categoria", categoria);
-		hashMap.put("mensaje", mensaje);
 
 
-		reference.child("ConsultasEnviadas").push().setValue(hashMap);
 
-		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadas")
-				.child(firebaseUser.getUid())
-				.child(categoria);
-
-		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
-			@Override
-			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-					if (!dataSnapshot.exists()){
-						chatRef.child("id").child(firebaseUser.getUid());
-					}
-			}
-
-			@Override
-			public void onCancelled(@NonNull DatabaseError databaseError) {
-
-			}
-		});
-
-		final String msg = 	mensaje;
-
-		sendNotification(nombreestudiante, categoria, msg);
-		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
-		reference.addValueEventListener(new ValueEventListener() {
-			@Override
-			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-				User user = dataSnapshot.getValue(User.class);
-				if (notify){
-
-					sendNotification(nombreestudiante, user.getUsername(), msg);
-				}
-				notify = false;
-			}
-
-			@Override
-			public void onCancelled(@NonNull DatabaseError databaseError) {
-
-			}
-		});
-
-	}
-
-	private void sendNotification(String receiver, final String username, final String message){
-		final String userId = intent.getStringExtra("userid");
-		DatabaseReference tokens = FirebaseDatabase.getInstance().getReference("Tokens");
-		Query query = tokens.orderByKey().equalTo(receiver);
-		query.addValueEventListener(new ValueEventListener() {
-			@Override
-			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-				for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
-					Token token = dataSnapshot1.getValue(Token.class);
-					Data data = new Data(firebaseUser.getUid(), R.mipmap.ic_launcher, username+": "+ message, "Nuevo Mensaje"
-							, userId);
-
-					Sender sender = new Sender(data, token.getToken());
-
-					apiService.sendNotification(sender)
-							.enqueue(new Callback<MyResponse>() {
-								@Override
-								public void onResponse(Call<MyResponse> call, Response<MyResponse> response) {
-									if (response.code() == 200){
-										if (response.body().success != 1){
-											Toast.makeText(getActivity(), "Algo falló", Toast.LENGTH_SHORT).show();
-										}
-									}
-								}
-
-								@Override
-								public void onFailure(Call<MyResponse> call, Throwable t) {
-
-								}
-							});
-				}
-			}
-
-			@Override
-			public void onCancelled(@NonNull DatabaseError databaseError) {
-
-			}
-		});
-	}
 
 	public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 		String text =  parent.getItemAtPosition(position).toString();
@@ -311,4 +224,43 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		txtuuid.setText(valor);
 		Toast.makeText(getContext(), "el valor es" + valor, Toast.LENGTH_SHORT).show();
 	}
+
+	private void enviarMensajeTema(String titulo, String detalle){
+
+		RequestQueue myRequest = Volley.newRequestQueue(getContext());
+		JSONObject json  = new JSONObject();
+
+		try {
+
+
+			json.put("to", "/topics/"+"tutores");
+			JSONObject notificacion = new JSONObject();
+
+			notificacion.put("titulo", titulo);
+			notificacion.put("detalle", detalle);
+
+			json.put("data", notificacion);
+
+			String URL = "https://fcm.googleapis.com/fcm/send";
+
+			JsonObjectRequest request = new JsonObjectRequest(Request.Method.POST, URL, json,null, null){
+				@Override
+				public Map<String, String> getHeaders() throws AuthFailureError {
+					Map<String, String> header = new HashMap<>();
+
+					header.put("content-type", "application/json");
+					header.put("authorization", "key=AAAAb-m5_F0:APA91bEZtZOAaL8YO7vy_y3PCO-Xg_0B6jfDSDRmYjbZyDtCnHOS9BdjlrBzR-aVuagDnCpEe4wWCsjyqdrh5oytC_qa6R-y7A7_4n1pwpUgJkNMbcye8KESJP0OhkyU6EKLZytrb2b0");
+
+					return header;
+
+				}
+			};
+			myRequest.add(request);
+
+		}catch (JSONException e){
+			e.printStackTrace();
+
+		}
+	}
+
 }
