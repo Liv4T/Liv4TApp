@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasDisponibles.ListadoConsultasDisponibles;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -88,7 +89,7 @@ public class Fcm extends FirebaseMessagingService {
 	}
 
 	public PendingIntent clickintent(){
-		Intent nf  = new Intent(getApplicationContext(), InicioActivity.class);
+		Intent nf  = new Intent(getApplicationContext(), ListadoConsultasDisponibles.class);
 		nf.putExtra("color", "rojo");
 		nf.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
 		return PendingIntent.getActivity(this, 0, nf, 0);

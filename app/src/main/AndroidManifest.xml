@@ -21,7 +21,7 @@
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-
+        <activity android:name=".Tutor.Consulta.ConsultasDisponibles.ListadoConsultasDisponibles"></activity>
         <activity
             android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.Cuestionario.CuestionarioActivity"
             android:theme="@style/AppThemeRegist.NoActionBar" />
@@ -72,15 +72,14 @@
         <activity android:name=".Estudiante.ConsultasyTutorias.MessageActivity" />
         <activity android:name=".Tutor.Consulta.ConsultasyTutorias.MessageActivity" />
 
-
-        <service android:name=".Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.Fcm"
+        <service
+            android:name=".Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.Fcm"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
         <service
             android:name=".Estudiante.ConsultasyTutorias.Notifications.MyFirebaseIdService"
             android:enabled="true"
@@ -114,9 +113,6 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
-
     </application>
 
 </manifest>
