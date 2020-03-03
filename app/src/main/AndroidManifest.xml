@@ -21,7 +21,7 @@
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".Tutor.Consulta.ConsultasDisponibles.ListadoConsultasDisponibles"></activity>
+        <activity android:name=".Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles"></activity>
         <activity
             android:name=".Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.MisActividades.Cuestionario.CuestionarioActivity"
             android:theme="@style/AppThemeRegist.NoActionBar" />

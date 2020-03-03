@@ -9,9 +9,8 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Consulta.ConsultasDisponibles.ListadoConsultasDisponibles;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -89,7 +88,7 @@ public class Fcm extends FirebaseMessagingService {
 	}
 
 	public PendingIntent clickintent(String titulo, String detalle){
-		Intent nf  = new Intent(getApplicationContext(), ListadoConsultasDisponibles.class);
+		Intent nf  = new Intent(getApplicationContext(), ListadoOfflineConsultasDisponibles.class);
 		nf.putExtra("titulo", titulo);
 		nf.putExtra("detalle", detalle);
 		nf.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);

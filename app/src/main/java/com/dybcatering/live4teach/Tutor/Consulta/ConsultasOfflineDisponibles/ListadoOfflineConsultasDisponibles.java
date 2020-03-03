@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Consulta.ConsultasDisponibles;
+package com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import android.widget.Toast;
 import com.dybcatering.live4teach.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -20,11 +19,11 @@ import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
-public class ListadoConsultasDisponibles extends AppCompatActivity {
+public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
 
-	private List<ItemConsultasDisponibles> listData;
+	private List<ItemOfflineConsultasDisponibles> listData;
 	private RecyclerView rv;
-	private AdaptadorConsultasDisponibles adapter;
+	private AdaptadorOfflineConsultasDisponibles adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,10 +51,10 @@ public class ListadoConsultasDisponibles extends AppCompatActivity {
 			public void onDataChange(DataSnapshot dataSnapshot) {
 				if (dataSnapshot.exists()){
 					for (DataSnapshot npsnapshot : dataSnapshot.getChildren()){
-						ItemConsultasDisponibles l=npsnapshot.getValue(ItemConsultasDisponibles.class);
+						ItemOfflineConsultasDisponibles l=npsnapshot.getValue(ItemOfflineConsultasDisponibles.class);
 						listData.add(l);
 					}
-					adapter=new AdaptadorConsultasDisponibles(listData);
+					adapter=new AdaptadorOfflineConsultasDisponibles(listData);
 					rv.setAdapter(adapter);
 
 				}

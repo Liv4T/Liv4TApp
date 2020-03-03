@@ -1,6 +1,6 @@
-package com.dybcatering.live4teach.Tutor.Consulta.ConsultasDisponibles;
+package com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles;
 
-public class ItemConsultasDisponibles {
+public class ItemOfflineConsultasDisponibles {
 	private String Categoria;
 	private String Estado;
 	private String Id;
@@ -8,10 +8,10 @@ public class ItemConsultasDisponibles {
 	private String Receptor;
 	private String Remitente;
 
-	public ItemConsultasDisponibles() {
+	public ItemOfflineConsultasDisponibles() {
 	}
 
-	public ItemConsultasDisponibles(String categoria, String estado, String id, String mensaje, String receptor, String remitente) {
+	public ItemOfflineConsultasDisponibles(String categoria, String estado, String id, String mensaje, String receptor, String remitente) {
 		Categoria = categoria;
 		Estado = estado;
 		Id = id;

@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Consulta.ConsultasDisponibles;
+package com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -11,10 +11,10 @@ import com.dybcatering.live4teach.R;
 
 import java.util.List;
 
-public class AdaptadorConsultasDisponibles extends RecyclerView.Adapter<AdaptadorConsultasDisponibles.ViewHolder>{
-private List<ItemConsultasDisponibles> listData;
+public class AdaptadorOfflineConsultasDisponibles extends RecyclerView.Adapter<AdaptadorOfflineConsultasDisponibles.ViewHolder>{
+private List<ItemOfflineConsultasDisponibles> listData;
 
-public AdaptadorConsultasDisponibles(List<ItemConsultasDisponibles> listData) {
+public AdaptadorOfflineConsultasDisponibles(List<ItemOfflineConsultasDisponibles> listData) {
 		this.listData = listData;
 		}
 
@@ -27,7 +27,7 @@ public AdaptadorConsultasDisponibles(List<ItemConsultasDisponibles> listData) {
 
 	@Override
 	public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-			ItemConsultasDisponibles ld=listData.get(position);
+			ItemOfflineConsultasDisponibles ld=listData.get(position);
 
 			String categoria = ld.getCategoria();
 			String estado = ld.getEstado();
