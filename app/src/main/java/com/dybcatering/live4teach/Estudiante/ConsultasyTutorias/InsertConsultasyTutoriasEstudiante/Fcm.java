@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOnlineDisponibles.DetalleConsultaOnline;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -44,22 +45,36 @@ public class Fcm extends FirebaseMessagingService {
 
 			String titulo = remoteMessage.getData().get("titulo");
 			String detalle = remoteMessage.getData().get("detalle");
+			String categoria = remoteMessage.getData().get("categoria");
 
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O){
+			String categoriaonline = "Consulta Online";
+			String categoriaoffline = "Consulta Offline";
 
-				mayorqueoreo(titulo, detalle);
-			}
-			if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O){
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && categoria.equals(categoriaoffline)){
 
-				menorqueoreo();
-			}
+					mayorqueoreooffline(titulo, detalle);
+				} else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O){
+
+					menorqueoreooffline();
+				}
+
+
+				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O && categoria.equals(categoriaonline)){
+
+					mayorqueoreoonline(titulo, detalle);
+				} else if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.O && categoria.equals("Consulta Online")){
+
+					menorqueoreoonline();
+				}
+
+
 		}
 	}
 
-	private void menorqueoreo() {
+	private void menorqueoreooffline() {
 	}
 
-	private void mayorqueoreo(String titulo, String detalle){
+	private void mayorqueoreooffline(String titulo, String detalle){
 		String id = "mensaje";
 
 		NotificationManager nm = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
@@ -73,10 +88,10 @@ public class Fcm extends FirebaseMessagingService {
 		}
 		builder.setAutoCancel(true)
 				.setWhen(System.currentTimeMillis())
-				.setContentTitle("Nuevo Consulta: " + detalle)
+				.setContentTitle("Nueva Consulta Offline: " + detalle)
 				.setSmallIcon(R.drawable.logo)
 				.setContentText("Usuario: " + titulo)
-				.setContentIntent(clickintent(titulo, detalle))
+				.setContentIntent(clickintentoffline(titulo, detalle))
 				.setContentInfo("nuevo");
 		Random random = new Random();
 		int idNotify = random.nextInt(8000);
@@ -87,8 +102,46 @@ public class Fcm extends FirebaseMessagingService {
 		nm.notify(idNotify, builder.build());
 	}
 
-	public PendingIntent clickintent(String titulo, String detalle){
+	public PendingIntent clickintentoffline(String titulo, String detalle){
 		Intent nf  = new Intent(getApplicationContext(), ListadoOfflineConsultasDisponibles.class);
+		nf.putExtra("titulo", titulo);
+		nf.putExtra("detalle", detalle);
+		nf.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+		return PendingIntent.getActivity(this, 0, nf, 0);
+	}
+
+	private void menorqueoreoonline() {
+
+	}
+
+	private void mayorqueoreoonline(String titulo, String detalle) {
+		String id = "mensaje";
+
+		NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		NotificationCompat.Builder builder = new NotificationCompat.Builder(this, id);
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+			NotificationChannel nc = new NotificationChannel(id, "nuevo", NotificationManager.IMPORTANCE_HIGH);
+			nc.setShowBadge(true);
+			assert nm != null;
+			nm.createNotificationChannel(nc);
+
+		}
+		builder.setAutoCancel(true)
+				.setWhen(System.currentTimeMillis())
+				.setContentTitle("Nueva Consulta Online: " + detalle)
+				.setSmallIcon(R.drawable.logo)
+				.setContentText("Usuario: " + titulo)
+				.setContentIntent(clickintentonline(titulo, detalle))
+				.setContentInfo("nuevo");
+		Random random = new Random();
+		int idNotify = random.nextInt(8000);
+
+
+		assert nm != null;
+		nm.notify(idNotify, builder.build());
+	}
+	public PendingIntent clickintentonline(String titulo, String detalle){
+		Intent nf  = new Intent(getApplicationContext(), DetalleConsultaOnline.class);
 		nf.putExtra("titulo", titulo);
 		nf.putExtra("detalle", detalle);
 		nf.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);

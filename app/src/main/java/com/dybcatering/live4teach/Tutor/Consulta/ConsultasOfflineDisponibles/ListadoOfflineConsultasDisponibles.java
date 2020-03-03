@@ -43,7 +43,7 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
 		}
 
 
-		final Query nm= FirebaseDatabase.getInstance().getReference("ConsultasEnviadas")
+		final Query nm= FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOffline")
 				.orderByChild("estado")
 				.equalTo("no resuelta");
 		nm.addListenerForSingleValueEvent(new ValueEventListener() {

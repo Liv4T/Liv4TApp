@@ -228,7 +228,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		Toast.makeText(getContext(), "el valor es" + valor, Toast.LENGTH_SHORT).show();
 	}
 
-	private void enviarMensajeTema(String nombreestudiante, String mensaje, String tipo){
+	private void enviarMensajeTema(String nombreestudiante, String mensaje, String categoria){
 
 		RequestQueue myRequest = Volley.newRequestQueue(getContext());
 		JSONObject json  = new JSONObject();
@@ -241,6 +241,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 
 			notificacion.put("titulo", nombreestudiante);
 			notificacion.put("detalle", mensaje);
+			notificacion.put("categoria", categoria);
 
 			json.put("data", notificacion);
 
@@ -259,7 +260,12 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 				}
 			};
 			myRequest.add(request);
-			guardarMensaje(nombreestudiante, tipo, mensaje);
+			if (categoria.equals("Consulta Offline")){
+				guardarMensajeOffline(nombreestudiante, categoria, mensaje);
+			}else{
+				guardarMensajeOnline(nombreestudiante, categoria, mensaje);
+			}
+
 
 		}catch (JSONException e){
 			e.printStackTrace();
@@ -267,7 +273,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		}
 	}
 
-	private void guardarMensaje(final String nombreestudiante, final String categoria, String mensaje) {
+	private void guardarMensajeOnline(String nombreestudiante, String categoria, String mensaje) {
 		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 		String receptor ="vacio";
 		String estado = "no resuelta";
@@ -278,8 +284,38 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		hashMap.put("mensaje", mensaje);
 		hashMap.put("receptor", receptor);
 		hashMap.put("estado", estado);
-		reference.child("ConsultasEnviadas").push().setValue(hashMap);
-		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadas")
+		reference.child("ConsultasEnviadasOnline").push().setValue(hashMap);
+		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOnline")
+				//.child(firebaseUser.getUid())
+				.child(firebaseUser.getUid())
+				.child(nombreestudiante);
+
+		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
+			@Override
+			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+				if (!dataSnapshot.exists()){
+					chatRef.child("id").child(firebaseUser.getUid());
+				}
+			}
+			@Override
+			public void onCancelled(@NonNull DatabaseError databaseError) {
+			}
+		});
+	}
+
+	private void guardarMensajeOffline(final String nombreestudiante, final String categoria, String mensaje) {
+		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+		String receptor ="vacio";
+		String estado = "no resuelta";
+		HashMap<String, Object> hashMap = new HashMap<>();
+		hashMap.put("id", firebaseUser.getUid());
+		hashMap.put("remitente", nombreestudiante);
+		hashMap.put("categoria", categoria);
+		hashMap.put("mensaje", mensaje);
+		hashMap.put("receptor", receptor);
+		hashMap.put("estado", estado);
+		reference.child("ConsultasEnviadasOffline").push().setValue(hashMap);
+		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOffline")
 				//.child(firebaseUser.getUid())
 				.child(firebaseUser.getUid())
 				.child(nombreestudiante);
