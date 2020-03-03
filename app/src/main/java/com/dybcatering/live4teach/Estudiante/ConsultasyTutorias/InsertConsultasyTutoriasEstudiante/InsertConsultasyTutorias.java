@@ -1,7 +1,9 @@
 package com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante;
 
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -34,6 +36,7 @@ import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.To
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -129,6 +132,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 
 				}else {
 						enviarMensajeTema(nombreestudiante, mensaje, categoria);
+
 				}
 			}
 		});
@@ -293,6 +297,28 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		hashMap.put("estado", estado);
 		hashMap.put("hora", hora);
 		reference.child("ConsultasEnviadasOnline").push().setValue(hashMap);
+
+		final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getContext())
+				.setBackgroundColor(R.color.white)
+				.setimageResource(R.drawable.online)
+				.setTextTitle("Información")
+				.setTextSubTitle("Se ha enviado tu consulta Online, pronto alguien te contactará mediante el chat")
+				//.setBody("Iniciar Sesión ")
+				.setPositiveButtonText("Aceptar")
+				.setPositiveColor(R.color.colorbonton)
+				.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+					@Override
+					public void OnClick(View view, Dialog dialog) {
+
+					}
+				})
+				.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+				.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+				.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+				.setCancelable(false)
+				.build();
+		alert.show();
+
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOnline")
 				//.child(firebaseUser.getUid())
 				.child(firebaseUser.getUid())
@@ -328,6 +354,28 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		hashMap.put("estado", estado);
 		hashMap.put("hora",hora);
 		reference.child("ConsultasEnviadasOffline").push().setValue(hashMap);
+
+		final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getContext())
+				.setBackgroundColor(R.color.white)
+				.setimageResource(R.drawable.conversacion)
+				.setTextTitle("Información")
+				.setTextSubTitle("Se ha enviado tu consulta Offline, pronto alguien la contestará")
+				//.setBody("Iniciar Sesión ")
+				.setPositiveButtonText("Aceptar")
+				.setPositiveColor(R.color.colorbonton)
+				.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+					@Override
+					public void OnClick(View view, Dialog dialog) {
+
+					}
+				})
+				.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+				.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+				.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+				.setCancelable(false)
+				.build();
+		alert.show();
+
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOffline")
 				//.child(firebaseUser.getUid())
 				.child(firebaseUser.getUid())
