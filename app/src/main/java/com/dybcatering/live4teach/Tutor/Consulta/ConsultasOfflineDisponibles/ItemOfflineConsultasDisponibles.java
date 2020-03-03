@@ -5,17 +5,19 @@ public class ItemOfflineConsultasDisponibles {
 	private String Estado;
 	private String Id;
 	private String Mensaje;
+	private String MensajeReceptor;
 	private String Receptor;
 	private String Remitente;
 
 	public ItemOfflineConsultasDisponibles() {
 	}
 
-	public ItemOfflineConsultasDisponibles(String categoria, String estado, String id, String mensaje, String receptor, String remitente) {
+	public ItemOfflineConsultasDisponibles(String categoria, String estado, String id, String mensaje, String mensajeReceptor, String receptor, String remitente) {
 		Categoria = categoria;
 		Estado = estado;
 		Id = id;
 		Mensaje = mensaje;
+		MensajeReceptor = mensajeReceptor;
 		Receptor = receptor;
 		Remitente = remitente;
 	}
@@ -42,6 +44,14 @@ public class ItemOfflineConsultasDisponibles {
 
 	public String getRemitente() {
 		return Remitente;
+	}
+
+	public String getMensajeReceptor() {
+		return MensajeReceptor;
+	}
+
+	public void setMensajeReceptor(String mensajeReceptor) {
+		MensajeReceptor = mensajeReceptor;
 	}
 
 	public void setCategoria(String categoria) {

@@ -282,6 +282,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		hashMap.put("remitente", nombreestudiante);
 		hashMap.put("categoria", categoria);
 		hashMap.put("mensaje", mensaje);
+		hashMap.put("mensaje_receptor", receptor);
 		hashMap.put("receptor", receptor);
 		hashMap.put("estado", estado);
 		reference.child("ConsultasEnviadasOnline").push().setValue(hashMap);

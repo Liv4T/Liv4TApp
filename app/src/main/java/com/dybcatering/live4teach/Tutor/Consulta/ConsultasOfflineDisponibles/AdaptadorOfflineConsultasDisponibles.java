@@ -35,10 +35,10 @@ public AdaptadorOfflineConsultasDisponibles(List<ItemOfflineConsultasDisponibles
 			String remitente = ld.getRemitente();
 
 
-			holder.txtCategoria.setText(categoria);
-			holder.txtEstado.setText(estado);
-			holder.txtMensaje.setText(mensaje);
-			holder.txtRemitente.setText(remitente);
+			holder.txtCategoria.setText("Categoria: "+categoria);
+			holder.txtEstado.setText("Estado: "+estado);
+			holder.txtMensaje.setText("Consulta: " +mensaje);
+			holder.txtRemitente.setText("Usuario: "+remitente);
 			}
 
 	@Override

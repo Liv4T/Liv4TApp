@@ -21,7 +21,7 @@ import es.dmoral.toasty.Toasty;
 
 public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
 
-	private List<ItemOfflineConsultasDisponibles> listData;
+	private List<ItemOfflineConsultasDisponibles> itemConsultasOffline;
 	private RecyclerView rv;
 	private AdaptadorOfflineConsultasDisponibles adapter;
 
@@ -32,14 +32,14 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
 		rv=(RecyclerView)findViewById(R.id.recycler_view);
 		rv.setHasFixedSize(true);
 		rv.setLayoutManager(new LinearLayoutManager(this));
-		listData=new ArrayList<>();
+		itemConsultasOffline=new ArrayList<>();
 		Intent iin= getIntent();
 		Bundle b = iin.getExtras();
 		if(b!=null)
 		{
 			String j =(String) b.get("titulo");
 			String a = (String) b.get("detalle");
-			Toasty.success(this, "el mensaje recibido es"+ j + "el detalle es " + a, Toast.LENGTH_SHORT).show();;
+			Toasty.success(this, "el mensaje recibido es desde offline"+ j + "el detalle es " + a, Toast.LENGTH_SHORT).show();;
 		}
 
 
@@ -52,9 +52,9 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
 				if (dataSnapshot.exists()){
 					for (DataSnapshot npsnapshot : dataSnapshot.getChildren()){
 						ItemOfflineConsultasDisponibles l=npsnapshot.getValue(ItemOfflineConsultasDisponibles.class);
-						listData.add(l);
+						itemConsultasOffline.add(l);
 					}
-					adapter=new AdaptadorOfflineConsultasDisponibles(listData);
+					adapter=new AdaptadorOfflineConsultasDisponibles(itemConsultasOffline);
 					rv.setAdapter(adapter);
 
 				}

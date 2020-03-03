@@ -61,7 +61,7 @@
             <EditText
                 android:id="@+id/edtejemplo"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="200dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:hint="Escribe tu consulta aquí..."

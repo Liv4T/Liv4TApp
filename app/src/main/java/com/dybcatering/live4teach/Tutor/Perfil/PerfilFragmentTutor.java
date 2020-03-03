@@ -265,7 +265,7 @@ public class PerfilFragmentTutor extends Fragment {
                                     tvemail.setText(strEmail);
                                     tvuser.setText(strUser);
                                     if (strPicture.equals("")) {
-                                        primage.setImageResource(R.drawable.imagenperfil);
+                                        primage.setImageResource(R.drawable.perfilnuevo);
                                     } else {
                                         Picasso.with(getActivity()).load(strPicture).into(primage);
                                     }

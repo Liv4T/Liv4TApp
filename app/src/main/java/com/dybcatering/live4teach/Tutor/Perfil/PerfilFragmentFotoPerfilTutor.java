@@ -79,7 +79,7 @@ public class PerfilFragmentFotoPerfilTutor extends Fragment {
 									String strPicture= object.getString("picture").trim();
 
 									if (strPicture.equals("")) {
-										primage.setImageResource(R.drawable.imagenperfil);
+										primage.setImageResource(R.drawable.perfilnuevo);
 									} else {
 										Picasso.with(getActivity()).load(strPicture).into(primage);
 									}
