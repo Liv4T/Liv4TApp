@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.Detalle.DetalleOfflineConsultasDisponibles;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
@@ -19,9 +20,9 @@ import java.util.List;
 
 import es.dmoral.toasty.Toasty;
 
-public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
+public class ListadoOfflineConsultasDisponibles extends AppCompatActivity implements AdaptadorOfflineConsultasDisponibles.OnItemClickListener {
 
-	private List<ItemOfflineConsultasDisponibles> itemConsultasOffline;
+	private ArrayList<ItemOfflineConsultasDisponibles> itemConsultasOffline;
 	private RecyclerView rv;
 	private AdaptadorOfflineConsultasDisponibles adapter;
 
@@ -54,8 +55,9 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
 						ItemOfflineConsultasDisponibles l=npsnapshot.getValue(ItemOfflineConsultasDisponibles.class);
 						itemConsultasOffline.add(l);
 					}
-					adapter=new AdaptadorOfflineConsultasDisponibles(itemConsultasOffline);
+					adapter=new AdaptadorOfflineConsultasDisponibles(getApplicationContext(), itemConsultasOffline);
 					rv.setAdapter(adapter);
+					adapter.setOnClickItemListener(ListadoOfflineConsultasDisponibles.this);
 
 				}
 			}
@@ -65,5 +67,23 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity {
 
 			}
 		});
+	}
+
+	@Override
+	public void onItemClick(int position) {
+		Intent iin= getIntent();
+		Bundle b = iin.getExtras();
+
+			String j =(String) b.get("titulo");
+			String a = (String) b.get("detalle");
+			Toasty.success(this, "el mensaje recibido es desde offline"+ j + "el detalle es " + a, Toast.LENGTH_SHORT).show();;
+
+
+
+		Intent intent = new Intent(this, DetalleOfflineConsultasDisponibles.class);
+		intent.putExtra("titulo", j);
+		intent.putExtra("detalle", a);
+		startActivity(intent);
+
 	}
 }
