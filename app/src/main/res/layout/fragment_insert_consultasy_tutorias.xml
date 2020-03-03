@@ -27,9 +27,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Estudiante"
+                    android:text="Tu Usuario: "
                     android:textColor="@color/colortexto"
-                    android:textStyle="normal"
+                    android:textStyle="bold"
                     android:fontFamily="@font/centurygothic"/>
 
                 <TextView
