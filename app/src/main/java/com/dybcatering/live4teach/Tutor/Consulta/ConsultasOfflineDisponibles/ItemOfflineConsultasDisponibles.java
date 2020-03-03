@@ -8,11 +8,12 @@ public class ItemOfflineConsultasDisponibles {
 	private String MensajeReceptor;
 	private String Receptor;
 	private String Remitente;
+	private String Hora;
 
 	public ItemOfflineConsultasDisponibles() {
 	}
 
-	public ItemOfflineConsultasDisponibles(String categoria, String estado, String id, String mensaje, String mensajeReceptor, String receptor, String remitente) {
+	public ItemOfflineConsultasDisponibles(String categoria, String estado, String id, String mensaje, String mensajeReceptor, String receptor, String remitente, String hora) {
 		Categoria = categoria;
 		Estado = estado;
 		Id = id;
@@ -20,6 +21,7 @@ public class ItemOfflineConsultasDisponibles {
 		MensajeReceptor = mensajeReceptor;
 		Receptor = receptor;
 		Remitente = remitente;
+		Hora = hora;
 	}
 
 	public String getCategoria() {
@@ -48,6 +50,14 @@ public class ItemOfflineConsultasDisponibles {
 
 	public String getMensajeReceptor() {
 		return MensajeReceptor;
+	}
+
+	public String getHora() {
+		return Hora;
+	}
+
+	public void setHora(String hora) {
+		Hora = hora;
 	}
 
 	public void setMensajeReceptor(String mensajeReceptor) {

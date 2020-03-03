@@ -33,6 +33,7 @@ public AdaptadorOfflineConsultasDisponibles(List<ItemOfflineConsultasDisponibles
 			String estado = ld.getEstado();
 			String mensaje = ld.getMensaje();
 			String remitente = ld.getRemitente();
+			String hora = ld.getHora();
 
 
 			holder.txtCategoria.setText("Categoria: "+categoria);

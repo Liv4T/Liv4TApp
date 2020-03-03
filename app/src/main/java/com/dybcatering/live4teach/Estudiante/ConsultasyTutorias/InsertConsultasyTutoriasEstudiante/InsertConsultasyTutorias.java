@@ -48,8 +48,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.TimeZone;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -274,6 +278,8 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 	}
 
 	private void guardarMensajeOnline(String nombreestudiante, String categoria, String mensaje) {
+		SimpleDateFormat s = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+		String hora = s.format(new Date());
 		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 		String receptor ="vacio";
 		String estado = "no resuelta";
@@ -285,6 +291,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		hashMap.put("mensaje_receptor", receptor);
 		hashMap.put("receptor", receptor);
 		hashMap.put("estado", estado);
+		hashMap.put("hora", hora);
 		reference.child("ConsultasEnviadasOnline").push().setValue(hashMap);
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOnline")
 				//.child(firebaseUser.getUid())
@@ -305,6 +312,10 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 	}
 
 	private void guardarMensajeOffline(final String nombreestudiante, final String categoria, String mensaje) {
+
+
+		SimpleDateFormat s = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
+		String hora = s.format(new Date());
 		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 		String receptor ="vacio";
 		String estado = "no resuelta";
@@ -315,6 +326,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		hashMap.put("mensaje", mensaje);
 		hashMap.put("receptor", receptor);
 		hashMap.put("estado", estado);
+		hashMap.put("hora",hora);
 		reference.child("ConsultasEnviadasOffline").push().setValue(hashMap);
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOffline")
 				//.child(firebaseUser.getUid())
