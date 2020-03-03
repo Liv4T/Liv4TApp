@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,6 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Fragments.APIService;
+import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.MisConsultas.MisConsultas;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.User;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Client;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Data;
@@ -34,6 +36,7 @@ import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.My
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Sender;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Token;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesDetalleFragment;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
@@ -309,7 +312,11 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 				.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
 					@Override
 					public void OnClick(View view, Dialog dialog) {
-
+						Fragment someFragment = new MisConsultas();
+						FragmentTransaction transaction = getFragmentManager().beginTransaction();
+						transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+						transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+						transaction.commit();
 					}
 				})
 				.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
@@ -366,7 +373,11 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 				.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
 					@Override
 					public void OnClick(View view, Dialog dialog) {
-
+						Fragment someFragment = new MisConsultas();
+						FragmentTransaction transaction = getFragmentManager().beginTransaction();
+						transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
+						transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+						transaction.commit();
 					}
 				})
 				.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
