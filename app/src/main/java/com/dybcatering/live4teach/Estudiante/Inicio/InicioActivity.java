@@ -2,16 +2,19 @@ package com.dybcatering.live4teach.Estudiante.Inicio;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
@@ -26,6 +29,7 @@ import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosFragment;
 import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.R;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 public class InicioActivity extends AppCompatActivity {
     public DatabaseHandler db;
@@ -39,6 +43,31 @@ public class InicioActivity extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Toast.makeText(this, "el token es "+ myRefreshedToken, Toast.LENGTH_SHORT).show();
+        Log.d( "myRefreshedToken" , myRefreshedToken);
+        final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                .setBackgroundColor(R.color.white)
+                //.setimageResource(R.drawable.internetconnection)
+                .setTextTitle("Alerta")
+                .setTextSubTitle(myRefreshedToken)
+                //.setBody("Iniciar Sesión ")
+                .setPositiveButtonText("Aceptar")
+                .setPositiveColor(R.color.colorbonton)
+                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
+
+                    }
+                })
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
+                .build();
+        alert.show();
+
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {

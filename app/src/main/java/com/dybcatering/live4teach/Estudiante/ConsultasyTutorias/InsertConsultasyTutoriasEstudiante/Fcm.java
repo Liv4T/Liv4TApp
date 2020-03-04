@@ -12,6 +12,7 @@ import android.util.Log;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOnlineDisponibles.DetalleConsultaOnline;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
@@ -21,6 +22,8 @@ import java.util.Random;
 
 public class Fcm extends FirebaseMessagingService {
 
+	FirebaseUser firebaseUser;
+
 	@Override
 	public void onNewToken(String s) {
 		super.onNewToken(s);
@@ -28,8 +31,8 @@ public class Fcm extends FirebaseMessagingService {
 	}
 
 	private void guardarToken(String s) {
-		DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Usuarios");
-		ref.child("Usuario").setValue(s);
+		DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Tokens");
+		ref.child(firebaseUser.getUid()).child(s).setValue(s);
 
 	}
 

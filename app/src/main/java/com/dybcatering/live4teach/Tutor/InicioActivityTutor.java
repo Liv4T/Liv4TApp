@@ -1,6 +1,9 @@
 package com.dybcatering.live4teach.Tutor;
 
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,6 +11,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,6 +35,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
 
@@ -46,6 +51,34 @@ public class InicioActivityTutor extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_tutor);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
+
+        String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
+        Toast.makeText(this, "el token es "+ myRefreshedToken, Toast.LENGTH_SHORT).show();
+        Log.d( "myRefreshedToken" , myRefreshedToken);
+        final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
+                .setBackgroundColor(R.color.white)
+                //.setimageResource(R.drawable.internetconnection)
+                .setTextTitle("Alerta")
+                .setTextSubTitle(myRefreshedToken)
+                //.setBody("Iniciar Sesión ")
+                .setPositiveButtonText("Aceptar")
+                .setPositiveColor(R.color.colorbonton)
+                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+                    @Override
+                    public void OnClick(View view, Dialog dialog) {
+
+                    }
+                })
+                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+                .setCancelable(false)
+                .build();
+        alert.show();
+
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Origen", myRefreshedToken);
+        clipboard.setPrimaryClip(clip);
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
