@@ -28,6 +28,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Fragments.APIService;
+import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.MisConsultas.ConsultasOffline.MisConsultasOffline;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.MisConsultas.MisConsultas;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.User;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Client;
@@ -39,6 +40,7 @@ import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetCon
 import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificacionesDetalleFragment;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -373,7 +375,8 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 				.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
 					@Override
 					public void OnClick(View view, Dialog dialog) {
-						Fragment someFragment = new MisConsultas();
+
+						Fragment someFragment = new MisConsultasOffline();
 						FragmentTransaction transaction = getFragmentManager().beginTransaction();
 						transaction.replace(R.id.fragment_container, someFragment ); // give your fragment container id in first parameter
 						transaction.addToBackStack(null);  // if written, this transaction will be added to backstack

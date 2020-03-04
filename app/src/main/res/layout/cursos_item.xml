@@ -49,7 +49,9 @@
                         android:text=""
                         android:textColor="#000"
                         android:textSize="12sp"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold"
+                        android:ellipsize="end"
+                        android:maxLines="2"/>
 
 
 
