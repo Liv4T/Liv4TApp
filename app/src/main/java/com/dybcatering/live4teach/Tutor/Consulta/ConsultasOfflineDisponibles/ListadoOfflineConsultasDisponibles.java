@@ -25,6 +25,7 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity implem
 	private ArrayList<ItemOfflineConsultasDisponibles> itemConsultasOffline;
 	private RecyclerView rv;
 	private AdaptadorOfflineConsultasDisponibles adapter;
+	ValueEventListener seenListener;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,7 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity implem
 		nm.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(DataSnapshot dataSnapshot) {
+				itemConsultasOffline = new ArrayList<ItemOfflineConsultasDisponibles>();
 				if (dataSnapshot.exists()){
 					for (DataSnapshot npsnapshot : dataSnapshot.getChildren()){
 						ItemOfflineConsultasDisponibles l=npsnapshot.getValue(ItemOfflineConsultasDisponibles.class);

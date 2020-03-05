@@ -20,7 +20,9 @@ import android.widget.Toast;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Estudiante.Inicio.Token;
+import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
@@ -50,6 +52,7 @@ public class InicioActivityTutor extends AppCompatActivity {
     DatabaseReference databaseReference;
     ValueEventListener seenListener;
 
+    String valor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +60,10 @@ public class InicioActivityTutor extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_tutor);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        String valor = getIntent().getExtras().getString("uuid");
+        new CheckInternetConnection(InicioActivityTutor.this).checkConnection();
+        sessionManager = new SessionManager(InicioActivityTutor.this);
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        valor = user.get(SessionManager.UUID);
         String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
         changeToken(myRefreshedToken, valor);
 
@@ -68,7 +74,6 @@ public class InicioActivityTutor extends AppCompatActivity {
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
-        HashMap<String, String> user = sessionManager.getUserDetail();
         String username = user.get(SessionManager.USER_NAME);
         Query query = FirebaseDatabase.getInstance().getReference("Users")
                 .orderByChild("username")
@@ -93,12 +98,16 @@ public class InicioActivityTutor extends AppCompatActivity {
     public void changeToken(final String token, final String uuid){
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tokens");
-        seenListener = databaseReference.addValueEventListener(new ValueEventListener() {
+        //databaseReference = FirebaseDatabase.getInstance().getReference("Tokens");
+        Query query = FirebaseDatabase.getInstance().getReference("Tokens")
+                .orderByChild(uuid)
+                .equalTo(uuid);
+
+        seenListener = query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Token tokenUsuario = snapshot.getValue(Token.class);
+                    Token tokenUsuario = new Token(snapshot.getValue(Token.class));
                     if (dataSnapshot.exists()){
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put(uuid,token);

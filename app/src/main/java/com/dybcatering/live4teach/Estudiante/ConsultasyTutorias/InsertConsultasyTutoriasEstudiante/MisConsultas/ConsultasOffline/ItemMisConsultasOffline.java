@@ -1,6 +1,6 @@
-package com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles;
+package com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.MisConsultas.ConsultasOffline;
 
-public class ItemOfflineConsultasDisponibles {
+public class ItemMisConsultasOffline {
 	private String Categoria;
 	private String Estado;
 	private String Id;
@@ -11,10 +11,10 @@ public class ItemOfflineConsultasDisponibles {
 	private String Hora;
 	private String RemitenteEstado;
 
-	public ItemOfflineConsultasDisponibles() {
+	public ItemMisConsultasOffline() {
 	}
 
-	public ItemOfflineConsultasDisponibles(String categoria, String estado, String id, String mensaje, String mensajeReceptor, String receptor, String remitente, String hora, String remitenteEstado) {
+	public ItemMisConsultasOffline(String categoria, String estado, String id, String mensaje, String mensajeReceptor, String receptor, String remitente, String hora, String remitenteEstado) {
 		Categoria = categoria;
 		Estado = estado;
 		Id = id;
@@ -58,6 +58,14 @@ public class ItemOfflineConsultasDisponibles {
 		return Hora;
 	}
 
+	public String getRemitenteEstado() {
+		return RemitenteEstado;
+	}
+
+	public void setRemitenteEstado(String remitenteEstado) {
+		RemitenteEstado = remitenteEstado;
+	}
+
 	public void setHora(String hora) {
 		Hora = hora;
 	}
@@ -88,13 +96,5 @@ public class ItemOfflineConsultasDisponibles {
 
 	public void setRemitente(String remitente) {
 		Remitente = remitente;
-	}
-
-	public String getRemitenteEstado() {
-		return RemitenteEstado;
-	}
-
-	public void setRemitenteEstado(String remitenteEstado) {
-		RemitenteEstado = remitenteEstado;
 	}
 }

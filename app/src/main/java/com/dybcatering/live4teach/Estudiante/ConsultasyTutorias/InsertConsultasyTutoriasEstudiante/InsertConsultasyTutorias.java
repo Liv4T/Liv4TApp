@@ -107,8 +107,6 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		sessionManager = new SessionManager(getActivity());
 		HashMap<String, String> user = sessionManager.getUserDetail();
 		nombreusuario = user.get(SessionManager.USER_NAME);
-
-		sessionManager = new SessionManager(getActivity());
 		id_usuario = user.get(SessionManager.ID);
 		ObternerUuid(id_usuario);
 		firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -290,10 +288,13 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		SimpleDateFormat s = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
 		String hora = s.format(new Date());
 		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
+		sessionManager = new SessionManager(getActivity());
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		final String uuid = user.get(SessionManager.UUID);
 		String receptor ="vacio";
 		String estado = "no resuelta";
 		HashMap<String, Object> hashMap = new HashMap<>();
-		hashMap.put("id", firebaseUser.getUid());
+		hashMap.put("id", uuid);
 		hashMap.put("remitente", nombreestudiante);
 		hashMap.put("categoria", categoria);
 		hashMap.put("mensaje", mensaje);
@@ -301,6 +302,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		hashMap.put("receptor", receptor);
 		hashMap.put("estado", estado);
 		hashMap.put("hora", hora);
+		hashMap.put("remitenteestado", nombreestudiante+"_"+estado );
 		reference.child("ConsultasEnviadasOnline").push().setValue(hashMap);
 
 		final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getContext())
@@ -329,15 +331,15 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		alert.show();
 
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOnline")
-				//.child(firebaseUser.getUid())
-				.child(firebaseUser.getUid())
+				//.child(uuid)
+				.child(uuid)
 				.child(nombreestudiante);
 
 		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				if (!dataSnapshot.exists()){
-					chatRef.child("id").child(firebaseUser.getUid());
+					chatRef.child("id").child(uuid);
 				}
 			}
 			@Override
@@ -347,7 +349,9 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 	}
 
 	private void guardarMensajeOffline(final String nombreestudiante, final String categoria, String mensaje) {
-
+		sessionManager = new SessionManager(getActivity());
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		final String uuid = user.get(SessionManager.UUID);
 
 		SimpleDateFormat s = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
 		String hora = s.format(new Date());
@@ -355,13 +359,14 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		String receptor ="vacio";
 		String estado = "no resuelta";
 		HashMap<String, Object> hashMap = new HashMap<>();
-		hashMap.put("id", firebaseUser.getUid());
+		hashMap.put("id", uuid);
 		hashMap.put("remitente", nombreestudiante);
 		hashMap.put("categoria", categoria);
 		hashMap.put("mensaje", mensaje);
 		hashMap.put("receptor", receptor);
 		hashMap.put("estado", estado);
 		hashMap.put("hora",hora);
+		hashMap.put("remitenteestado", nombreestudiante+"_"+estado );
 		reference.child("ConsultasEnviadasOffline").push().setValue(hashMap);
 
 		final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getContext())
@@ -391,15 +396,15 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		alert.show();
 
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOffline")
-				//.child(firebaseUser.getUid())
-				.child(firebaseUser.getUid())
+				//.child(uuid)
+				.child(uuid)
 				.child(nombreestudiante);
 
 		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				if (!dataSnapshot.exists()){
-					chatRef.child("id").child(firebaseUser.getUid());
+					chatRef.child("id").child(uuid);
 				}
 			}
 			@Override
