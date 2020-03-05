@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
-
-import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Token;
+import com.dybcatering.live4teach.Estudiante.Inicio.Token;
+//import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Token;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Splash.SplashActivity;
@@ -34,6 +34,7 @@ public class SessionManager {
     public static final String NAME = "NAME";
     public static final String USER_NAME = "USER_NAME";
     public static final String ID = "ID";
+    public static final String UUID= "UUID";
     public static final String TYPE_USER = "TYPE_USER";
     public static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
@@ -43,12 +44,13 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String name, String user_name, String id, String typeuser){
+    public void createSession(String name, String user_name, String id, String uuid, String typeuser){
 
         editor.putBoolean(LOGIN, true);
         editor.putString(NAME, name);
         editor.putString(USER_NAME, user_name);
         editor.putString(ID, id);
+        editor.putString(UUID, uuid);
         editor.putString(TYPE_USER, typeuser);
         editor.apply();
 
@@ -73,6 +75,7 @@ public class SessionManager {
         user.put(NAME, sharedPreferences.getString(NAME, null));
         user.put(USER_NAME, sharedPreferences.getString(USER_NAME, null));
         user.put(ID, sharedPreferences.getString(ID, null));
+        user.put(UUID, sharedPreferences.getString(UUID, null));
         user.put(TYPE_USER, sharedPreferences.getString(TYPE_USER, null));
         return user;
     }
@@ -107,7 +110,8 @@ public class SessionManager {
         context.startActivity(i);
         ((InicioActivity) context).finish();
         FirebaseAuth.getInstance().signOut();
-     //   removeToken();
+        String uuid = getUserDetail().get(UUID);
+        removeToken(uuid);
         FirebaseMessaging.getInstance().unsubscribeFromTopic("estudiantes")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -128,7 +132,7 @@ public class SessionManager {
 
 
 
-    private void removeToken() {
+    private void removeToken(String uuid) {
 
 
         String refreshToken= FirebaseInstanceId.getInstance().getToken();
@@ -136,7 +140,7 @@ public class SessionManager {
 
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
         Token token = new Token(refreshToken);
-        reference.child(firebaseUser.getUid()).removeValue();
+        reference.child(uuid).removeValue();
     }
 }
 

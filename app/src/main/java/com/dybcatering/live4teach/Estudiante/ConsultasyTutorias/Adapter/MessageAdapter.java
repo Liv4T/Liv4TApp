@@ -1,6 +1,7 @@
 package com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Adapter;
 
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,12 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.MessageActivity;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.Chat;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.squareup.picasso.Picasso;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class MessageAdapter extends RecyclerView.Adapter <MessageAdapter.ViewHolder> {
@@ -28,6 +32,9 @@ public class MessageAdapter extends RecyclerView.Adapter <MessageAdapter.ViewHol
 	private String imageurl;
 
 	FirebaseUser firebaseUser;
+
+	SessionManager sessionManager;
+	String uuid;
 
 	public MessageAdapter(Context mContext, List<Chat> mChat, String imageurl){
 		this.mChat = mChat;
@@ -58,6 +65,8 @@ public class MessageAdapter extends RecyclerView.Adapter <MessageAdapter.ViewHol
 		Chat chat = mChat.get(position);
 
 		holder.show_message.setText(chat.getMessage());
+
+
 
 		if (imageurl.equals("default")){
 				holder.profile_image.setImageResource(R.drawable.logo);
@@ -105,8 +114,12 @@ public class MessageAdapter extends RecyclerView.Adapter <MessageAdapter.ViewHol
 
 	@Override
 	public int getItemViewType(int position) {
+		sessionManager = new SessionManager(mContext);
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		uuid = user.get(SessionManager.UUID);
+
 		firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-		if (mChat.get(position).getSender().equals(firebaseUser.getUid())){
+		if (mChat.get(position).getSender().equals(uuid)){
 			return MSG_TYPE_RIGHT;
 		} else {
 			return MSG_TYPE_LEFT;

@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Adapter.UserAdapter;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.User;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -24,6 +25,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -37,6 +39,8 @@ public class UsersFragment extends Fragment {
     private List<User> mUsers;
 
     EditText search_users;
+    SessionManager sessionManager;
+    String uuid;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +55,10 @@ public class UsersFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         mUsers = new ArrayList<>();
+
+        sessionManager = new SessionManager(getActivity());
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        uuid = user.get(SessionManager.UUID);
 
        // readUsers();
         search_users("3");
@@ -93,7 +101,7 @@ public class UsersFragment extends Fragment {
 
                     assert user != null;
                     assert firebaseUser != null;
-                    if (!user.getId().equals(firebaseUser.getUid())){
+                    if (!user.getId().equals(uuid)){
                         mUsers.add(user);
                     }
                 }
@@ -129,7 +137,7 @@ public class UsersFragment extends Fragment {
 
                         assert user != null;
                         assert firebaseUser != null;
-                        if (!user.getId().equals(firebaseUser.getUid())) {
+                        if (!user.getId().equals(uuid)) {
                             mUsers.add(user);
                         }
                     }

@@ -23,6 +23,7 @@ import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.My
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Sender;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Token;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -73,6 +74,8 @@ public class MessageActivity extends AppCompatActivity {
 	APIService apiService;
 
 	boolean notify = false;
+	SessionManager sessionManager;
+	String uuid;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -89,7 +92,9 @@ public class MessageActivity extends AppCompatActivity {
 	//			startActivity(new Intent(MessageActivity.this, InicioActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 	//		}
 	//	});
-
+		sessionManager = new SessionManager(MessageActivity.this);
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		uuid = user.get(SessionManager.UUID);
 
 		apiService = Client.getClient("https://fcm.googleapis.com/").create(APIService.class);
 
@@ -124,7 +129,7 @@ public class MessageActivity extends AppCompatActivity {
 				notify = true;
 				String msg = text_send.getText().toString();
 				if (!msg.equals("")){
-					sendMessage(firebaseUser.getUid(), userId, msg);
+					sendMessage(uuid, userId, msg);
 				}else {
 					Toasty.error(MessageActivity.this, "El mensaje se encuentra vacío", Toast.LENGTH_SHORT).show();
 				}
@@ -147,7 +152,7 @@ public class MessageActivity extends AppCompatActivity {
 //					Glide.with(getApplicationContext()).load(user.getImageURL()).into(profile_image);
 				}
 
-				readMessages(firebaseUser.getUid(), userId, user.getImageURL());
+				readMessages(uuid, userId, user.getImageURL());
 			}
 
 			@Override
@@ -165,7 +170,7 @@ public class MessageActivity extends AppCompatActivity {
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 					Chat chat = snapshot.getValue(Chat.class);
-					if (chat.getReceiver().equals(firebaseUser.getUid()) && chat.getSender().equals(userid)){
+					if (chat.getReceiver().equals(uuid) && chat.getSender().equals(userid)){
 						HashMap<String, Object> hashMap = new HashMap<>();
 						hashMap.put("isseen", true);
 						snapshot.getRef().updateChildren(hashMap);
@@ -198,7 +203,7 @@ public class MessageActivity extends AppCompatActivity {
 
 
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("Chatlist")
-				.child(firebaseUser.getUid())
+				.child(uuid)
 				.child(userId);
 
 		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -219,7 +224,7 @@ public class MessageActivity extends AppCompatActivity {
 		final String msg = 	message;
 
 
-		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+		reference = FirebaseDatabase.getInstance().getReference("Users").child(uuid);
 		reference.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -249,7 +254,7 @@ public class MessageActivity extends AppCompatActivity {
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()){
 					Token token = dataSnapshot1.getValue(Token.class);
-					Data data = new Data(firebaseUser.getUid(), R.drawable.logo, username+": "+ message, "Nuevo Mensaje", userId);
+					Data data = new Data(uuid, R.drawable.logo, username+": "+ message, "Nuevo Mensaje", userId);
 
 					Sender sender = new Sender(data, token.getToken());
 
@@ -318,7 +323,7 @@ public class MessageActivity extends AppCompatActivity {
 
 	private void status(String status){
 
-		databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+		databaseReference = FirebaseDatabase.getInstance().getReference("Users").child(uuid);
 
 		HashMap<String, Object> hashMap = new HashMap<>();
 		hashMap.put("status", status);

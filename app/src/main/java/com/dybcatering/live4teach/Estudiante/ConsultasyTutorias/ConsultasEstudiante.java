@@ -25,6 +25,7 @@ import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.User;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.ViewPagerAdapter;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -54,6 +55,9 @@ public class ConsultasEstudiante extends Fragment {
 
 	SharedPreferences sharedPreferences;
 
+	SessionManager sessionManager;
+	String uuid;
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -66,8 +70,13 @@ public class ConsultasEstudiante extends Fragment {
 
 		//profile_image= view.findViewById(R.id.profile_image);
 		//username = view.findViewById(R.id.username_profile);
+
+		sessionManager = new SessionManager(getActivity());
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		uuid = user.get(SessionManager.UUID);
+
 		firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+		reference = FirebaseDatabase.getInstance().getReference("Users").child(uuid);
 
 		reference.addValueEventListener(new ValueEventListener() {
 			@Override
@@ -100,7 +109,7 @@ public class ConsultasEstudiante extends Fragment {
 				int unread = 0;
 				for (DataSnapshot snapshot : dataSnapshot.getChildren()){
 					Chat chat = snapshot.getValue(Chat.class);
-					if (chat.getReceiver().equals(firebaseUser.getUid()) && !chat.isIsseen()){
+					if (chat.getReceiver().equals(uuid) && !chat.isIsseen()){
 						unread++;
 						viewPager.setAdapter(viewPagerAdapter);
 					}
@@ -169,7 +178,7 @@ public class ConsultasEstudiante extends Fragment {
 
 	private void status(String status){
 
-		reference = FirebaseDatabase.getInstance().getReference("Users").child(firebaseUser.getUid());
+		reference = FirebaseDatabase.getInstance().getReference("Users").child(uuid);
 
 		HashMap<String , Object> hashMap = new HashMap<>();
 		hashMap.put("status", status);

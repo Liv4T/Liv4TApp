@@ -55,6 +55,7 @@ public class ActualizarDatosFragment extends Fragment {
     SessionManager sessionManager;
 
     String id;
+    String uuid;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
         // Inflate the layout for this fragment
@@ -62,6 +63,7 @@ public class ActualizarDatosFragment extends Fragment {
         sessionManager = new SessionManager(getActivity());
         HashMap<String, String> user = sessionManager.getUserDetail();
         id = user.get(SessionManager.ID);
+        uuid = user.get(SessionManager.UUID);
         edtNombre = view.findViewById(R.id.nombreActualizarDatos);
         edtApellido = view.findViewById(R.id.apellidoActualizarDatos);
         edtTelefono = view.findViewById(R.id.telefonoActualizarDatos);
@@ -206,7 +208,7 @@ public class ActualizarDatosFragment extends Fragment {
                             if (success.equals("1")) {
                                 Toasty.success(getContext(), "Exito al Actualizar los datos", Toast.LENGTH_SHORT).show();
                                 //Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-                                sessionManager.createSession(nombre, usuario, id, "3");
+                                sessionManager.createSession(nombre, usuario, id, uuid, "3");
                             }
 
                         } catch (JSONException e) {

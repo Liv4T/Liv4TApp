@@ -22,13 +22,17 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Estudiante.Inicio.Token;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.MessageActivity;
 import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 
@@ -48,6 +52,9 @@ public class LoginActivity extends AppCompatActivity {
     private static String URL_LOGIN = "https://dybcatering.com/back_live_app/login.php";
     SessionManager sessionManager;
     Spinner spinner;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,6 +114,8 @@ public class LoginActivity extends AppCompatActivity {
         loading.setVisibility(View.VISIBLE);
         btn_login.setVisibility(View.GONE);
 
+
+
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
@@ -121,16 +130,17 @@ public class LoginActivity extends AppCompatActivity {
                                 for (int i = 0; i < jsonArray.length(); i++) {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
-
+                                    String uuid = object.getString("uuid").trim();
                                     String id = object.getString("id").trim();
                                     String name = object.getString("name").trim();
                                     String last_name = object.getString("last_name").trim();
                                     // String photo = object.getString("photo").trim();
                                     String type_user = object.getString("type_user").trim();
                                     String user_name = object.getString("user_name").trim();
-                                    sessionManager.createSession(name, user_name, id, type_user);
+                                    sessionManager.createSession(name, user_name, id, uuid, type_user);
 
                                     Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
+                                    intent.putExtra("uuid", uuid);
                                     intent.putExtra("id", id);
                                     intent.putExtra("name", name);
                                     intent.putExtra("last_name", last_name);
@@ -139,11 +149,13 @@ public class LoginActivity extends AppCompatActivity {
                                     //intent.putExtra("photo", photo);
                                     // Toast.makeText(LoginActivity.this, id, Toast.LENGTH_SHORT).show();
                                     Intent intent1 = new Intent(LoginActivity.this, InicioActivityTutor.class);
+                                    intent1.putExtra("uuid", uuid);
                                     intent1.putExtra("id", id);
                                     intent1.putExtra("name", name);
                                     intent1.putExtra("last_name", last_name);
                                     intent1.putExtra("type_user", type_user);
                                     intent1.putExtra("user_name", user_name);
+
 
                                     if (type_user.equals("3")){
                                         FirebaseMessaging.getInstance().subscribeToTopic("estudiantes")

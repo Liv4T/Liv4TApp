@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Estudiante.Inicio.Token;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
@@ -32,6 +33,7 @@ import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
@@ -44,6 +46,10 @@ public class InicioActivityTutor extends AppCompatActivity {
     TextView textCartItemCount;
 
     SessionManager sessionManager;
+
+    DatabaseReference databaseReference;
+    ValueEventListener seenListener;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,34 +57,9 @@ public class InicioActivityTutor extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_tutor);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-
+        String valor = getIntent().getExtras().getString("uuid");
         String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Toast.makeText(this, "el token es "+ myRefreshedToken, Toast.LENGTH_SHORT).show();
-        Log.d( "myRefreshedToken" , myRefreshedToken);
-        final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
-                .setBackgroundColor(R.color.white)
-                //.setimageResource(R.drawable.internetconnection)
-                .setTextTitle("Alerta")
-                .setTextSubTitle(myRefreshedToken)
-                //.setBody("Iniciar Sesión ")
-                .setPositiveButtonText("Aceptar")
-                .setPositiveColor(R.color.colorbonton)
-                .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
-                    @Override
-                    public void OnClick(View view, Dialog dialog) {
-
-                    }
-                })
-                .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
-                .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
-                .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
-                .setCancelable(false)
-                .build();
-        alert.show();
-
-        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clip = ClipData.newPlainText("Origen", myRefreshedToken);
-        clipboard.setPrimaryClip(clip);
+        changeToken(myRefreshedToken, valor);
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
@@ -101,6 +82,29 @@ public class InicioActivityTutor extends AppCompatActivity {
                     }
                 }
 
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+    public void changeToken(final String token, final String uuid){
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Tokens");
+        seenListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
+                    Token tokenUsuario = snapshot.getValue(Token.class);
+                    if (dataSnapshot.exists()){
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put(uuid,token);
+                        snapshot.getRef().updateChildren(hashMap);
+                    }
+                }
             }
 
             @Override

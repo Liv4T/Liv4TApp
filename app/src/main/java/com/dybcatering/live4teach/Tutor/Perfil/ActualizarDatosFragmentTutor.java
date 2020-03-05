@@ -51,6 +51,7 @@ public class ActualizarDatosFragmentTutor extends Fragment {
     SessionManager sessionManager;
 
     String id;
+    String uuid;
     Button btnupdate;
 
     public ImageView profilepic;
@@ -66,6 +67,7 @@ public class ActualizarDatosFragmentTutor extends Fragment {
         sessionManager = new SessionManager(getActivity());
         HashMap<String, String> user = sessionManager.getUserDetail();
         id = user.get(SessionManager.ID);
+        uuid = user.get(SessionManager.UUID);
         etnombre= view.findViewById(R.id.nombre_update);
         etapellido= view.findViewById(R.id.apellido_update);
         etdireccion= view.findViewById(R.id.address_update);
@@ -119,7 +121,7 @@ public class ActualizarDatosFragmentTutor extends Fragment {
                             if (success.equals("1")) {
                                 Toasty.success(getContext(), "Exito al Actualizar los datos", Toast.LENGTH_SHORT).show();
                                 //Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-                                sessionManager.createSession(nombre, usuario, id, "3");
+                                sessionManager.createSession(nombre, usuario, id, uuid, "3");
                             }
 
                         } catch (JSONException e) {

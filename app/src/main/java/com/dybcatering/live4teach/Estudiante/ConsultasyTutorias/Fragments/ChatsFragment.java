@@ -20,6 +20,7 @@ import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Adapter.UserAdap
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.Chatlist;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Model.User;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.Notifications.Token;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,6 +48,9 @@ public class ChatsFragment extends Fragment {
 
     private List<Chatlist> userList;
 
+    SessionManager sessionManager;
+    String uuid;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
@@ -56,11 +60,15 @@ public class ChatsFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
+        sessionManager = new SessionManager(getActivity());
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        uuid = user.get(SessionManager.UUID);
+
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
         userList = new ArrayList<>();
 
-        reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(firebaseUser.getUid());
+        reference = FirebaseDatabase.getInstance().getReference("Chatlist").child(uuid);
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -87,7 +95,7 @@ public class ChatsFragment extends Fragment {
     private void updateToken(String token){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Tokens");
         Token token1 = new Token(token);
-        reference.child(firebaseUser.getUid()).setValue(token1);
+        reference.child(uuid).setValue(token1);
     }
 
     private void chatList() {

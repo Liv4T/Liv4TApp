@@ -42,6 +42,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.kaopiz.kprogresshud.KProgressHUD;
 import com.rilixtech.CountryCodePicker;
 
@@ -78,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
 	FirebaseAuth auth;
-	DatabaseReference reference;
+	DatabaseReference reference, tokens;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -207,14 +208,28 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 											@Override
 											public void onComplete(@NonNull Task<Void> task) {
 												if (task.isSuccessful()){
-													Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-													//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-													startActivity(intent);
-													//finish();
+													Toasty.success(RegisterActivity.this, "Registrado exitosamente", Toast.LENGTH_SHORT).show();
+												}
+											}
+										});
+
+										String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
+
+										tokens = FirebaseDatabase.getInstance().getReference("Tokens").child(userid);
+
+										HashMap<String, String> hashMap1 = new HashMap<>();
+										hashMap1.put(userid, myRefreshedToken);
+
+										tokens.setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
+											@Override
+											public void onComplete(@NonNull Task<Void> task) {
+												Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+												//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+												startActivity(intent);
+												//finish();
 												//	Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
 
-													sendRegistrationEmail(nombre,email);
-												}
+												sendRegistrationEmail(nombre,email);
 											}
 										});
 
