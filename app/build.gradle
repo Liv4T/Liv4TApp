@@ -7,8 +7,8 @@ android {
         applicationId "com.dybcatering.live4teach"
         minSdkVersion 17
         targetSdkVersion 28
-        versionCode 41
-        versionName "41.5.0-beta"
+        versionCode 42
+        versionName "42.0.0-beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -84,5 +84,7 @@ dependencies {
 
     implementation 'com.squareup.retrofit2:retrofit:2.3.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    implementation 'com.getkeepsafe.taptargetview:taptargetview:1.12.0'
 
 }
