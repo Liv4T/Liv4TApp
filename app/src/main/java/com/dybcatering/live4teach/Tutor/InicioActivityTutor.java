@@ -33,6 +33,8 @@ import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.ConsultasTut
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetSequence;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -42,6 +44,8 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.HashMap;
+
+import es.dmoral.toasty.Toasty;
 
 public class InicioActivityTutor extends AppCompatActivity {
     public DatabaseHandler db;
@@ -62,6 +66,11 @@ public class InicioActivityTutor extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         new CheckInternetConnection(InicioActivityTutor.this).checkConnection();
         sessionManager = new SessionManager(InicioActivityTutor.this);
+		if (sessionManager.getFirstTime()) {
+			//tap target view
+			tapview();
+			sessionManager.setFirstTime(false);
+		}
         HashMap<String, String> user = sessionManager.getUserDetail();
         valor = user.get(SessionManager.UUID);
         String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
@@ -266,6 +275,86 @@ public class InicioActivityTutor extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void tapview() {
+        new TapTargetSequence(this)
+                .targets(
+                        TapTarget.forView(findViewById(R.id.nav_perfil_tutor), "Mi perfil", "Tienes el acceso a tu perfil, donde podrás cambiar tu foto de perfil y revisar tus datos básicos")
+                                .targetCircleColor(R.color.colorAccent)
+                                .titleTextColor(R.color.gen_black)
+                                .titleTextSize(25)
+                                .descriptionTextSize(15)
+                                .descriptionTextColor(R.color.colorText)
+                                .drawShadow(true)                   // Whether to draw a drop shadow or not
+                                .cancelable(false)                  // Whether tapping outside the outer circle dismisses the view
+                                .tintTarget(true)
+                                .transparentTarget(true)
+                                .outerCircleColor(R.color.colorPrimaryDark),
+                        TapTarget.forView(findViewById(R.id.nav_mis_cursos_tutor), "Mis Cursos", "Encontrarás todos los cursos que has agregado ")
+                                .targetCircleColor(R.color.colorAccent)
+                                .titleTextColor(R.color.gen_black)
+                                .titleTextSize(25)
+                                .descriptionTextSize(15)
+                                .descriptionTextColor(R.color.colorText)
+                                .drawShadow(true)                   // Whether to draw a drop shadow or not
+                                .cancelable(false)                  // Whether tapping outside the outer circle dismisses the view
+                                .tintTarget(true)
+                                .transparentTarget(true)
+                                .outerCircleColor(R.color.colorPrimaryDark),
+                        TapTarget.forView(findViewById(R.id.nav_consultas_tutor), "Consultas y Tutorias", "Encontrarás tutorias Online Y Offline enviadas por los estudiantes")
+                                .targetCircleColor(R.color.colorAccent)
+                                .titleTextColor(R.color.gen_black)
+                                .titleTextSize(25)
+                                .descriptionTextSize(15)
+                                .descriptionTextColor(R.color.colorText)
+                                .drawShadow(true)
+                                .cancelable(false)// Whether tapping outside the outer circle dismisses the view
+                                .tintTarget(true)
+                                .transparentTarget(true)
+                                .outerCircleColor(R.color.colorPrimaryDark),
+                        TapTarget.forView(findViewById(R.id.nav_calificaciones_tutor), "Mis Calificaciones", "Podrás calificar a todos tus estudiantes inscritos en los cursos")
+                                .targetCircleColor(R.color.colorAccent)
+                                .titleTextColor(R.color.gen_black)
+                                .titleTextSize(25)
+                                .descriptionTextSize(15)
+                                .descriptionTextColor(R.color.colorText)
+                                .drawShadow(true)                   // Whether to draw a drop shadow or not
+                                .cancelable(false)                  // Whether tapping outside the outer circle dismisses the view
+                                .tintTarget(true)
+                                .transparentTarget(true)
+                                .outerCircleColor(R.color.colorPrimaryDark),
+                        TapTarget.forView(findViewById(R.id.nav_actividades_tutor), "Mis Actividades", "Podrás crear actividades tipo cuestionario para los cursos que tienes activos en este momento")
+                                .targetCircleColor(R.color.colorAccent)
+                                .titleTextColor(R.color.gen_black)
+                                .titleTextSize(25)
+                                .descriptionTextSize(15)
+                                .descriptionTextColor(R.color.colorText)
+                                .drawShadow(true)
+                                .cancelable(false)// Whether tapping outside the outer circle dismisses the view
+                                .tintTarget(true)
+                                .transparentTarget(true)
+                                .outerCircleColor(R.color.colorPrimaryDark))
+
+                .listener(new TapTargetSequence.Listener() {
+                    // This listener will tell us when interesting(tm) events happen in regards
+                    // to the sequence
+                    @Override
+                    public void onSequenceFinish() {
+                        sessionManager.setFirstTime(false);
+                        Toasty.success(InicioActivityTutor.this, "Estás listo para iniciar  !", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onSequenceStep(TapTarget lastTarget, boolean targetClicked) {
+
+                    }
+
+                    @Override
+                    public void onSequenceCanceled(TapTarget lastTarget) {
+                        // Boo
+                    }
+                }).start();
     }
 
    /* @Override

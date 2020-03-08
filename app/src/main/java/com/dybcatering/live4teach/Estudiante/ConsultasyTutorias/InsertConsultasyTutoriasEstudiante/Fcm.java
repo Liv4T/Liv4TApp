@@ -9,6 +9,9 @@ import android.os.Build;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
+import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOnlineDisponibles.DetalleConsultaOnline;
@@ -18,11 +21,14 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
+import java.util.HashMap;
 import java.util.Random;
+import java.util.UUID;
 
 public class Fcm extends FirebaseMessagingService {
 
 	FirebaseUser firebaseUser;
+	SessionManager sessionManager;
 
 	@Override
 	public void onNewToken(String s) {
@@ -31,8 +37,13 @@ public class Fcm extends FirebaseMessagingService {
 	}
 
 	private void guardarToken(String s) {
+
+		sessionManager = new SessionManager(Fcm.this);
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		String uuid  = user.get(SessionManager.UUID);
+
 		DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("Tokens");
-		ref.child(firebaseUser.getUid()).child(s).setValue(s);
+		ref.child(uuid).child(s).setValue(s);
 
 	}
 
