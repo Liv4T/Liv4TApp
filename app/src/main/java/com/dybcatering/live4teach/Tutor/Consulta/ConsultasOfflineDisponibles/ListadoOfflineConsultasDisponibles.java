@@ -36,12 +36,12 @@ public class ListadoOfflineConsultasDisponibles extends AppCompatActivity implem
 		itemConsultasOffline=new ArrayList<>();
 		Intent iin= getIntent();
 		Bundle b = iin.getExtras();
-		if(b!=null)
+		/*if(b!=null)
 		{
 			String j =(String) b.get("titulo");
 			String a = (String) b.get("detalle");
 			Toasty.success(this, "el mensaje recibido es desde offline"+ j + "el detalle es " + a, Toast.LENGTH_SHORT).show();;
-		}
+		}*/
 
 
 		final Query nm= FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOffline")

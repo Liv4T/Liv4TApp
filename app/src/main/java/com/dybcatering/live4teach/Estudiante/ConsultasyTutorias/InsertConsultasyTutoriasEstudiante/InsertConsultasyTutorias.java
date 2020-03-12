@@ -41,6 +41,7 @@ import com.dybcatering.live4teach.Estudiante.MisCalificaciones.MisCalificaciones
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles;
+import com.dybcatering.live4teach.Tutor.InicioActivityTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -287,13 +288,16 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 	}
 
 	private void guardarMensajeOnline(String nombreestudiante, String categoria, String mensaje) {
+		sessionManager = new SessionManager(getContext());
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		final String valor = user.get(SessionManager.UUID);
 		SimpleDateFormat s = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
 		String hora = s.format(new Date());
 		DatabaseReference reference = FirebaseDatabase.getInstance().getReference();
 		String receptor ="vacio";
 		String estado = "no resuelta";
 		HashMap<String, Object> hashMap = new HashMap<>();
-		hashMap.put("id", firebaseUser.getUid());
+		hashMap.put("id", valor);
 		hashMap.put("remitente", nombreestudiante);
 		hashMap.put("categoria", categoria);
 		hashMap.put("mensaje", mensaje);
@@ -329,15 +333,15 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		alert.show();
 
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOnline")
-				//.child(firebaseUser.getUid())
-				.child(firebaseUser.getUid())
+				//.child(valor)
+				.child(valor)
 				.child(nombreestudiante);
 
 		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				if (!dataSnapshot.exists()){
-					chatRef.child("id").child(firebaseUser.getUid());
+					chatRef.child("id").child(valor);
 				}
 			}
 			@Override
@@ -348,6 +352,9 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 
 	private void guardarMensajeOffline(final String nombreestudiante, final String categoria, String mensaje) {
 
+		sessionManager = new SessionManager(getContext());
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		final String valor = user.get(SessionManager.UUID);
 
 		SimpleDateFormat s = new SimpleDateFormat("yyyy.MM.dd G 'at' HH:mm:ss z");
 		String hora = s.format(new Date());
@@ -355,7 +362,7 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		String receptor ="vacio";
 		String estado = "no resuelta";
 		HashMap<String, Object> hashMap = new HashMap<>();
-		hashMap.put("id", firebaseUser.getUid());
+		hashMap.put("id", valor);
 		hashMap.put("remitente", nombreestudiante);
 		hashMap.put("categoria", categoria);
 		hashMap.put("mensaje", mensaje);
@@ -391,15 +398,15 @@ public class InsertConsultasyTutorias extends Fragment implements AdapterView.On
 		alert.show();
 
 		final DatabaseReference chatRef = FirebaseDatabase.getInstance().getReference("ConsultasEnviadasOffline")
-				//.child(firebaseUser.getUid())
-				.child(firebaseUser.getUid())
+				//.child(valor)
+				.child(valor)
 				.child(nombreestudiante);
 
 		chatRef.addListenerForSingleValueEvent(new ValueEventListener() {
 			@Override
 			public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 				if (!dataSnapshot.exists()){
-					chatRef.child("id").child(firebaseUser.getUid());
+					chatRef.child("id").child(valor);
 				}
 			}
 			@Override

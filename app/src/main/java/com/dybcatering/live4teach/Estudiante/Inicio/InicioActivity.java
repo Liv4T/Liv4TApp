@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dybcatering.live4teach.ConferenciaOnline.ConferenciaOnline;
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.CategoriasCursos.CategoriasCursos;
@@ -131,12 +132,13 @@ public class InicioActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_consultas:
                             if (sessionManager.isLoggin()){
-                                selectedFragment = new ConsultasEstudiante();
-                               //selectedFragment = new InsertConsultasyTutorias();
+                                //selectedFragment = new ConsultasEstudiante();
+                               selectedFragment = new InsertConsultasyTutorias();
                             }else{
                                 mostraralerta();
                                 selectedFragment = new CursosFragment();
                             }
+
                             break;
 
                         case R.id.nav_mis_calificaciones:

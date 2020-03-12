@@ -2,6 +2,7 @@ package com.dybcatering.live4teach.Estudiante.Perfil;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -25,6 +26,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dybcatering.live4teach.BuildConfig;
+import com.dybcatering.live4teach.ConferenciaOnline.ConferenciaOnline;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentFotoPerfilTutor;
@@ -95,8 +98,9 @@ public class PerfilFragment extends Fragment {
         namebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                swapFragment();
+                Intent intent = new Intent(getActivity(), ConferenciaOnline.class);
+                startActivity(intent);
+                //swapFragment();
                // Intent intent = new Intent(getActivity(), HomeActivity.class);
               //  startActivity(intent);
                // intent.putExtra("nombre", nombre);

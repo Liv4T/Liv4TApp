@@ -8,7 +8,7 @@ android {
         minSdkVersion 17
         targetSdkVersion 28
         versionCode 41
-        versionName "41.0.0-beta"
+        versionName "42.6.6-beta"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

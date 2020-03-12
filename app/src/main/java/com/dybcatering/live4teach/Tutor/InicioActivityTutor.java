@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -20,13 +21,16 @@ import android.widget.Toast;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
+import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Estudiante.Inicio.Token;
+import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
 import com.dybcatering.live4teach.Tutor.Calificaciones.CalificacionesTutorFragment;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultaTutorFragment;
+import com.dybcatering.live4teach.Tutor.Consulta.ConsultasOfflineDisponibles.ListadoOfflineConsultasDisponibles;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.ConsultasTutor;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
@@ -49,7 +53,7 @@ public class InicioActivityTutor extends AppCompatActivity {
 
     DatabaseReference databaseReference;
     ValueEventListener seenListener;
-
+    String valor;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,9 +61,14 @@ public class InicioActivityTutor extends AppCompatActivity {
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation_tutor);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
-        String valor = getIntent().getExtras().getString("uuid");
+        sessionManager = new SessionManager(InicioActivityTutor.this);
+        HashMap<String, String> user = sessionManager.getUserDetail();
+        valor = user.get(SessionManager.UUID);
         String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
         changeToken(myRefreshedToken, valor);
+
+// String valor = getIntent().getExtras().getString("uuid");
+
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
@@ -68,9 +77,8 @@ public class InicioActivityTutor extends AppCompatActivity {
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
-        HashMap<String, String> user = sessionManager.getUserDetail();
         String username = user.get(SessionManager.USER_NAME);
-        Query query = FirebaseDatabase.getInstance().getReference("Users")
+       /* Query query = FirebaseDatabase.getInstance().getReference("Users")
                 .orderByChild("username")
                 .equalTo(username);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -88,17 +96,22 @@ public class InicioActivityTutor extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        });
+        });*/
     }
     public void changeToken(final String token, final String uuid){
 
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Tokens");
-        seenListener = databaseReference.addValueEventListener(new ValueEventListener() {
+//        databaseReference = FirebaseDatabase.getInstance().getReference("Tokens");
+
+        Query query = FirebaseDatabase.getInstance().getReference("Tokens")
+                .orderByChild(uuid)
+                .equalTo(uuid);
+
+        seenListener = query.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Token tokenUsuario = snapshot.getValue(Token.class);
+                    Token tokenUsuario = new Token(snapshot.getValue(Token.class));
                     if (dataSnapshot.exists()){
                         HashMap<String, Object> hashMap = new HashMap<>();
                         hashMap.put(uuid,token);
@@ -132,8 +145,11 @@ public class InicioActivityTutor extends AppCompatActivity {
                             //}
                             break;
                         case R.id.nav_mis_cursos_tutor:
+
+
+
                           //     if (sessionManager.isLoggin()){
-                            selectedFragment = new MisCursosTutorFragment();
+                     selectedFragment = new MisCursosTutorFragment();
                            //  }else{
                             //    mostraralerta();
                              // selectedFragment = new CursosFragment();
@@ -141,7 +157,10 @@ public class InicioActivityTutor extends AppCompatActivity {
                             break;
                         case R.id.nav_consultas_tutor:
 
-                            selectedFragment = new ConsultasTutor();
+                            Intent intent = new Intent(InicioActivityTutor.this, ListadoOfflineConsultasDisponibles.class);
+                            startActivity(intent);
+
+                            //selectedFragment = new ListadoOfflineConsultasDisponibles();
                             break;
                         case R.id.nav_calificaciones_tutor:
                              //if (sessionManager.isLoggin()){
