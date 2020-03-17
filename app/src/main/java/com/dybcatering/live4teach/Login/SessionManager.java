@@ -28,7 +28,6 @@ public class SessionManager {
     public SharedPreferences.Editor editor;
     public Context context;
     int PRIVATE_MODE = 0;
-
     private static final String PREF_NAME = "LOGIN";
     private static final String LOGIN = "IS_LOGIN";
     public static final String NAME = "NAME";
@@ -37,6 +36,8 @@ public class SessionManager {
     public static final String UUID= "UUID";
     public static final String TYPE_USER = "TYPE_USER";
     public static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    public static final String FIRST_TIME = "firsttime";
+
 
     public SessionManager(Context context) {
         this.context = context;
@@ -81,7 +82,7 @@ public class SessionManager {
     }
 
     public void logout(){
-
+        setFirstTime(true);
         editor.clear();
         editor.commit();
         Intent i = new Intent(context, SplashActivity.class);
@@ -103,13 +104,13 @@ public class SessionManager {
 
 
     public void logoutEstudiante(){
-
+        setFirstTime(true);
         editor.clear();
         editor.commit();
         Intent i = new Intent(context, SplashActivity.class);
         context.startActivity(i);
         ((InicioActivity) context).finish();
-       // FirebaseAuth.getInstance().signOut();
+        FirebaseAuth.getInstance().signOut();
         String uuid = getUserDetail().get(UUID);
         removeToken(uuid);
         FirebaseMessaging.getInstance().unsubscribeFromTopic("estudiantes")
@@ -124,12 +125,23 @@ public class SessionManager {
 
     }
 
+    public Boolean  getFirstTime() {
+        return sharedPreferences.getBoolean(FIRST_TIME, true);
+    }
+
+    public void setFirstTime(Boolean n){
+        editor.putBoolean(FIRST_TIME,n);
+        editor.commit();
+    }
+
     public void setFirstTimeLaunch(boolean isFirstTime) {
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         editor.commit();
     }
 
-
+    public boolean isFirstTimeLaunch() {
+        return sharedPreferences.getBoolean(IS_FIRST_TIME_LAUNCH, true);
+    }
 
 
     private void removeToken(String uuid) {

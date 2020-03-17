@@ -98,9 +98,9 @@ public class PerfilFragment extends Fragment {
         namebutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), ConferenciaOnline.class);
-                startActivity(intent);
-                //swapFragment();
+              //  Intent intent = new Intent(getActivity(), ConferenciaOnline.class);
+              //  startActivity(intent);
+              swapFragment();
                // Intent intent = new Intent(getActivity(), HomeActivity.class);
               //  startActivity(intent);
                // intent.putExtra("nombre", nombre);
