@@ -27,7 +27,7 @@ public class EditorTextoActivity extends AppCompatActivity {
 
 	private CanvasView canvas ;
 
-	private Button texto, undo, redo, negro, rojo, rectangulo, circulo, btnborrador, btnqu, agregarimagen;
+	private Button texto, undo, redo, negro, rojo, rectangulo, circulo, btnborrador, btnqu, btnguardarimagen;
 
 	ImageView mImg;
 	@Override
@@ -44,6 +44,7 @@ public class EditorTextoActivity extends AppCompatActivity {
 		circulo = findViewById(R.id.btncirculo);
 		btnborrador = findViewById(R.id.btnborrador);
 		btnqu = findViewById(R.id.btnqu);
+		btnguardarimagen = findViewById(R.id.btnguardarimagen);
 
 
 
@@ -147,22 +148,20 @@ public class EditorTextoActivity extends AppCompatActivity {
 		btnqu.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				//canvas.setMode(CanvasView.Mode.DRAW);
-				//canvas.setDrawer(CanvasView.Drawer.QUADRATIC_BEZIER);
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.setDrawer(CanvasView.Drawer.QUADRATIC_BEZIER);
 
+
+
+			}
+		});
+		btnguardarimagen.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
 				GuardarDatos();
 
 			}
 		});
-		/*agregarimagen.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Bitmap bitmap = canvas.getBitmap();
-
-				mImg.setImageBitmap(bitmap);
-
-			}
-		});*/
 
 
 	}
@@ -209,7 +208,7 @@ public class EditorTextoActivity extends AppCompatActivity {
 		n = generator.nextInt(n);
 		String fname = "Image-" + n + ".jpg";
 		File file = new File(myDir, fname);
-		Toast.makeText(this, "el archivo se llama " + file, Toast.LENGTH_SHORT).show();//Log.i(TAG, "" + file);
+		Toast.makeText(this, "El archivo quedo guardado en: " + file, Toast.LENGTH_SHORT).show();//Log.i(TAG, "" + file);
 		if (file.exists())
 			file.delete();
 		try {
