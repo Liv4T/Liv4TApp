@@ -25,7 +25,8 @@
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".Tutor.Pizarra.PizarraActivity"></activity>
+        <activity android:name=".Tutor.EditorTexto.EditorTextoActivity"></activity>
+        <activity android:name=".Tutor.Pizarra.PizarraActivity" />
         <activity android:name=".ConferenciaOnline.ConferenciaOnline" />
         <activity android:name=".Tutor.Consulta.ConsultasOfflineDisponibles.Detalle.DetalleOfflineConsultasDisponibles" />
         <activity android:name=".Tutor.Consulta.ConsultasOnlineDisponibles.DetalleConsultaOnline" />
