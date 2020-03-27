@@ -1,265 +1,223 @@
 package com.dybcatering.live4teach.Tutor.Pizarra;
 
+import android.content.DialogInterface;
+import android.graphics.Bitmap;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Environment;
-import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
+import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.graphics.CanvasView;
 import com.dybcatering.live4teach.R;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
-
-import jp.wasabeef.richeditor.RichEditor;
+import java.io.OutputStream;
+import java.util.Random;
 
 public class PizarraActivity extends AppCompatActivity {
 
-	private RichEditor mEditor;
-	private TextView mPreview;
-	private static final String FILE_NAME = "documento.doc";
+	private CanvasView canvas ;
 
+	private Button texto, undo, redo, negro, rojo, rectangulo, circulo, btnborrador, btnqu, btnguardarimagen;
 
-	@RequiresApi(api = Build.VERSION_CODES.KITKAT)
+	ImageView mImg;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_pizarra);
-		System.setProperty("org.apache.poi.javax.xml.stream.XMLInputFactory", "com.fasterxml.aalto.stax.InputFactoryImpl");
-		System.setProperty("org.apache.poi.javax.xml.stream.XMLOutputFactory", "com.fasterxml.aalto.stax.OutputFactoryImpl");
-		System.setProperty("org.apache.poi.javax.xml.stream.XMLEventFactory", "com.fasterxml.aalto.stax.EventFactoryImpl");
+		setContentView(R.layout.activity_editor_texto);
+		canvas = findViewById(R.id.canvas);
+		texto = findViewById(R.id.btncolor);
+		undo = findViewById(R.id.btnundo);
+		redo = findViewById(R.id.btnredo);
+		negro = findViewById(R.id.btncambianegro);
+		rojo = findViewById(R.id.btncambiarojo);
+		rectangulo = findViewById(R.id.rectangulo);
+		circulo = findViewById(R.id.btncirculo);
+		btnborrador = findViewById(R.id.btnborrador);
+		btnqu = findViewById(R.id.btnqu);
+		btnguardarimagen = findViewById(R.id.btnguardarimagen);
 
 
 
-		mEditor = (RichEditor) findViewById(R.id.editor);
-		mEditor.setEditorHeight(200);
-		mEditor.setEditorFontSize(22);
-		mEditor.setEditorFontColor(Color.RED);
-		//mEditor.setEditorBackgroundColor(Color.BLUE);
-		//mEditor.setBackgroundColor(Color.BLUE);
-		//mEditor.setBackgroundResource(R.drawable.bg);
-		mEditor.setPadding(10, 10, 10, 10);
-		//mEditor.setBackground("https://raw.githubusercontent.com/wasabeef/art/master/chip.jpg");
-		mEditor.setPlaceholder("Empieza a Escribir aqui...");
-		//mEditor.setInputEnabled(false);
-
-		mPreview = (TextView) findViewById(R.id.preview);
-
-		final File path = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS);
-
-		mEditor.setOnTextChangeListener(new RichEditor.OnTextChangeListener() {
-			@Override public void onTextChange(String text) {
-				mPreview.setText(text);
-			}
-		});
-
-		findViewById(R.id.exportar).setOnClickListener(new View.OnClickListener() {
+		texto.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				save();
-				//ExportarDocumento exportarDocumento = new ExportarDocumento();
-				//		CrearDoc(path, mEditor.toString().trim());
+				canvas.setMode(CanvasView.Mode.TEXT);
+
+// Setter
+
+				AlertDialog.Builder builder = new AlertDialog.Builder(PizarraActivity.this);
+				builder.setTitle("Agregar nuevo texto");
+
+				final EditText input = new EditText(PizarraActivity.this);
+				input.setInputType(InputType.TYPE_CLASS_TEXT);
+				builder.setView(input);
+				builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						String m_Text = input.getText().toString();
+
+						canvas.setText(m_Text);
+						canvas.setFontSize(50F);
+
+					}
+				});
+				builder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						dialog.cancel();
+					}
+				});
+
+				builder.show();
+				//	canvas.setMode(CanvasView.Mode.DRAW);
+
 			}
 		});
 
-		findViewById(R.id.action_undo).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.undo();
+		undo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.undo();
 			}
 		});
 
-		findViewById(R.id.action_redo).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.redo();
+		redo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.redo();
+			}
+		});
+		negro.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setPaintStrokeWidth(3F);
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.setDrawer(CanvasView.Drawer.PEN);
+				canvas.setPaintStrokeColor(Color.BLACK);
+			}
+		});
+		rojo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setPaintStrokeWidth(3F);
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.setDrawer(CanvasView.Drawer.PEN);
+				canvas.setPaintStrokeColor(Color.RED);
+			}
+		});
+		rectangulo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.setPaintStrokeColor(Color.BLACK);
+				canvas.setPaintStrokeWidth(3F);
+				canvas.setDrawer(CanvasView.Drawer.RECTANGLE);
 			}
 		});
 
-		findViewById(R.id.action_bold).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setBold();
+		circulo.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.setPaintStrokeColor(Color.BLACK);
+				canvas.setPaintStrokeWidth(3F);
+				canvas.setDrawer(CanvasView.Drawer.CIRCLE);
+			}
+		});
+		btnborrador.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.setDrawer(CanvasView.Drawer.PEN);
+				canvas.setPaintStrokeColor(Color.WHITE);
+				canvas.setPaintStrokeWidth(50F);
+			}
+		});
+		btnqu.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				canvas.setMode(CanvasView.Mode.DRAW);
+				canvas.setDrawer(CanvasView.Drawer.QUADRATIC_BEZIER);
+
+
+
+			}
+		});
+		btnguardarimagen.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				GuardarDatos();
+
 			}
 		});
 
-		findViewById(R.id.action_italic).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setItalic();
-			}
-		});
 
-		findViewById(R.id.action_subscript).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setSubscript();
-			}
-		});
-
-		findViewById(R.id.action_superscript).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setSuperscript();
-			}
-		});
-
-		findViewById(R.id.action_strikethrough).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setStrikeThrough();
-			}
-		});
-
-		findViewById(R.id.action_underline).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setUnderline();
-			}
-		});
-
-		findViewById(R.id.action_heading1).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setHeading(1);
-			}
-		});
-
-		findViewById(R.id.action_heading2).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setHeading(2);
-			}
-		});
-
-		findViewById(R.id.action_heading3).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setHeading(3);
-			}
-		});
-
-		findViewById(R.id.action_heading4).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setHeading(4);
-			}
-		});
-
-		findViewById(R.id.action_heading5).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setHeading(5);
-			}
-		});
-
-		findViewById(R.id.action_heading6).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setHeading(6);
-			}
-		});
-
-		findViewById(R.id.action_txt_color).setOnClickListener(new View.OnClickListener() {
-			private boolean isChanged;
-
-			@Override public void onClick(View v) {
-				mEditor.setTextColor(isChanged ? Color.BLACK : Color.RED);
-				isChanged = !isChanged;
-			}
-		});
-
-		findViewById(R.id.action_bg_color).setOnClickListener(new View.OnClickListener() {
-			private boolean isChanged;
-
-			@Override public void onClick(View v) {
-				mEditor.setTextBackgroundColor(isChanged ? Color.TRANSPARENT : Color.YELLOW);
-				isChanged = !isChanged;
-			}
-		});
-
-		findViewById(R.id.action_indent).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setIndent();
-			}
-		});
-
-		findViewById(R.id.action_outdent).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setOutdent();
-			}
-		});
-
-		findViewById(R.id.action_align_left).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setAlignLeft();
-			}
-		});
-
-		findViewById(R.id.action_align_center).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setAlignCenter();
-			}
-		});
-
-		findViewById(R.id.action_align_right).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setAlignRight();
-			}
-		});
-
-		findViewById(R.id.action_blockquote).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setBlockquote();
-			}
-		});
-
-		findViewById(R.id.action_insert_bullets).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setBullets();
-			}
-		});
-
-		findViewById(R.id.action_insert_numbers).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.setNumbers();
-			}
-		});
-
-		findViewById(R.id.action_insert_image).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.insertImage("https://image.shutterstock.com/image-vector/hola-spanish-greeting-handwritten-white-600w-1080284534.jpg",
-						"dachshund");
-			}
-		});
-
-		findViewById(R.id.action_insert_link).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.insertLink("https://github.com/wasabeef", "wasabeef");
-			}
-		});
-		findViewById(R.id.action_insert_checkbox).setOnClickListener(new View.OnClickListener() {
-			@Override public void onClick(View v) {
-				mEditor.insertTodo();
-			}
-		});
 	}
 
-	public void save() {
-		String text = mPreview.getText().toString();
-		FileOutputStream fos = null;
 
+
+	private File savebitmap(String filename) {
+		String extStorageDirectory = Environment.getExternalStorageDirectory().toString();
+		OutputStream outStream = null;
+
+		File file = new File(filename + ".png");
+		if (file.exists()) {
+			file.delete();
+			file = new File(extStorageDirectory, filename + ".png");
+			Log.e("file exist", "" + file + ",Bitmap= " + filename);
+		}
 		try {
-			fos = openFileOutput(FILE_NAME, MODE_PRIVATE);
-			fos.write(text.getBytes());
+			// make a new bitmap from your file
+			Bitmap bitmap = this.canvas.getBitmap();
 
-			//mEditor.clear();
-			Toast.makeText(this, "Saved to " + getFilesDir() + "/" + FILE_NAME,
-					Toast.LENGTH_LONG).show();
-		} catch (FileNotFoundException e) {
+			//Bitmap bitmap = BitmapFactory.decodeFile(file.getName());
+
+			outStream = new FileOutputStream(file);
+			bitmap.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+			outStream.flush();
+			outStream.close();
+		} catch (Exception e) {
 			e.printStackTrace();
-		} catch (IOException e) {
+		}
+		Log.e("file", "" + file);
+		return file;
+
+	}
+
+	public void GuardarDatos(){
+		Bitmap bitmap = this.canvas.getBitmap();
+
+
+		String root = Environment.getExternalStorageDirectory().toString();
+		File myDir = new File(getFilesDir() + "/req_images");
+		myDir.mkdirs();
+		Random generator = new Random();
+		int n = 10000;
+		n = generator.nextInt(n);
+		String fname = "Image-" + n + ".jpg";
+		File file = new File(myDir, fname);
+		Toast.makeText(this, "El archivo quedo guardado en: " + file, Toast.LENGTH_SHORT).show();//Log.i(TAG, "" + file);
+		if (file.exists())
+			file.delete();
+		try {
+			FileOutputStream out = new FileOutputStream(file);
+			bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out);
+			out.flush();
+			out.close();
+		} catch (Exception e) {
 			e.printStackTrace();
-		} finally {
-			if (fos != null) {
-				try {
-					fos.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
 		}
 	}
 
