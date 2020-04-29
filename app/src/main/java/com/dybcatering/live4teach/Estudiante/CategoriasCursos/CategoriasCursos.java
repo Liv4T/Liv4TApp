@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -18,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.dybcatering.live4teach.Estudiante.Perfil.CambiarContrasenaFragment;
+import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
@@ -45,6 +48,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 	private ExampleAdaptor mExampleAdaptor;
 	private ArrayList<ExampleItem> mexampleItems;
 	private RequestQueue mRequestQueue;
+	LinearLayout perfil;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,7 +56,16 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
         myView = inflater.inflate(R.layout.categorias_cursos, container, false);
         new CheckInternetConnection(getActivity()).checkConnection();
 		session = new SessionManager(getActivity());
-        primer_card = myView.findViewById(R.id.primer_card);
+
+		perfil = myView.findViewById(R.id.linearperfil);
+
+		perfil.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				perfil();
+			}
+		});
+      /*  primer_card = myView.findViewById(R.id.primer_card);
 
         primer_card.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -185,65 +198,13 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
         return myView;
     }
 
-	private void parseJSON() {
-
-		String url = "http://dybcatering.com/back_live_app/cursos/listarcursos.php";
-
-		JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, url, null,
-				new Response.Listener<JSONObject>() {
-					@Override
-					public void onResponse(JSONObject response) {
-						try {
-							JSONArray jsonArray = response.getJSONArray("Registros");
-							for (int i = 0; i < jsonArray.length(); i++) {
-								JSONObject hit = jsonArray.getJSONObject(i);
-								String id = hit.getString("id");
-								String nombre = hit.getString("name");
-								String categoria = hit.getString("id_category");
-								String subcategoria = hit.getString("id_subcategory");
-								String metodologia = hit.getString("methodology");
-								String bienvenida = hit.getString("welcome");
-								String intensidad = hit.getString("intention");
-								String intensidadac = hit.getString("intensityAC");
-								String competencias = hit.getString("competences");
-								String intensidadta = hit.getString("intensityTA");
-								String logro = hit.getString("achievement");
-								String indicadora = hit.getString("indicatorA");
-								String mapa = hit.getString("map");
-								String metodologiag = hit.getString("methodologyG");
-								String tipo = hit.getString("type");
-								String descripcion = hit.getString("description");
-								String presentacion = hit.getString("presentation");
-								String iduser = hit.getString("id_user");
-								String descripciono = hit.getString("descriptionO");
-								String actualizadoen = hit.getString("updated_at");
-								String creadoen = hit.getString("created_at");
-								String estado = hit.getString("state");
-								String publicado = hit.getString("publish");
-								String imagen= hit.getString("image");
-								String precio = hit.getString("price");
-								String videopresentacion = hit.getString("video_presentation");
-								mexampleItems.add(new ExampleItem(id, nombre, categoria, subcategoria, metodologia, bienvenida, intensidad, intensidadac, competencias, intensidadta, logro, indicadora, mapa, metodologiag, tipo, descripcion, presentacion, iduser, descripciono, actualizadoen, creadoen, estado, publicado, imagen, precio, videopresentacion));
-
-							}
-
-							mExampleAdaptor = new ExampleAdaptor(getActivity(), mexampleItems);
-							mRecyclerView.setAdapter(mExampleAdaptor);
-							mExampleAdaptor.setOnClickItemListener(CategoriasCursos.this);
-
-						} catch (JSONException e) {
-							e.printStackTrace();
-						}
-					}
-				}, new Response.ErrorListener() {
-			@Override
-			public void onErrorResponse(VolleyError error) {
-				error.printStackTrace();
-			}
-		});
-
-		mRequestQueue.add(request);
-
+	private void perfil(){
+		Fragment perfil = new PerfilFragment();
+		//tvname.setText("Daniel");
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
 	}
 
 	private void transicionFragment() {

@@ -69,15 +69,15 @@ public class InicioActivity extends AppCompatActivity {
 
         new CheckInternetConnection(InicioActivity.this).checkConnection();
         sessionManager = new SessionManager(InicioActivity.this);
-        HashMap<String, String> user = sessionManager.getUserDetail();
+     //   HashMap<String, String> user = sessionManager.getUserDetail();
         if (sessionManager.getFirstTime()) {
             //tap target view
             tapview();
             sessionManager.setFirstTime(false);
         }
-        valor = user.get(SessionManager.UUID);
-        String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
-        changeToken(myRefreshedToken, valor);
+      //  valor = user.get(SessionManager.UUID);
+      //  String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
+      //  changeToken(myRefreshedToken, valor);
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -102,7 +102,7 @@ public class InicioActivity extends AppCompatActivity {
                                 .tintTarget(true)
                                 .transparentTarget(true)
                                 .outerCircleColor(R.color.colorPrimaryDark),
-                        TapTarget.forView(findViewById(R.id.nav_mis_cursos), "Mis Cursos", "Encontrarás todos los cursos que has agregado ")
+                    /*    TapTarget.forView(findViewById(R.id.nav_mis_cursos), "Mis Cursos", "Encontrarás todos los cursos que has agregado ")
                                 .targetCircleColor(R.color.colorAccent)
                                 .titleTextColor(R.color.gen_black)
                                 .titleTextSize(25)
@@ -123,7 +123,7 @@ public class InicioActivity extends AppCompatActivity {
                                 .cancelable(false)// Whether tapping outside the outer circle dismisses the view
                                 .tintTarget(true)
                                 .transparentTarget(true)
-                                .outerCircleColor(R.color.colorPrimaryDark),
+                                .outerCircleColor(R.color.colorPrimaryDark),*/
                         TapTarget.forView(findViewById(R.id.nav_mis_calificaciones), "Mis Calificaciones", "Tendrás el acceso a las calificaciones para todas tus actividades realizadas")
                                 .targetCircleColor(R.color.colorAccent)
                                 .titleTextColor(R.color.gen_black)
@@ -212,7 +212,7 @@ public class InicioActivity extends AppCompatActivity {
 
                             selectedFragment = new CategoriasCursos();
                             break;
-                        case R.id.nav_mis_cursos:
+                        /*case R.id.nav_mis_cursos:
                             if (sessionManager.isLoggin()){
                                 selectedFragment = new MisCursosFragment();
                             }else{
@@ -230,7 +230,7 @@ public class InicioActivity extends AppCompatActivity {
                             }
 
                             break;
-
+*/
                         case R.id.nav_mis_calificaciones:
                             if (sessionManager.isLoggin()){
 

@@ -51,11 +51,11 @@ public class ActualizarDatos extends AppCompatActivity {
 
                             //selectedFragment = new CursosFragment();
                             break;
-                        case R.id.nav_mis_cursos:
+                    ///    case R.id.nav_mis_cursos:
                           //  selectedFragment = new MisCursosFragment();
-                            startActivity(intent);
+                       //     startActivity(intent);
 
-                            break;
+                         //   break;
                         case R.id.nav_mis_calificaciones:
 
                         //    selectedFragment = new MisCalificacionesFragment();

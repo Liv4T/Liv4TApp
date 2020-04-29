@@ -11,19 +11,19 @@
 
         app:showAsAction="ifRoom"/>
 
-    <item
+    <!--item
         android:id="@+id/nav_mis_cursos"
         android:enabled="true"
         android:icon="@drawable/ic_icono_doc"
         android:title="Mis Cursos"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"/-->
 
-    <item
+    <!--item
         android:id="@+id/nav_consultas"
         android:enabled="true"
         android:icon="@drawable/ic_consulta"
         android:title="Consultas"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"/-->
 
     <item
         android:id="@+id/nav_mis_calificaciones"

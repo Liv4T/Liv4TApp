@@ -33,7 +33,7 @@ public class Fcm extends FirebaseMessagingService {
 	@Override
 	public void onNewToken(String s) {
 		super.onNewToken(s);
-		guardarToken(s);
+	//	guardarToken(s);
 	}
 
 	private void guardarToken(String s) {

@@ -7,12 +7,12 @@
     android:scrollbarSize="1dp"
     tools:context=".Estudiante.Inicio.InicioActivity">
 
+
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="110dp"/>
-
+        android:layout_marginBottom="110dp" />
 
     <ImageView
         android:id="@+id/footer"
@@ -22,7 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="55dp"
-        android:src="@drawable/livetech">
+        android:src="@drawable/logouno">
 
     </ImageView>
 
@@ -33,7 +33,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
         android:scrollbarSize="2dp"
-        app:itemBackground="@color/colorPrimaryDark"
+        app:itemBackground="@color/colorPrimary"
 
         app:itemIconSize="20dp"
         app:itemIconTint="@drawable/nav_item_color_state"

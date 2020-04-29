@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Liv4TSkool</string>
-    <string name="title_activity_principal">Live4Teach</string>
+    <string name="title_activity_principal">Liv4TSkool</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">USUARIO APELLIDO</string>
