@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,24 +12,15 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import com.dybcatering.live4teach.Estudiante.Perfil.CambiarContrasenaFragment;
-import com.dybcatering.live4teach.Estudiante.Perfil.PerfilFragment;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Mensajes.MisMensajes;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Perfil.PerfilEstudiante;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleAdaptor;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleItem;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -48,7 +38,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 	private ExampleAdaptor mExampleAdaptor;
 	private ArrayList<ExampleItem> mexampleItems;
 	private RequestQueue mRequestQueue;
-	LinearLayout perfil;
+	LinearLayout perfil, mensajes;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +48,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		session = new SessionManager(getActivity());
 
 		perfil = myView.findViewById(R.id.linearperfil);
+		mensajes = myView.findViewById(R.id.layoutmensajes);
 
 		perfil.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -65,6 +56,14 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 				perfil();
 			}
 		});
+
+		mensajes.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				mensajes();
+			}
+		});
+
       /*  primer_card = myView.findViewById(R.id.primer_card);
 
         primer_card.setOnClickListener(new View.OnClickListener() {
@@ -199,13 +198,22 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
     }
 
 	private void perfil(){
-		Fragment perfil = new PerfilFragment();
+		Fragment perfil = new PerfilEstudiante();
 		//tvname.setText("Daniel");
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();
 		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
 		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
 		transaction.commit();
 	}
+	private void mensajes(){
+		Fragment perfil = new MisMensajes();
+		//tvname.setText("Daniel");
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
+	}
+
 
 	private void transicionFragment() {
 		Fragment someFragment = new CursosFragment();

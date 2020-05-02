@@ -19,7 +19,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dybcatering.live4teach.ConferenciaOnline.ConferenciaOnline;
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
 import com.dybcatering.live4teach.Estudiante.CategoriasCursos.CategoriasCursos;

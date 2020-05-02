@@ -26,7 +26,6 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.dybcatering.live4teach.BuildConfig;
-import com.dybcatering.live4teach.ConferenciaOnline.ConferenciaOnline;
 import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;

@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin_left"
+    android:paddingRight="@dimen/activity_horizontal_margin_right"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Estudiante.Liv4T.Perfil.PerfilEstudiante">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:ignore="MissingConstraints">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/scrollView"
+            android:layout_gravity="center">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <ImageView
+
+                        android:layout_gravity="center"
+
+                        android:id="@+id/backimg"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@drawable/side_nav_bar" />
+
+                    <ImageView
+                        android:id="@+id/imagem"
+                        android:layout_width="wrap_content"
+                        android:layout_height="80dp"
+                        android:background="@drawable/logouno"
+                        android:scaleType="fitCenter" />
+
+
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:layout_below="@+id/imagem"
+                        android:id="@+id/profilepicestudiante"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginBottom="10dp"
+                        android:elevation="5dp"
+                        android:src="@drawable/imagenperfil"
+                        android:visibility="visible"
+                        app:civ_border_color="#fff"
+                        app:civ_border_width="2dp" />
+
+                    <TextView
+                        android:id="@+id/textView20"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/profilepicestudiante"
+                        android:fontFamily="@font/centurygothic"
+                        android:gravity="center"
+                        android:text="CARLOS QUINTERO"
+                        android:textColor="#fff"
+                        android:textSize="24sp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_margin="10sp">
+
+                        <LinearLayout
+                            android:id="@+id/linearperfil"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="10"
+                            android:orientation="horizontal"
+                            android:layout_centerHorizontal="true"
+                            >
+
+                            <ImageView
+
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+
+                                android:background="@drawable/mensaje"/>
+
+                            <TextView
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="9"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="20sp"
+                                android:text="correo@correo.com"
+                                android:fontFamily="@font/centurygothic"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_margin="10sp">
+
+                        <LinearLayout
+                            android:id="@+id/layoutmensajes"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="10"
+                            android:orientation="horizontal"
+                            android:layout_centerHorizontal="true"
+                            >
+
+                            <ImageView
+
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+
+                                android:background="@drawable/celular"/>
+
+                            <TextView
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="9"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="20sp"
+                                android:fontFamily="@font/centurygothic"
+                                android:text="3103103103" />
+                        </LinearLayout>
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_margin="10sp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="10"
+                            android:orientation="horizontal"
+                            android:layout_centerHorizontal="true"
+                            >
+
+                            <ImageView
+
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+
+                                android:background="@drawable/lapiz"/>
+
+                            <TextView
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="9"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="20sp"
+                                android:text="601"
+                                android:fontFamily="@font/centurygothic"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+
+
+
+
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+    </FrameLayout>
+</FrameLayout>
