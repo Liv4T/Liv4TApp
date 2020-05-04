@@ -25,6 +25,7 @@ import com.dybcatering.live4teach.Estudiante.CategoriasCursos.CategoriasCursos;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.ConsultasEstudiante;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.InsertConsultasyTutorias;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Perfil.PerfilEstudiante;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
@@ -243,7 +244,7 @@ public class InicioActivity extends AppCompatActivity {
                         case R.id.nav_perfil:
                             if (sessionManager.isLoggin()){
 
-                                selectedFragment = new PerfilFragment();
+                                selectedFragment = new PerfilEstudiante();
                             }else {
                                 mostraralerta();
                                 selectedFragment = new CursosFragment();
