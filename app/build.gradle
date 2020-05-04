@@ -92,4 +92,8 @@ dependencies {
     implementation 'com.github.infotech-group:CanvasView:1.0.0'
     implementation 'jp.wasabeef:richeditor-android:1.2.2'
 
+
+    implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:2.0.5'
+    implementation 'nl.dionsegijn:konfetti:1.1.0'
+
 }

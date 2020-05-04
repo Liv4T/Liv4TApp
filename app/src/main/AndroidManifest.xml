@@ -80,6 +80,7 @@
         <activity android:name=".Tutor.InicioActivityTutor" />
         <activity android:name=".Estudiante.ConsultasyTutorias.MessageActivity" />
         <activity android:name=".Tutor.Consulta.ConsultasyTutorias.MessageActivity" />
+        <activity android:name=".Estudiante.Liv4T.Memorama.Home"/>
 
         <service
             android:name=".Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.Fcm"

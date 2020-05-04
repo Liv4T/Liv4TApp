@@ -103,5 +103,6 @@ Android gives you a world-class platform for creating apps and games for Android
         <item>Cuestionario 4 Preguntas</item>
 
     </string-array>
+    <string name="instructions">Descubre dos cartas iguales a la vez para eliminarlas del juego. \nCuidado con el temporizador, cuanto menos tiempo pases, más puntos anotarás \n pero asegúrate de terminar antes de que se acabe el tiempo.</string>
 
 </resources>
