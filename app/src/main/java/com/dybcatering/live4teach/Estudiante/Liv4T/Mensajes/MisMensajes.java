@@ -1,5 +1,7 @@
 package com.dybcatering.live4teach.Estudiante.Liv4T.Mensajes;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -27,23 +29,23 @@ public class MisMensajes extends Fragment {
         // Inflate the layout for this fragment
 
         mensajeuno = myView.findViewById(R.id.carduno);
-
+        final String correo = "correo@gmail.com";
         mensajeuno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                IniciarMensajesDetalle();
+                IniciarMensajesDetalle(correo);
             }
         });
 
         return myView;
     }
 
-    private void IniciarMensajesDetalle() {
-        Fragment perfil = new MisMensajesDetalle();
-        //tvname.setText("Daniel");
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
+    private void IniciarMensajesDetalle(String destinatario) {
+        Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                "mailto", destinatario, null));
+        emailIntent.putExtra(Intent.EXTRA_SUBJECT, "");
+        emailIntent.putExtra(Intent.EXTRA_TEXT, "");
+        startActivity(Intent.createChooser(emailIntent, "Enviar Correo..."));
+
     }
 }

@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Estudiante.CategoriasCursos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.volley.RequestQueue;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Calendario.CalendarioFragment;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Horario.HorarioFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Mensajes.MisMensajes;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Perfil.PerfilEstudiante;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Tareas.TareasFragment;
@@ -39,7 +42,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 	private ExampleAdaptor mExampleAdaptor;
 	private ArrayList<ExampleItem> mexampleItems;
 	private RequestQueue mRequestQueue;
-	LinearLayout perfil, mensajes, tareas;
+	LinearLayout perfil, mensajes, tareas, calendario, horario;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -51,6 +54,8 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		perfil = myView.findViewById(R.id.linearperfil);
 		mensajes = myView.findViewById(R.id.layoutmensajes);
 		tareas = myView.findViewById(R.id.lineartareas);
+		calendario = myView.findViewById(R.id.linearcalendario);
+		horario = myView.findViewById(R.id.linearhorario);
 
 		perfil.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -72,6 +77,21 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
                 transiciontareas();
             }
         });
+
+		calendario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transicionCalendario();
+            }
+        });
+
+		horario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transicionHorario();
+            }
+        });
+
 
 
       /*  primer_card = myView.findViewById(R.id.primer_card);
@@ -207,7 +227,30 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
         return myView;
     }
 
-    private void transiciontareas() {
+	private void transicionHorario() {
+		Fragment perfil = new HorarioFragment();
+		//tvname.setText("Daniel");
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
+	}
+
+	private void transicionCalendario() {
+		Fragment perfil = new CalendarioFragment();
+		//tvname.setText("Daniel");
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
+	}
+
+	private void transicionCalendario2() {
+
+
+	}
+
+	private void transiciontareas() {
         Fragment perfil = new TareasFragment();
         //tvname.setText("Daniel");
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

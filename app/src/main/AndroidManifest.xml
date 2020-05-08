@@ -25,7 +25,7 @@
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".Tutor.Pizarra.PizarraActivity"></activity>
+        <activity android:name=".Tutor.Pizarra.PizarraActivity" />
         <activity android:name=".Tutor.EditorTexto.EditorTextoActivity" />
         <activity android:name=".ConferenciaOnline.ConferenciaOnline" />
         <activity android:name=".Tutor.Consulta.ConsultasOfflineDisponibles.Detalle.DetalleOfflineConsultasDisponibles" />
@@ -47,6 +47,8 @@
         </activity>
         <activity
             android:name=".Estudiante.Inicio.InicioActivity"
+            android:screenOrientation="nosensor"
+            android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="Live4Teach" />
         <activity
             android:name=".Estudiante.Carrito.CarritoDetalleActivity"
@@ -80,7 +82,7 @@
         <activity android:name=".Tutor.InicioActivityTutor" />
         <activity android:name=".Estudiante.ConsultasyTutorias.MessageActivity" />
         <activity android:name=".Tutor.Consulta.ConsultasyTutorias.MessageActivity" />
-        <activity android:name=".Estudiante.Liv4T.Memorama.Home"/>
+        <activity android:name=".Estudiante.Liv4T.Memorama.Home" />
 
         <service
             android:name=".Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.Fcm"

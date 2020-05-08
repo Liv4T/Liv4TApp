@@ -84,7 +84,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:16.0.4'
     implementation 'com.google.firebase:firebase-messaging:17.3.4'
 
-    implementation 'com.squareup.retrofit2:retrofit:2.3.0'
+    implementation 'com.squareup.retrofit:retrofit:1.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
 
     implementation 'com.getkeepsafe.taptargetview:taptargetview:1.12.0'
@@ -95,5 +95,7 @@ dependencies {
 
     implementation 'com.wajahatkarim3.EasyFlipView:EasyFlipView:2.0.5'
     implementation 'nl.dionsegijn:konfetti:1.1.0'
+
+    implementation 'com.github.alamkanak:android-week-view:1.2.6'
 
 }
