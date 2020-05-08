@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.android.volley.RequestQueue;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Boletin.BoletinFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Calendario.CalendarioFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Horario.HorarioFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Mensajes.MisMensajes;
@@ -43,7 +44,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 	private ExampleAdaptor mExampleAdaptor;
 	private ArrayList<ExampleItem> mexampleItems;
 	private RequestQueue mRequestQueue;
-	LinearLayout perfil, mensajes, tareas, calendario, horario, notas;
+	LinearLayout perfil, mensajes, tareas, calendario, horario, notas, boletin;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,6 +59,8 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		calendario = myView.findViewById(R.id.linearcalendario);
 		horario = myView.findViewById(R.id.linearhorario);
 		notas = myView.findViewById(R.id.linearnotas);
+		boletin = myView.findViewById(R.id.linearboletin);
+
 
 		perfil.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -97,6 +100,12 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
             @Override
             public void onClick(View v) {
                 transicionNotas();
+            }
+        });
+		boletin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transicionBoletin();
             }
         });
 
@@ -234,6 +243,17 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 
         return myView;
     }
+
+	private void transicionBoletin() {
+
+		Fragment perfil = new BoletinFragment();
+		//tvname.setText("Daniel");
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
+
+	}
 
     private void transicionNotas() {
 
