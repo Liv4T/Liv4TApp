@@ -17,6 +17,7 @@ import com.android.volley.RequestQueue;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Calendario.CalendarioFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Horario.HorarioFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Mensajes.MisMensajes;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Notas.NotasFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Perfil.PerfilEstudiante;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Tareas.TareasFragment;
 import com.dybcatering.live4teach.Login.SessionManager;
@@ -42,7 +43,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 	private ExampleAdaptor mExampleAdaptor;
 	private ArrayList<ExampleItem> mexampleItems;
 	private RequestQueue mRequestQueue;
-	LinearLayout perfil, mensajes, tareas, calendario, horario;
+	LinearLayout perfil, mensajes, tareas, calendario, horario, notas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +57,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		tareas = myView.findViewById(R.id.lineartareas);
 		calendario = myView.findViewById(R.id.linearcalendario);
 		horario = myView.findViewById(R.id.linearhorario);
+		notas = myView.findViewById(R.id.linearnotas);
 
 		perfil.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -89,6 +91,12 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
             @Override
             public void onClick(View v) {
                 transicionHorario();
+            }
+        });
+		notas.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                transicionNotas();
             }
         });
 
@@ -227,7 +235,18 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
         return myView;
     }
 
-	private void transicionHorario() {
+    private void transicionNotas() {
+
+        Fragment perfil = new NotasFragment();
+        //tvname.setText("Daniel");
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+
+    }
+
+    private void transicionHorario() {
 		Fragment perfil = new HorarioFragment();
 		//tvname.setText("Daniel");
 		FragmentTransaction transaction = getFragmentManager().beginTransaction();

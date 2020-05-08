@@ -25,6 +25,7 @@ import com.dybcatering.live4teach.Estudiante.CategoriasCursos.CategoriasCursos;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.ConsultasEstudiante;
 import com.dybcatering.live4teach.Estudiante.ConsultasyTutorias.InsertConsultasyTutoriasEstudiante.InsertConsultasyTutorias;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Notas.NotasFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Perfil.PerfilEstudiante;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
@@ -234,7 +235,8 @@ public class InicioActivity extends AppCompatActivity {
                         case R.id.nav_mis_calificaciones:
                             if (sessionManager.isLoggin()){
 
-                                selectedFragment = new MisCalificacionesFragment();
+//                                selectedFragment = new MisCalificacionesFragment();
+                                selectedFragment = new NotasFragment();
                             }else{
 
                                 mostraralerta();
