@@ -289,6 +289,12 @@ public class InicioActivity extends AppCompatActivity {
         alert.show();
     }
 
+
+}
+
+
+/*
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -323,37 +329,37 @@ public class InicioActivity extends AppCompatActivity {
                 }else{
 
 
-                }*/
-                // onOptionsItemSelected(menuItem);
-                // String str = String.valueOf(count++);
+                }
+// onOptionsItemSelected(menuItem);
+// String str = String.valueOf(count++);
 
-                //    textCartItemCount.setText(str);
-                //setupBadge();
+//    textCartItemCount.setText(str);
+//setupBadge();
 
             }
-        });
+                    });
 
-        return true;
-    }
+                    return true;
+                    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
 
         int id = item.getItemId();
 
         if (id == R.id.action_cart) {
 
 
-            //mBadge.setNumber(++count);
-            //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
-            return true;
+        //mBadge.setNumber(++count);
+        //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
+        return true;
         }
 
         return super.onOptionsItemSelected(item);
-    }
+        }
 
 
-    /*@Override
+    @Override
     public void onBackPressed() {
         FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
                 .setBackgroundColor(R.color.white)
@@ -383,5 +389,5 @@ public class InicioActivity extends AppCompatActivity {
                 .setCancelable(false)
                 .build();
         alert.show();
-    }*/
-}
+    }
+ */

@@ -58,38 +58,38 @@ import es.dmoral.toasty.Toasty;
 
 public class RegisterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    private EditText edtnombre, edtapellido, edtemail, edtusuario, edtpassword, edtc_password, edttelefono;
-    private String verificar, nombre, apellido, email, usuario, password, c_password, telefono, fnacimiento, edad;
-    private Button btn_regist, btn_date;
+    private EditText edtnombre, edtapellido, edtemail, edtusuario, edtpassword, edtc_password, edttelefono, edtidentificacion, edtdireccion;
+    private String verificar, nombre, apellido, email, usuario, password, c_password, telefono, fnacimiento, edad, n_identificacion, direccion;
+    private Button btn_regist;//, btn_date;
 	private static String URL_CARGAR = "https://dybcatering.com/back_live_app/listarcategorias.php";
 
-	private TextView txtDate, ejemplo;
+	private TextView ejemplo; // txtDate,
 
-    public Spinner spinnerRegistro, categoria;
+    public Spinner spinnerRegistro;//, categoria;
 
     public CountryCodePicker ccp;
 
 
-    public String ageS;
+    public String type_user;
 
     RequestQueue requestQueue;
 	ProgressDialog progressDialog;
-	private Spinner SpinnerSubcategoria;
+	//private Spinner SpinnerSubcategoria;
 	ArrayList<String> Subcategoria;
 
 
-	FirebaseAuth auth;
-	DatabaseReference reference, tokens;
+	//FirebaseAuth auth;
+//	DatabaseReference reference, tokens;
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_register);
 		spinnerRegistro = findViewById(R.id.spinnerregistro);
-		SpinnerSubcategoria= findViewById(R.id.spinnersubcategoria);
+		//SpinnerSubcategoria= findViewById(R.id.spinnersubcategoria);
 		ArrayAdapter<CharSequence> arrayAdapter = ArrayAdapter.createFromResource(this, R.array.spinner, android.R.layout.simple_spinner_item);
 		arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		spinnerRegistro.setAdapter(arrayAdapter);
-		spinnerRegistro.setOnItemSelectedListener(this);
+		//spinnerRegistro.setOnItemSelectedListener(this);
 		edtnombre = findViewById(R.id.txtNombre);
 		edtapellido = findViewById(R.id.txtApellido);
 		edtemail = findViewById(R.id.txtMail);
@@ -97,68 +97,16 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		edtpassword = findViewById(R.id.txtPassword);
 		edtc_password = findViewById(R.id.txtPasswordConfirm);
 		edttelefono = findViewById(R.id.txtTelefono);
+		edtidentificacion = findViewById(R.id.txtIdentificacion);
+		edtdireccion = findViewById(R.id.txtDireccion);
 		btn_regist = findViewById(R.id.btn_registrarse);
-		btn_date = findViewById(R.id.btn_date);
-		txtDate = findViewById(R.id.TxtFecha);
 		Subcategoria=new ArrayList<>();
-
-		edtnombre.setEnabled(false);
-		edtapellido.setEnabled(false);
-		edtemail.setEnabled(false);
-		edtusuario.setEnabled(false);
-		edtpassword.setEnabled(false);
-		edtc_password.setEnabled(false);
-		edttelefono.setEnabled(false);
-		btn_regist.setEnabled(false);
-
 		new CheckInternetConnection(this).checkConnection();
-
 		edtpassword.addTextChangedListener(watcherContrasena);
 		edtc_password.addTextChangedListener(watcherConfirmarContrasena);
-
-
 		requestQueue = Volley.newRequestQueue(RegisterActivity.this);
-
-		// loading = findViewById(R.id.loading);
-		// name = findViewById(R.id.name);
-		// email = findViewById(R.id.email);
-		// password = findViewById(R.id.password);
-		/// c_password = findViewById(R.id.c_password);
-		// btn_regist = findViewById(R.id.btn_regist);
 		ccp = findViewById(R.id.ccp);
-
 		ccp.registerPhoneNumberTextView(edttelefono);
-
-		loadSpinner(URL_CARGAR);
-
-		btn_date.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Calendar calendar = Calendar.getInstance();
-				final int year = calendar.get(Calendar.YEAR);
-				final int month = calendar.get(Calendar.MONTH);
-				final int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
-
-				DatePickerDialog datePickerDialog = new DatePickerDialog(RegisterActivity.this, R.style.DialogTheme,
-						new DatePickerDialog.OnDateSetListener() {
-							@Override
-							public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-
-								txtDate.setText(dayOfMonth + "-" + (month + 1) + "-" + year);
-
-								Toast.makeText(RegisterActivity.this, getAge(year, month, day), Toast.LENGTH_SHORT).show();
-							}
-						}, year, month, dayOfMonth);
-				datePickerDialog.getDatePicker().setMaxDate(System.currentTimeMillis());
-				datePickerDialog.show();
-
-
-
-
-			}
-		});
-
-		auth = FirebaseAuth.getInstance();
 
 		btn_regist.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -168,12 +116,19 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 					nombre = edtnombre.getText().toString();
 					apellido = edtapellido.getText().toString();
 					email = edtemail.getText().toString();
-					telefono = edttelefono.getText().toString();
+					telefono = ccp.getNumber().toString()+edttelefono.getText().toString();
 					usuario = edtusuario.getText().toString();
 					password = edtpassword.getText().toString();
-					fnacimiento = txtDate.getText().toString();
-					 edad = getAge(2020, 1, 24);
-					//cambio de firebaseUser.getUid a random generico de 20 caracteres
+					type_user = spinnerRegistro.getSelectedItem().toString();
+					if (type_user.equals("Docente"))
+						type_user = "2";
+					else if (type_user.equals("Estudiante"))
+						type_user = "3";
+					telefono = edttelefono.getText().toString();
+					n_identificacion = edtidentificacion.getText().toString();
+					direccion = edtdireccion.getText().toString();
+					String foto = "http://localhost:8080/uploads/"+usuario+".png";
+
 
 					final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
 							.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
@@ -183,88 +138,40 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 							.setDimAmount(0.5f)
 							.show();
 
+					RegisterRequest registerRequest = new RegisterRequest(nombre, apellido, type_user, direccion, foto, telefono, n_identificacion, usuario, email, password, new Response.Listener<String>() {
+						@Override
+						public void onResponse(String response) {
+							progressDialog.dismiss();
 
-					auth.createUserWithEmailAndPassword(email, password)
-							.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-								@Override
-								public void onComplete(@NonNull Task<AuthResult> task) {
-									if (task.isSuccessful()){
-										FirebaseUser firebaseUser = auth.getCurrentUser();
-										assert firebaseUser != null;
-										String userid = firebaseUser.getUid();
-										//cambio de firebaseUser.getUid a random generico de 20 caracteres
+							Log.e("Response from server", response);
 
-										reference = FirebaseDatabase.getInstance().getReference("Users").child(userid);
+							try {
+								if (new JSONObject(response).getBoolean("success")) {
 
-										HashMap<String, String> hashMap = new HashMap<>();
-										hashMap.put("id",userid);
-										hashMap.put("username", usuario);
-										hashMap.put("imageURL", "default");
-										hashMap.put("status", "Desconectado");
-										hashMap.put("search", usuario.toLowerCase());
-										hashMap.put("type_user", "3");
+									Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
 
-										reference.setValue(hashMap).addOnCompleteListener(new OnCompleteListener<Void>() {
-											@Override
-											public void onComplete(@NonNull Task<Void> task) {
-												if (task.isSuccessful()){
-													Toasty.success(RegisterActivity.this, "Registrado exitosamente", Toast.LENGTH_SHORT).show();
-												}
-											}
-										});
+									//sendRegistrationEmail(nombre,email);
+									//register(usuario, email, password, "3");
+									finish();
 
-										String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
+								} else
+									Toasty.error(RegisterActivity.this,"El usuario ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
+							} catch (JSONException e) {
+								e.printStackTrace();
+								Toasty.error(RegisterActivity.this,"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
+							}
+						}
+					});
+					requestQueue.add(registerRequest);
 
-										tokens = FirebaseDatabase.getInstance().getReference("Tokens").child(userid);
-
-										HashMap<String, String> hashMap1 = new HashMap<>();
-										hashMap1.put(userid, myRefreshedToken);
-
-										tokens.setValue(hashMap1).addOnCompleteListener(new OnCompleteListener<Void>() {
-											@Override
-											public void onComplete(@NonNull Task<Void> task) {
-												Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-												//intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-												startActivity(intent);
-												//finish();
-												//	Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
-
-												sendRegistrationEmail(nombre,email);
-											}
-										});
-
-										RegisterRequest registerRequest = new RegisterRequest(userid, nombre, apellido, email,usuario, password,edad, fnacimiento, telefono, new Response.Listener<String>() {
-											@Override
-											public void onResponse(String response) {
-												progressDialog.dismiss();
-
-												Log.e("Response from server", response);
-
-												try {
-													if (new JSONObject(response).getBoolean("success")) {
-
-														Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
-
-														//sendRegistrationEmail(nombre,email);
-														//register(usuario, email, password, "3");
-														//finish();
-
-													} else
-														Toasty.error(RegisterActivity.this,"El usuario ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
-												} catch (JSONException e) {
-													e.printStackTrace();
-													Toasty.error(RegisterActivity.this,"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
-												}
-											}
-										});
-										requestQueue.add(registerRequest);
-
-
-									}
-								}
-							});
 
 				}
+
+
+//					progressDialog.dismiss();
+					Toast.makeText(RegisterActivity.this, "el texto es"+ type_user, Toast.LENGTH_SHORT).show();
+
+
 
 			}
 		});
@@ -275,6 +182,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         String text =  parent.getItemAtPosition(position).toString();
        if (text.equals("Tutor")){
+
+       	/*
 
            final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(this)
                    .setBackgroundColor(R.color.white)
@@ -308,6 +217,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
                    .setCancelable(false)
                    .build();
            alert.show();
+       	 */
+
 
 
 
@@ -940,7 +851,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 
     }
-
+/*
 	private void loadSpinner(String url){
 		RequestQueue requestQueue=Volley.newRequestQueue(getApplicationContext());
 		StringRequest stringRequest=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
@@ -969,6 +880,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 		stringRequest.setRetryPolicy(policy);
 		requestQueue.add(stringRequest);
 	}
+ */
+
 
 
 	private String getAge(int year, int month, int day){
@@ -988,8 +901,8 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 
 		return ageS;
 	}
-
-	private void register(final String username, final String email, String password, final String tipousuario){
+/*
+private void register(final String username, final String email, String password, final String tipousuario){
 		auth.createUserWithEmailAndPassword(email, password)
 				.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
 					@Override
@@ -1028,6 +941,41 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 					}
 				});
 	}
+ */
+
+
+////// envio de peticion por json a registro
+	/*
+
+										RegisterRequest registerRequest = new RegisterRequest(userid, nombre, apellido, email,usuario, password,edad, fnacimiento, telefono, new Response.Listener<String>() {
+											@Override
+											public void onResponse(String response) {
+												progressDialog.dismiss();
+
+												Log.e("Response from server", response);
+
+												try {
+													if (new JSONObject(response).getBoolean("success")) {
+
+														Toasty.success(RegisterActivity.this,"Registrado Satisfactoriamente",Toast.LENGTH_SHORT,true).show();
+
+														//sendRegistrationEmail(nombre,email);
+														//register(usuario, email, password, "3");
+														//finish();
+
+													} else
+														Toasty.error(RegisterActivity.this,"El usuario ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
+												} catch (JSONException e) {
+													e.printStackTrace();
+													Toasty.error(RegisterActivity.this,"Falló el registro, por favor intenta nuevamente",Toast.LENGTH_LONG,true).show();
+												}
+											}
+										});
+										requestQueue.add(registerRequest);
+
+
+									}
+	 */
 
 }
 

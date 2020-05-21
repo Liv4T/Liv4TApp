@@ -32,14 +32,7 @@
                 android:paddingBottom="30dp">
 
 
-                <Spinner
-                    android:id="@+id/spinnerregistro"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/colortexto"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/centurygothic"
-                    android:entries="@array/spinner"/>
+
 
                 <android.support.design.widget.TextInputLayout
                     android:layout_width="match_parent"
@@ -105,6 +98,89 @@
                         android:fontFamily="@font/centurygothic"/>
                 </android.support.design.widget.TextInputLayout>
 
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tipo de Usuario"
+                    android:textColor="@color/colortexto"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/centurygothic"/>
+
+                <Spinner
+                    android:id="@+id/spinnerregistro"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colortexto"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/centurygothic"
+                    android:entries="@array/spinner"/>
+
+
+                <TextView
+                    android:id="@+id/ejemplo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Tu número de Teléfono"
+                    android:textColor="@color/colortexto"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/centurygothic"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <com.rilixtech.CountryCodePicker
+                        android:id="@+id/ccp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:ccp_hideNameCode="true"
+                        />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0.05" />
+
+                    <android.support.design.widget.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:textColorHint="@color/colortexto">
+
+                        <EditText
+                            android:id="@+id/txtTelefono"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="@color/colortexto"
+                            android:textStyle="bold"
+                            android:fontFamily="@font/centurygothic"/>
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colortexto">
+
+                    <EditText
+                        android:id="@+id/txtIdentificacion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Número de Identificación"
+                        android:inputType="number"
+                        android:textColor="@color/colortexto"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"/>
+                </android.support.design.widget.TextInputLayout>
+
+
+
                 <android.support.design.widget.TextInputLayout
                     android:id="@+id/layoutpassword"
                     android:layout_width="match_parent"
@@ -144,7 +220,25 @@
                         android:inputType="textPassword"
                         android:textColor="@color/colortexto" />
                 </android.support.design.widget.TextInputLayout>
-                <TextView
+
+
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/colortexto">
+
+                    <EditText
+                        android:id="@+id/txtDireccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Dirección"
+                        android:inputType="textMultiLine"
+                        android:textColor="@color/colortexto"
+                        android:textStyle="bold"
+                        android:fontFamily="@font/centurygothic"/>
+                </android.support.design.widget.TextInputLayout>
+
+                <!--TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Tu fecha de nacimiento"
@@ -185,58 +279,14 @@
                             android:textStyle="bold"
                             android:fontFamily="@font/centurygothic"/>
 
-                </LinearLayout>
-                <TextView
-                    android:id="@+id/ejemplo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Tu número de Teléfono"
-                    android:textColor="@color/colortexto"
-                    android:textStyle="bold"
-                    android:fontFamily="@font/centurygothic"/>
+                </LinearLayout-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal" >
 
-                    <com.rilixtech.CountryCodePicker
-                        android:id="@+id/ccp"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        app:ccp_hideNameCode="true"
-                       />
-
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0.05" />
-
-                    <android.support.design.widget.TextInputLayout
-                        android:layout_width="0dp"
-                        android:layout_weight="1"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:textColorHint="@color/colortexto">
-
-                        <EditText
-                            android:id="@+id/txtTelefono"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="number"
-                            android:textColor="@color/colortexto"
-                            android:textStyle="bold"
-                            android:fontFamily="@font/centurygothic"/>
-                    </android.support.design.widget.TextInputLayout>
-
-                </LinearLayout>
-
-                <Spinner
+                <!--Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/spinnersubcategoria"
-                    android:text="Categoria"/>
+                    android:text="Categoria"/-->
 
 
                 <Button
