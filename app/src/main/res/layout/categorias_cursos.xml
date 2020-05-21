@@ -65,7 +65,7 @@
                         app:civ_border_width="2dp" />
 
                     <TextView
-                        android:id="@+id/textView20"
+                        android:id="@+id/txtNombreUsuario"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/profilepicestudiante"
@@ -165,6 +165,7 @@
                             android:weightSum="10"
                             android:orientation="horizontal"
                             android:layout_centerHorizontal="true"
+                            android:id="@+id/linearanuncios"
                             >
 
                             <ImageView
@@ -671,6 +672,7 @@
                                 android:layout_height="match_parent" />
 
                             <TextView
+                                android:id="@+id/salir"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="0dp"
                                 android:layout_weight="9"

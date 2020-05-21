@@ -45,13 +45,13 @@ public class SessionManager {
         editor = sharedPreferences.edit();
     }
 
-    public void createSession(String name, String user_name, String id, String uuid, String typeuser){
+    public void createSession(String name, String user_name, String id,  String typeuser){
 
         editor.putBoolean(LOGIN, true);
         editor.putString(NAME, name);
         editor.putString(USER_NAME, user_name);
         editor.putString(ID, id);
-        editor.putString(UUID, uuid);
+     //   editor.putString(UUID, uuid);
         editor.putString(TYPE_USER, typeuser);
         editor.apply();
 

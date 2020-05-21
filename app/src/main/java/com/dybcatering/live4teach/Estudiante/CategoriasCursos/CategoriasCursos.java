@@ -12,8 +12,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Anuncios.AnunciosFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Boletin.BoletinFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Calendario.CalendarioFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Horario.HorarioFragment;
@@ -21,6 +24,7 @@ import com.dybcatering.live4teach.Estudiante.Liv4T.Mensajes.MisMensajes;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Notas.NotasFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Perfil.PerfilEstudiante;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Tareas.TareasFragment;
+import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
@@ -29,6 +33,7 @@ import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleAdaptor;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleItem;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemClickListener{
 
@@ -44,9 +49,13 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 	private ExampleAdaptor mExampleAdaptor;
 	private ArrayList<ExampleItem> mexampleItems;
 	private RequestQueue mRequestQueue;
-	LinearLayout perfil, mensajes, tareas, calendario, horario, notas, boletin;
+	LinearLayout perfil, mensajes, tareas, calendario, horario, notas, boletin, anuncios;
 
-    @Override
+	public TextView nombreperfil, salir;
+
+	String id, name;
+
+	@Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         myView = inflater.inflate(R.layout.categorias_cursos, container, false);
@@ -60,7 +69,29 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		horario = myView.findViewById(R.id.linearhorario);
 		notas = myView.findViewById(R.id.linearnotas);
 		boletin = myView.findViewById(R.id.linearboletin);
+		anuncios = myView.findViewById(R.id.linearanuncios);
+		nombreperfil = myView.findViewById(R.id.txtNombreUsuario);
+		salir = myView.findViewById(R.id.salir);
 
+		SessionManager sessionManager;
+
+		new CheckInternetConnection(getContext()).checkConnection();
+		sessionManager = new SessionManager(getContext());
+
+		HashMap<String, String> user = sessionManager.getUserDetail();
+		id = user.get(SessionManager.ID);
+		name = user.get(SessionManager.NAME);
+		nombreperfil.setText(name);
+
+		salir.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				session.logoutEstudiante();
+				Intent intent = new Intent(getContext(), LoginActivity.class);
+				startActivity(intent);
+				Toast.makeText(getContext(), "Sesión Cerrada", Toast.LENGTH_SHORT).show();
+			}
+		});
 
 		perfil.setOnClickListener(new View.OnClickListener() {
 			@Override
@@ -108,6 +139,13 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
                 transicionBoletin();
             }
         });
+		
+		anuncios.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				transicionAnuncios();
+			}
+		});
 
 
 
@@ -243,6 +281,16 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 
         return myView;
     }
+
+	private void transicionAnuncios() {
+		Fragment perfil = new AnunciosFragment();
+		//tvname.setText("Daniel");
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
+
+	}
 
 	private void transicionBoletin() {
 

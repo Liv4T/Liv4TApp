@@ -121,7 +121,7 @@ public class ActualizarDatosFragmentTutor extends Fragment {
                             if (success.equals("1")) {
                                 Toasty.success(getContext(), "Exito al Actualizar los datos", Toast.LENGTH_SHORT).show();
                                 //Toast.makeText(getActivity(), "Success!", Toast.LENGTH_SHORT).show();
-                                sessionManager.createSession(nombre, usuario, id, uuid, "3");
+                                sessionManager.createSession(nombre, usuario, id,  "3");
                             }
 
                         } catch (JSONException e) {

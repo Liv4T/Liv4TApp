@@ -61,13 +61,13 @@
                         app:civ_border_width="2dp" />
 
                     <TextView
-                        android:id="@+id/textView20"
+                        android:id="@+id/txtUsuario"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/profilepicestudiante"
                         android:fontFamily="@font/centurygothic"
                         android:gravity="center"
-                        android:text="CARLOS QUINTERO"
+                        android:text="Tu nombre"
                         android:textColor="#fff"
                         android:textSize="24sp"
                         android:textStyle="bold" />
@@ -105,13 +105,14 @@
                                 android:background="@drawable/mensaje"/>
 
                             <TextView
+                                android:id="@+id/txtCorreo"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="0dp"
                                 android:layout_weight="9"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
                                 android:textSize="20sp"
-                                android:text="correo@correo.com"
+                                android:text="correo@gmail.com"
                                 android:fontFamily="@font/centurygothic"/>
                         </LinearLayout>
                     </RelativeLayout>
@@ -140,6 +141,7 @@
                                 android:background="@drawable/celular"/>
 
                             <TextView
+                                android:id="@+id/txtTelefono"
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="0dp"
                                 android:layout_weight="9"

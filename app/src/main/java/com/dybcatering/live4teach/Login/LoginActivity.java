@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_login;
     private TextView link_regist, text_olvide_contrasena;
     private ProgressBar loading;
-    private static String URL_LOGIN = "https://dybcatering.com/back_live_app/login.php";
+    private static String URL_LOGIN = "http://192.168.0.13/webdyb/back_live_app/login.php";
     SessionManager sessionManager;
     Spinner spinner;
 
@@ -130,17 +130,17 @@ public class LoginActivity extends AppCompatActivity {
                                 for (int i = 0; i < jsonArray.length(); i++) {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
-                                    String uuid = object.getString("uuid").trim();
+                                    //String uuid = object.getString("uuid").trim();
                                     String id = object.getString("id").trim();
                                     String name = object.getString("name").trim();
                                     String last_name = object.getString("last_name").trim();
                                     // String photo = object.getString("photo").trim();
                                     String type_user = object.getString("type_user").trim();
                                     String user_name = object.getString("user_name").trim();
-                                    sessionManager.createSession(name, user_name, id, uuid, type_user);
+                                    sessionManager.createSession(name, user_name, id, type_user);
 
                                     Intent intent = new Intent(LoginActivity.this, InicioActivity.class);
-                                    intent.putExtra("uuid", uuid);
+                                //    intent.putExtra("uuid", uuid);
                                     intent.putExtra("id", id);
                                     intent.putExtra("name", name);
                                     intent.putExtra("last_name", last_name);
@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
                                     //intent.putExtra("photo", photo);
                                     // Toast.makeText(LoginActivity.this, id, Toast.LENGTH_SHORT).show();
                                     Intent intent1 = new Intent(LoginActivity.this, InicioActivityTutor.class);
-                                    intent1.putExtra("uuid", uuid);
+                                    //       intent1.putExtra("uuid", uuid);
                                     intent1.putExtra("id", id);
                                     intent1.putExtra("name", name);
                                     intent1.putExtra("last_name", last_name);
@@ -232,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-                        builder.setMessage("Error de conexión")
+                        builder.setMessage("Error de conexión"+error)
                                 .setCancelable(false)
                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                     public void onClick(DialogInterface dialog, int id) {

@@ -127,21 +127,24 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 					telefono = edttelefono.getText().toString();
 					n_identificacion = edtidentificacion.getText().toString();
 					direccion = edtdireccion.getText().toString();
-					String foto = "http://localhost:8080/uploads/"+usuario+".png";
+					String foto = "http://192.168.0.13/uploads/"+usuario+".png";
 
 
+				/*
 					final KProgressHUD progressDialog=  KProgressHUD.create(RegisterActivity.this)
-							.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
+						.setStyle(KProgressHUD.Style.SPIN_INDETERMINATE)
 							.setLabel("Por favor espera un momento")
 							.setCancellable(false)
 							.setAnimationSpeed(2)
 							.setDimAmount(0.5f)
 							.show();
+				 */
+
 
 					RegisterRequest registerRequest = new RegisterRequest(nombre, apellido, type_user, direccion, foto, telefono, n_identificacion, usuario, email, password, new Response.Listener<String>() {
 						@Override
 						public void onResponse(String response) {
-							progressDialog.dismiss();
+						//	progressDialog.dismiss();
 
 							Log.e("Response from server", response);
 
@@ -153,6 +156,7 @@ public class RegisterActivity extends AppCompatActivity implements AdapterView.O
 									//sendRegistrationEmail(nombre,email);
 									//register(usuario, email, password, "3");
 									finish();
+
 
 								} else
 									Toasty.error(RegisterActivity.this,"El usuario ya existe, por favor intenta nuevamente",Toast.LENGTH_SHORT,true).show();
