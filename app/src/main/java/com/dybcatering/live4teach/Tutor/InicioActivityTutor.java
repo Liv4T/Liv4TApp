@@ -30,6 +30,7 @@ import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
 import com.dybcatering.live4teach.Tutor.Calificaciones.CalificacionesTutorFragment;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultaTutorFragment;
 import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.ConsultasTutor;
+import com.dybcatering.live4teach.Tutor.Liv4T.InicioTutor;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
@@ -74,63 +75,19 @@ public class InicioActivityTutor extends AppCompatActivity {
         HashMap<String, String> user = sessionManager.getUserDetail();
         valor = user.get(SessionManager.UUID);
         String myRefreshedToken = FirebaseInstanceId.getInstance().getToken();
-        changeToken(myRefreshedToken, valor);
+     //   changeToken(myRefreshedToken, valor);
 
         //I added this if statement to keep the selected fragment when rotating the device
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new PerfilFragmentTutor()).commit();
+                    new InicioTutor()).commit();
         }
         db = new DatabaseHandler(this);
         sessionManager = new SessionManager(this);
         String username = user.get(SessionManager.USER_NAME);
-        Query query = FirebaseDatabase.getInstance().getReference("Users")
-                .orderByChild("username")
-                .equalTo(username);
-        query.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if (dataSnapshot.exists()){
-                    for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                        Toast.makeText(InicioActivityTutor.this, "encontrado", Toast.LENGTH_SHORT).show();
-                    }
-                }
 
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
     }
-    public void changeToken(final String token, final String uuid){
 
-
-        //databaseReference = FirebaseDatabase.getInstance().getReference("Tokens");
-        Query query = FirebaseDatabase.getInstance().getReference("Tokens")
-                .orderByChild(uuid)
-                .equalTo(uuid);
-
-        seenListener = query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Token tokenUsuario = new Token(snapshot.getValue(Token.class));
-                    if (dataSnapshot.exists()){
-                        HashMap<String, Object> hashMap = new HashMap<>();
-                        hashMap.put(uuid,token);
-                        snapshot.getRef().updateChildren(hashMap);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-    }
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
@@ -140,16 +97,16 @@ public class InicioActivityTutor extends AppCompatActivity {
                     Fragment selectedFragment = null;
 
                     switch (item.getItemId()) {
-                        case R.id.nav_perfil_tutor:
+                        case R.id.nav_cursos_disponibles:
                       //     if (sessionManager.isLoggin()){
 
-                              selectedFragment = new PerfilFragmentTutor();
+                              selectedFragment = new InicioTutor();
                         //    }else {
                           //    mostraralerta();
                            // selectedFragment = new PerfilFragmentTutor();
                             //}
                             break;
-                        case R.id.nav_mis_cursos_tutor:
+                        case R.id.nav_mis_calificaciones:
                           //     if (sessionManager.isLoggin()){
                             selectedFragment = new MisCursosTutorFragment();
                            //  }else{
@@ -157,23 +114,9 @@ public class InicioActivityTutor extends AppCompatActivity {
                              // selectedFragment = new CursosFragment();
                              // }
                             break;
-                        case R.id.nav_consultas_tutor:
+                        case R.id.nav_perfil:
 
-                            selectedFragment = new ConsultasTutor();
-                            break;
-                        case R.id.nav_calificaciones_tutor:
-                             //if (sessionManager.isLoggin()){
-
-                            selectedFragment = new CalificacionesTutorFragment();
-                            //}else{
-                            // mostraralerta();
-                            //selectedFragment = new CursosFragment();
-                            //}
-                            break;
-
-
-                        case R.id.nav_actividades_tutor:
-                            selectedFragment = new MisActividadesTutorFragment();
+                            selectedFragment = new InicioTutor();
                             break;
 
                     }
@@ -280,7 +223,7 @@ public class InicioActivityTutor extends AppCompatActivity {
     private void tapview() {
         new TapTargetSequence(this)
                 .targets(
-                        TapTarget.forView(findViewById(R.id.nav_perfil_tutor), "Mi perfil", "Tienes el acceso a tu perfil, donde podrás cambiar tu foto de perfil y revisar tus datos básicos")
+                        TapTarget.forView(findViewById(R.id.nav_cursos_disponibles), "Mi perfil", "Tienes el acceso a tu perfil, donde podrás cambiar tu foto de perfil y revisar tus datos básicos")
                                 .targetCircleColor(R.color.colorAccent)
                                 .titleTextColor(R.color.gen_black)
                                 .titleTextSize(25)
@@ -291,7 +234,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                                 .tintTarget(true)
                                 .transparentTarget(true)
                                 .outerCircleColor(R.color.colorPrimaryDark),
-                        TapTarget.forView(findViewById(R.id.nav_mis_cursos_tutor), "Mis Cursos", "Encontrarás todos los cursos que has agregado ")
+                        TapTarget.forView(findViewById(R.id.nav_mis_calificaciones), "Mis Cursos", "Encontrarás todos los cursos que has agregado ")
                                 .targetCircleColor(R.color.colorAccent)
                                 .titleTextColor(R.color.gen_black)
                                 .titleTextSize(25)
@@ -302,29 +245,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                                 .tintTarget(true)
                                 .transparentTarget(true)
                                 .outerCircleColor(R.color.colorPrimaryDark),
-                        TapTarget.forView(findViewById(R.id.nav_consultas_tutor), "Consultas y Tutorias", "Encontrarás tutorias Online Y Offline enviadas por los estudiantes")
-                                .targetCircleColor(R.color.colorAccent)
-                                .titleTextColor(R.color.gen_black)
-                                .titleTextSize(25)
-                                .descriptionTextSize(15)
-                                .descriptionTextColor(R.color.colorText)
-                                .drawShadow(true)
-                                .cancelable(false)// Whether tapping outside the outer circle dismisses the view
-                                .tintTarget(true)
-                                .transparentTarget(true)
-                                .outerCircleColor(R.color.colorPrimaryDark),
-                        TapTarget.forView(findViewById(R.id.nav_calificaciones_tutor), "Mis Calificaciones", "Podrás calificar a todos tus estudiantes inscritos en los cursos")
-                                .targetCircleColor(R.color.colorAccent)
-                                .titleTextColor(R.color.gen_black)
-                                .titleTextSize(25)
-                                .descriptionTextSize(15)
-                                .descriptionTextColor(R.color.colorText)
-                                .drawShadow(true)                   // Whether to draw a drop shadow or not
-                                .cancelable(false)                  // Whether tapping outside the outer circle dismisses the view
-                                .tintTarget(true)
-                                .transparentTarget(true)
-                                .outerCircleColor(R.color.colorPrimaryDark),
-                        TapTarget.forView(findViewById(R.id.nav_actividades_tutor), "Mis Actividades", "Podrás crear actividades tipo cuestionario para los cursos que tienes activos en este momento")
+                        TapTarget.forView(findViewById(R.id.nav_perfil), "Consultas y Tutorias", "Encontrarás tutorias Online Y Offline enviadas por los estudiantes")
                                 .targetCircleColor(R.color.colorAccent)
                                 .titleTextColor(R.color.gen_black)
                                 .titleTextSize(25)

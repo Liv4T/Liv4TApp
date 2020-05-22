@@ -1,5 +1,6 @@
 package com.dybcatering.live4teach.Estudiante.CategoriasCursos;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -31,6 +32,7 @@ import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleAdaptor;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleItem;
+import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -73,12 +75,12 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		nombreperfil = myView.findViewById(R.id.txtNombreUsuario);
 		salir = myView.findViewById(R.id.salir);
 
-		SessionManager sessionManager;
+
 
 		new CheckInternetConnection(getContext()).checkConnection();
-		sessionManager = new SessionManager(getContext());
+		session = new SessionManager(getContext());
 
-		HashMap<String, String> user = sessionManager.getUserDetail();
+		HashMap<String, String> user = session.getUserDetail();
 		id = user.get(SessionManager.ID);
 		name = user.get(SessionManager.NAME);
 		nombreperfil.setText(name);
@@ -86,10 +88,36 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		salir.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				session.logoutEstudiante();
-				Intent intent = new Intent(getContext(), LoginActivity.class);
-				startActivity(intent);
-				Toast.makeText(getContext(), "Sesión Cerrada", Toast.LENGTH_SHORT).show();
+				FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
+						.setBackgroundColor(R.color.white)
+						//.setimageResource(R.drawable.internetconnection)
+						.setTextTitle("Información")
+						.setTextSubTitle("¿Deseas Cerrar la Sesión?")
+						.setCancelable(false)
+						//.setBody("Iniciar Sesión ")
+						.setPositiveButtonText("Aceptar")
+						.setPositiveColor(R.color.colorbonton)
+						.setNegativeButtonText("Cancelar")
+						.setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
+							@Override
+							public void OnClick(View view, Dialog dialog) {
+								session = new SessionManager(getContext());
+								session.logoutEstudiante();
+								getActivity().finish();
+							}
+						})
+						.setOnNegativeClicked(new FancyAlertDialog.OnNegativeClicked() {
+							@Override
+							public void OnClick(View view, Dialog dialog) {
+								dialog.dismiss();
+							}
+						})
+						.setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
+						.setCancelable(false)
+						.build();
+				alert.show();
 			}
 		});
 
