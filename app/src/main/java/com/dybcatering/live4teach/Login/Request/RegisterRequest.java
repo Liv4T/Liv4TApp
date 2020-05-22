@@ -16,7 +16,7 @@ import java.util.Map;
 
 public class RegisterRequest extends StringRequest {
 
-	private static final String REGISTER_URL = "http://192.168.0.13/webdyb/back_live_app/register.php";
+	private static final String REGISTER_URL = "http://192.168.0.18/webdyb/back_live_app/register.php";
 	private Map<String, String> parameters;
 	public RegisterRequest(String name, String last_name, String type_user, String address, String picture, String phone, String id_number, String user_name, String email, String password,  Response.Listener<String> listener) {
 		super(Method.POST, REGISTER_URL, listener, null);
