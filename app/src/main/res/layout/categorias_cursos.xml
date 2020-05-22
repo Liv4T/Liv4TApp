@@ -244,7 +244,7 @@
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
 
-                                android:background="@drawable/tareas"/>
+                                android:background="@drawable/misnotas"/>
 
                             <TextView
                                 android:layout_gravity="center_horizontal"
@@ -253,7 +253,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
                                 android:textSize="20sp"
-                                android:text="Tareas"
+                                android:text="Mis Clases"
                                 android:fontFamily="@font/centurygothic"/>
                         </LinearLayout>
                     </RelativeLayout>
@@ -312,7 +312,7 @@
                                 android:layout_weight="1"
                                 android:layout_height="match_parent"
 
-                                android:background="@drawable/manual_de_usuario"/>
+                                android:background="@drawable/chat"/>
 
                             <TextView
                                 android:layout_gravity="center_horizontal"
@@ -326,37 +326,7 @@
                         </LinearLayout>
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_margin="10sp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:weightSum="10"
-                            android:orientation="horizontal"
-                            android:layout_centerHorizontal="true"
-                            >
-
-                            <ImageView
-
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent"/>
-
-                            <TextView
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="9"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="20sp"
-                                android:text="Pagos PSE"
-                                android:fontFamily="@font/centurygothic"/>
-                        </LinearLayout>
-                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -421,10 +391,14 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
                                 android:textSize="20sp"
-                                android:text="Boletines de Notas"
+                                android:text="Boletín de Notas"
                                 android:fontFamily="@font/centurygothic"/>
                         </LinearLayout>
                     </RelativeLayout>
+
+
+
+
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -444,71 +418,8 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
-                                android:layout_height="match_parent" />
-
-                            <TextView
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="9"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="20sp"
-                                android:text="Observador"
-                                android:fontFamily="@font/centurygothic"/>
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_margin="10sp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:weightSum="10"
-                            android:orientation="horizontal"
-                            android:layout_centerHorizontal="true"
-                            >
-
-                            <ImageView
-
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent" />
-
-                            <TextView
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="9"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="20sp"
-                                android:text="Citaciones"
-                                android:fontFamily="@font/centurygothic"/>
-                        </LinearLayout>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_margin="10sp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:weightSum="10"
-                            android:orientation="horizontal"
-                            android:layout_centerHorizontal="true"
-                            >
-
-                            <ImageView
-
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent" />
+                                android:background="@drawable/piscologia"/>
 
                             <TextView
                                 android:layout_gravity="center_horizontal"
@@ -540,7 +451,8 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"
+                                android:background="@drawable/chat"/>
 
                             <TextView
                                 android:layout_gravity="center_horizontal"
@@ -554,37 +466,7 @@
                         </LinearLayout>
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_margin="10sp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:weightSum="10"
-                            android:orientation="horizontal"
-                            android:layout_centerHorizontal="true"
-                            >
-
-                            <ImageView
-
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent" />
-
-                            <TextView
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="9"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="20sp"
-                                android:text="PQRS"
-                                android:fontFamily="@font/centurygothic"/>
-                        </LinearLayout>
-                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -605,7 +487,8 @@
                                 android:layout_gravity="center_horizontal"
                                 android:layout_width="0dp"
                                 android:layout_weight="1"
-                                android:layout_height="match_parent" />
+                                android:layout_height="match_parent"
+                                android:background="@drawable/horario"/>
 
                             <TextView
                                 android:layout_gravity="center_horizontal"
@@ -619,37 +502,7 @@
                         </LinearLayout>
                     </RelativeLayout>
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:layout_margin="10sp">
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:weightSum="10"
-                            android:orientation="horizontal"
-                            android:layout_centerHorizontal="true"
-                            >
-
-                            <ImageView
-
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="1"
-                                android:layout_height="match_parent" />
-
-                            <TextView
-                                android:layout_gravity="center_horizontal"
-                                android:layout_width="0dp"
-                                android:layout_weight="9"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:textSize="20sp"
-                                android:text="Ayuda"
-                                android:fontFamily="@font/centurygothic"/>
-                        </LinearLayout>
-                    </RelativeLayout>
 
                     <RelativeLayout
                         android:layout_width="match_parent"

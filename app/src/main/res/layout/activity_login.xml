@@ -169,7 +169,7 @@
         android:layout_alignParentBottom="true"
         android:layout_gravity="center|bottom"
         android:layout_marginBottom="40dp"
-        android:src="@drawable/livetech">
+        android:src="@drawable/liveskool">
 
     </ImageView>
 

@@ -18,7 +18,7 @@ import java.util.List;
 
 //import com.theappnerds.shubham.grocerylist.Activities.DetailsActivity;
 //import com.theappnerds.shubham.grocerylist.Data.DatabaseHandler;
-//import com.theappnerds.shubham.grocerylist.Model.Grocery;
+//import com.theappnerds.shubham.grocerylist.Curso.Grocery;
 //import com.theappnerds.shubham.grocerylist.R;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {

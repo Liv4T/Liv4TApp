@@ -18,9 +18,6 @@ import com.dybcatering.live4teach.R;
 
 public class TareasFragment extends Fragment {
 
-    public TareasFragment() {
-        // Required empty public constructor
-    }
 
    View MyView;
     LinearLayout quimica, fisica;

@@ -48,7 +48,7 @@ public class ConversacionLive4T extends AppCompatActivity implements AdaptadorMe
     //private DatabaseReference mFirebaseDatabaseReference;
     // FirebaseStorage storage = FirebaseStorage.getInstance();
 
-    //CLass Model
+    //CLass Curso
     //private UserModel userModel;
 
     //Views UI

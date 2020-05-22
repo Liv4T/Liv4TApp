@@ -1,9 +1,6 @@
 package com.dybcatering.live4teach.Tutor;
 
 import android.app.Dialog;
-import android.content.ClipData;
-import android.content.ClipboardManager;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,7 +8,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.MenuItemCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,27 +16,16 @@ import android.widget.Toast;
 
 import com.dybcatering.live4teach.Estudiante.Carrito.CarritoActivity;
 import com.dybcatering.live4teach.Estudiante.Carrito.Data.DatabaseHandler;
-import com.dybcatering.live4teach.Estudiante.Inicio.InicioActivity;
-import com.dybcatering.live4teach.Estudiante.Inicio.Token;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
-import com.dybcatering.live4teach.Tutor.Calificaciones.CalificacionesTutorFragment;
-import com.dybcatering.live4teach.Tutor.Consulta.ConsultaTutorFragment;
-import com.dybcatering.live4teach.Tutor.Consulta.ConsultasyTutorias.ConsultasTutor;
-import com.dybcatering.live4teach.Tutor.Liv4T.InicioTutor;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.InicioTutor;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
-import com.dybcatering.live4teach.Tutor.Perfil.PerfilFragmentTutor;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetSequence;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 

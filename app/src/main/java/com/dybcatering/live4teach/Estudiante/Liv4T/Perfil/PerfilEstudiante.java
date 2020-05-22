@@ -48,7 +48,7 @@ public class PerfilEstudiante extends Fragment {
 
     TextView tvname, tvemail, tvphone;
 
-    private static String URL_READ = "http://192.168.0.13/webdyb/back_live_app/read_detail.php";
+    private static String URL_READ = "http://192.168.0.18/webdyb/back_live_app/read_detail.php";
 
     CircleImageView profilepicestudiante;
 

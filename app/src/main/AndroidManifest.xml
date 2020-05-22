@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.INTERNET" /> <!-- uses-permission android:name="android.permission.RECORD_AUDIO" / -->
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.webkit.PermissionRequest" />
-
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <uses-feature
@@ -27,7 +26,8 @@
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity android:name=".ConversacionActivity"/>
+        <activity android:name=".Estudiante.Liv4T.Chat.ListadoConversaciones"></activity>
+        <activity android:name=".ConversacionActivity" />
         <activity android:name=".CrearGrupo.CrearGrupoActivity" />
         <activity android:name=".Tutor.Pizarra.PizarraActivity" />
         <activity android:name=".Tutor.EditorTexto.EditorTextoActivity" />
@@ -51,9 +51,9 @@
         </activity>
         <activity
             android:name=".Estudiante.Inicio.InicioActivity"
-            android:screenOrientation="nosensor"
             android:configChanges="keyboardHidden|orientation|screenSize"
-            android:label="Live4Teach" />
+            android:label="Live4Teach"
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".Estudiante.Carrito.CarritoDetalleActivity"
             android:parentActivityName=".Estudiante.Carrito.CarritoActivity" />

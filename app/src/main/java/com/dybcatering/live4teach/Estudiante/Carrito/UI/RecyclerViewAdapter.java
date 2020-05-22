@@ -15,7 +15,7 @@ import com.dybcatering.live4teach.Estudiante.Carrito.Model.Grocery;
 import com.dybcatering.live4teach.R;
 //import com.theappnerds.shubham.grocerylist.Activities.DetailsActivity;
 //import com.theappnerds.shubham.grocerylist.Data.DatabaseHandler;
-//import com.theappnerds.shubham.grocerylist.Model.Grocery;
+//import com.theappnerds.shubham.grocerylist.Curso.Grocery;
 //import com.theappnerds.shubham.grocerylist.R;
 
 import java.util.List;

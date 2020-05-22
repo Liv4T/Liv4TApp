@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btn_login;
     private TextView link_regist, text_olvide_contrasena;
     private ProgressBar loading;
-    private static String URL_LOGIN = "http://192.168.0.13/webdyb/back_live_app/login.php";
+    private static String URL_LOGIN = "http://192.168.0.18/webdyb/back_live_app/login.php";
     SessionManager sessionManager;
     Spinner spinner;
 

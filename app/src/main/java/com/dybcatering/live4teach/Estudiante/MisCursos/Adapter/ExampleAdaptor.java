@@ -102,7 +102,7 @@ public class ExampleAdaptor extends RecyclerView.Adapter<ExampleAdaptor.ExampleV
             super(itemView);
             mImageView = itemView.findViewById(R.id.imagen_curso);
             mNombreCurso= itemView.findViewById(R.id.titulo);
-            mDescripcionCurso= itemView.findViewById(R.id.descripcion);
+          //  mDescripcionCurso= itemView.findViewById(R.id.descripcion);
             //mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             //mTextViewDescription = itemView.findViewById(R.id.text_view_description);
             //mBarrio = itemView.findViewById(R.id.text_barrio);
