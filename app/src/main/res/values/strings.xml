@@ -111,4 +111,7 @@ Android gives you a world-class platform for creating apps and games for Android
     <string name="voice_not_found">Voz No encontrada</string>
     <string name="min">min</string>
     <string name="sec">sec</string>
+    <string name="title_activity_planificacion_general">PlanificacionGeneral</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

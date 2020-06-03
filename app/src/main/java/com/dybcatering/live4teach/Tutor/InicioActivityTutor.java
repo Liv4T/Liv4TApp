@@ -21,6 +21,7 @@ import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
 import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.InicioTutor;
+import com.dybcatering.live4teach.Tutor.Liv4T.Perfil.PerfilTutor;
 import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosTutorFragment;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 import com.getkeepsafe.taptargetview.TapTarget;
@@ -101,7 +102,7 @@ public class InicioActivityTutor extends AppCompatActivity {
                             break;
                         case R.id.nav_perfil:
 
-                            selectedFragment = new InicioTutor();
+                            selectedFragment = new PerfilTutor();
                             break;
 
                     }

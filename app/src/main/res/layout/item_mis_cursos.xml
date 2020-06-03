@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#10000000"
+        android:orientation="vertical"
+        android:paddingBottom="5dp">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtnombre_curso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/centurygothic"
+                android:gravity="center_vertical|left"
+                android:text="Nombre curso"
+                android:paddingLeft="2dp"
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!--TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/centurygothic"
+                android:gravity="center_vertical|right"
+                android:text="x Borrar"
+                android:textColor="@color/rosa"
+                android:textSize="10sp"
+                android:textStyle="bold" /-->
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnGeneral"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/ovalyellow"
+                android:fontFamily="@font/centurygothic"
+                android:gravity="center"
+                android:minHeight="0dp"
+                android:text="General"
+                android:textColor="@color/colortextoblanco"
+                android:textStyle="bold"
+                android:layout_margin="15dp"/>
+            <Button
+                android:id="@+id/btnCrearSemana"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:background="@drawable/ovalyellow"
+                android:fontFamily="@font/centurygothic"
+                android:gravity="center"
+                android:minHeight="0dp"
+                android:text="Crear Semana"
+                android:textColor="@color/colortextoblanco"
+                android:textStyle="bold"
+                android:layout_margin="15dp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>

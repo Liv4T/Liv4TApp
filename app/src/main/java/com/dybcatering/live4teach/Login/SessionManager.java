@@ -110,9 +110,9 @@ public class SessionManager {
         Intent i = new Intent(context, SplashActivity.class);
         context.startActivity(i);
         ((InicioActivity) context).finish();
-        FirebaseAuth.getInstance().signOut();
+        //FirebaseAuth.getInstance().signOut();
         String uuid = getUserDetail().get(UUID);
-        removeToken(uuid);
+//        removeToken(uuid);
         FirebaseMessaging.getInstance().unsubscribeFromTopic("estudiantes")
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

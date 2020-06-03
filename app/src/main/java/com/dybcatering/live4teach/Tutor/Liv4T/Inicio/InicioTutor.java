@@ -32,6 +32,7 @@ import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleAdaptor;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleItem;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.MisCursosTutorLiv4T;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 import java.util.ArrayList;
@@ -54,7 +55,7 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
     private ExampleAdaptor mExampleAdaptor;
     private ArrayList<ExampleItem> mexampleItems;
     private RequestQueue mRequestQueue;
-    LinearLayout perfil, mensajes, tareas,  horario, notas, boletin, anuncios, chat;
+    LinearLayout perfil, mensajes, miscursos,  horario, notas, boletin, anuncios, chat, clases, actividades;
 
     public TextView nombreperfil, salir;
     View myView;
@@ -73,9 +74,11 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
 
         perfil = myView.findViewById(R.id.linearperfil);
         mensajes = myView.findViewById(R.id.layoutmensajes);
-        tareas = myView.findViewById(R.id.lineartareas);
-        //calendario = myView.findViewById(R.id.linearcalendario);
         horario = myView.findViewById(R.id.linearhorario);
+        miscursos = myView.findViewById(R.id.linearmiscursos);
+        clases = myView.findViewById(R.id.linearclases);
+        actividades = myView.findViewById(R.id.linearactividades);
+        //calendario = myView.findViewById(R.id.linearcalendario);
         notas = myView.findViewById(R.id.linearnotas);
         boletin = myView.findViewById(R.id.linearboletin);
         anuncios = myView.findViewById(R.id.linearanuncios);
@@ -96,6 +99,10 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
         chat.setOnClickListener(v -> {
             Intent chat = new Intent(getContext(), ListadoConversaciones.class);
             startActivity(chat);
+        });
+
+        miscursos.setOnClickListener(v -> {
+            transicionMisCursos();
         });
 
         salir.setOnClickListener(v -> {
@@ -138,19 +145,9 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
             }
         });
 
-        mensajes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mensajes();
-            }
-        });
+        mensajes.setOnClickListener(v -> mensajes());
 
-        tareas.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                transiciontareas();
-            }
-        });
+        clases.setOnClickListener(v -> transiciontareas());
 
         /*
         calendario.setOnClickListener(new View.OnClickListener() {
@@ -190,6 +187,15 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
 
 
         return myView;
+    }
+
+    private void transicionMisCursos() {
+        Fragment miscursos = new MisCursosTutorLiv4T();
+        //tvname.setText("Daniel");
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, miscursos); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 
     private void transicionAnuncios() {
