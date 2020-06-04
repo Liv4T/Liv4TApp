@@ -72,7 +72,7 @@ public class ClasesFragment extends Fragment implements VideosAdaptor.OnItemClic
 
 		mRequestQueue = Volley.newRequestQueue(getActivity());
 
-		playerView = view.findViewById(R.id.video_view);
+
 
 		Bundle arguments = getParentFragment().getArguments();
 

@@ -25,6 +25,7 @@ import com.dybcatering.live4teach.Estudiante.Liv4T.Mensajes.MisMensajes;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Notas.NotasFragment;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Perfil.PerfilEstudiante;
 import com.dybcatering.live4teach.Estudiante.Liv4T.Tareas.TareasFragment;
+import com.dybcatering.live4teach.Estudiante.Liv4T.Tareas.TareasFragment2;
 import com.dybcatering.live4teach.Login.LoginActivity;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
@@ -51,7 +52,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 	private ExampleAdaptor mExampleAdaptor;
 	private ArrayList<ExampleItem> mexampleItems;
 	private RequestQueue mRequestQueue;
-	LinearLayout perfil, mensajes, tareas, calendario, horario, notas, boletin, anuncios;
+	LinearLayout perfil, mensajes, tareas, calendario, horario, notas, boletin, anuncios, tareas2;
 
 	public TextView nombreperfil, salir;
 
@@ -67,6 +68,7 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 		perfil = myView.findViewById(R.id.linearperfil);
 		mensajes = myView.findViewById(R.id.layoutmensajes);
 		tareas = myView.findViewById(R.id.lineartareas);
+		tareas2 = myView.findViewById(R.id.lineartareas2);
 		calendario = myView.findViewById(R.id.linearcalendario);
 		horario = myView.findViewById(R.id.linearhorario);
 		notas = myView.findViewById(R.id.linearnotas);
@@ -175,10 +177,22 @@ public class CategoriasCursos extends Fragment implements ExampleAdaptor.OnItemC
 			}
 		});
 
+		tareas2.setOnClickListener(v -> {
+			transicionTareas2();
+		});
 
 
         return myView;
     }
+
+	private void transicionTareas2() {
+		Fragment perfil = new TareasFragment2();
+		//tvname.setText("Daniel");
+		FragmentTransaction transaction = getFragmentManager().beginTransaction();
+		transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
+		transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+		transaction.commit();
+	}
 
 	private void transicionAnuncios() {
 		Fragment perfil = new AnunciosFragment();

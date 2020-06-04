@@ -218,6 +218,7 @@
                                 android:layout_weight="9"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
+                                android:fontFamily="@font/centurygothic"
                                 android:textSize="20sp"
                                 android:text="Horarios" />
                         </LinearLayout>
@@ -254,6 +255,40 @@
                                 android:layout_marginLeft="10dp"
                                 android:textSize="20sp"
                                 android:text="Mis Clases"
+                                android:fontFamily="@font/centurygothic"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="30dp"
+                        android:layout_margin="10sp">
+
+                        <LinearLayout
+                            android:id="@+id/lineartareas2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:weightSum="10"
+                            android:orientation="horizontal"
+                            android:layout_centerHorizontal="true"
+                            >
+
+                            <ImageView
+
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="1"
+                                android:layout_height="match_parent"
+
+                                android:background="@drawable/misnotas"/>
+
+                            <TextView
+                                android:layout_gravity="center_horizontal"
+                                android:layout_width="0dp"
+                                android:layout_weight="9"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:textSize="20sp"
+                                android:text="Mis Tareas"
                                 android:fontFamily="@font/centurygothic"/>
                         </LinearLayout>
                     </RelativeLayout>

@@ -122,14 +122,14 @@ public class HardLevel extends Fragment {
                     cancel();
                 }
                 else {
-                    ((TextView) view.findViewById(R.id.hardlevelcounter)).setText("Time : " + millisUntilFinished / Constants.TIMER_INTERVAL);
+                    ((TextView) view.findViewById(R.id.hardlevelcounter)).setText("Tiempo : " + millisUntilFinished / Constants.TIMER_INTERVAL);
                     RemainingTime = millisUntilFinished;
                     if (count == Constants.HARD_NO_OF_CARDS) {
                         b.putString("Data", "win");
                         long time = (Constants.HARD_TIME - millisUntilFinished)/ Constants.TIMER_INTERVAL;
                         b.putInt("Time", (int) time);
                         cancel();
-                        this.onFinish();
+                        onFinish();
                     }
                 }
             }
@@ -233,8 +233,8 @@ public class HardLevel extends Fragment {
                                         new Handler().postDelayed(new Runnable() {
                                             @Override
                                             public void run() {
-                                             //   flippedCard.setVisibility(View.GONE);
-                                              //  child.setVisibility(View.GONE);
+                                                flippedCard.setVisibility(View.GONE);
+                                                child.setVisibility(View.GONE);
                                                 child.setEnabled(false);
                                                 flippedCard.setEnabled(false);
                                                 flippedCard=null;

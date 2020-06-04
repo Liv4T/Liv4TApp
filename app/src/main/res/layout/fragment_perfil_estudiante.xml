@@ -29,14 +29,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <ImageView
+                    <!--ImageView
 
                         android:layout_gravity="center"
 
                         android:id="@+id/backimg"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@drawable/side_nav_bar" />
+                        android:background="@drawable/side_nav_bar" /-->
 
                     <ImageView
                         android:id="@+id/imagem"
@@ -55,7 +55,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginBottom="10dp"
                         android:elevation="5dp"
-                        android:src="@drawable/imagenperfil"
+
                         android:visibility="visible"
                         app:civ_border_color="#fff"
                         app:civ_border_width="2dp" />
@@ -68,7 +68,7 @@
                         android:fontFamily="@font/centurygothic"
                         android:gravity="center"
                         android:text="Tu nombre"
-                        android:textColor="#fff"
+                        android:textColor="#000"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 

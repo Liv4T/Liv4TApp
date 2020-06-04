@@ -207,7 +207,10 @@
                         android:fontFamily="@font/centurygothic"
                         android:text="Clase 1"
                         android:id="@+id/clase1semana1"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:elevation="5dp"/>
 
                     <TextView
                         android:layout_margin="5dp"
@@ -216,7 +219,10 @@
                         android:textSize="20sp"
                         android:fontFamily="@font/centurygothic"
                         android:text="Clase 2"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:elevation="5dp"/>
 
                     <TextView
                         android:layout_margin="5dp"
@@ -225,7 +231,10 @@
                         android:fontFamily="@font/centurygothic"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
-                        android:text="Clase 3" />
+                        android:text="Clase 3"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:elevation="5dp"/>
 
                 </LinearLayout>
 
@@ -263,7 +272,10 @@
                         android:textSize="20sp"
                         android:fontFamily="@font/centurygothic"
                         android:text="Clase 1"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:elevation="5dp"/>
 
                     <TextView
                         android:layout_margin="5dp"
@@ -272,7 +284,10 @@
                         android:textSize="20sp"
                         android:fontFamily="@font/centurygothic"
                         android:text="Clase 2"
-                        android:textColor="@color/colorPrimary"/>
+                        android:textColor="@color/colorPrimary"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:elevation="5dp"/>
 
                     <TextView
                         android:layout_margin="5dp"
@@ -281,7 +296,10 @@
                         android:fontFamily="@font/centurygothic"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
-                        android:text="Clase 3" />
+                        android:text="Clase 3"
+                        android:layout_gravity="center_horizontal"
+                        android:gravity="center_horizontal"
+                        android:elevation="5dp"/>
 
                 </LinearLayout>
 
