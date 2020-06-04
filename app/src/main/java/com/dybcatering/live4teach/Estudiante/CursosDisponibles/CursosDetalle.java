@@ -206,14 +206,11 @@ public class CursosDetalle extends AppCompatActivity {
 
 			}
 		});
-		hide2.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
+		hide2.setOnClickListener(v -> {
 
-				hide2.setVisibility(View.INVISIBLE);
-				show2.setVisibility(View.VISIBLE);
-				segunda_desc.setMaxLines(5);
-			}
+			hide2.setVisibility(View.INVISIBLE);
+			show2.setVisibility(View.VISIBLE);
+			segunda_desc.setMaxLines(5);
 		});
 
 		hide3.setOnClickListener(new View.OnClickListener() {

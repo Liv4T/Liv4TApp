@@ -147,7 +147,7 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
 
         mensajes.setOnClickListener(v -> mensajes());
 
-        clases.setOnClickListener(v -> transiciontareas());
+        clases.setOnClickListener(v -> transicionclases());
 
         /*
         calendario.setOnClickListener(new View.OnClickListener() {
@@ -253,7 +253,7 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
 
     }
 
-    private void transiciontareas() {
+    private void transicionclases() {
         Fragment perfil = new TareasFragment();
         //tvname.setText("Daniel");
         FragmentTransaction transaction = getFragmentManager().beginTransaction();

@@ -26,10 +26,6 @@
         android:theme="@style/AppThemeRegist"
         tools:ignore="GoogleAppIndexingWarning"
         tools:replace="android:appComponentFactory">
-        <activity
-            android:name=".Tutor.Liv4T.Inicio.MisCursos.LogroAnual.PlanificacionGeneral"
-            android:label="@string/title_activity_planificacion_general"
-            android:theme="@style/AppThemeRegist.NoActionBar"></activity>
         <activity android:name=".Estudiante.Liv4T.Chat.ListadoConversaciones" />
         <activity android:name=".ConversacionActivity" />
         <activity android:name=".CrearGrupo.CrearGrupoActivity" />

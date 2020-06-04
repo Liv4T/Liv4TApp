@@ -30,6 +30,8 @@ public class MisCursosTutorLiv4T extends Fragment {
         btnCrearSemana = myView.findViewById(R.id.btnCrearSemana);
 
         btnGeneral.setOnClickListener(v -> {
+         //   Intent planificacionGeneral =new Intent(MisCursosTutorLiv4T.this, PlanificacionGeneral.class);
+       //     startActivity(planificacionGeneral);
 
         });
 

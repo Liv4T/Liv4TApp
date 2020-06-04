@@ -63,7 +63,6 @@
             android:text="Semana 2" />
     </LinearLayout>
 
--->
        <ScrollView
             android:layout_below="@+id/footer"
             android:layout_width="match_parent"
@@ -166,7 +165,133 @@
                 </LinearLayout>
 
             </LinearLayout>
-        </ScrollView>
+        </ScrollView-->
+
+    <ScrollView
+        android:layout_below="@+id/footer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="400dp">
+
+            <TextView
+                android:id="@+id/txtSemana1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:textSize="40sp"
+                android:gravity="center_horizontal"
+                android:text="Semana 1"
+                android:textColor="@color/colorPrimary"
+                android:textStyle="bold" />
+
+            <android.support.v7.widget.CardView
+                android:gravity="center_horizontal"
+                android:id="@+id/objetivos"
+                android:layout_below="@id/txtSemana1"
+                android:layout_width="match_parent"
+                android:layout_height="150dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/centurygothic"
+                        android:text="Clase 1"
+                        android:id="@+id/clase1semana1"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/centurygothic"
+                        android:text="Clase 2"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/centurygothic"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:text="Clase 3" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+           <TextView
+               android:textColor="@color/colorPrimary"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:textSize="40sp"
+               android:gravity="center_horizontal"
+               android:text="Semana 2"
+               android:textStyle="bold"
+               android:layout_below="@+id/objetivos"
+               android:id="@+id/semana2"/>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@id/semana2"
+                android:id="@+id/objetivos2">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/centurygothic"
+                        android:text="Clase 1"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="20sp"
+                        android:fontFamily="@font/centurygothic"
+                        android:text="Clase 2"
+                        android:textColor="@color/colorPrimary"/>
+
+                    <TextView
+                        android:layout_margin="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/centurygothic"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        android:text="Clase 3" />
+
+                </LinearLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+
+        </RelativeLayout>
+    </ScrollView>
 
 
 

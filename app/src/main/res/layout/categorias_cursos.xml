@@ -32,14 +32,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <ImageView
+                    <!--ImageView
 
                         android:layout_gravity="center"
 
                         android:id="@+id/backimg"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:background="@drawable/side_nav_bar" />
+                        android:background="@drawable/side_nav_bar" /-->
 
                     <ImageView
                         android:id="@+id/imagem"
@@ -72,7 +72,7 @@
                         android:fontFamily="@font/centurygothic"
                         android:gravity="center"
                         android:text="CARLOS QUINTERO"
-                        android:textColor="#fff"
+                        android:textColor="#000"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
