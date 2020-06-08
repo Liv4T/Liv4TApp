@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.Perfil;
+package com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.Anual;
 
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,46 +30,43 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
-public class PerfilTutor extends Fragment {
+public class PlanificacionAnual extends Fragment {
 
 
-    public PerfilTutor() {
+    public PlanificacionAnual() {
         // Required empty public constructor
     }
 
     View myView;
-
     SessionManager sessionManager;
 
     String id;
 
-    TextView tvname, tvemail, tvphone;
+    private static String URL_READ = "http://dybcatering.com/back_live_app/liv4t/planificacionanual/annual_detail.php";
 
-    private static String URL_READ = "http://dybcatering.com/back_live_app/liv4t/read_detail.php";
-
-    CircleImageView profilepicestudiante;
-
+    EditText logro1, logro2, logro3, logro4;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        myView = inflater.inflate(R.layout.fragment_perfil_estudiante, container, false);
+        // Inflate the layout for this fragment
+        myView = inflater.inflate(R.layout.fragment_planificacion_anual, container, false);
+
         new CheckInternetConnection(getContext()).checkConnection();
         sessionManager = new SessionManager(getContext());
         HashMap<String, String> user = sessionManager.getUserDetail();
         id = user.get(SessionManager.ID);
 
-        profilepicestudiante = myView.findViewById(R.id.profilepicestudiante);
-        tvname = myView.findViewById(R.id.txtUsuario);
-        tvemail = myView.findViewById(R.id.txtCorreo);
-        tvphone = myView.findViewById(R.id.txtTelefono);
+        logro1 = myView.findViewById(R.id.logro_uno);
+        logro2 = myView.findViewById(R.id.logro_dos);
+        logro3 = myView.findViewById(R.id.logro_tres);
+        logro4 = myView.findViewById(R.id.logro_cuatro);
 
         getUserDetail();
 
         return myView;
     }
+
 
     private void getUserDetail() {
 
@@ -94,23 +92,25 @@ public class PerfilTutor extends Fragment {
 
                                     JSONObject object = jsonArray.getJSONObject(i);
 
-                                    String strName = object.getString("name").trim();
-                                    String strEmail = object.getString("email").trim();
-                                    final String strPicture= object.getString("picture").trim();
-                                    String strTelefono = object.getString("phone").trim();
-                                    tvname.setText(strName);
-                                    tvemail.setText(strEmail);
-                                    tvphone.setText(strTelefono);
-                                    if (strPicture.equals("")) {
-                                        profilepicestudiante.setImageResource(R.drawable.imagenperfil);
-                                    } else {
-
-                                        Picasso.with(getContext()).load(strPicture).into(profilepicestudiante);
-
-                                    }
-
+                                    String logro_1 = object.getString("achievement_1").trim();
+                                    String logro_2 = object.getString("achievement_2").trim();
+                                    String logro_3= object.getString("achievement_3").trim();
+                                    String logro_4 = object.getString("achievement_4").trim();
+                                    logro1.setText(logro_1);
+                                    logro2.setText(logro_2);
+                                    logro3.setText(logro_3);
+                                    logro4.setText(logro_4);
+                                    logro1.setEnabled(false);
+                                    logro2.setEnabled(false);
+                                    logro3.setEnabled(false);
+                                    logro4.setEnabled(false);
                                 }
 
+                            }else{
+                                logro1.setEnabled(true);
+                                logro2.setEnabled(true);
+                                logro3.setEnabled(true);
+                                logro4.setEnabled(true);
                             }
 
                         } catch (JSONException e) {
@@ -121,12 +121,9 @@ public class PerfilTutor extends Fragment {
 
                     }
                 },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        progressDialog.dismiss();
-                        Toast.makeText(getActivity(), "Error de conexión  ", Toast.LENGTH_SHORT).show();
-                    }
+                error -> {
+                    progressDialog.dismiss();
+                    Toast.makeText(getActivity(), "Error de conexión  ", Toast.LENGTH_SHORT).show();
                 }) {
             @Override
             protected Map<String, String> getParams() {
@@ -139,32 +136,7 @@ public class PerfilTutor extends Fragment {
         RequestQueue requestQueue = Volley.newRequestQueue(getActivity());
         requestQueue.add(stringRequest);
 
-        profilepicestudiante.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final FancyAlertDialog.Builder alert = new FancyAlertDialog.Builder(getActivity())
-                        .setBackgroundColor(R.color.white)
-                        .setimageResource( R.drawable.imagenperfil)
-                        .setTextTitle("Perfil")
-                        .setPositiveButtonText("Aceptar")
-                        .setPositiveColor(R.color.colorbonton)
-                        .setOnPositiveClicked(new FancyAlertDialog.OnPositiveClicked() {
-                            @Override
-                            public void OnClick(View view, Dialog dialog) {
 
-                                dialog.dismiss();
-
-
-                            }
-                        })
-                        .setBodyGravity(FancyAlertDialog.TextGravity.CENTER)
-                        .setTitleGravity(FancyAlertDialog.TextGravity.CENTER)
-                        .setSubtitleGravity(FancyAlertDialog.TextGravity.CENTER)
-                        .setCancelable(false)
-                        .build();
-                alert.show();
-            }
-        });
 
     }
 

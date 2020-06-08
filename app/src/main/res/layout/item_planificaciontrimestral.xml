@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="8dp">
+
+    <LinearLayout
+        android:layout_width="20dp"
+        android:layout_height="match_parent">
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_marginLeft="20dp"
+        android:paddingBottom="5dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/txtNombreCurso"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:fontFamily="@font/centurygothic"
+                android:paddingLeft="2dp"
+                android:text="Unidad"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtUnidad"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:hint="Unidad"
+                android:enabled="false"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:fontFamily="@font/centurygothic"
+                android:paddingLeft="2dp"
+                android:text="Contenido"
+                android:textColor="#000"
+                android:textSize="18sp" />
+
+            <EditText
+                android:id="@+id/edtContenido"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                android:hint="Contenido de la unidad"
+                android:enabled="false"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</android.support.v7.widget.CardView>
+
+
