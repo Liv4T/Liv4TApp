@@ -36,7 +36,7 @@ public class AdaptadorClase extends RecyclerView.Adapter<AdaptadorClase.ExampleV
     @NonNull
     @Override
     public ExampleViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(mContext).inflate(R.layout.item_clases, parent, false);
+        View v = LayoutInflater.from(mContext).inflate(R.layout.item_detalle_clases_semana, parent, false);
         return new ExampleViewHolder(v);
     }
 
@@ -57,7 +57,8 @@ public class AdaptadorClase extends RecyclerView.Adapter<AdaptadorClase.ExampleV
 
 
 
-        holder.semana.setText("Semana "+ strNombre);
+        holder.nombreClase.setText( strNombre);
+        holder.descripcion.setText( strDescription);
 
 
 
@@ -77,11 +78,13 @@ public class AdaptadorClase extends RecyclerView.Adapter<AdaptadorClase.ExampleV
 
     public class ExampleViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView semana;
+        public TextView nombreClase, descripcion;
 
         public ExampleViewHolder(View itemView) {
             super(itemView);
-            semana= itemView.findViewById(R.id.btnSemana);
+            nombreClase= itemView.findViewById(R.id.nombreclase);
+            descripcion= itemView.findViewById(R.id.desc);
+
             //mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             //mTextViewDescription = itemView.findViewById(R.id.text_view_description);
             //mBarrio = itemView.findViewById(R.id.text_barrio);

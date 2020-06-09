@@ -23,13 +23,7 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
 
-        <Button
-            android:layout_width="50dp"
-            android:layout_height="wrap_content" />
 
 
     </LinearLayout>

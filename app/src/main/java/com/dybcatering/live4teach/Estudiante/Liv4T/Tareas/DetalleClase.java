@@ -49,7 +49,7 @@ public class DetalleClase extends Fragment {
     private ArrayList<VideosItem> mvideosItems;
     private RequestQueue mRequestQueue;
     private SimpleExoPlayer player;
-    TextView text;
+    TextView enlace, nombreclase, descripcion, documento;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -57,14 +57,31 @@ public class DetalleClase extends Fragment {
         // Inflate the layout for this fragment
         myView = inflater.inflate(R.layout.fragment_detalle_clase, container, false);
 
+        Bundle bundle = getArguments();
+        String mNombre = bundle.getString("nombre");
+        String mDescripcion = bundle.getString("descripcion");
+        String mDocumento = bundle.getString("documento");
+        String mNombreDocumento = bundle.getString("nombre_documento");
+        String mIdWeekly = bundle.getString("id_weekly");
+        String mUrl = bundle.getString("url");
+        String mVideo = bundle.getString("video");
+
+
          playerView = myView.findViewById(R.id.video_view);
 
-         text = myView.findViewById(R.id.text);
+         enlace = myView.findViewById(R.id.enlace);
+         nombreclase = myView.findViewById(R.id.nombreclase);
+         descripcion = myView.findViewById(R.id.descripcion);
+         documento = myView.findViewById(R.id.documento);
 
-        text.setOnClickListener(new View.OnClickListener() {
+         nombreclase.setText(mNombre);
+         descripcion.setText(mDescripcion);
+         enlace.setText(mUrl);
+
+        enlace.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                initializePlayer();
+                initializePlayer(mVideo);
             }
         });
 
@@ -72,17 +89,20 @@ public class DetalleClase extends Fragment {
         return myView;
     }
 
-    private void initializePlayer() {
+    private void initializePlayer(String mVideo) {
 
         SimpleExoPlayer player = ExoPlayerFactory.newSimpleInstance(
                 new DefaultRenderersFactory(getContext()),
                 new DefaultTrackSelector(), new DefaultLoadControl());
-        String filePath = "https://www.liv4t.com/uploads/clases/Nomenclatura_orgánica.mp4";
+
+
+
+   //     String filePath = "https://www.liv4t.com/uploads/clases/Nomenclatura_orgánica.mp4";
         //Environment.getExternalStorageDirectory() + File.separator +
 	//			"video" + File.separator + "video1.mp4";
       //  String link = "https://www.liv4t.com/uploads/clases/Nomenclatura_orgánica.mp4";
-        Log.e("filepath", filePath);
-        Uri uri = Uri.parse(filePath);
+        Log.e("filepath", mVideo);
+        Uri uri = Uri.parse(mVideo);
         ExtractorMediaSource audioSource = new ExtractorMediaSource(
                 uri,
                 new DefaultDataSourceFactory(getContext(), "MyExoplayer"),
