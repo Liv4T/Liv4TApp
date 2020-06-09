@@ -76,7 +76,7 @@
                     android:textStyle="bold"
                     android:layout_margin="15dp"/>
                 <Button
-                    android:id="@+id/btnCrearSemana"
+                    android:id="@+id/btnVerSemanas"
                     android:layout_height="wrap_content"
                     android:layout_width="match_parent"
                     android:layout_weight="1"
@@ -85,7 +85,7 @@
                     android:fontFamily="@font/centurygothic"
                     android:gravity="center"
                     android:minHeight="0dp"
-                    android:text="Crear Semana"
+                    android:text="Ver Semanas"
                     android:textColor="@color/colortextoblanco"
                     android:textStyle="bold"
                     android:layout_margin="15dp"/>

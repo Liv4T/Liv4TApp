@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.CrearSemana.CrearSemana;
 import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.PlanificacionGeneralTutorFragment;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.ListadoSemanas;
 
 public class MisCursosTutorLiv4T extends Fragment {
 
@@ -21,7 +21,7 @@ public class MisCursosTutorLiv4T extends Fragment {
 
     View myView;
 
-    Button btnGeneral, btnCrearSemana;
+    Button btnGeneral, btnVerSemanas;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -30,14 +30,14 @@ public class MisCursosTutorLiv4T extends Fragment {
         myView = inflater.inflate(R.layout.fragment_mis_cursos_tutor_liv4_t, container, false);
 
         btnGeneral = myView.findViewById(R.id.btnGeneral);
-        btnCrearSemana = myView.findViewById(R.id.btnCrearSemana);
+        btnVerSemanas = myView.findViewById(R.id.btnVerSemanas);
 
         btnGeneral.setOnClickListener(v -> {
              transicionMisCursos();
 
         });
 
-        btnCrearSemana.setOnClickListener( v -> {
+        btnVerSemanas.setOnClickListener( v -> {
             transicionCrearSemana();
         });
 
@@ -55,7 +55,7 @@ public class MisCursosTutorLiv4T extends Fragment {
     }
 
     private void transicionCrearSemana() {
-        Fragment planificacion = new CrearSemana();
+        Fragment planificacion = new ListadoSemanas();
         //tvname.setText("Daniel");
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, planificacion); // give your fragment container id in first parameter
