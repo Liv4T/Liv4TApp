@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Tutor.Liv4T.PlanificacionGeneral.Anual.PlanificacionAnual">
+    tools:context=".Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Anual.PlanificacionAnual">
 
 
     <LinearLayout

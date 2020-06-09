@@ -1,6 +1,5 @@
 package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -10,7 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.PlanificacionGeneralTutorFragment;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.CrearSemana.CrearSemana;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.PlanificacionGeneralTutorFragment;
 
 public class MisCursosTutorLiv4T extends Fragment {
 
@@ -37,12 +37,25 @@ public class MisCursosTutorLiv4T extends Fragment {
 
         });
 
+        btnCrearSemana.setOnClickListener( v -> {
+            transicionCrearSemana();
+        });
+
 
         return myView;
     }
 
     private void transicionMisCursos() {
         Fragment planificacion = new PlanificacionGeneralTutorFragment();
+        //tvname.setText("Daniel");
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, planificacion); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
+    }
+
+    private void transicionCrearSemana() {
+        Fragment planificacion = new CrearSemana();
         //tvname.setText("Daniel");
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, planificacion); // give your fragment container id in first parameter

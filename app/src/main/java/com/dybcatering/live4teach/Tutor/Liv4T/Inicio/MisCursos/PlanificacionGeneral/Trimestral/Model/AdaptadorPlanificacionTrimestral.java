@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.Trimestral.Model;
+package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Trimestral.Model;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

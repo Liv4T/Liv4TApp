@@ -140,71 +140,7 @@ public class InicioActivityTutor extends AppCompatActivity {
         alert.show();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.principal, menu);
-        final MenuItem menuItem = menu.findItem(R.id.action_cart);
 
-
-        View actionView = MenuItemCompat.getActionView(menuItem);
-        textCartItemCount = (TextView) actionView.findViewById(R.id.cart_badge);
-        final String total = Integer.toString(db.contartotal());
-
-
-        textCartItemCount.setText(total);
-        actionView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(InicioActivityTutor.this, CarritoActivity.class);
-                startActivity(intent);
-
-                 /*if (total.equals("0")){
-                    AlertDialog alertDialog = new AlertDialog.Builder(PrincipalActivity.this, R.style.Botones).create();
-                    alertDialog.setTitle("Carrito de compras Vacío");
-                    alertDialog.setMessage("Parece que aún no has agregado nada al carrito, revisa nuestros cursos disponibles");
-                    alertDialog.setCancelable(false);
-                    alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    dialog.dismiss();
-                                }
-                            });
-                    alertDialog.show();
-                }else{
-
-
-                }*/
-                // onOptionsItemSelected(menuItem);
-                // String str = String.valueOf(count++);
-
-                //    textCartItemCount.setText(str);
-                //setupBadge();
-
-            }
-        });
-
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_cart) {
-
-
-            //mBadge.setNumber(++count);
-            //Toast.makeText(this, "1", Toast.LENGTH_SHORT).show();
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
 
     private void tapview() {
         new TapTargetSequence(this)

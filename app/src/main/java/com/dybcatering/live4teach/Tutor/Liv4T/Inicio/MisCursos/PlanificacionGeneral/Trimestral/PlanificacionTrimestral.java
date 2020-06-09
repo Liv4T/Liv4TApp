@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.Trimestral;
+package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Trimestral;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -20,10 +20,8 @@ import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Actividades.AdaptadorActividadesTutor.AdaptadorMisActividadesTutor;
-import com.dybcatering.live4teach.Tutor.Actividades.MisActividadesTutorFragment;
-import com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.Trimestral.Model.AdaptadorPlanificacionTrimestral;
-import com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.Trimestral.Model.PlanificacionTrimestralItem;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Trimestral.Model.AdaptadorPlanificacionTrimestral;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Trimestral.Model.PlanificacionTrimestralItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;

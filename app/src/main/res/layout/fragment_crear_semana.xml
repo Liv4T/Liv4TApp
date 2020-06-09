@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Tutor.Liv4T.Inicio.MisCursos.CrearSemana.CrearSemana">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/centurygothic"
+            android:text="Pregunta Conductora Semana"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edPreguntaConductora"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:fontFamily="@font/centurygothic"
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/centurygothic"
+            android:text="Desarrollo de Clase"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edDesarrolloClase"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Es la Explicación o Sintesis de la clase"
+            android:inputType="textPersonName"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/centurygothic"
+            android:text="Observación"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/edObservacion"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:ems="10"
+            android:fontFamily="@font/centurygothic"
+            android:inputType="textLongMessage"
+            android:textSize="24sp" />
+
+        <Button
+            android:id="@+id/btnEnviar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ovalyellow"
+            android:fontFamily="@font/centurygothic"
+            android:text="Enviar"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:layout_margin="15dp"/>
+    </LinearLayout>
+</FrameLayout>

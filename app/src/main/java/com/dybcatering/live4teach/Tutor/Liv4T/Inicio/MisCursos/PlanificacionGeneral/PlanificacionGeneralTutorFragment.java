@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral;
+package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -9,12 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.AcercaDeCurso.AcercaCursoFragment;
-import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.Clases.ClasesFragment;
 import com.dybcatering.live4teach.Estudiante.MisCursos.MisCursosDetallePostCompra.ViewPagerAdapter;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.Anual.PlanificacionAnual;
-import com.dybcatering.live4teach.Tutor.Liv4T.PlanificacionGeneral.Trimestral.PlanificacionTrimestral;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Anual.PlanificacionAnual;
+import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Trimestral.PlanificacionTrimestral;
 
 
 public class PlanificacionGeneralTutorFragment extends Fragment {
