@@ -31,6 +31,7 @@ import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleAdaptor;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleItem;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisClases.MisClasesFragment;
 import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.MisCursosTutorLiv4T;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
@@ -253,7 +254,7 @@ public class InicioTutor extends Fragment implements ExampleAdaptor.OnItemClickL
     }
 
     private void transicionclases() {
-        Fragment perfil = new TareasFragment();
+        Fragment perfil = new MisClasesFragment();
         //tvname.setText("Daniel");
         FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, perfil); // give your fragment container id in first parameter
