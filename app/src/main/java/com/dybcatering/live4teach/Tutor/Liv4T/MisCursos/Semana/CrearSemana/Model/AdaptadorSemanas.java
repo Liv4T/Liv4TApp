@@ -54,8 +54,8 @@ public class AdaptadorSemanas extends RecyclerView.Adapter<AdaptadorSemanas.Exam
 
         holder.preguntaconductora.setText("Pregunta Conductora Semana "+week);
         holder.edtPreguntaConductora.setText(preguntaconductora);
-        holder.edtDesarrolloClase.setText(classdevelopment);
-        holder.edtObservacion.setText(observation);
+   //     holder.edtDesarrolloClase.setText(classdevelopment);
+    //    holder.edtObservacion.setText(observation);
 
 
 
@@ -81,8 +81,8 @@ public class AdaptadorSemanas extends RecyclerView.Adapter<AdaptadorSemanas.Exam
             super(itemView);
 
             edtPreguntaConductora= itemView.findViewById(R.id.edtPreguntaConductora);
-            edtDesarrolloClase= itemView.findViewById(R.id.edtDesarrolloClase);
-            edtObservacion= itemView.findViewById(R.id.edtObservacion);
+          //  edtDesarrolloClase= itemView.findViewById(R.id.edtDesarrolloClase);
+         //   edtObservacion= itemView.findViewById(R.id.edtObservacion);
             preguntaconductora = itemView.findViewById(R.id.textPreguntaConductora);
             //mTextViewCreator = itemView.findViewById(R.id.text_view_creator);
             //mTextViewDescription = itemView.findViewById(R.id.text_view_description);

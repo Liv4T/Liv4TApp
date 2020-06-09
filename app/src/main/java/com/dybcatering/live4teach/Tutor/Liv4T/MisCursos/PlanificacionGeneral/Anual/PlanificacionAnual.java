@@ -86,41 +86,27 @@ public class PlanificacionAnual extends Fragment {
             }
         });
 
-        txtlogro2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                logro1.setVisibility(View.GONE);
-                logro2.setVisibility(View.VISIBLE);
-                logro3.setVisibility(View.GONE);
-                logro4.setVisibility(View.GONE);
-            }
+        txtlogro2.setOnClickListener(v -> {
+            logro1.setVisibility(View.GONE);
+            logro2.setVisibility(View.VISIBLE);
+            logro3.setVisibility(View.GONE);
+            logro4.setVisibility(View.GONE);
         });
-         txtlogro3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    logro1.setVisibility(View.GONE);
-                    logro2.setVisibility(View.GONE);
-                    logro3.setVisibility(View.VISIBLE);
-                    logro4.setVisibility(View.GONE);
-                }
-            });
-         txtlogro4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    logro1.setVisibility(View.GONE);
-                    logro2.setVisibility(View.GONE);
-                    logro3.setVisibility(View.GONE);
-                    logro4.setVisibility(View.VISIBLE);
-                }
-            });
+         txtlogro3.setOnClickListener(v -> {
+             logro1.setVisibility(View.GONE);
+             logro2.setVisibility(View.GONE);
+             logro3.setVisibility(View.VISIBLE);
+             logro4.setVisibility(View.GONE);
+         });
+         txtlogro4.setOnClickListener(v -> {
+             logro1.setVisibility(View.GONE);
+             logro2.setVisibility(View.GONE);
+             logro3.setVisibility(View.GONE);
+             logro4.setVisibility(View.VISIBLE);
+         });
 
 
-        btnRegresar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().onBackPressed();
-            }
-        });
+        btnRegresar.setOnClickListener(v -> getActivity().onBackPressed());
 
         getUserDetail();
 

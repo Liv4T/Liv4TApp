@@ -32,14 +32,14 @@
         <EditText
             android:id="@+id/edtPreguntaConductora"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:ems="10"
             android:enabled="false"
             android:hint="Pregunta Conductora"
             android:inputType="textPersonName" />
 
-        <TextView
+        <!--TextView
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
             android:ems="10"
             android:enabled="false"
             android:hint="Observación"
-            android:inputType="textPersonName" />
+            android:inputType="textPersonName" /-->
 
 
 

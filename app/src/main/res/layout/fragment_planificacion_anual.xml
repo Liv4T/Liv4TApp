@@ -79,7 +79,7 @@
         <Button
             android:layout_marginTop="20dp"
             android:id="@+id/btnregresar"
-            android:layout_width="match_parent"
+            android:layout_width="90dp"
             android:layout_height="wrap_content"
             android:background="@drawable/ovalgreenblue"
             android:text="Regresar"
