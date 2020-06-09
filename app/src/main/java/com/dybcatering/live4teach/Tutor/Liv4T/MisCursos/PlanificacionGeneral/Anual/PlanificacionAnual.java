@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Anual;
+package com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Anual;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;

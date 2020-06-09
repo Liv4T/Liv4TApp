@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Trimestral.PlanificacionTrimestral">
+    tools:context=".Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.PlanificacionTrimestral">
 
     <!--LinearLayout
         android:layout_width="match_parent"

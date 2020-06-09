@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.CrearSemana.Model;
+package com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.Semana.CrearSemana.Model;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

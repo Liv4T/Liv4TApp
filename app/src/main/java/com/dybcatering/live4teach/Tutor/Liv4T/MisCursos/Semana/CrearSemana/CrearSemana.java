@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.CrearSemana;
+package com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.Semana.CrearSemana;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;

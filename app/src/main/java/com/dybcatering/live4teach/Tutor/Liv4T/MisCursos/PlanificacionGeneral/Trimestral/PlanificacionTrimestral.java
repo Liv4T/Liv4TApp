@@ -1,10 +1,9 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana;
+package com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -19,12 +18,11 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.CrearSemana.CrearSemana;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.CrearSemana.EditarSemana;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.CrearSemana.Model.AdaptadorSemanas;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.CrearSemana.Model.SemanaItem;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.Model.AdaptadorPlanificacionTrimestral;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.Model.PlanificacionTrimestralItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,17 +34,15 @@ import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
-public class ListadoSemanas extends Fragment implements AdaptadorSemanas.OnItemClickListener{
+public class PlanificacionTrimestral extends Fragment implements AdaptadorPlanificacionTrimestral.OnItemClickListener {
 
-    public ListadoSemanas() {
+    public PlanificacionTrimestral() {
         // Required empty public constructor
     }
 
-    View myView;
-
-
-    private AdaptadorSemanas mAdaptadorSemanas;
-    private ArrayList<SemanaItem> msemanaItem;
+   View myView;
+    private AdaptadorPlanificacionTrimestral mPlanificacionTrimestral;
+    private ArrayList<PlanificacionTrimestralItem> mplanificacionitem;
     private RecyclerView mRecyclerView;
 
     SessionManager sessionManager;
@@ -62,17 +58,17 @@ public class ListadoSemanas extends Fragment implements AdaptadorSemanas.OnItemC
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        myView = inflater.inflate(R.layout.fragment_listado_semanas, container, false);
+        myView = inflater.inflate(R.layout.fragment_planificacion_trimestral, container, false);
 
+
+        new CheckInternetConnection(getContext()).checkConnection();
         sessionManager = new SessionManager(getContext());
         HashMap<String, String> user = sessionManager.getUserDetail();
         id = user.get(SessionManager.ID);
         mRecyclerView = myView.findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-
-
-        msemanaItem= new ArrayList<>();
+        mplanificacionitem= new ArrayList<>();
 
         mRequestQueue = Volley.newRequestQueue(getActivity());
 
@@ -80,28 +76,17 @@ public class ListadoSemanas extends Fragment implements AdaptadorSemanas.OnItemC
 
         fab = myView.findViewById(R.id.fab);
 
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-               transicionCrearSemana();
-            }
+        fab.setOnClickListener(v -> {
+        //    Intent intent = new Intent(getContext(), );
+         //   startActivity(intent);
         });
-
 
         return myView;
     }
 
-    private void transicionCrearSemana() {
-        Fragment planificacion = new CrearSemana();
-        //tvname.setText("Daniel");
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, planificacion); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
-    }
+    private void ObtenerDatos(final String id) {
 
-    private void ObtenerDatos(String id) {
-        String url = "http://dybcatering.com/back_live_app/liv4t/semana/week_detail.php";
+        String url = "http://dybcatering.com/back_live_app/liv4t/planificacionanual/trimestral_detail.php";
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
         progressDialog.setMessage("Cargando...");
         progressDialog.show();
@@ -110,7 +95,7 @@ public class ListadoSemanas extends Fragment implements AdaptadorSemanas.OnItemC
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        //  Log.i(TAG, response);
+                      //  Log.i(TAG, response);
                         progressDialog.dismiss();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -118,16 +103,14 @@ public class ListadoSemanas extends Fragment implements AdaptadorSemanas.OnItemC
                             for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject hit = jsonArray.getJSONObject(i);
 
-                                String driving_question = hit.getString("driving_question");
-                                String class_development = hit.getString("class_development");
-                                String observation = hit.getString("observation");
-                                String week = hit.getString("week");
+                                String unit = hit.getString("unit_name");
+                                String content = hit.getString("content");
 
-                                msemanaItem.add(new SemanaItem(driving_question, class_development, observation, week));
+                                mplanificacionitem.add(new PlanificacionTrimestralItem(unit, content));
                             }
-                            mAdaptadorSemanas= new AdaptadorSemanas(getActivity(), msemanaItem);
-                            mRecyclerView.setAdapter(mAdaptadorSemanas);
-                            mAdaptadorSemanas.setOnClickItemListener(ListadoSemanas.this);
+                            mPlanificacionTrimestral = new AdaptadorPlanificacionTrimestral(getActivity(), mplanificacionitem);
+                            mRecyclerView.setAdapter(mPlanificacionTrimestral);
+                            mPlanificacionTrimestral.setOnClickItemListener(PlanificacionTrimestral.this);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -160,23 +143,8 @@ public class ListadoSemanas extends Fragment implements AdaptadorSemanas.OnItemC
         requestQueue.add(stringRequest);
     }
 
-
-
     @Override
     public void onItemClick(int position) {
-
-        SemanaItem semanaItem = msemanaItem.get(position);
-
-        Fragment planificacion = new EditarSemana();
-        //tvname.setText("Daniel");
-        Bundle arguments = new Bundle();
-        arguments.putString( "week" , semanaItem.getWeeek());
-        planificacion.setArguments(arguments);
-        FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        transaction.replace(R.id.fragment_container, planificacion); // give your fragment container id in first parameter
-        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
-        transaction.commit();
-
 
     }
 }

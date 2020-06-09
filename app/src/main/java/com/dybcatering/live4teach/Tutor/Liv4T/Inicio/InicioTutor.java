@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.dybcatering.live4teach.Estudiante.CursosDisponibles.CursosFragment;
@@ -32,7 +31,7 @@ import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleAdaptor;
 import com.dybcatering.live4teach.Estudiante.MisCursos.Adapter.ExampleItem;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.MisCursosTutorLiv4T;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.MisCursosTutorLiv4T;
 import com.geniusforapp.fancydialog.FancyAlertDialog;
 
 import java.util.ArrayList;

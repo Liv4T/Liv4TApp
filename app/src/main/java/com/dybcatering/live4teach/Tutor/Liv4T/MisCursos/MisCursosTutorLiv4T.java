@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos;
+package com.dybcatering.live4teach.Tutor.Liv4T.MisCursos;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.PlanificacionGeneralTutorFragment;
-import com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.Semana.ListadoSemanas;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.PlanificacionGeneralTutorFragment;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.Semana.ListadoSemanas;
 
 public class MisCursosTutorLiv4T extends Fragment {
 

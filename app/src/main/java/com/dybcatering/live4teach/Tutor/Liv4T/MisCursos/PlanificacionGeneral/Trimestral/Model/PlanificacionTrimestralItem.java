@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.Inicio.MisCursos.PlanificacionGeneral.Trimestral.Model;
+package com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.Model;
 
 public class PlanificacionTrimestralItem {
 
