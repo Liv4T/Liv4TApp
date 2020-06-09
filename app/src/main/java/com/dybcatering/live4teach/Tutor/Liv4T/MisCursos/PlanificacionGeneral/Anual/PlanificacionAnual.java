@@ -6,7 +6,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -39,7 +41,11 @@ public class PlanificacionAnual extends Fragment {
 
     private static String URL_READ = "http://dybcatering.com/back_live_app/liv4t/planificacionanual/annual_detail.php";
 
+
+    TextView txtlogro1, txtlogro2, txtlogro3, txtlogro4;
     EditText logro1, logro2, logro3, logro4;
+
+    Button btnRegresar;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +62,65 @@ public class PlanificacionAnual extends Fragment {
         logro2 = myView.findViewById(R.id.logro_dos);
         logro3 = myView.findViewById(R.id.logro_tres);
         logro4 = myView.findViewById(R.id.logro_cuatro);
+
+        txtlogro1 = myView.findViewById(R.id.txtlogro1);
+        txtlogro2 = myView.findViewById(R.id.txtlogro2);
+        txtlogro3 = myView.findViewById(R.id.txtlogro3);
+        txtlogro4 = myView.findViewById(R.id.txtlogro4);
+
+        btnRegresar = myView.findViewById(R.id.btnregresar);
+
+        logro1.setVisibility(View.GONE);
+        logro2.setVisibility(View.GONE);
+        logro3.setVisibility(View.GONE);
+        logro4.setVisibility(View.GONE);
+
+
+        txtlogro1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logro1.setVisibility(View.VISIBLE);
+                logro2.setVisibility(View.GONE);
+                logro3.setVisibility(View.GONE);
+                logro4.setVisibility(View.GONE);
+            }
+        });
+
+        txtlogro2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logro1.setVisibility(View.GONE);
+                logro2.setVisibility(View.VISIBLE);
+                logro3.setVisibility(View.GONE);
+                logro4.setVisibility(View.GONE);
+            }
+        });
+         txtlogro3.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    logro1.setVisibility(View.GONE);
+                    logro2.setVisibility(View.GONE);
+                    logro3.setVisibility(View.VISIBLE);
+                    logro4.setVisibility(View.GONE);
+                }
+            });
+         txtlogro4.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    logro1.setVisibility(View.GONE);
+                    logro2.setVisibility(View.GONE);
+                    logro3.setVisibility(View.GONE);
+                    logro4.setVisibility(View.VISIBLE);
+                }
+            });
+
+
+        btnRegresar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getActivity().onBackPressed();
+            }
+        });
 
         getUserDetail();
 

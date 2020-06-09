@@ -13,11 +13,11 @@
         android:layout_margin="15dp">
 
         <TextView
-            android:id="@+id/textView20"
+            android:id="@+id/txtlogro1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logro 1"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold"/>
 
         <EditText
@@ -29,11 +29,11 @@
             android:inputType="textPersonName" />
 
         <TextView
-            android:id="@+id/textView30"
+            android:id="@+id/txtlogro2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logro 2"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
@@ -45,10 +45,11 @@
             android:inputType="textPersonName" />
 
         <TextView
+            android:id="@+id/txtlogro3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logro 3"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
@@ -60,10 +61,11 @@
             android:inputType="textPersonName" />
 
         <TextView
+            android:id="@+id/txtlogro4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Logro 4"
-            android:textSize="18sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <EditText
@@ -76,11 +78,13 @@
 
         <Button
             android:layout_marginTop="20dp"
-            android:id="@+id/button"
+            android:id="@+id/btnregresar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/ovalyellow"
-            android:text="Guardar"
-            android:textColor="#fff" />
+            android:background="@drawable/ovalgreenblue"
+            android:text="Regresar"
+            android:textColor="#fff"
+            android:layout_margin="40dp"
+            android:layout_gravity="right"/>
     </LinearLayout>
 </FrameLayout>

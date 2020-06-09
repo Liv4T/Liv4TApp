@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.Gravity;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -23,11 +25,14 @@ import com.android.volley.toolbox.Volley;
 import com.dybcatering.live4teach.Estudiante.InternetConnection.CheckInternetConnection;
 import com.dybcatering.live4teach.Login.SessionManager;
 import com.dybcatering.live4teach.R;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisClases.DetalleSemanaClases.ListadoClases;
 import com.dybcatering.live4teach.Tutor.Liv4T.MisClases.Model.AdaptadorMisClases;
 import com.dybcatering.live4teach.Tutor.Liv4T.MisClases.Model.MisClasesItem;
 import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.Model.AdaptadorPlanificacionTrimestral;
 import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.Model.PlanificacionTrimestralItem;
 import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.PlanificacionTrimestral;
+import com.dybcatering.live4teach.Tutor.MisCursos.Adaptador.ItemMisCursosTutor;
+import com.dybcatering.live4teach.Tutor.MisCursos.MisCursosDetalleTutorFragment;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -57,6 +62,8 @@ public class MisClasesFragment extends Fragment implements AdaptadorMisClases.On
 
     private RequestQueue mRequestQueue;
 
+    TextView text;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,6 +81,14 @@ public class MisClasesFragment extends Fragment implements AdaptadorMisClases.On
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mClasesItem= new ArrayList<>();
 
+        text = myView.findViewById(R.id.text);
+
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mRecyclerView.setVisibility(View.GONE);
+            }
+        });
         mRequestQueue = Volley.newRequestQueue(getActivity());
 
         ObtenerDatos(id);
@@ -174,7 +189,16 @@ public class MisClasesFragment extends Fragment implements AdaptadorMisClases.On
 
     @Override
     public void onItemClick(int position) {
-
+        MisClasesItem misClasesItem = mClasesItem.get(position);
+        Fragment someFragment = new ListadoClases();
+        Bundle arguments = new Bundle();
+        arguments.putString("idweek", misClasesItem.getId());
+        someFragment.setArguments(arguments);
+        Toast.makeText(getContext(), "Es"+misClasesItem.getId(), Toast.LENGTH_SHORT).show();
+        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, someFragment ).addToBackStack("tag"); // give your fragment container id in first parameter
+        transaction.addToBackStack(null);  // if written, this transaction will be added to backstack
+        transaction.commit();
     }
 
 

@@ -1,4 +1,4 @@
-package com.dybcatering.live4teach.Tutor.Liv4T.MisClases.Model;
+package com.dybcatering.live4teach.Tutor.Liv4T.MisClases.DetalleSemanaClases.Model;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,24 +6,22 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dybcatering.live4teach.R;
-import com.dybcatering.live4teach.Tutor.Liv4T.MisCursos.PlanificacionGeneral.Trimestral.Model.PlanificacionTrimestralItem;
+import com.dybcatering.live4teach.Tutor.Liv4T.MisClases.Model.MisClasesItem;
 
 import java.util.ArrayList;
 
-public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.ExampleViewHolder> {
+public class AdaptadorClase extends RecyclerView.Adapter<AdaptadorClase.ExampleViewHolder> {
 
 
     private Context mContext;
-    private ArrayList<MisClasesItem> mExampleList;
+    private ArrayList<ClaseItem> mExampleList;
     private OnItemClickListener mListener;
 
 
-    public AdaptadorMisClases(Context context, ArrayList<MisClasesItem> exampleList) {
+    public AdaptadorClase(Context context, ArrayList<ClaseItem> exampleList) {
         mContext = context;
         mExampleList = exampleList;
     }
@@ -44,14 +42,24 @@ public class AdaptadorMisClases extends RecyclerView.Adapter<AdaptadorMisClases.
 
     @Override
     public void onBindViewHolder(@NonNull ExampleViewHolder holder, int position) {
-        MisClasesItem currentItem = mExampleList.get(position);
+        ClaseItem currentItem = mExampleList.get(position);
 
 
-        String strsemana= currentItem.getSemana();
-        String strId = currentItem.getId();
+        String strNombre = currentItem.getNombre();
+        String strDescription = currentItem.getDescripcion();
+        String strNombre_Documento = currentItem.getNombre_Documento();
+        String strDocumento = currentItem.getDocumento();
+        String strUrl = currentItem.getUrl();
+        String strVideo = currentItem.getVideo();
+        String strId_Weekly = currentItem.getId_Weekly();
 
 
-        holder.semana.setText("Semana "+ strsemana);
+
+
+
+        holder.semana.setText("Semana "+ strNombre);
+
+
 
 
 
